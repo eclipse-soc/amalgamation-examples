@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/amalgam/tutorials/xtext/Droid" 
+       class = "org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage"
+       genModel = "org/eclipse/amalgam/tutorials/xtext/Droid.genmodel" /> 
+	
+  </extension>
+
+
+
+
+
+</plugin>

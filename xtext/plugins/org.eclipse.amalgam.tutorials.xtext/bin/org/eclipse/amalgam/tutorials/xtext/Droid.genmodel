@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.amalgam.tutorials.xtext/src-gen"
+    editDirectory="/org.eclipse.amalgam.tutorials.xtext.edit/src" editorDirectory="/org.eclipse.amalgam.tutorials.xtext.editor/src"
+    modelPluginID="org.eclipse.amalgam.tutorials.xtext" forceOverwrite="true" modelName="Droid"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.amalgam.tutorials.xtext.edit"
+    editorPluginID="org.eclipse.amalgam.tutorials.xtext.editor">
+  <genPackages prefix="Droid" basePackage="org.eclipse.amalgam.tutorials.xtext" disposableProviderFactory="true"
+      ecorePackage="Droid.ecore#/">
+    <genClasses ecoreClass="Droid.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Model/greetings"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//Greeting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Greeting/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
