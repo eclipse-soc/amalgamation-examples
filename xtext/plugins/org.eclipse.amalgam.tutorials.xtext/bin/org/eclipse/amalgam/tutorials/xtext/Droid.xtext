@@ -1,0 +1,9 @@
+grammar org.eclipse.amalgam.tutorials.xtext.Droid with org.eclipse.xtext.common.Terminals
+
+generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

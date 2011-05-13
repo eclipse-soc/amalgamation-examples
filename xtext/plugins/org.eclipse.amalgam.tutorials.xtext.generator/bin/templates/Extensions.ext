@@ -1,0 +1,4 @@
+import org::eclipse::amalgam::tutorials::xtext::droid;
+
+sortedGreetings(Model this) :
+	this.greetings.sortBy(g|g.name.toLowerCase());
