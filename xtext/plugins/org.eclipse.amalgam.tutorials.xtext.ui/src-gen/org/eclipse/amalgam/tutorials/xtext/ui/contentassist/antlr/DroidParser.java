@@ -37,9 +37,81 @@ public class DroidParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getGreetingAccess().getGroup(), "rule__Greeting__Group__0");
-					put(grammarAccess.getModelAccess().getGreetingsAssignment(), "rule__Model__GreetingsAssignment");
-					put(grammarAccess.getGreetingAccess().getNameAssignment_1(), "rule__Greeting__NameAssignment_1");
+					put(grammarAccess.getApplicationElementAccess().getAlternatives(), "rule__ApplicationElement__Alternatives");
+					put(grammarAccess.getWidgetAccess().getAlternatives_0(), "rule__Widget__Alternatives_0");
+					put(grammarAccess.getActivityAccess().getAlternatives(), "rule__Activity__Alternatives");
+					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
+					put(grammarAccess.getApplicationAccess().getGroup(), "rule__Application__Group__0");
+					put(grammarAccess.getManifestFileAccess().getGroup(), "rule__ManifestFile__Group__0");
+					put(grammarAccess.getLayoutAccess().getGroup(), "rule__Layout__Group__0");
+					put(grammarAccess.getWidgetAccess().getGroup(), "rule__Widget__Group__0");
+					put(grammarAccess.getWidgetAccess().getGroup_1(), "rule__Widget__Group_1__0");
+					put(grammarAccess.getWidgetAccess().getGroup_2(), "rule__Widget__Group_2__0");
+					put(grammarAccess.getWidgetAccess().getGroup_3(), "rule__Widget__Group_3__0");
+					put(grammarAccess.getWidgetAccess().getGroup_4(), "rule__Widget__Group_4__0");
+					put(grammarAccess.getGenericWidgetAccess().getGroup(), "rule__GenericWidget__Group__0");
+					put(grammarAccess.getGenericWidgetAccess().getGroup_2(), "rule__GenericWidget__Group_2__0");
+					put(grammarAccess.getButtonAccess().getGroup(), "rule__Button__Group__0");
+					put(grammarAccess.getButtonAccess().getGroup_2(), "rule__Button__Group_2__0");
+					put(grammarAccess.getSpinnerAccess().getGroup(), "rule__Spinner__Group__0");
+					put(grammarAccess.getSpinnerAccess().getGroup_2(), "rule__Spinner__Group_2__0");
+					put(grammarAccess.getEditTextAccess().getGroup(), "rule__EditText__Group__0");
+					put(grammarAccess.getEditTextAccess().getGroup_2(), "rule__EditText__Group_2__0");
+					put(grammarAccess.getTextViewAccess().getGroup(), "rule__TextView__Group__0");
+					put(grammarAccess.getTextViewAccess().getGroup_2(), "rule__TextView__Group_2__0");
+					put(grammarAccess.getGenericActivityAccess().getGroup(), "rule__GenericActivity__Group__0");
+					put(grammarAccess.getListActivityAccess().getGroup(), "rule__ListActivity__Group__0");
+					put(grammarAccess.getListActivityAccess().getGroup_5(), "rule__ListActivity__Group_5__0");
+					put(grammarAccess.getTabActivityAccess().getGroup(), "rule__TabActivity__Group__0");
+					put(grammarAccess.getGenericActionAccess().getGroup(), "rule__GenericAction__Group__0");
+					put(grammarAccess.getGoToURLActionAccess().getGroup(), "rule__GoToURLAction__Group__0");
+					put(grammarAccess.getShowLayoutActionAccess().getGroup(), "rule__ShowLayoutAction__Group__0");
+					put(grammarAccess.getInvokeActivityActionAccess().getGroup(), "rule__InvokeActivityAction__Group__0");
+					put(grammarAccess.getLoadResourceActionAccess().getGroup(), "rule__LoadResourceAction__Group__0");
+					put(grammarAccess.getLoadResourceActionAccess().getGroup_2(), "rule__LoadResourceAction__Group_2__0");
+					put(grammarAccess.getLoadResourceActionAccess().getGroup_3(), "rule__LoadResourceAction__Group_3__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
+					put(grammarAccess.getURLAccess().getGroup(), "rule__URL__Group__0");
+					put(grammarAccess.getURLAccess().getGroup_3(), "rule__URL__Group_3__0");
+					put(grammarAccess.getURLAccess().getGroup_3_1(), "rule__URL__Group_3_1__0");
+					put(grammarAccess.getApplicationAccess().getNameAssignment_1(), "rule__Application__NameAssignment_1");
+					put(grammarAccess.getApplicationAccess().getPackageAssignment_2(), "rule__Application__PackageAssignment_2");
+					put(grammarAccess.getApplicationAccess().getManifestAssignment_4(), "rule__Application__ManifestAssignment_4");
+					put(grammarAccess.getApplicationAccess().getLayoutsAssignment_5(), "rule__Application__LayoutsAssignment_5");
+					put(grammarAccess.getApplicationAccess().getActivitiesAssignment_6(), "rule__Application__ActivitiesAssignment_6");
+					put(grammarAccess.getLayoutAccess().getNameAssignment_1(), "rule__Layout__NameAssignment_1");
+					put(grammarAccess.getLayoutAccess().getWidgetsAssignment_3(), "rule__Layout__WidgetsAssignment_3");
+					put(grammarAccess.getWidgetAccess().getTopAssignment_1_2(), "rule__Widget__TopAssignment_1_2");
+					put(grammarAccess.getWidgetAccess().getLeftAssignment_2_2(), "rule__Widget__LeftAssignment_2_2");
+					put(grammarAccess.getWidgetAccess().getWidthAssignment_3_2(), "rule__Widget__WidthAssignment_3_2");
+					put(grammarAccess.getWidgetAccess().getActionsAssignment_4_1(), "rule__Widget__ActionsAssignment_4_1");
+					put(grammarAccess.getGenericWidgetAccess().getIdAssignment_2_1(), "rule__GenericWidget__IdAssignment_2_1");
+					put(grammarAccess.getGenericWidgetAccess().getNameAssignment_3(), "rule__GenericWidget__NameAssignment_3");
+					put(grammarAccess.getButtonAccess().getIdAssignment_2_1(), "rule__Button__IdAssignment_2_1");
+					put(grammarAccess.getButtonAccess().getLabelAssignment_3(), "rule__Button__LabelAssignment_3");
+					put(grammarAccess.getSpinnerAccess().getIdAssignment_2_1(), "rule__Spinner__IdAssignment_2_1");
+					put(grammarAccess.getSpinnerAccess().getLabelAssignment_3(), "rule__Spinner__LabelAssignment_3");
+					put(grammarAccess.getEditTextAccess().getIdAssignment_2_1(), "rule__EditText__IdAssignment_2_1");
+					put(grammarAccess.getEditTextAccess().getLabelAssignment_3(), "rule__EditText__LabelAssignment_3");
+					put(grammarAccess.getTextViewAccess().getIdAssignment_2_1(), "rule__TextView__IdAssignment_2_1");
+					put(grammarAccess.getTextViewAccess().getLabelAssignment_3(), "rule__TextView__LabelAssignment_3");
+					put(grammarAccess.getGenericActivityAccess().getNameAssignment_1(), "rule__GenericActivity__NameAssignment_1");
+					put(grammarAccess.getGenericActivityAccess().getActionsAssignment_3(), "rule__GenericActivity__ActionsAssignment_3");
+					put(grammarAccess.getListActivityAccess().getNameAssignment_1(), "rule__ListActivity__NameAssignment_1");
+					put(grammarAccess.getListActivityAccess().getDataSourceAssignment_4(), "rule__ListActivity__DataSourceAssignment_4");
+					put(grammarAccess.getListActivityAccess().getLayoutAssignment_5_1(), "rule__ListActivity__LayoutAssignment_5_1");
+					put(grammarAccess.getListActivityAccess().getItemLayoutAssignment_7(), "rule__ListActivity__ItemLayoutAssignment_7");
+					put(grammarAccess.getListActivityAccess().getActionsAssignment_8(), "rule__ListActivity__ActionsAssignment_8");
+					put(grammarAccess.getTabActivityAccess().getNameAssignment_1(), "rule__TabActivity__NameAssignment_1");
+					put(grammarAccess.getTabActivityAccess().getActionsAssignment_3(), "rule__TabActivity__ActionsAssignment_3");
+					put(grammarAccess.getGenericActionAccess().getNameAssignment_1(), "rule__GenericAction__NameAssignment_1");
+					put(grammarAccess.getGoToURLActionAccess().getUrlAssignment_1(), "rule__GoToURLAction__UrlAssignment_1");
+					put(grammarAccess.getShowLayoutActionAccess().getLayoutAssignment_1(), "rule__ShowLayoutAction__LayoutAssignment_1");
+					put(grammarAccess.getInvokeActivityActionAccess().getActivityAssignment_1(), "rule__InvokeActivityAction__ActivityAssignment_1");
+					put(grammarAccess.getLoadResourceActionAccess().getResourceAssignment_1(), "rule__LoadResourceAction__ResourceAssignment_1");
+					put(grammarAccess.getLoadResourceActionAccess().getToVarAssignment_2_1(), "rule__LoadResourceAction__ToVarAssignment_2_1");
+					put(grammarAccess.getLoadResourceActionAccess().getAfterLoadAssignment_3_1(), "rule__LoadResourceAction__AfterLoadAssignment_3_1");
 				}
 			};
 		}
@@ -50,7 +122,7 @@ public class DroidParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			org.eclipse.amalgam.tutorials.xtext.ui.contentassist.antlr.internal.InternalDroidParser typedParser = (org.eclipse.amalgam.tutorials.xtext.ui.contentassist.antlr.internal.InternalDroidParser) parser;
-			typedParser.entryRuleModel();
+			typedParser.entryRuleApplication();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

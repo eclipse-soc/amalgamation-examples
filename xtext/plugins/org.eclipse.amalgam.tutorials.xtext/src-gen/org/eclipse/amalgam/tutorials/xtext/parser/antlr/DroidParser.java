@@ -42,7 +42,7 @@ public class DroidParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrPar
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "Application";
 	}
 	
 	public DroidGrammarAccess getGrammarAccess() {
