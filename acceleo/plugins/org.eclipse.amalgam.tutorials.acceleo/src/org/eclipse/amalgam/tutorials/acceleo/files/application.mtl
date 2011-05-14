@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module application('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
+
+[template public application(aApplication : Application)]
+	
+	[comment @main /]
+	[file (aApplication.name, false, 'UTF-8')]
+	[aApplication.name/]
+	[/file]
+	
+[/template]

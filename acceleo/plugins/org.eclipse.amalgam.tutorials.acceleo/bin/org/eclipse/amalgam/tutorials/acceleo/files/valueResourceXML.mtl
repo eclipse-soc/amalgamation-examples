@@ -1,0 +1,12 @@
+[comment encoding = UTF-8 /]
+[module valueResourceXML('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
+
+[template public valueResourceXML(aValueResource : ValueResource)]
+	[file (aValueResource.name.concat('.xml'), false, 'UTF-8')]
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello, Android! I am a string resource!</string>
+    <string name="app_name">Hello World</string>
+</resources>
+	[/file]
+[/template]
