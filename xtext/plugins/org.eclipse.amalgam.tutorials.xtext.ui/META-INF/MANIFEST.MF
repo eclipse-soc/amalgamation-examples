@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.amalgam.tutorials.xtext.ui
-Bundle-Vendor: My Company
+Bundle-Vendor: Reinaldo de Souza Junior
 Bundle-Version: 1.0.0
 Bundle-SymbolicName: org.eclipse.amalgam.tutorials.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
