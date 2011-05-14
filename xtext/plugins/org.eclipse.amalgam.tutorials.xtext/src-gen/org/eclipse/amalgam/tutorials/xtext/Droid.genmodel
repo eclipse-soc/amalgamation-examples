@@ -9,52 +9,135 @@
     editorPluginID="org.eclipse.amalgam.tutorials.xtext.editor">
   <genPackages prefix="Droid" basePackage="org.eclipse.amalgam.tutorials.xtext" disposableProviderFactory="true"
       ecorePackage="Droid.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Droid.ecore#//DimensionKind">
+      <genEnumLiterals ecoreEnumLiteral="Droid.ecore#//DimensionKind/dp"/>
+      <genEnumLiterals ecoreEnumLiteral="Droid.ecore#//DimensionKind/sp"/>
+      <genEnumLiterals ecoreEnumLiteral="Droid.ecore#//DimensionKind/pt"/>
+      <genEnumLiterals ecoreEnumLiteral="Droid.ecore#//DimensionKind/px"/>
+      <genEnumLiterals ecoreEnumLiteral="Droid.ecore#//DimensionKind/mm"/>
+      <genEnumLiterals ecoreEnumLiteral="Droid.ecore#//DimensionKind/in"/>
+    </genEnums>
     <genClasses ecoreClass="Droid.ecore#//Application">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Application/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Application/package"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Application/manifest"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Application/resources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Application/layouts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Application/activities"/>
     </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//ApplicationElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//ApplicationElement/name"/>
-    </genClasses>
     <genClasses ecoreClass="Droid.ecore#//ManifestFile"/>
+    <genClasses ecoreClass="Droid.ecore#//Resource"/>
+    <genClasses ecoreClass="Droid.ecore#//GenericResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//GenericResource/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//MenuResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//MenuResource/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//ValueResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//ValueResource/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//StringValueResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//StringValueResource/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//IntegerValueResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//IntegerValueResource/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//BooleanValueResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//BooleanValueResource/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//ColorValueResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//ColorValueResource/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//DimensionValueResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//DimensionValueResource/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//DimensionValueResource/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//DrawableResource"/>
+    <genClasses ecoreClass="Droid.ecore#//BitmapDrawableResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//BitmapDrawableResource/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//BitmapDrawableResource/filename"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//TransitionDrawableResource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//TransitionDrawableResource/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//TransitionDrawableResource/to"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//AnimationResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//AnimationResource/name"/>
+    </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Layout">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Layout/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Layout/widgets"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Widget">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Widget/top"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Widget/left"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Widget/width"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/actions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Widget/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/top"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/width"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/height"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/background"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/clickable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/fadeScrollBars"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/isScrollContainer"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//GenericWidget">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//GenericWidget/name"/>
-    </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//Button">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Button/label"/>
-    </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//Spinner">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Spinner/label"/>
-    </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//EditText">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//EditText/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//GenericWidget/actions"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//TextView">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//TextView/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TextView/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TextView/hint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TextView/textColor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TextView/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//Button">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/hint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/textColor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//ImageButton">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ImageButton/src"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ImageButton/hint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ImageButton/textColor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ImageButton/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//Link">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/hint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/textColor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//Spinner">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Spinner/prompt"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//EditText">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//EditText/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//EditText/hint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//EditText/textColor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//EditText/editable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//EditText/numeric"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//EditText/password"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//EditText/phoneNumber"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Activity">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Activity/actions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Activity/name"/>
     </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//GenericActivity"/>
+    <genClasses ecoreClass="Droid.ecore#//GenericActivity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//GenericActivity/actions"/>
+    </genClasses>
     <genClasses ecoreClass="Droid.ecore#//ListActivity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//ListActivity/dataSource"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//ListActivity/layout"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//ListActivity/itemLayout"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ListActivity/actions"/>
     </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//TabActivity"/>
+    <genClasses ecoreClass="Droid.ecore#//TabActivity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TabActivity/tabs"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//Tab">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//Tab/activity"/>
+    </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Action"/>
     <genClasses ecoreClass="Droid.ecore#//GenericAction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//GenericAction/name"/>
@@ -72,6 +155,37 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//LoadResourceAction/resource"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//LoadResourceAction/toVar"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//LoadResourceAction/afterLoad"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//PropertyValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//PropertyValue/externalResource"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//StringPropertyValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//StringPropertyValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//StringPropertyValue/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//IntegerPropertyValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//IntegerPropertyValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//IntegerPropertyValue/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//BooleanPropertyValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//BooleanPropertyValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//BooleanPropertyValue/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//ColorPropertyValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//ColorPropertyValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//ColorPropertyValue/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//DimensionPropertyValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//DimensionPropertyValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//DimensionPropertyValue/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//DrawableResourcePropertyValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//DrawableResourcePropertyValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//DrawableResourcePropertyValue/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//DrawableImageResourcePropertyValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//DrawableImageResourcePropertyValue/resource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//DrawableImageResourcePropertyValue/externalResource"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

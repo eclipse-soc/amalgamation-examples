@@ -102,13 +102,6 @@ public class DroidSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DroidPackage.APPLICATION_ELEMENT:
-      {
-        ApplicationElement applicationElement = (ApplicationElement)theEObject;
-        T result = caseApplicationElement(applicationElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DroidPackage.MANIFEST_FILE:
       {
         ManifestFile manifestFile = (ManifestFile)theEObject;
@@ -116,11 +109,120 @@ public class DroidSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DroidPackage.RESOURCE:
+      {
+        Resource resource = (Resource)theEObject;
+        T result = caseResource(resource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.GENERIC_RESOURCE:
+      {
+        GenericResource genericResource = (GenericResource)theEObject;
+        T result = caseGenericResource(genericResource);
+        if (result == null) result = caseResource(genericResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.MENU_RESOURCE:
+      {
+        MenuResource menuResource = (MenuResource)theEObject;
+        T result = caseMenuResource(menuResource);
+        if (result == null) result = caseResource(menuResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.VALUE_RESOURCE:
+      {
+        ValueResource valueResource = (ValueResource)theEObject;
+        T result = caseValueResource(valueResource);
+        if (result == null) result = caseResource(valueResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.STRING_VALUE_RESOURCE:
+      {
+        StringValueResource stringValueResource = (StringValueResource)theEObject;
+        T result = caseStringValueResource(stringValueResource);
+        if (result == null) result = caseValueResource(stringValueResource);
+        if (result == null) result = caseResource(stringValueResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.INTEGER_VALUE_RESOURCE:
+      {
+        IntegerValueResource integerValueResource = (IntegerValueResource)theEObject;
+        T result = caseIntegerValueResource(integerValueResource);
+        if (result == null) result = caseValueResource(integerValueResource);
+        if (result == null) result = caseResource(integerValueResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.BOOLEAN_VALUE_RESOURCE:
+      {
+        BooleanValueResource booleanValueResource = (BooleanValueResource)theEObject;
+        T result = caseBooleanValueResource(booleanValueResource);
+        if (result == null) result = caseValueResource(booleanValueResource);
+        if (result == null) result = caseResource(booleanValueResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.COLOR_VALUE_RESOURCE:
+      {
+        ColorValueResource colorValueResource = (ColorValueResource)theEObject;
+        T result = caseColorValueResource(colorValueResource);
+        if (result == null) result = caseValueResource(colorValueResource);
+        if (result == null) result = caseResource(colorValueResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.DIMENSION_VALUE_RESOURCE:
+      {
+        DimensionValueResource dimensionValueResource = (DimensionValueResource)theEObject;
+        T result = caseDimensionValueResource(dimensionValueResource);
+        if (result == null) result = caseValueResource(dimensionValueResource);
+        if (result == null) result = caseResource(dimensionValueResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.DRAWABLE_RESOURCE:
+      {
+        DrawableResource drawableResource = (DrawableResource)theEObject;
+        T result = caseDrawableResource(drawableResource);
+        if (result == null) result = caseResource(drawableResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.BITMAP_DRAWABLE_RESOURCE:
+      {
+        BitmapDrawableResource bitmapDrawableResource = (BitmapDrawableResource)theEObject;
+        T result = caseBitmapDrawableResource(bitmapDrawableResource);
+        if (result == null) result = caseDrawableResource(bitmapDrawableResource);
+        if (result == null) result = caseResource(bitmapDrawableResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.TRANSITION_DRAWABLE_RESOURCE:
+      {
+        TransitionDrawableResource transitionDrawableResource = (TransitionDrawableResource)theEObject;
+        T result = caseTransitionDrawableResource(transitionDrawableResource);
+        if (result == null) result = caseDrawableResource(transitionDrawableResource);
+        if (result == null) result = caseResource(transitionDrawableResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.ANIMATION_RESOURCE:
+      {
+        AnimationResource animationResource = (AnimationResource)theEObject;
+        T result = caseAnimationResource(animationResource);
+        if (result == null) result = caseResource(animationResource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DroidPackage.LAYOUT:
       {
         Layout layout = (Layout)theEObject;
         T result = caseLayout(layout);
-        if (result == null) result = caseApplicationElement(layout);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -139,11 +241,35 @@ public class DroidSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DroidPackage.TEXT_VIEW:
+      {
+        TextView textView = (TextView)theEObject;
+        T result = caseTextView(textView);
+        if (result == null) result = caseWidget(textView);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DroidPackage.BUTTON:
       {
         Button button = (Button)theEObject;
         T result = caseButton(button);
         if (result == null) result = caseWidget(button);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.IMAGE_BUTTON:
+      {
+        ImageButton imageButton = (ImageButton)theEObject;
+        T result = caseImageButton(imageButton);
+        if (result == null) result = caseWidget(imageButton);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.LINK:
+      {
+        Link link = (Link)theEObject;
+        T result = caseLink(link);
+        if (result == null) result = caseWidget(link);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -163,19 +289,10 @@ public class DroidSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DroidPackage.TEXT_VIEW:
-      {
-        TextView textView = (TextView)theEObject;
-        T result = caseTextView(textView);
-        if (result == null) result = caseWidget(textView);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DroidPackage.ACTIVITY:
       {
         Activity activity = (Activity)theEObject;
         T result = caseActivity(activity);
-        if (result == null) result = caseApplicationElement(activity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -184,7 +301,6 @@ public class DroidSwitch<T>
         GenericActivity genericActivity = (GenericActivity)theEObject;
         T result = caseGenericActivity(genericActivity);
         if (result == null) result = caseActivity(genericActivity);
-        if (result == null) result = caseApplicationElement(genericActivity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -193,7 +309,6 @@ public class DroidSwitch<T>
         ListActivity listActivity = (ListActivity)theEObject;
         T result = caseListActivity(listActivity);
         if (result == null) result = caseActivity(listActivity);
-        if (result == null) result = caseApplicationElement(listActivity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -202,7 +317,13 @@ public class DroidSwitch<T>
         TabActivity tabActivity = (TabActivity)theEObject;
         T result = caseTabActivity(tabActivity);
         if (result == null) result = caseActivity(tabActivity);
-        if (result == null) result = caseApplicationElement(tabActivity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.TAB:
+      {
+        Tab tab = (Tab)theEObject;
+        T result = caseTab(tab);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -253,6 +374,68 @@ public class DroidSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DroidPackage.PROPERTY_VALUE:
+      {
+        PropertyValue propertyValue = (PropertyValue)theEObject;
+        T result = casePropertyValue(propertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.STRING_PROPERTY_VALUE:
+      {
+        StringPropertyValue stringPropertyValue = (StringPropertyValue)theEObject;
+        T result = caseStringPropertyValue(stringPropertyValue);
+        if (result == null) result = casePropertyValue(stringPropertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.INTEGER_PROPERTY_VALUE:
+      {
+        IntegerPropertyValue integerPropertyValue = (IntegerPropertyValue)theEObject;
+        T result = caseIntegerPropertyValue(integerPropertyValue);
+        if (result == null) result = casePropertyValue(integerPropertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.BOOLEAN_PROPERTY_VALUE:
+      {
+        BooleanPropertyValue booleanPropertyValue = (BooleanPropertyValue)theEObject;
+        T result = caseBooleanPropertyValue(booleanPropertyValue);
+        if (result == null) result = casePropertyValue(booleanPropertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.COLOR_PROPERTY_VALUE:
+      {
+        ColorPropertyValue colorPropertyValue = (ColorPropertyValue)theEObject;
+        T result = caseColorPropertyValue(colorPropertyValue);
+        if (result == null) result = casePropertyValue(colorPropertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.DIMENSION_PROPERTY_VALUE:
+      {
+        DimensionPropertyValue dimensionPropertyValue = (DimensionPropertyValue)theEObject;
+        T result = caseDimensionPropertyValue(dimensionPropertyValue);
+        if (result == null) result = casePropertyValue(dimensionPropertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.DRAWABLE_RESOURCE_PROPERTY_VALUE:
+      {
+        DrawableResourcePropertyValue drawableResourcePropertyValue = (DrawableResourcePropertyValue)theEObject;
+        T result = caseDrawableResourcePropertyValue(drawableResourcePropertyValue);
+        if (result == null) result = casePropertyValue(drawableResourcePropertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.DRAWABLE_IMAGE_RESOURCE_PROPERTY_VALUE:
+      {
+        DrawableImageResourcePropertyValue drawableImageResourcePropertyValue = (DrawableImageResourcePropertyValue)theEObject;
+        T result = caseDrawableImageResourcePropertyValue(drawableImageResourcePropertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -274,22 +457,6 @@ public class DroidSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Application Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Application Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseApplicationElement(ApplicationElement object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Manifest File</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -301,6 +468,214 @@ public class DroidSwitch<T>
    * @generated
    */
   public T caseManifestFile(ManifestFile object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseResource(Resource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Generic Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Generic Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGenericResource(GenericResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Menu Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Menu Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMenuResource(MenuResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Value Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Value Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValueResource(ValueResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Value Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Value Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringValueResource(StringValueResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Integer Value Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Integer Value Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntegerValueResource(IntegerValueResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Value Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Value Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBooleanValueResource(BooleanValueResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Color Value Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Color Value Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColorValueResource(ColorValueResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Dimension Value Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Dimension Value Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDimensionValueResource(DimensionValueResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drawable Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drawable Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDrawableResource(DrawableResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Bitmap Drawable Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Bitmap Drawable Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBitmapDrawableResource(BitmapDrawableResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Transition Drawable Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Transition Drawable Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTransitionDrawableResource(TransitionDrawableResource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Animation Resource</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Animation Resource</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAnimationResource(AnimationResource object)
   {
     return null;
   }
@@ -354,6 +729,22 @@ public class DroidSwitch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Text View</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Text View</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTextView(TextView object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Button</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -365,6 +756,38 @@ public class DroidSwitch<T>
    * @generated
    */
   public T caseButton(Button object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Image Button</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Image Button</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseImageButton(ImageButton object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Link</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Link</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLink(Link object)
   {
     return null;
   }
@@ -397,22 +820,6 @@ public class DroidSwitch<T>
    * @generated
    */
   public T caseEditText(EditText object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Text View</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Text View</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTextView(TextView object)
   {
     return null;
   }
@@ -477,6 +884,22 @@ public class DroidSwitch<T>
    * @generated
    */
   public T caseTabActivity(TabActivity object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tab</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tab</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTab(Tab object)
   {
     return null;
   }
@@ -573,6 +996,134 @@ public class DroidSwitch<T>
    * @generated
    */
   public T caseLoadResourceAction(LoadResourceAction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertyValue(PropertyValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringPropertyValue(StringPropertyValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Integer Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Integer Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntegerPropertyValue(IntegerPropertyValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBooleanPropertyValue(BooleanPropertyValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Color Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Color Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColorPropertyValue(ColorPropertyValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Dimension Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Dimension Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDimensionPropertyValue(DimensionPropertyValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drawable Resource Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drawable Resource Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDrawableResourcePropertyValue(DrawableResourcePropertyValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drawable Image Resource Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drawable Image Resource Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDrawableImageResourcePropertyValue(DrawableImageResourcePropertyValue object)
   {
     return null;
   }

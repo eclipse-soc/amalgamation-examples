@@ -5,16 +5,25 @@
  */
 package org.eclipse.amalgam.tutorials.xtext.droid.impl;
 
+import java.util.Collection;
+
+import org.eclipse.amalgam.tutorials.xtext.droid.Action;
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
 import org.eclipse.amalgam.tutorials.xtext.droid.Layout;
 import org.eclipse.amalgam.tutorials.xtext.droid.ListActivity;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ListActivityImpl#getDataSource <em>Data Source</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ListActivityImpl#getLayout <em>Layout</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ListActivityImpl#getItemLayout <em>Item Layout</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ListActivityImpl#getActions <em>Actions</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,6 +82,16 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
    * @ordered
    */
   protected Layout itemLayout;
+
+  /**
+   * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getActions()
+   * @generated
+   * @ordered
+   */
+  protected EList<Action> actions;
 
   /**
    * <!-- begin-user-doc -->
@@ -208,6 +228,36 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Action> getActions()
+  {
+    if (actions == null)
+    {
+      actions = new EObjectContainmentEList<Action>(Action.class, this, DroidPackage.LIST_ACTIVITY__ACTIONS);
+    }
+    return actions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DroidPackage.LIST_ACTIVITY__ACTIONS:
+        return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -221,6 +271,8 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
       case DroidPackage.LIST_ACTIVITY__ITEM_LAYOUT:
         if (resolve) return getItemLayout();
         return basicGetItemLayout();
+      case DroidPackage.LIST_ACTIVITY__ACTIONS:
+        return getActions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -230,6 +282,7 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -243,6 +296,10 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
         return;
       case DroidPackage.LIST_ACTIVITY__ITEM_LAYOUT:
         setItemLayout((Layout)newValue);
+        return;
+      case DroidPackage.LIST_ACTIVITY__ACTIONS:
+        getActions().clear();
+        getActions().addAll((Collection<? extends Action>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -267,6 +324,9 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
       case DroidPackage.LIST_ACTIVITY__ITEM_LAYOUT:
         setItemLayout((Layout)null);
         return;
+      case DroidPackage.LIST_ACTIVITY__ACTIONS:
+        getActions().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -287,6 +347,8 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
         return layout != null;
       case DroidPackage.LIST_ACTIVITY__ITEM_LAYOUT:
         return itemLayout != null;
+      case DroidPackage.LIST_ACTIVITY__ACTIONS:
+        return actions != null && !actions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

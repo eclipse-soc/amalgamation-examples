@@ -13,23 +13,31 @@ grammar org.eclipse.amalgam.tutorials.xtext.Droid with org.eclipse.xtext.common.
 
 generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
 Application:
 	'application' name=STRING package=QualifiedName?
 	'{'
 		(manifest=ManifestFile)?
+		(resources+=Resource | layouts+=Layout | activities+=Activity)+
+
 		//elements+=ApplicationElement+ //Will not care about the order
 		
-		layouts+=Layout*		//Layouts first
+		/*
+		resources+=Resource*	//Resources first
+		layouts+=Layout*
 		activities+=Activity+	//Activities Next
+		*/
 		
 		//services+=[Service|QualifiedName]*
 		//fragments+=[Fragments|QualifiedName]*
 	'}'
 ;
 
-ApplicationElement:
-	(Layout | Activity)
-;
+//Teria que criar um id diferente pra cada uma das classes concretas
+//ApplicationElement:
+//	(Resource | Activity)
+//;
 
 ManifestFile:
 	{ManifestFile}
@@ -45,51 +53,225 @@ ManifestFile:
 	'}'
 ;
 
+
+Resource:
+	(GenericResource /* | Layout */ | MenuResource | ValueResource | DrawableResource | AnimationResource)
+;
+
+//?
+GenericResource:
+	'resource' {GenericResource} name=ID '{'
+		//widgets+=Widget*
+	'}'
+;
+
+MenuResource:
+	'menu' {MenuResource} name=ID '{'
+		//widgets+=Widget*
+	'}'
+;
+
+ValueResource:
+	(
+	  StringValueResource | IntegerValueResource |
+	  BooleanValueResource | ColorValueResource |
+	  DimensionValueResource /* |
+	  IntegerArrayValueResource | StringArrayValueResource |
+	  TypedArrayValueResource */
+	)
+;
+
+StringValueResource:
+	'string' name=ID '=' value=STRING
+;
+
+IntegerValueResource:
+	'integer' name=ID '=' value=INT
+;
+
+BooleanValueResource:
+	'bool' name=ID '=' value=BOOL
+;
+
+ColorValueResource:
+	'color' name=ID '=' value=HEX_COLOR
+;
+
+DimensionValueResource:
+	'dimension' name=ID '=' value=FLOAT unit=DimensionKind
+;
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html
+DrawableResource:
+	(BitmapDrawableResource | TransitionDrawableResource)
+;
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html#Bitmap
+BitmapDrawableResource:
+	'bitmap' name=ID '=' filename=ID
+;
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html#Transition
+TransitionDrawableResource:
+	'transition' from=[DrawableResource] '<->' to=[DrawableResource]
+;
+
+AnimationResource:
+	'animation' {AnimationResource} name=ID '{'
+		//widgets+=Widget*
+	'}'
+;
+
+
 Layout:
-	'layout' name=ID '{'
+	'layout' {Layout} name=ID '{'
 		widgets+=Widget*
 	'}'
 ;
 
 
 Widget:
-	(GenericWidget | Button | Spinner | EditText | TextView)
-	('top' '=' top=INT )?
-	('left' '=' left=INT )?
-	('width' '=' width=INT )?
-	('->' actions+=Action )*
+	(GenericWidget | Button | ImageButton | Link | Spinner | EditText | TextView) //';'
 ;
 
 GenericWidget:
-	'widget' {GenericWidget}
-	('<'id=ID'>')?
-	name=QualifiedName
-	//Generic widget properties
-;
-
-Button:
-	'button' {Button} ('<'id=ID'>')?
-	//Button properties
-	label=STRING
-;
-
-Spinner:
-	'spinner' {Spinner} ('<'id=ID'>')?
-	//Spinner properties
-	label=STRING
-;
-
-EditText:
-	'editText' {EditText} ('<'id=ID'>')?
-	//EditText properties
-	label=STRING
+	'widget' {GenericWidget} ('<'id=ID'>')?
+	name=STRING
+	(
+	 ('top:' top=DimensionPropertyValue )? &
+	 ('left:' left=DimensionPropertyValue )? &
+	 ('width:' width=DimensionPropertyValue )? &
+	 ('height:' height=DimensionPropertyValue )? &
+	 ('background:' background=DrawableResourcePropertyValue )? &
+	 ('clickable?' clickable=BooleanPropertyValue )? &
+	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
+	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )?
+	 // Specific properties
+	)
+	('->' actions+=Action )*
 ;
 
 TextView:
 	'textView' {TextView} ('<'id=ID'>')?
-	//TextView properties
-	label=STRING
+	text=StringPropertyValue
+	(
+	 ('top:' top=DimensionPropertyValue )? &
+	 ('left:' left=DimensionPropertyValue )? &
+	 ('width:' width=DimensionPropertyValue )? &
+	 ('height:' height=DimensionPropertyValue )? &
+	 ('background:' background=DrawableResourcePropertyValue )? &
+	 ('clickable?' clickable=BooleanPropertyValue )? &
+	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
+	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 // Specific properties
+	 ('hint:' hint=StringPropertyValue)? &
+	 ('textColor:' textColor=ColorPropertyValue)?
+	)
+	('->' actions+=Action )*
 ;
+
+Button:
+	'button' {Button} ('<'id=ID'>')?
+	text=StringPropertyValue
+	(
+	 ('top:' top=DimensionPropertyValue )? &
+	 ('left:' left=DimensionPropertyValue )? &
+	 ('width:' width=DimensionPropertyValue )? &
+	 ('height:' height=DimensionPropertyValue )? &
+	 ('background:' background=DrawableResourcePropertyValue )? &
+	 ('clickable?' clickable=BooleanPropertyValue )? &
+	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
+	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 // Specific properties
+	 ('hint:' hint=StringPropertyValue)? &
+	 ('textColor:' textColor=ColorPropertyValue)?
+	)
+	('->' actions+=Action )*
+;
+
+ImageButton:
+	'imageButton' {ImageButton} ('<'id=ID'>')?
+	src=DrawableImageResourcePropertyValue
+	(
+	 ('top:' top=DimensionPropertyValue )? &
+	 ('left:' left=DimensionPropertyValue )? &
+	 ('width:' width=DimensionPropertyValue )? &
+	 ('height:' height=DimensionPropertyValue )? &
+	 ('background:' background=DrawableResourcePropertyValue )? &
+	 ('clickable?' clickable=BooleanPropertyValue )? &
+	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
+	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 // Specific properties
+	 ('hint:' hint=StringPropertyValue)? &
+	 ('textColor:' textColor=ColorPropertyValue)?
+	)
+	('->' actions+=Action )*
+;
+
+//Button to an Activity
+Link:
+	'link' {Link} ('<'id=ID'>')?
+	text=StringPropertyValue
+	(
+	 ('top:' top=DimensionPropertyValue )? &
+	 ('left:' left=DimensionPropertyValue )? &
+	 ('width:' width=DimensionPropertyValue )? &
+	 ('height:' height=DimensionPropertyValue )? &
+	 ('background:' background=DrawableResourcePropertyValue )? &
+	 ('clickable?' clickable=BooleanPropertyValue )? &
+	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
+	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 // Specific properties
+	 ('hint:' hint=StringPropertyValue)? &
+	 ('textColor:' textColor=ColorPropertyValue)?
+	)
+	'to' target=[Activity]
+	('->' actions+=Action )*
+;
+
+//--Parei aqui
+
+
+Spinner:
+	'spinner' {Spinner} ('<'id=ID'>')?
+	(
+	 ('top:' top=DimensionPropertyValue )? &
+	 ('left:' left=DimensionPropertyValue )? &
+	 ('width:' width=DimensionPropertyValue )? &
+	 ('height:' height=DimensionPropertyValue )? &
+	 ('background:' background=DrawableResourcePropertyValue )? &
+	 ('clickable?' clickable=BooleanPropertyValue )? &
+	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
+	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 //Spinner properties
+	 ('prompt:' prompt=StringPropertyValue)?
+	)
+;
+
+EditText:
+	'editText' {EditText} ('<'id=ID'>')?
+	text=StringPropertyValue
+
+	(
+	 ('top:' top=DimensionPropertyValue )? &
+	 ('left:' left=DimensionPropertyValue )? &
+	 ('width:' width=DimensionPropertyValue )? &
+	 ('height:' height=DimensionPropertyValue )? &
+	 ('background:' background=DrawableResourcePropertyValue )? &
+	 ('clickable?' clickable=BooleanPropertyValue )? &
+	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
+	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 //EditText properties
+	 ('hint:' hint=StringPropertyValue)? &
+	 ('textColor:' textColor=ColorPropertyValue)? &
+	 ('editable?' editable=BooleanPropertyValue)? &
+	 ('numeric?' numeric=BooleanPropertyValue)? &
+	 ('password?' password=BooleanPropertyValue)? &
+	 ('phoneNumber?' phoneNumber=BooleanPropertyValue)?
+	)
+;
+
+
 
 Activity:
 	(GenericActivity | ListActivity | TabActivity)
@@ -102,7 +284,7 @@ GenericActivity:
 ;
 
 ListActivity:
-	'list activity' name=QualifiedName '{'
+	'listActivity' name=QualifiedName '{'
 		'data' dataSource=ID
 		('layout' layout=[Layout])?
 		'item' itemLayout=[Layout]
@@ -112,10 +294,14 @@ ListActivity:
 ;
 
 TabActivity:
-	'tab activity' name=QualifiedName '{'
-		(actions+=Action)*
+	'tabActivity' name=QualifiedName '{'
+		(tabs+=Tab)+
 	'}'
 
+;
+
+Tab:
+	'tab' activity=[Activity]
 ;
 
 
@@ -149,7 +335,7 @@ GenericAction:
 ;
 
 GoToURLAction:
-	'go to'
+	'goTo'
 	url=URL
 ;
 
@@ -166,17 +352,90 @@ InvokeActivityAction:
 //Loads a fixed resource
 //TODO: Load a dinamic resource from a URL, loadJson for example
 LoadResourceAction:
-	'load'
-	resource=ID
+	'load' resource=ID
 	('->' toVar=ID)?
 	('=>' afterLoad=Action)?
 ;
 
 
+PropertyValue:
+	(
+	  StringPropertyValue | IntegerPropertyValue |
+	  BooleanPropertyValue | ColorPropertyValue |
+	  DimensionPropertyValue | /*
+	  IntegerArrayPropertyValue | StringArrayPropertyValue |
+	  Typed ArrayPropertyValue */
+	  DrawableResourcePropertyValue
+	)
+;
+
+
+/*
+button<primeiro>
+  top 		= 20
+  bottom 	= default_button_position
+  left 		= (outro_valor)
+*/
+
+StringPropertyValue:
+	(value=STRING |  (resource=[StringValueResource] | '(' externalResource=ID ')' ))
+;
+
+IntegerPropertyValue:
+	(value=INT | (resource=[IntegerValueResource] | '(' externalResource=ID ')' ))
+;
+
+BooleanPropertyValue:
+	(value=BOOL | (resource=[BooleanValueResource] | '(' externalResource=ID ')' ))
+;
+
+ColorPropertyValue:
+	(value=HEX_COLOR | (resource=[ColorValueResource] | '(' externalResource=ID ')' ))
+;
+
+DimensionPropertyValue:
+	(value=FLOAT | (resource=[DimensionValueResource] | '(' externalResource=ID ')' ))
+;
+
+DrawableResourcePropertyValue:
+	(value=HEX_COLOR | (resource=[DrawableResource] | '(' externalResource=ID ')' ))
+;
+
+DrawableImageResourcePropertyValue:
+	(resource=[DrawableResource] | '(' externalResource=ID ')' )
+;
+
+enum DimensionKind :
+  dp | sp | pt | px | mm | in
+;
+
 //data type rule (returns EDataType instead EClass)
 //this one dont need a value converter because it handles string
 QualifiedName:
 	ID ('.' ID)*;
+
+/*
+QualifiedName:
+	ID | ((ID '.')+ ID);
+*/
+
+//Value Converter
+BOOL returns ecore::EBooleanObject:
+//	'YES' | 'NO'
+	'true' | 'false'
+;
+
+FLOAT returns ecore::EFloatObject:
+	INT ('.' INT)?
+;
+
+terminal HEX_COLOR:
+	'#' 
+	    ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f')
+	    ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f')
+	    ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f')
+	    (('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f'))? 
+;
 
 URL:
 	ID '://' QualifiedName ('/'  (QualifiedName '/')* )?

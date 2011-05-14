@@ -16,10 +16,12 @@ Workflow {
 
 	component = DirectoryCleaner {
 		directory = "${runtimeProject}/src-gen"
+		exclude = ".gitignore"
 	}
 
 	component = DirectoryCleaner {
 		directory = "${runtimeProject}.ui/src-gen"
+		exclude = ".gitignore"
 	}
 
 	component = Generator {

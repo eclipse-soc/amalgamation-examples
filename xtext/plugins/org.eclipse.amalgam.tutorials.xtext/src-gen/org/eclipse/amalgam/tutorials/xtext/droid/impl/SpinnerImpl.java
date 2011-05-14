@@ -7,10 +7,13 @@ package org.eclipse.amalgam.tutorials.xtext.droid.impl;
 
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
 import org.eclipse.amalgam.tutorials.xtext.droid.Spinner;
+import org.eclipse.amalgam.tutorials.xtext.droid.StringPropertyValue;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -21,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.SpinnerImpl#getLabel <em>Label</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.SpinnerImpl#getPrompt <em>Prompt</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,24 +33,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class SpinnerImpl extends WidgetImpl implements Spinner
 {
   /**
-   * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+   * The cached value of the '{@link #getPrompt() <em>Prompt</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLabel()
+   * @see #getPrompt()
    * @generated
    * @ordered
    */
-  protected static final String LABEL_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLabel()
-   * @generated
-   * @ordered
-   */
-  protected String label = LABEL_EDEFAULT;
+  protected StringPropertyValue prompt;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,9 +68,9 @@ public class SpinnerImpl extends WidgetImpl implements Spinner
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getLabel()
+  public StringPropertyValue getPrompt()
   {
-    return label;
+    return prompt;
   }
 
   /**
@@ -85,12 +78,53 @@ public class SpinnerImpl extends WidgetImpl implements Spinner
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLabel(String newLabel)
+  public NotificationChain basicSetPrompt(StringPropertyValue newPrompt, NotificationChain msgs)
   {
-    String oldLabel = label;
-    label = newLabel;
+    StringPropertyValue oldPrompt = prompt;
+    prompt = newPrompt;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.SPINNER__LABEL, oldLabel, label));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DroidPackage.SPINNER__PROMPT, oldPrompt, newPrompt);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPrompt(StringPropertyValue newPrompt)
+  {
+    if (newPrompt != prompt)
+    {
+      NotificationChain msgs = null;
+      if (prompt != null)
+        msgs = ((InternalEObject)prompt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DroidPackage.SPINNER__PROMPT, null, msgs);
+      if (newPrompt != null)
+        msgs = ((InternalEObject)newPrompt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DroidPackage.SPINNER__PROMPT, null, msgs);
+      msgs = basicSetPrompt(newPrompt, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.SPINNER__PROMPT, newPrompt, newPrompt));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DroidPackage.SPINNER__PROMPT:
+        return basicSetPrompt(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -103,8 +137,8 @@ public class SpinnerImpl extends WidgetImpl implements Spinner
   {
     switch (featureID)
     {
-      case DroidPackage.SPINNER__LABEL:
-        return getLabel();
+      case DroidPackage.SPINNER__PROMPT:
+        return getPrompt();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +153,8 @@ public class SpinnerImpl extends WidgetImpl implements Spinner
   {
     switch (featureID)
     {
-      case DroidPackage.SPINNER__LABEL:
-        setLabel((String)newValue);
+      case DroidPackage.SPINNER__PROMPT:
+        setPrompt((StringPropertyValue)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +170,8 @@ public class SpinnerImpl extends WidgetImpl implements Spinner
   {
     switch (featureID)
     {
-      case DroidPackage.SPINNER__LABEL:
-        setLabel(LABEL_EDEFAULT);
+      case DroidPackage.SPINNER__PROMPT:
+        setPrompt((StringPropertyValue)null);
         return;
     }
     super.eUnset(featureID);
@@ -153,27 +187,10 @@ public class SpinnerImpl extends WidgetImpl implements Spinner
   {
     switch (featureID)
     {
-      case DroidPackage.SPINNER__LABEL:
-        return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+      case DroidPackage.SPINNER__PROMPT:
+        return prompt != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (label: ");
-    result.append(label);
-    result.append(')');
-    return result.toString();
   }
 
 } //SpinnerImpl

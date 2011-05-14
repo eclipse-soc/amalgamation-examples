@@ -5,7 +5,7 @@
  */
 package org.eclipse.amalgam.tutorials.xtext.droid;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Activity#getActions <em>Actions</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Activity#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,22 +23,32 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Activity extends ApplicationElement
+public interface Activity extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.amalgam.tutorials.xtext.droid.Action}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Actions</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Actions</em>' containment reference list.
-   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getActivity_Actions()
-   * @model containment="true"
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getActivity_Name()
+   * @model
    * @generated
    */
-  EList<Action> getActions();
+  String getName();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Activity#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
 } // Activity

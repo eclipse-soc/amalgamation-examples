@@ -14,7 +14,7 @@ package org.eclipse.amalgam.tutorials.xtext.droid;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Spinner#getLabel <em>Label</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Spinner#getPrompt <em>Prompt</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +25,29 @@ package org.eclipse.amalgam.tutorials.xtext.droid;
 public interface Spinner extends Widget
 {
   /**
-   * Returns the value of the '<em><b>Label</b></em>' attribute.
+   * Returns the value of the '<em><b>Prompt</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Label</em>' attribute isn't clear,
+   * If the meaning of the '<em>Prompt</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Label</em>' attribute.
-   * @see #setLabel(String)
-   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getSpinner_Label()
-   * @model
+   * @return the value of the '<em>Prompt</em>' containment reference.
+   * @see #setPrompt(StringPropertyValue)
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getSpinner_Prompt()
+   * @model containment="true"
    * @generated
    */
-  String getLabel();
+  StringPropertyValue getPrompt();
 
   /**
-   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Spinner#getLabel <em>Label</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Spinner#getPrompt <em>Prompt</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Label</em>' attribute.
-   * @see #getLabel()
+   * @param value the new value of the '<em>Prompt</em>' containment reference.
+   * @see #getPrompt()
    * @generated
    */
-  void setLabel(String value);
+  void setPrompt(StringPropertyValue value);
 
 } // Spinner

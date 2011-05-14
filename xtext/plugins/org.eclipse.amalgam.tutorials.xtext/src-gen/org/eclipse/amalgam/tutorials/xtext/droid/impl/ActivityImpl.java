@@ -5,21 +5,15 @@
  */
 package org.eclipse.amalgam.tutorials.xtext.droid.impl;
 
-import java.util.Collection;
-
-import org.eclipse.amalgam.tutorials.xtext.droid.Action;
 import org.eclipse.amalgam.tutorials.xtext.droid.Activity;
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
 
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,23 +22,33 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ActivityImpl#getActions <em>Actions</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ActivityImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ActivityImpl extends ApplicationElementImpl implements Activity
+public class ActivityImpl extends MinimalEObjectImpl.Container implements Activity
 {
   /**
-   * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getActions()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<Action> actions;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,13 +76,9 @@ public class ActivityImpl extends ApplicationElementImpl implements Activity
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Action> getActions()
+  public String getName()
   {
-    if (actions == null)
-    {
-      actions = new EObjectContainmentEList<Action>(Action.class, this, DroidPackage.ACTIVITY__ACTIONS);
-    }
-    return actions;
+    return name;
   }
 
   /**
@@ -86,15 +86,12 @@ public class ActivityImpl extends ApplicationElementImpl implements Activity
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public void setName(String newName)
   {
-    switch (featureID)
-    {
-      case DroidPackage.ACTIVITY__ACTIONS:
-        return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.ACTIVITY__NAME, oldName, name));
   }
 
   /**
@@ -107,8 +104,8 @@ public class ActivityImpl extends ApplicationElementImpl implements Activity
   {
     switch (featureID)
     {
-      case DroidPackage.ACTIVITY__ACTIONS:
-        return getActions();
+      case DroidPackage.ACTIVITY__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,15 +115,13 @@ public class ActivityImpl extends ApplicationElementImpl implements Activity
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DroidPackage.ACTIVITY__ACTIONS:
-        getActions().clear();
-        getActions().addAll((Collection<? extends Action>)newValue);
+      case DroidPackage.ACTIVITY__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +137,8 @@ public class ActivityImpl extends ApplicationElementImpl implements Activity
   {
     switch (featureID)
     {
-      case DroidPackage.ACTIVITY__ACTIONS:
-        getActions().clear();
+      case DroidPackage.ACTIVITY__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -159,10 +154,27 @@ public class ActivityImpl extends ApplicationElementImpl implements Activity
   {
     switch (featureID)
     {
-      case DroidPackage.ACTIVITY__ACTIONS:
-        return actions != null && !actions.isEmpty();
+      case DroidPackage.ACTIVITY__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //ActivityImpl

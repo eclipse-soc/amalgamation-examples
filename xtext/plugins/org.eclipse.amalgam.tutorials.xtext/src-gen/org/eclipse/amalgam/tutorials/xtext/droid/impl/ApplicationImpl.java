@@ -12,6 +12,7 @@ import org.eclipse.amalgam.tutorials.xtext.droid.Application;
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
 import org.eclipse.amalgam.tutorials.xtext.droid.Layout;
 import org.eclipse.amalgam.tutorials.xtext.droid.ManifestFile;
+import org.eclipse.amalgam.tutorials.xtext.droid.Resource;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -37,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getPackage <em>Package</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getManifest <em>Manifest</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getLayouts <em>Layouts</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getActivities <em>Activities</em>}</li>
  * </ul>
@@ -95,6 +97,16 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
    * @ordered
    */
   protected ManifestFile manifest;
+
+  /**
+   * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getResources()
+   * @generated
+   * @ordered
+   */
+  protected EList<Resource> resources;
 
   /**
    * The cached value of the '{@link #getLayouts() <em>Layouts</em>}' containment reference list.
@@ -236,6 +248,20 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Resource> getResources()
+  {
+    if (resources == null)
+    {
+      resources = new EObjectContainmentEList<Resource>(Resource.class, this, DroidPackage.APPLICATION__RESOURCES);
+    }
+    return resources;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Layout> getLayouts()
   {
     if (layouts == null)
@@ -271,6 +297,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
     {
       case DroidPackage.APPLICATION__MANIFEST:
         return basicSetManifest(null, msgs);
+      case DroidPackage.APPLICATION__RESOURCES:
+        return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
       case DroidPackage.APPLICATION__LAYOUTS:
         return ((InternalEList<?>)getLayouts()).basicRemove(otherEnd, msgs);
       case DroidPackage.APPLICATION__ACTIVITIES:
@@ -295,6 +323,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
         return getPackage();
       case DroidPackage.APPLICATION__MANIFEST:
         return getManifest();
+      case DroidPackage.APPLICATION__RESOURCES:
+        return getResources();
       case DroidPackage.APPLICATION__LAYOUTS:
         return getLayouts();
       case DroidPackage.APPLICATION__ACTIVITIES:
@@ -322,6 +352,10 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
         return;
       case DroidPackage.APPLICATION__MANIFEST:
         setManifest((ManifestFile)newValue);
+        return;
+      case DroidPackage.APPLICATION__RESOURCES:
+        getResources().clear();
+        getResources().addAll((Collection<? extends Resource>)newValue);
         return;
       case DroidPackage.APPLICATION__LAYOUTS:
         getLayouts().clear();
@@ -354,6 +388,9 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
       case DroidPackage.APPLICATION__MANIFEST:
         setManifest((ManifestFile)null);
         return;
+      case DroidPackage.APPLICATION__RESOURCES:
+        getResources().clear();
+        return;
       case DroidPackage.APPLICATION__LAYOUTS:
         getLayouts().clear();
         return;
@@ -380,6 +417,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
         return PACKAGE_EDEFAULT == null ? package_ != null : !PACKAGE_EDEFAULT.equals(package_);
       case DroidPackage.APPLICATION__MANIFEST:
         return manifest != null;
+      case DroidPackage.APPLICATION__RESOURCES:
+        return resources != null && !resources.isEmpty();
       case DroidPackage.APPLICATION__LAYOUTS:
         return layouts != null && !layouts.isEmpty();
       case DroidPackage.APPLICATION__ACTIVITIES:

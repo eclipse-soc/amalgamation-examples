@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getPackage <em>Package</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getManifest <em>Manifest</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getResources <em>Resources</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getLayouts <em>Layouts</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getActivities <em>Activities</em>}</li>
  * </ul>
@@ -108,6 +109,22 @@ public interface Application extends EObject
    * @generated
    */
   void setManifest(ManifestFile value);
+
+  /**
+   * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.amalgam.tutorials.xtext.droid.Resource}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Resources</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Resources</em>' containment reference list.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getApplication_Resources()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Resource> getResources();
 
   /**
    * Returns the value of the '<em><b>Layouts</b></em>' containment reference list.

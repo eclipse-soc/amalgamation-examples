@@ -8,6 +8,7 @@ package org.eclipse.amalgam.tutorials.xtext.droid.impl;
 import org.eclipse.amalgam.tutorials.xtext.droid.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -68,27 +69,84 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
     switch (eClass.getClassifierID())
     {
       case DroidPackage.APPLICATION: return createApplication();
-      case DroidPackage.APPLICATION_ELEMENT: return createApplicationElement();
       case DroidPackage.MANIFEST_FILE: return createManifestFile();
+      case DroidPackage.RESOURCE: return createResource();
+      case DroidPackage.GENERIC_RESOURCE: return createGenericResource();
+      case DroidPackage.MENU_RESOURCE: return createMenuResource();
+      case DroidPackage.VALUE_RESOURCE: return createValueResource();
+      case DroidPackage.STRING_VALUE_RESOURCE: return createStringValueResource();
+      case DroidPackage.INTEGER_VALUE_RESOURCE: return createIntegerValueResource();
+      case DroidPackage.BOOLEAN_VALUE_RESOURCE: return createBooleanValueResource();
+      case DroidPackage.COLOR_VALUE_RESOURCE: return createColorValueResource();
+      case DroidPackage.DIMENSION_VALUE_RESOURCE: return createDimensionValueResource();
+      case DroidPackage.DRAWABLE_RESOURCE: return createDrawableResource();
+      case DroidPackage.BITMAP_DRAWABLE_RESOURCE: return createBitmapDrawableResource();
+      case DroidPackage.TRANSITION_DRAWABLE_RESOURCE: return createTransitionDrawableResource();
+      case DroidPackage.ANIMATION_RESOURCE: return createAnimationResource();
       case DroidPackage.LAYOUT: return createLayout();
       case DroidPackage.WIDGET: return createWidget();
       case DroidPackage.GENERIC_WIDGET: return createGenericWidget();
+      case DroidPackage.TEXT_VIEW: return createTextView();
       case DroidPackage.BUTTON: return createButton();
+      case DroidPackage.IMAGE_BUTTON: return createImageButton();
+      case DroidPackage.LINK: return createLink();
       case DroidPackage.SPINNER: return createSpinner();
       case DroidPackage.EDIT_TEXT: return createEditText();
-      case DroidPackage.TEXT_VIEW: return createTextView();
       case DroidPackage.ACTIVITY: return createActivity();
       case DroidPackage.GENERIC_ACTIVITY: return createGenericActivity();
       case DroidPackage.LIST_ACTIVITY: return createListActivity();
       case DroidPackage.TAB_ACTIVITY: return createTabActivity();
+      case DroidPackage.TAB: return createTab();
       case DroidPackage.ACTION: return createAction();
       case DroidPackage.GENERIC_ACTION: return createGenericAction();
       case DroidPackage.GO_TO_URL_ACTION: return createGoToURLAction();
       case DroidPackage.SHOW_LAYOUT_ACTION: return createShowLayoutAction();
       case DroidPackage.INVOKE_ACTIVITY_ACTION: return createInvokeActivityAction();
       case DroidPackage.LOAD_RESOURCE_ACTION: return createLoadResourceAction();
+      case DroidPackage.PROPERTY_VALUE: return createPropertyValue();
+      case DroidPackage.STRING_PROPERTY_VALUE: return createStringPropertyValue();
+      case DroidPackage.INTEGER_PROPERTY_VALUE: return createIntegerPropertyValue();
+      case DroidPackage.BOOLEAN_PROPERTY_VALUE: return createBooleanPropertyValue();
+      case DroidPackage.COLOR_PROPERTY_VALUE: return createColorPropertyValue();
+      case DroidPackage.DIMENSION_PROPERTY_VALUE: return createDimensionPropertyValue();
+      case DroidPackage.DRAWABLE_RESOURCE_PROPERTY_VALUE: return createDrawableResourcePropertyValue();
+      case DroidPackage.DRAWABLE_IMAGE_RESOURCE_PROPERTY_VALUE: return createDrawableImageResourcePropertyValue();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case DroidPackage.DIMENSION_KIND:
+        return createDimensionKindFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case DroidPackage.DIMENSION_KIND:
+        return convertDimensionKindToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -108,10 +166,10 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ApplicationElement createApplicationElement()
+  public ManifestFile createManifestFile()
   {
-    ApplicationElementImpl applicationElement = new ApplicationElementImpl();
-    return applicationElement;
+    ManifestFileImpl manifestFile = new ManifestFileImpl();
+    return manifestFile;
   }
 
   /**
@@ -119,10 +177,142 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ManifestFile createManifestFile()
+  public Resource createResource()
   {
-    ManifestFileImpl manifestFile = new ManifestFileImpl();
-    return manifestFile;
+    ResourceImpl resource = new ResourceImpl();
+    return resource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GenericResource createGenericResource()
+  {
+    GenericResourceImpl genericResource = new GenericResourceImpl();
+    return genericResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MenuResource createMenuResource()
+  {
+    MenuResourceImpl menuResource = new MenuResourceImpl();
+    return menuResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ValueResource createValueResource()
+  {
+    ValueResourceImpl valueResource = new ValueResourceImpl();
+    return valueResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringValueResource createStringValueResource()
+  {
+    StringValueResourceImpl stringValueResource = new StringValueResourceImpl();
+    return stringValueResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IntegerValueResource createIntegerValueResource()
+  {
+    IntegerValueResourceImpl integerValueResource = new IntegerValueResourceImpl();
+    return integerValueResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BooleanValueResource createBooleanValueResource()
+  {
+    BooleanValueResourceImpl booleanValueResource = new BooleanValueResourceImpl();
+    return booleanValueResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColorValueResource createColorValueResource()
+  {
+    ColorValueResourceImpl colorValueResource = new ColorValueResourceImpl();
+    return colorValueResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DimensionValueResource createDimensionValueResource()
+  {
+    DimensionValueResourceImpl dimensionValueResource = new DimensionValueResourceImpl();
+    return dimensionValueResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DrawableResource createDrawableResource()
+  {
+    DrawableResourceImpl drawableResource = new DrawableResourceImpl();
+    return drawableResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BitmapDrawableResource createBitmapDrawableResource()
+  {
+    BitmapDrawableResourceImpl bitmapDrawableResource = new BitmapDrawableResourceImpl();
+    return bitmapDrawableResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TransitionDrawableResource createTransitionDrawableResource()
+  {
+    TransitionDrawableResourceImpl transitionDrawableResource = new TransitionDrawableResourceImpl();
+    return transitionDrawableResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AnimationResource createAnimationResource()
+  {
+    AnimationResourceImpl animationResource = new AnimationResourceImpl();
+    return animationResource;
   }
 
   /**
@@ -163,10 +353,43 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public TextView createTextView()
+  {
+    TextViewImpl textView = new TextViewImpl();
+    return textView;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Button createButton()
   {
     ButtonImpl button = new ButtonImpl();
     return button;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ImageButton createImageButton()
+  {
+    ImageButtonImpl imageButton = new ImageButtonImpl();
+    return imageButton;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Link createLink()
+  {
+    LinkImpl link = new LinkImpl();
+    return link;
   }
 
   /**
@@ -189,17 +412,6 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
   {
     EditTextImpl editText = new EditTextImpl();
     return editText;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TextView createTextView()
-  {
-    TextViewImpl textView = new TextViewImpl();
-    return textView;
   }
 
   /**
@@ -244,6 +456,17 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
   {
     TabActivityImpl tabActivity = new TabActivityImpl();
     return tabActivity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Tab createTab()
+  {
+    TabImpl tab = new TabImpl();
+    return tab;
   }
 
   /**
@@ -310,6 +533,116 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
   {
     LoadResourceActionImpl loadResourceAction = new LoadResourceActionImpl();
     return loadResourceAction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PropertyValue createPropertyValue()
+  {
+    PropertyValueImpl propertyValue = new PropertyValueImpl();
+    return propertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringPropertyValue createStringPropertyValue()
+  {
+    StringPropertyValueImpl stringPropertyValue = new StringPropertyValueImpl();
+    return stringPropertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IntegerPropertyValue createIntegerPropertyValue()
+  {
+    IntegerPropertyValueImpl integerPropertyValue = new IntegerPropertyValueImpl();
+    return integerPropertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BooleanPropertyValue createBooleanPropertyValue()
+  {
+    BooleanPropertyValueImpl booleanPropertyValue = new BooleanPropertyValueImpl();
+    return booleanPropertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColorPropertyValue createColorPropertyValue()
+  {
+    ColorPropertyValueImpl colorPropertyValue = new ColorPropertyValueImpl();
+    return colorPropertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DimensionPropertyValue createDimensionPropertyValue()
+  {
+    DimensionPropertyValueImpl dimensionPropertyValue = new DimensionPropertyValueImpl();
+    return dimensionPropertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DrawableResourcePropertyValue createDrawableResourcePropertyValue()
+  {
+    DrawableResourcePropertyValueImpl drawableResourcePropertyValue = new DrawableResourcePropertyValueImpl();
+    return drawableResourcePropertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DrawableImageResourcePropertyValue createDrawableImageResourcePropertyValue()
+  {
+    DrawableImageResourcePropertyValueImpl drawableImageResourcePropertyValue = new DrawableImageResourcePropertyValueImpl();
+    return drawableImageResourcePropertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DimensionKind createDimensionKindFromString(EDataType eDataType, String initialValue)
+  {
+    DimensionKind result = DimensionKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertDimensionKindToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**
