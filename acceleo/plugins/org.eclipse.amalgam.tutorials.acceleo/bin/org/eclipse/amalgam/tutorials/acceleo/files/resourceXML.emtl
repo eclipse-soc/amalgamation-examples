@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="valueResourceXML" nsURI="org::eclipse::amalgam::tutorials::acceleo::files::valueResourceXML">
+  <mtl:Module name="resourceXML" nsURI="org::eclipse::amalgam::tutorials::acceleo::files::resourceXML">
     <input>
       <takesTypesFrom href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#/"/>
     </input>
-    <ownedModuleElement xsi:type="mtl:Template" name="propertyValue" visibility="Public">
+    <ownedModuleElement xsi:type="mtl:Template" name="resourceXML" visibility="Public">
       <body xsi:type="mtl:IfBlock">
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
-        <body xsi:type="mtl:TemplateInvocation" definition="/0/stringPropertyValue">
+        <body xsi:type="mtl:TemplateInvocation" definition="/0/stringResourceXML">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <argument xsi:type="ocl.ecore:OperationCallExp">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/propertyValue/p">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="res" referredVariable="/0/resourceXML/res">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
             </source>
-            <argument xsi:type="ocl.ecore:TypeExp" eType="/7/StringPropertyValue">
-              <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/6/StringValueResource">
+              <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
             </argument>
             <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
           </argument>
@@ -23,127 +23,28 @@
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
         <ifExpr xsi:type="ocl.ecore:OperationCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/propertyValue/p">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="res" referredVariable="/0/resourceXML/res">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
           </source>
-          <argument xsi:type="ocl.ecore:TypeExp" eType="/7/StringPropertyValue">
-            <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
+          <argument xsi:type="ocl.ecore:TypeExp" eType="/6/StringValueResource">
+            <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
           </argument>
           <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsKindOf"/>
         </ifExpr>
       </body>
-      <parameter name="p">
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+      <parameter name="res">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
       </parameter>
-      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/trim">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/5">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        </source>
-      </post>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="stringPropertyValue">
-      <body xsi:type="mtl:IfBlock">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&quot;@string/"/>
-        <body xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/stringPropertyValue/p">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-            </source>
-            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue/resource"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource/name"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;&#xA;"/>
-        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/stringPropertyValue/p">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-            </source>
-            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue/resource"/>
-          </source>
-          <argument xsi:type="ocl.ecore:NullLiteralExp">
-            <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
-          </argument>
-          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/%3C%3E"/>
-        </ifExpr>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
-      <body xsi:type="mtl:IfBlock">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&quot;@string/"/>
-        <body xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/stringPropertyValue/p">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue/externalResource"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;&#xA;"/>
-        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/stringPropertyValue/p">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-            </source>
-            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue/externalResource"/>
-          </source>
-          <argument xsi:type="ocl.ecore:NullLiteralExp">
-            <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
-          </argument>
-          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
-        </ifExpr>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
-      <body xsi:type="mtl:IfBlock">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&quot;"/>
-        <body xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/stringPropertyValue/p">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue/value"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;&#xA;"/>
-        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/stringPropertyValue/p">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-            </source>
-            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue/value"/>
-          </source>
-          <argument xsi:type="ocl.ecore:NullLiteralExp">
-            <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
-          </argument>
-          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
-        </ifExpr>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
-      <parameter name="p">
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-      </parameter>
-      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/trim">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/13">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        </source>
-      </post>
-    </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="valueResourceXML" visibility="Public">
+    <ownedModuleElement xsi:type="mtl:Template" name="stringResourceXML" visibility="Public">
       <body xsi:type="mtl:FileBlock" openMode="OverWrite">
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?>&#xA;&lt;resources>&#xA;    &lt;string name=&quot;hello&quot;>Hello, Android! I am a string resource!&lt;/string>&#xA;    &lt;string name=&quot;app_name&quot;>Hello World&lt;/string>&#xA;&lt;/resources>&#xA;"/>
         <fileUrl xsi:type="ocl.ecore:OperationCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:PropertyCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="aValueResource" referredVariable="/0/valueResourceXML/aValueResource">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="res" referredVariable="/0/stringResourceXML/res">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
             </source>
             <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource/name"/>
           </source>
@@ -156,8 +57,8 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </charset>
       </body>
-      <parameter name="aValueResource">
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
+      <parameter name="res">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
       </parameter>
     </ownedModuleElement>
   </mtl:Module>
@@ -444,34 +345,24 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </eParameters>
       </eOperations>
-      <eOperations name="propertyValue">
+      <eOperations name="resourceXML">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL" references="/0/propertyValue"/>
+        <eAnnotations source="MTL" references="/0/resourceXML"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="p">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+        <eParameters name="res">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
         </eParameters>
       </eOperations>
-      <eOperations name="stringPropertyValue">
+      <eOperations name="stringResourceXML">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL" references="/0/stringPropertyValue"/>
+        <eAnnotations source="MTL" references="/0/stringResourceXML"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="p">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-        </eParameters>
-      </eOperations>
-      <eOperations name="valueResourceXML">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL" references="/0/valueResourceXML"/>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="aValueResource">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
+        <eParameters name="res">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
@@ -609,39 +500,27 @@
         </eParameters>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="PropertyValue_Class">
+    <eClassifiers xsi:type="ecore:EClass" name="Resource_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+        <references href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
       </eAnnotations>
-      <eOperations name="propertyValue">
+      <eOperations name="resourceXML">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL" references="/0/propertyValue"/>
+        <eAnnotations source="MTL" references="/0/resourceXML"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="StringPropertyValue_Class">
+    <eClassifiers xsi:type="ecore:EClass" name="StringValueResource_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
+        <references href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
       </eAnnotations>
-      <eOperations name="stringPropertyValue">
+      <eOperations name="stringResourceXML">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL" references="/0/stringPropertyValue"/>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-      </eOperations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ValueResource_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
-      </eAnnotations>
-      <eOperations name="valueResourceXML">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL" references="/0/valueResourceXML"/>
+        <eAnnotations source="MTL" references="/0/stringResourceXML"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
     </eClassifiers>
@@ -650,372 +529,151 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
   </ocl.ecore:Variable>
   <ecore:EPackage name="types">
-    <eClassifiers xsi:type="ocl.ecore:TypeType" name="StringPropertyValue">
-      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="StringValueResource">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringPropertyValue"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringValueResource"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
-    <eAnnotations source="positions.0" references="/0/propertyValue">
-      <details key="start" value="113"/>
-      <details key="end" value="298"/>
+    <eAnnotations source="positions.0" references="/0/resourceXML">
+      <details key="start" value="108"/>
+      <details key="end" value="276"/>
       <details key="line" value="4"/>
     </eAnnotations>
-    <eAnnotations source="positions.1" references="/0/propertyValue/@body.0">
-      <details key="start" value="179"/>
-      <details key="end" value="286"/>
+    <eAnnotations source="positions.1" references="/0/resourceXML/@body.0">
+      <details key="start" value="155"/>
+      <details key="end" value="264"/>
       <details key="line" value="5"/>
     </eAnnotations>
-    <eAnnotations source="positions.2" references="/0/propertyValue/@body.0/@body.0">
-      <details key="start" value="221"/>
-      <details key="end" value="223"/>
+    <eAnnotations source="positions.2" references="/0/resourceXML/@body.0/@body.0">
+      <details key="start" value="199"/>
+      <details key="end" value="201"/>
       <details key="line" value="6"/>
     </eAnnotations>
-    <eAnnotations source="positions.3" references="/0/propertyValue/@body.0/@body.1">
-      <details key="start" value="224"/>
-      <details key="end" value="277"/>
+    <eAnnotations source="positions.3" references="/0/resourceXML/@body.0/@body.1">
+      <details key="start" value="202"/>
+      <details key="end" value="255"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.4" references="/0/propertyValue/@body.0/@body.1/@argument.0">
-      <details key="start" value="244"/>
-      <details key="end" value="276"/>
+    <eAnnotations source="positions.4" references="/0/resourceXML/@body.0/@body.1/@argument.0">
+      <details key="start" value="220"/>
+      <details key="end" value="254"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.5" references="/0/propertyValue/@body.0/@body.1/@argument.0/p">
-      <details key="start" value="244"/>
-      <details key="end" value="245"/>
+    <eAnnotations source="positions.5" references="/0/resourceXML/@body.0/@body.1/@argument.0/res">
+      <details key="start" value="220"/>
+      <details key="end" value="223"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.6" references="/0/propertyValue/@body.0/@body.1/@argument.0/@argument.0">
-      <details key="start" value="256"/>
-      <details key="end" value="275"/>
+    <eAnnotations source="positions.6" references="/0/resourceXML/@body.0/@body.1/@argument.0/@argument.0">
+      <details key="start" value="234"/>
+      <details key="end" value="253"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.7" references="/0/propertyValue/@body.0/@body.2">
-      <details key="start" value="279"/>
-      <details key="end" value="280"/>
+    <eAnnotations source="positions.7" references="/0/resourceXML/@body.0/@body.2">
+      <details key="start" value="257"/>
+      <details key="end" value="258"/>
       <details key="line" value="7"/>
     </eAnnotations>
-    <eAnnotations source="positions.8" references="/0/propertyValue/@body.0/@ifExpr">
-      <details key="start" value="183"/>
-      <details key="end" value="219"/>
+    <eAnnotations source="positions.8" references="/0/resourceXML/@body.0/@ifExpr">
+      <details key="start" value="159"/>
+      <details key="end" value="197"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.9" references="/0/propertyValue/@body.0/@ifExpr/p">
-      <details key="start" value="184"/>
-      <details key="end" value="185"/>
+    <eAnnotations source="positions.9" references="/0/resourceXML/@body.0/@ifExpr/res">
+      <details key="start" value="160"/>
+      <details key="end" value="163"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.10" references="/0/propertyValue/@body.0/@ifExpr/@argument.0">
-      <details key="start" value="198"/>
-      <details key="end" value="217"/>
+    <eAnnotations source="positions.10" references="/0/resourceXML/@body.0/@ifExpr/@argument.0">
+      <details key="start" value="176"/>
+      <details key="end" value="195"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.11" references="/0/propertyValue/p">
-      <details key="start" value="144"/>
-      <details key="end" value="161"/>
+    <eAnnotations source="positions.11" references="/0/resourceXML/res">
+      <details key="start" value="137"/>
+      <details key="end" value="151"/>
       <details key="line" value="4"/>
     </eAnnotations>
-    <eAnnotations source="positions.12" references="/0/propertyValue/@post">
-      <details key="start" value="169"/>
-      <details key="end" value="175"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.13" references="/0/propertyValue/@post/self">
-      <details key="start" value="-1"/>
-      <details key="end" value="-1"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.14" references="/0/stringPropertyValue">
-      <details key="start" value="300"/>
-      <details key="end" value="579"/>
+    <eAnnotations source="positions.12" references="/0/stringResourceXML">
+      <details key="start" value="278"/>
+      <details key="end" value="598"/>
       <details key="line" value="10"/>
     </eAnnotations>
-    <eAnnotations source="positions.15" references="/0/stringPropertyValue/@body.0">
-      <details key="start" value="379"/>
-      <details key="end" value="442"/>
+    <eAnnotations source="positions.13" references="/0/stringResourceXML/@body.0">
+      <details key="start" value="342"/>
+      <details key="end" value="586"/>
       <details key="line" value="11"/>
     </eAnnotations>
-    <eAnnotations source="positions.16" references="/0/stringPropertyValue/@body.0/@body.0">
-      <details key="start" value="405"/>
-      <details key="end" value="416"/>
+    <eAnnotations source="positions.14" references="/0/stringResourceXML/@body.0/@body.0">
+      <details key="start" value="391"/>
+      <details key="end" value="578"/>
       <details key="line" value="12"/>
     </eAnnotations>
-    <eAnnotations source="positions.17" references="/0/stringPropertyValue/@body.0/@body.1">
-      <details key="start" value="417"/>
-      <details key="end" value="432"/>
+    <eAnnotations source="positions.15" references="/0/stringResourceXML/@body.0/@fileUrl">
+      <details key="start" value="349"/>
+      <details key="end" value="372"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.18" references="/0/stringPropertyValue/@body.0/@body.1/@source">
-      <details key="start" value="417"/>
-      <details key="end" value="427"/>
+    <eAnnotations source="positions.16" references="/0/stringResourceXML/@body.0/@fileUrl/@source">
+      <details key="start" value="349"/>
+      <details key="end" value="357"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.19" references="/0/stringPropertyValue/@body.0/@body.1/@source/p">
-      <details key="start" value="417"/>
-      <details key="end" value="418"/>
+    <eAnnotations source="positions.17" references="/0/stringResourceXML/@body.0/@fileUrl/@source/res">
+      <details key="start" value="349"/>
+      <details key="end" value="352"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.20" references="/0/stringPropertyValue/@body.0/@body.2">
-      <details key="start" value="434"/>
-      <details key="end" value="436"/>
-      <details key="line" value="12"/>
-    </eAnnotations>
-    <eAnnotations source="positions.21" references="/0/stringPropertyValue/@body.0/@ifExpr">
-      <details key="start" value="383"/>
-      <details key="end" value="403"/>
+    <eAnnotations source="positions.18" references="/0/stringResourceXML/@body.0/@fileUrl/@argument.0">
+      <details key="start" value="365"/>
+      <details key="end" value="371"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.22" references="/0/stringPropertyValue/@body.0/@ifExpr/@source">
-      <details key="start" value="384"/>
-      <details key="end" value="394"/>
+    <eAnnotations source="positions.19" references="/0/stringResourceXML/@body.0/@charset">
+      <details key="start" value="381"/>
+      <details key="end" value="388"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.23" references="/0/stringPropertyValue/@body.0/@ifExpr/@source/p">
-      <details key="start" value="384"/>
-      <details key="end" value="385"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.24" references="/0/stringPropertyValue/@body.0/@ifExpr/@argument.0">
-      <details key="start" value="398"/>
-      <details key="end" value="402"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.25" references="/0/stringPropertyValue/@body.1">
-      <details key="start" value="443"/>
-      <details key="end" value="444"/>
-      <details key="line" value="14"/>
-    </eAnnotations>
-    <eAnnotations source="positions.26" references="/0/stringPropertyValue/@body.2">
-      <details key="start" value="445"/>
-      <details key="end" value="519"/>
-      <details key="line" value="15"/>
-    </eAnnotations>
-    <eAnnotations source="positions.27" references="/0/stringPropertyValue/@body.2/@body.0">
-      <details key="start" value="479"/>
-      <details key="end" value="490"/>
-      <details key="line" value="16"/>
-    </eAnnotations>
-    <eAnnotations source="positions.28" references="/0/stringPropertyValue/@body.2/@body.1">
-      <details key="start" value="491"/>
-      <details key="end" value="509"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.29" references="/0/stringPropertyValue/@body.2/@body.1/p">
-      <details key="start" value="491"/>
-      <details key="end" value="492"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.30" references="/0/stringPropertyValue/@body.2/@body.2">
-      <details key="start" value="511"/>
-      <details key="end" value="513"/>
-      <details key="line" value="16"/>
-    </eAnnotations>
-    <eAnnotations source="positions.31" references="/0/stringPropertyValue/@body.2/@ifExpr">
-      <details key="start" value="449"/>
-      <details key="end" value="477"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.32" references="/0/stringPropertyValue/@body.2/@ifExpr/@source">
-      <details key="start" value="450"/>
-      <details key="end" value="468"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.33" references="/0/stringPropertyValue/@body.2/@ifExpr/@source/p">
-      <details key="start" value="450"/>
-      <details key="end" value="451"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.34" references="/0/stringPropertyValue/@body.2/@ifExpr/@argument.0">
-      <details key="start" value="472"/>
-      <details key="end" value="476"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.35" references="/0/stringPropertyValue/@body.3">
-      <details key="start" value="520"/>
-      <details key="end" value="521"/>
-      <details key="line" value="18"/>
-    </eAnnotations>
-    <eAnnotations source="positions.36" references="/0/stringPropertyValue/@body.4">
-      <details key="start" value="522"/>
-      <details key="end" value="566"/>
-      <details key="line" value="19"/>
-    </eAnnotations>
-    <eAnnotations source="positions.37" references="/0/stringPropertyValue/@body.4/@body.0">
-      <details key="start" value="545"/>
-      <details key="end" value="548"/>
-      <details key="line" value="20"/>
-    </eAnnotations>
-    <eAnnotations source="positions.38" references="/0/stringPropertyValue/@body.4/@body.1">
-      <details key="start" value="549"/>
-      <details key="end" value="556"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.39" references="/0/stringPropertyValue/@body.4/@body.1/p">
-      <details key="start" value="549"/>
-      <details key="end" value="550"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.40" references="/0/stringPropertyValue/@body.4/@body.2">
-      <details key="start" value="558"/>
-      <details key="end" value="560"/>
-      <details key="line" value="20"/>
-    </eAnnotations>
-    <eAnnotations source="positions.41" references="/0/stringPropertyValue/@body.4/@ifExpr">
-      <details key="start" value="526"/>
-      <details key="end" value="543"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.42" references="/0/stringPropertyValue/@body.4/@ifExpr/@source">
-      <details key="start" value="527"/>
-      <details key="end" value="534"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.43" references="/0/stringPropertyValue/@body.4/@ifExpr/@source/p">
-      <details key="start" value="527"/>
-      <details key="end" value="528"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.44" references="/0/stringPropertyValue/@body.4/@ifExpr/@argument.0">
-      <details key="start" value="538"/>
-      <details key="end" value="542"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.45" references="/0/stringPropertyValue/@body.5">
-      <details key="start" value="567"/>
-      <details key="end" value="568"/>
-      <details key="line" value="22"/>
-    </eAnnotations>
-    <eAnnotations source="positions.46" references="/0/stringPropertyValue/p">
-      <details key="start" value="338"/>
-      <details key="end" value="361"/>
+    <eAnnotations source="positions.20" references="/0/stringResourceXML/res">
+      <details key="start" value="313"/>
+      <details key="end" value="338"/>
       <details key="line" value="10"/>
-    </eAnnotations>
-    <eAnnotations source="positions.47" references="/0/stringPropertyValue/@post">
-      <details key="start" value="369"/>
-      <details key="end" value="375"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.48" references="/0/stringPropertyValue/@post/self">
-      <details key="start" value="-1"/>
-      <details key="end" value="-1"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.49" references="/0/valueResourceXML">
-      <details key="start" value="581"/>
-      <details key="end" value="916"/>
-      <details key="line" value="25"/>
-    </eAnnotations>
-    <eAnnotations source="positions.50" references="/0/valueResourceXML/@body.0">
-      <details key="start" value="649"/>
-      <details key="end" value="904"/>
-      <details key="line" value="26"/>
-    </eAnnotations>
-    <eAnnotations source="positions.51" references="/0/valueResourceXML/@body.0/@body.0">
-      <details key="start" value="709"/>
-      <details key="end" value="896"/>
-      <details key="line" value="27"/>
-    </eAnnotations>
-    <eAnnotations source="positions.52" references="/0/valueResourceXML/@body.0/@fileUrl">
-      <details key="start" value="656"/>
-      <details key="end" value="690"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.53" references="/0/valueResourceXML/@body.0/@fileUrl/@source">
-      <details key="start" value="656"/>
-      <details key="end" value="675"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.54" references="/0/valueResourceXML/@body.0/@fileUrl/@source/aValueResource">
-      <details key="start" value="656"/>
-      <details key="end" value="670"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.55" references="/0/valueResourceXML/@body.0/@fileUrl/@argument.0">
-      <details key="start" value="683"/>
-      <details key="end" value="689"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.56" references="/0/valueResourceXML/@body.0/@charset">
-      <details key="start" value="699"/>
-      <details key="end" value="706"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.57" references="/0/valueResourceXML/aValueResource">
-      <details key="start" value="615"/>
-      <details key="end" value="645"/>
-      <details key="line" value="25"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

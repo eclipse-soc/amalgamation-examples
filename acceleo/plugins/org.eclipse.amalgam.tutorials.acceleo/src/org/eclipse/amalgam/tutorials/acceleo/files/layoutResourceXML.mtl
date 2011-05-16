@@ -1,20 +1,21 @@
 [comment encoding = UTF-8 /]
 [module layoutResourceXML('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
+[import org::eclipse::amalgam::tutorials::acceleo::files::widgetXML /]
+
 [template public layoutResourceXML(aLayout : Layout)]
-	[file (aLayout.name.concat('.xml'), false, 'UTF-8')]
+	[file ('/res/layout/'.concat(aLayout.name.toLower()).concat('.xml'), false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView 
-		android:id="@+id/textview"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+
+	[for (widget : Widget | aLayout.widgets)]
+		[widgetXML(widget)/]
+	[/for]
+
 </LinearLayout>
 	[/file]
 [/template]

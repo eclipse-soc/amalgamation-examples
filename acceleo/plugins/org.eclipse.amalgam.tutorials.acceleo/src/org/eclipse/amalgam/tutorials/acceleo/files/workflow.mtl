@@ -2,7 +2,6 @@
 [module workflow('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
 [import org::eclipse::amalgam::tutorials::acceleo::files::application /]
-[import org::eclipse::amalgam::tutorials::acceleo::files::manifest /]
 [import org::eclipse::amalgam::tutorials::acceleo::files::activity /]
 [import org::eclipse::amalgam::tutorials::acceleo::files::layoutResourceXML /]
 [import org::eclipse::amalgam::tutorials::acceleo::files::valueResourceXML /]
@@ -14,7 +13,7 @@
 	[comment aApplication.name/]
 	
 	[application(aApplication)/]
-	[manifest(aApplication.manifest)/]
+	[comment applicationResources(aApplication)/]
 
 	[for (aActivity : Activity | aApplication.activities)]
 		[activity(aActivity)/]
@@ -22,10 +21,6 @@
 
 	[for (aLayout : Layout | aApplication.layouts)]
 		[layoutResourceXML(aLayout)/]
-	[/for]
-
-	[for (aValueResource : ValueResource | aApplication.resources)]
-		[valueResourceXML(aValueResource)/]
 	[/for]
 
 [/template]

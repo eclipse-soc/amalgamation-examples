@@ -4,17 +4,50 @@
     <input>
       <takesTypesFrom href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#/"/>
     </input>
+    <imports href="widgetXML.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="layoutResourceXML" visibility="Public">
       <body xsi:type="mtl:FileBlock" openMode="OverWrite">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?>&#xA;&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA;    android:orientation=&quot;vertical&quot;&#xA;    android:layout_width=&quot;fill_parent&quot;&#xA;    android:layout_height=&quot;fill_parent&quot;&#xA;    >&#xA;&lt;TextView &#xA;&#x9;&#x9;android:id=&quot;@+id/textview&quot;&#xA;    android:layout_width=&quot;fill_parent&quot; &#xA;    android:layout_height=&quot;wrap_content&quot; &#xA;    android:text=&quot;@string/hello&quot;&#xA;    />&#xA;&lt;/LinearLayout>&#xA;"/>
-        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?>&#xA;&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA;    android:orientation=&quot;vertical&quot;&#xA;    android:layout_width=&quot;fill_parent&quot;&#xA;    android:layout_height=&quot;fill_parent&quot;&#xA;    >&#xA;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="widgetXML.emtl#/0/widgetXML"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="widget" referredVariable="/0/layoutResourceXML/@body.0/@body.1/widget">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Widget"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <loopVariable name="widget">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Widget"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Widget)">
             <source xsi:type="ocl.ecore:VariableExp" name="aLayout" referredVariable="/0/layoutResourceXML/aLayout">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
             </source>
-            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout/name"/>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout/widgets"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&lt;/LinearLayout>&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/res/layout/">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <argument xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aLayout" referredVariable="/0/layoutResourceXML/aLayout">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout/name"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
           </source>
           <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".xml">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -323,6 +356,18 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
         </eParameters>
       </eOperations>
+      <eOperations name="widgetXML">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="widgetXML.emtl#/0/widgetXML"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aWidget">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Widget"/>
+        </eParameters>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -470,6 +515,20 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Widget_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Widget"/>
+      </eAnnotations>
+      <eOperations name="widgetXML">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="widgetXML.emtl#/0/widgetXML"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
@@ -489,54 +548,134 @@
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
   </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Widget)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Widget"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Widget"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Widget"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+  </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/layoutResourceXML">
-      <details key="start" value="114"/>
-      <details key="end" value="652"/>
-      <details key="line" value="4"/>
-    </eAnnotations>
-    <eAnnotations source="positions.1" references="/0/layoutResourceXML/@body.0">
-      <details key="start" value="169"/>
-      <details key="end" value="640"/>
-      <details key="line" value="5"/>
-    </eAnnotations>
-    <eAnnotations source="positions.2" references="/0/layoutResourceXML/@body.0/@body.0">
-      <details key="start" value="222"/>
-      <details key="end" value="632"/>
+      <details key="start" value="186"/>
+      <details key="end" value="671"/>
       <details key="line" value="6"/>
     </eAnnotations>
-    <eAnnotations source="positions.3" references="/0/layoutResourceXML/@body.0/@fileUrl">
-      <details key="start" value="176"/>
-      <details key="end" value="203"/>
+    <eAnnotations source="positions.1" references="/0/layoutResourceXML/@body.0">
+      <details key="start" value="241"/>
+      <details key="end" value="659"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/layoutResourceXML/@body.0/@body.0">
+      <details key="start" value="327"/>
+      <details key="end" value="560"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/layoutResourceXML/@body.0/@body.1">
+      <details key="start" value="561"/>
+      <details key="end" value="633"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/layoutResourceXML/@body.0/@body.1/@body.0">
+      <details key="start" value="603"/>
+      <details key="end" value="605"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/layoutResourceXML/@body.0/@body.1/@body.1">
+      <details key="start" value="606"/>
+      <details key="end" value="623"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.4" references="/0/layoutResourceXML/@body.0/@fileUrl/@source">
-      <details key="start" value="176"/>
-      <details key="end" value="188"/>
+    <eAnnotations source="positions.6" references="/0/layoutResourceXML/@body.0/@body.1/@body.1/widget">
+      <details key="start" value="616"/>
+      <details key="end" value="622"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.5" references="/0/layoutResourceXML/@body.0/@fileUrl/@source/aLayout">
-      <details key="start" value="176"/>
-      <details key="end" value="183"/>
+    <eAnnotations source="positions.7" references="/0/layoutResourceXML/@body.0/@body.1/@body.2">
+      <details key="start" value="625"/>
+      <details key="end" value="626"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/layoutResourceXML/@body.0/@body.1/widget">
+      <details key="start" value="567"/>
+      <details key="end" value="582"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/layoutResourceXML/@body.0/@body.1/@iterSet">
+      <details key="start" value="585"/>
+      <details key="end" value="600"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.6" references="/0/layoutResourceXML/@body.0/@fileUrl/@argument.0">
-      <details key="start" value="196"/>
-      <details key="end" value="202"/>
+    <eAnnotations source="positions.10" references="/0/layoutResourceXML/@body.0/@body.1/@iterSet/aLayout">
+      <details key="start" value="585"/>
+      <details key="end" value="592"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.7" references="/0/layoutResourceXML/@body.0/@charset">
-      <details key="start" value="212"/>
-      <details key="end" value="219"/>
+    <eAnnotations source="positions.11" references="/0/layoutResourceXML/@body.0/@body.2">
+      <details key="start" value="634"/>
+      <details key="end" value="651"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/layoutResourceXML/@body.0/@fileUrl">
+      <details key="start" value="248"/>
+      <details key="end" value="308"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.8" references="/0/layoutResourceXML/aLayout">
-      <details key="start" value="149"/>
-      <details key="end" value="165"/>
-      <details key="line" value="4"/>
+    <eAnnotations source="positions.13" references="/0/layoutResourceXML/@body.0/@fileUrl/@source">
+      <details key="start" value="248"/>
+      <details key="end" value="293"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/layoutResourceXML/@body.0/@fileUrl/@source/@source">
+      <details key="start" value="248"/>
+      <details key="end" value="262"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/layoutResourceXML/@body.0/@fileUrl/@source/@argument.0">
+      <details key="start" value="270"/>
+      <details key="end" value="292"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/layoutResourceXML/@body.0/@fileUrl/@source/@argument.0/@source">
+      <details key="start" value="270"/>
+      <details key="end" value="282"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/layoutResourceXML/@body.0/@fileUrl/@source/@argument.0/@source/aLayout">
+      <details key="start" value="270"/>
+      <details key="end" value="277"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/layoutResourceXML/@body.0/@fileUrl/@argument.0">
+      <details key="start" value="301"/>
+      <details key="end" value="307"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/layoutResourceXML/@body.0/@charset">
+      <details key="start" value="317"/>
+      <details key="end" value="324"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/layoutResourceXML/aLayout">
+      <details key="start" value="221"/>
+      <details key="end" value="237"/>
+      <details key="line" value="6"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

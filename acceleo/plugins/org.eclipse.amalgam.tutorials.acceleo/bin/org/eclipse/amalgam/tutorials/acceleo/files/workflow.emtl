@@ -5,7 +5,6 @@
       <takesTypesFrom href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#/"/>
     </input>
     <imports href="application.emtl#/0"/>
-    <imports href="manifest.emtl#/0"/>
     <imports href="activity.emtl#/0"/>
     <imports href="layoutResourceXML.emtl#/0"/>
     <imports href="valueResourceXML.emtl#/0"/>
@@ -19,25 +18,14 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;"/>
-      <body xsi:type="mtl:TemplateInvocation">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="manifest.emtl#/0/manifest"/>
-        <argument xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ManifestFile"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="aApplication" referredVariable="/0/workflow/aApplication">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
-          </source>
-          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application/manifest"/>
-        </argument>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
       <body xsi:type="mtl:ForBlock">
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
         <body xsi:type="mtl:TemplateInvocation">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <definition href="activity.emtl#/0/activity"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="aActivity" referredVariable="/0/workflow/@body.6/aActivity">
+          <argument xsi:type="ocl.ecore:VariableExp" name="aActivity" referredVariable="/0/workflow/@body.5/aActivity">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Activity"/>
           </argument>
         </body>
@@ -45,7 +33,7 @@
         <loopVariable name="aActivity">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Activity"/>
         </loopVariable>
-        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Activity)">
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(Activity)">
           <source xsi:type="ocl.ecore:VariableExp" name="aApplication" referredVariable="/0/workflow/aApplication">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
           </source>
@@ -58,7 +46,7 @@
         <body xsi:type="mtl:TemplateInvocation">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <definition href="layoutResourceXML.emtl#/0/layoutResourceXML"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="aLayout" referredVariable="/0/workflow/@body.8/aLayout">
+          <argument xsi:type="ocl.ecore:VariableExp" name="aLayout" referredVariable="/0/workflow/@body.7/aLayout">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
           </argument>
         </body>
@@ -66,32 +54,11 @@
         <loopVariable name="aLayout">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
         </loopVariable>
-        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Layout)">
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(Layout)">
           <source xsi:type="ocl.ecore:VariableExp" name="aApplication" referredVariable="/0/workflow/aApplication">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
           </source>
           <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application/layouts"/>
-        </iterSet>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
-      <body xsi:type="mtl:ForBlock">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
-        <body xsi:type="mtl:TemplateInvocation">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <definition href="valueResourceXML.emtl#/0/valueResourceXML"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="aValueResource" referredVariable="/0/workflow/@body.10/aValueResource">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
-          </argument>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
-        <loopVariable name="aValueResource">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
-        </loopVariable>
-        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Resource)">
-          <source xsi:type="ocl.ecore:VariableExp" name="aApplication" referredVariable="/0/workflow/aApplication">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
-          </source>
-          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application/resources"/>
         </iterSet>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
@@ -405,16 +372,16 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
         </eParameters>
       </eOperations>
-      <eOperations name="manifest">
+      <eOperations name="applicationResources">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="manifest.emtl#/0/manifest"/>
+          <references href="application.emtl#/0/applicationResources"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="aManifestFile">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ManifestFile"/>
+        <eParameters name="app">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
         </eParameters>
       </eOperations>
       <eOperations name="activity">
@@ -439,6 +406,18 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="aLayout">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="propertyValue">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="valueResourceXML.emtl#/0/propertyValue"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="p">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
         </eParameters>
       </eOperations>
       <eOperations name="valueResourceXML">
@@ -608,17 +587,12 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ManifestFile_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ManifestFile"/>
-      </eAnnotations>
-      <eOperations name="manifest">
+      <eOperations name="applicationResources">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="manifest.emtl#/0/manifest"/>
+          <references href="application.emtl#/0/applicationResources"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -647,6 +621,20 @@
         </eAnnotations>
         <eAnnotations source="MTL">
           <references href="layoutResourceXML.emtl#/0/layoutResourceXML"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PropertyValue_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//PropertyValue"/>
+      </eAnnotations>
+      <eOperations name="propertyValue">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="valueResourceXML.emtl#/0/propertyValue"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -681,18 +669,12 @@
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
   </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
-  </ocl.ecore:Variable>
   <ecore:EPackage name="collections">
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Activity)" instanceClassName="java.util.LinkedHashSet">
       <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Activity"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Layout)" instanceClassName="java.util.LinkedHashSet">
       <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Resource)" instanceClassName="java.util.LinkedHashSet">
-      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
@@ -723,210 +705,138 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/workflow">
-      <details key="start" value="477"/>
-      <details key="end" value="955"/>
-      <details key="line" value="11"/>
+      <details key="start" value="407"/>
+      <details key="end" value="784"/>
+      <details key="line" value="10"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/workflow/@body.0">
-      <details key="start" value="532"/>
-      <details key="end" value="534"/>
-      <details key="line" value="12"/>
+      <details key="start" value="462"/>
+      <details key="end" value="464"/>
+      <details key="line" value="11"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/workflow/@body.1">
-      <details key="start" value="583"/>
-      <details key="end" value="586"/>
-      <details key="line" value="15"/>
+      <details key="start" value="513"/>
+      <details key="end" value="516"/>
+      <details key="line" value="14"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/workflow/@body.2">
-      <details key="start" value="587"/>
-      <details key="end" value="612"/>
+      <details key="start" value="517"/>
+      <details key="end" value="542"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/workflow/@body.2/aApplication">
-      <details key="start" value="599"/>
-      <details key="end" value="611"/>
+      <details key="start" value="529"/>
+      <details key="end" value="541"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/workflow/@body.3">
-      <details key="start" value="614"/>
-      <details key="end" value="616"/>
-      <details key="line" value="17"/>
+      <details key="start" value="544"/>
+      <details key="end" value="545"/>
+      <details key="line" value="16"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/workflow/@body.4">
-      <details key="start" value="617"/>
-      <details key="end" value="648"/>
-      <details key="line" value="0"/>
+      <details key="start" value="592"/>
+      <details key="end" value="593"/>
+      <details key="line" value="17"/>
     </eAnnotations>
-    <eAnnotations source="positions.7" references="/0/workflow/@body.4/@argument.0">
-      <details key="start" value="626"/>
-      <details key="end" value="647"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.8" references="/0/workflow/@body.4/@argument.0/aApplication">
-      <details key="start" value="626"/>
-      <details key="end" value="638"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.9" references="/0/workflow/@body.5">
-      <details key="start" value="650"/>
-      <details key="end" value="652"/>
+    <eAnnotations source="positions.7" references="/0/workflow/@body.5">
+      <details key="start" value="594"/>
+      <details key="end" value="681"/>
       <details key="line" value="18"/>
     </eAnnotations>
-    <eAnnotations source="positions.10" references="/0/workflow/@body.6">
-      <details key="start" value="653"/>
-      <details key="end" value="740"/>
+    <eAnnotations source="positions.8" references="/0/workflow/@body.5/@body.0">
+      <details key="start" value="649"/>
+      <details key="end" value="651"/>
       <details key="line" value="19"/>
     </eAnnotations>
-    <eAnnotations source="positions.11" references="/0/workflow/@body.6/@body.0">
-      <details key="start" value="708"/>
-      <details key="end" value="710"/>
-      <details key="line" value="20"/>
-    </eAnnotations>
-    <eAnnotations source="positions.12" references="/0/workflow/@body.6/@body.1">
-      <details key="start" value="711"/>
-      <details key="end" value="730"/>
+    <eAnnotations source="positions.9" references="/0/workflow/@body.5/@body.1">
+      <details key="start" value="652"/>
+      <details key="end" value="671"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.13" references="/0/workflow/@body.6/@body.1/aActivity">
-      <details key="start" value="720"/>
+    <eAnnotations source="positions.10" references="/0/workflow/@body.5/@body.1/aActivity">
+      <details key="start" value="661"/>
+      <details key="end" value="670"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/workflow/@body.5/@body.2">
+      <details key="start" value="673"/>
+      <details key="end" value="674"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/workflow/@body.5/aActivity">
+      <details key="start" value="600"/>
+      <details key="end" value="620"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/workflow/@body.5/@iterSet">
+      <details key="start" value="623"/>
+      <details key="end" value="646"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/workflow/@body.5/@iterSet/aApplication">
+      <details key="start" value="623"/>
+      <details key="end" value="635"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/workflow/@body.6">
+      <details key="start" value="682"/>
+      <details key="end" value="683"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/workflow/@body.7">
+      <details key="start" value="684"/>
+      <details key="end" value="771"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/workflow/@body.7/@body.0">
+      <details key="start" value="732"/>
+      <details key="end" value="734"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/workflow/@body.7/@body.1">
+      <details key="start" value="735"/>
+      <details key="end" value="761"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/workflow/@body.7/@body.1/aLayout">
+      <details key="start" value="753"/>
+      <details key="end" value="760"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/workflow/@body.7/@body.2">
+      <details key="start" value="763"/>
+      <details key="end" value="764"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/workflow/@body.7/aLayout">
+      <details key="start" value="690"/>
+      <details key="end" value="706"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/workflow/@body.7/@iterSet">
+      <details key="start" value="709"/>
       <details key="end" value="729"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.14" references="/0/workflow/@body.6/@body.2">
-      <details key="start" value="732"/>
-      <details key="end" value="733"/>
-      <details key="line" value="21"/>
-    </eAnnotations>
-    <eAnnotations source="positions.15" references="/0/workflow/@body.6/aActivity">
-      <details key="start" value="659"/>
-      <details key="end" value="679"/>
-      <details key="line" value="19"/>
-    </eAnnotations>
-    <eAnnotations source="positions.16" references="/0/workflow/@body.6/@iterSet">
-      <details key="start" value="682"/>
-      <details key="end" value="705"/>
+    <eAnnotations source="positions.23" references="/0/workflow/@body.7/@iterSet/aApplication">
+      <details key="start" value="709"/>
+      <details key="end" value="721"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.17" references="/0/workflow/@body.6/@iterSet/aApplication">
-      <details key="start" value="682"/>
-      <details key="end" value="694"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.18" references="/0/workflow/@body.7">
-      <details key="start" value="741"/>
-      <details key="end" value="742"/>
-      <details key="line" value="22"/>
-    </eAnnotations>
-    <eAnnotations source="positions.19" references="/0/workflow/@body.8">
-      <details key="start" value="743"/>
-      <details key="end" value="830"/>
-      <details key="line" value="23"/>
-    </eAnnotations>
-    <eAnnotations source="positions.20" references="/0/workflow/@body.8/@body.0">
-      <details key="start" value="791"/>
-      <details key="end" value="793"/>
-      <details key="line" value="24"/>
-    </eAnnotations>
-    <eAnnotations source="positions.21" references="/0/workflow/@body.8/@body.1">
-      <details key="start" value="794"/>
-      <details key="end" value="820"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.22" references="/0/workflow/@body.8/@body.1/aLayout">
-      <details key="start" value="812"/>
-      <details key="end" value="819"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.23" references="/0/workflow/@body.8/@body.2">
-      <details key="start" value="822"/>
-      <details key="end" value="823"/>
+    <eAnnotations source="positions.24" references="/0/workflow/@body.8">
+      <details key="start" value="772"/>
+      <details key="end" value="773"/>
       <details key="line" value="25"/>
     </eAnnotations>
-    <eAnnotations source="positions.24" references="/0/workflow/@body.8/aLayout">
-      <details key="start" value="749"/>
-      <details key="end" value="765"/>
-      <details key="line" value="23"/>
-    </eAnnotations>
-    <eAnnotations source="positions.25" references="/0/workflow/@body.8/@iterSet">
-      <details key="start" value="768"/>
-      <details key="end" value="788"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.26" references="/0/workflow/@body.8/@iterSet/aApplication">
-      <details key="start" value="768"/>
-      <details key="end" value="780"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.27" references="/0/workflow/@body.9">
-      <details key="start" value="831"/>
-      <details key="end" value="832"/>
-      <details key="line" value="26"/>
-    </eAnnotations>
-    <eAnnotations source="positions.28" references="/0/workflow/@body.10">
-      <details key="start" value="833"/>
-      <details key="end" value="942"/>
-      <details key="line" value="27"/>
-    </eAnnotations>
-    <eAnnotations source="positions.29" references="/0/workflow/@body.10/@body.0">
-      <details key="start" value="897"/>
-      <details key="end" value="899"/>
-      <details key="line" value="28"/>
-    </eAnnotations>
-    <eAnnotations source="positions.30" references="/0/workflow/@body.10/@body.1">
-      <details key="start" value="900"/>
-      <details key="end" value="932"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.31" references="/0/workflow/@body.10/@body.1/aValueResource">
-      <details key="start" value="917"/>
-      <details key="end" value="931"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.32" references="/0/workflow/@body.10/@body.2">
-      <details key="start" value="934"/>
-      <details key="end" value="935"/>
-      <details key="line" value="29"/>
-    </eAnnotations>
-    <eAnnotations source="positions.33" references="/0/workflow/@body.10/aValueResource">
-      <details key="start" value="839"/>
-      <details key="end" value="869"/>
-      <details key="line" value="27"/>
-    </eAnnotations>
-    <eAnnotations source="positions.34" references="/0/workflow/@body.10/@iterSet">
-      <details key="start" value="872"/>
-      <details key="end" value="894"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.35" references="/0/workflow/@body.10/@iterSet/aApplication">
-      <details key="start" value="872"/>
-      <details key="end" value="884"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.36" references="/0/workflow/@body.11">
-      <details key="start" value="943"/>
-      <details key="end" value="944"/>
-      <details key="line" value="30"/>
-    </eAnnotations>
-    <eAnnotations source="positions.37" references="/0/workflow/aApplication">
-      <details key="start" value="503"/>
-      <details key="end" value="529"/>
-      <details key="line" value="11"/>
+    <eAnnotations source="positions.25" references="/0/workflow/aApplication">
+      <details key="start" value="433"/>
+      <details key="end" value="459"/>
+      <details key="line" value="10"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

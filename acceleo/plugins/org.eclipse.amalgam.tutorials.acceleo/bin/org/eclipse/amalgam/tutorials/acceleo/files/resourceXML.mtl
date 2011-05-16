@@ -1,0 +1,18 @@
+[comment encoding = UTF-8 /]
+[module resourceXML('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
+
+[template public resourceXML(res : Resource)]
+	[if (res.oclIsKindOf(StringValueResource))]
+		[stringResourceXML(res.oclAsType(StringValueResource))/]
+	[/if]
+[/template]
+
+[template public stringResourceXML(res : StringValueResource)]
+	[file (res.name.concat('.xml'), false, 'UTF-8')]
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello, Android! I am a string resource!</string>
+    <string name="app_name">Hello World</string>
+</resources>
+	[/file]
+[/template]

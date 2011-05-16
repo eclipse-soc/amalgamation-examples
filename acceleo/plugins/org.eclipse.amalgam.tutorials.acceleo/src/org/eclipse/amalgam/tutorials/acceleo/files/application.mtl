@@ -1,11 +1,39 @@
 [comment encoding = UTF-8 /]
 [module application('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
+[import org::eclipse::amalgam::tutorials::acceleo::files::manifest /]
+[import org::eclipse::amalgam::tutorials::acceleo::files::resourceXML /]
+
 [template public application(aApplication : Application)]
-	
-	[comment @main /]
-	[file (aApplication.name, false, 'UTF-8')]
-	[aApplication.name/]
-	[/file]
-	
+
+	[file ('AndroidManifest.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="[aApplication.packageName/]"
+      android:versionCode="1"
+      android:versionName="1.0">
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+				[comment Deveria obter o primeiro activity /]
+        <activity android:name=".HelloWorld"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+    
+  	[manifest(aApplication.manifest)/]
+    
+</manifest>	[/file]
+
+[/template]
+
+
+[template public applicationResources(app : Application)]
+	[for (res : StringValueResource | app.resources.eContents(StringValueResource))]
+		
+	[/for]
 [/template]

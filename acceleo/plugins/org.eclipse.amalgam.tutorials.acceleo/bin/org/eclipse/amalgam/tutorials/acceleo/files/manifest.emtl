@@ -5,15 +5,7 @@
       <takesTypesFrom href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#/"/>
     </input>
     <ownedModuleElement xsi:type="mtl:Template" name="manifest" visibility="Public">
-      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?>&#xA;&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA;      package=&quot;net.reinaldojunior.gsoc.example.helloworld&quot;&#xA;      android:versionCode=&quot;1&quot;&#xA;      android:versionName=&quot;1.0&quot;>&#xA;&#xA;&#xA;    &lt;application android:icon=&quot;@drawable/icon&quot; android:label=&quot;@string/app_name&quot;>&#xA;        &lt;activity android:name=&quot;.HelloWorld&quot;&#xA;                  android:label=&quot;@string/app_name&quot;>&#xA;            &lt;intent-filter>&#xA;                &lt;action android:name=&quot;android.intent.action.MAIN&quot; />&#xA;                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; />&#xA;            &lt;/intent-filter>&#xA;        &lt;/activity>&#xA;&#xA;    &lt;/application>&#xA;&lt;/manifest>&#x9;"/>
-        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="AndroidManifest.xml">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        </fileUrl>
-        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        </charset>
-      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;!-- Manifest Generated -->"/>
       <parameter name="aManifestFile">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ManifestFile"/>
       </parameter>
@@ -473,44 +465,23 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ManifestFile"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ManifestFile"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ManifestFile"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/manifest">
-      <details key="start" value="180"/>
-      <details key="end" value="969"/>
-      <details key="line" value="6"/>
+      <details key="start" value="179"/>
+      <details key="end" value="275"/>
+      <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/manifest/@body.0">
-      <details key="start" value="238"/>
-      <details key="end" value="957"/>
-      <details key="line" value="7"/>
-    </eAnnotations>
-    <eAnnotations source="positions.2" references="/0/manifest/@body.0/@body.0">
-      <details key="start" value="285"/>
-      <details key="end" value="950"/>
-      <details key="line" value="8"/>
-    </eAnnotations>
-    <eAnnotations source="positions.3" references="/0/manifest/@body.0/@fileUrl">
-      <details key="start" value="245"/>
-      <details key="end" value="266"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.4" references="/0/manifest/@body.0/@charset">
-      <details key="start" value="275"/>
-      <details key="end" value="282"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.5" references="/0/manifest/aManifestFile">
-      <details key="start" value="206"/>
-      <details key="end" value="234"/>
+      <details key="start" value="236"/>
+      <details key="end" value="263"/>
       <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/manifest/aManifestFile">
+      <details key="start" value="205"/>
+      <details key="end" value="233"/>
+      <details key="line" value="5"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>
