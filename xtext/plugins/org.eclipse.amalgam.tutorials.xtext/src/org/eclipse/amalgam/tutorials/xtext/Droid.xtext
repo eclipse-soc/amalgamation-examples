@@ -16,7 +16,7 @@ generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Application:
-	'application' name=STRING package=QualifiedName?
+	'application' name=STRING packageName=QualifiedName
 	'{'
 		(manifest=ManifestFile)?
 		(resources+=Resource | layouts+=Layout | activities+=Activity)+
@@ -297,7 +297,6 @@ TabActivity:
 	'tabActivity' name=QualifiedName '{'
 		(tabs+=Tab)+
 	'}'
-
 ;
 
 Tab:
