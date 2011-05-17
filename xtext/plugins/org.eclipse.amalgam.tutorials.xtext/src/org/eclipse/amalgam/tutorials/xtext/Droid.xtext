@@ -65,11 +65,34 @@ GenericResource:
 	'}'
 ;
 
+//PENDING
+//Implement attributes: http://developer.android.com/guide/topics/resources/menu-resource.html
 MenuResource:
 	'menu' {MenuResource} name=ID '{'
-		//widgets+=Widget*
+		(menuItems+=MenuItem | subMenus+=SubMenu | groups+=MenuItemGroup)*
 	'}'
 ;
+
+MenuItem:
+	'item' {MenuItem} '{'
+		subMenus+=SubMenu*
+	'}'
+;
+
+MenuItemGroup:
+	'group' {MenuGroup} '{'
+		items+=MenuItem+
+	'}'
+;
+
+SubMenu:
+	'submenu' {SubMenu} '{'
+		(menuItems+=MenuItem | groups+=MenuItemGroup)*
+	'}'
+;
+
+
+
 
 ValueResource:
 	(
@@ -116,8 +139,20 @@ TransitionDrawableResource:
 	'transition' from=[DrawableResource] '<->' to=[DrawableResource]
 ;
 
+
+//TODO
 AnimationResource:
-	'animation' {AnimationResource} name=ID '{'
+	(TweenAnimationResource | FrameAnimationResource)
+;
+
+TweenAnimationResource:
+	'tweenAnimation' {TweenAnimationResource} name=ID '{'
+		//widgets+=Widget*
+	'}'
+;
+
+FrameAnimationResource:
+	'frameAnimation' {FrameAnimationResource} name=ID '{'
 		//widgets+=Widget*
 	'}'
 ;
