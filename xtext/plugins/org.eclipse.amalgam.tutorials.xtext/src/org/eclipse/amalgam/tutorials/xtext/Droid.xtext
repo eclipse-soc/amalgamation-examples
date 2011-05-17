@@ -98,9 +98,7 @@ ValueResource:
 	(
 	  StringValueResource | IntegerValueResource |
 	  BooleanValueResource | ColorValueResource |
-	  DimensionValueResource /* |
-	  IntegerArrayValueResource | StringArrayValueResource |
-	  TypedArrayValueResource */
+	  DimensionValueResource  | ArrayValueResource 
 	)
 ;
 
@@ -124,6 +122,58 @@ DimensionValueResource:
 	'dimension' name=ID '=' value=FLOAT unit=DimensionKind
 ;
 
+ArrayValueResource:
+	'array'
+/*
+	('(string)' {StringArrayValueResource} | '(integer)' {IntegerArrayValueResource} )?
+	name=ID '=' '['
+*/
+	(IntegerArrayValueResource | StringArrayValueResource | TypedArrayValueResource)
+;
+
+/*
+array primeira = [
+	referencia para recurso ou tipo primitivo =D
+]
+
+array(string) segunda = [
+  "ahusua", "ahsuahsuhaus", "iasiasiajsi", "ijasiajisjaisjia"
+] 
+
+array(integer) terceira = [
+	1, 2, 3, 4, 5
+]
+
+*/
+
+//Deveria criar algo como ResourceRefecence para englobar esse conceito:
+//ResourceRefecenre:
+//internalResource=[ValueResource] | '(' externalResource=ID ')' ;
+IntegerArrayValueResource:
+	'(integer)' {IntegerArrayValueResource}
+	name=ID '=' '['
+		(items+=INT (',' items+=INT)* )?
+	']'
+;
+
+StringArrayValueResource:
+	'(string)' {StringArrayValueResource}
+	name=ID '=' '['
+		(items+=STRING (',' items+=STRING)* )?
+	']'
+;
+
+TypedArrayValueResource:
+	{TypedArrayValueResource}
+	name=ID '=' '['
+		(items+=PropertyValue (',' items+=PropertyValue)* )?
+/*		(
+		 (internalItem+=[ValueResource]? & ('(' externalItem+=ID ')')? & (valueItem=VALUE =p )?
+		)*
+*/
+	']'
+;
+
 //http://developer.android.com/guide/topics/resources/drawable-resource.html
 DrawableResource:
 	(BitmapDrawableResource | TransitionDrawableResource)
@@ -140,21 +190,107 @@ TransitionDrawableResource:
 ;
 
 
-//TODO
 AnimationResource:
 	(TweenAnimationResource | FrameAnimationResource)
 ;
 
+AnimationElement:
+	(AnimationSet | AlphaAnimation | ScaleAnimation | TranslateAnimation | RotateAnimation)
+;
+
+AnimationSet:
+	'set' '{'
+	(shareInterpolator?='shared'
+	'interpolator' interpolator=InterpolatorPropertyValue)?
+		animationElements+=AnimationElement+
+	'}'
+;
+
+AlphaAnimation:
+	'fade:' {AlphaAnimation}
+	(
+	 //TODO - Add more properties
+	 ('from' fromAlpha=FLOAT)? &
+	 ('to' toAlpha=FLOAT)?
+	)//?
+;
+
+ScaleAnimation:
+	'scale:' {ScaleAnimation}
+	(
+	 (
+	 	'fromScale' '(' fromScaleX=FLOAT ',' fromScaleY=FLOAT ')'
+	 	'toScale' 	'(' toScaleX=FLOAT ',' toScaleY=FLOAT ')' |
+	 	'scale' '(' fromScaleX=FLOAT ',' fromScaleY=FLOAT ')'
+	 	'->' 	'(' toScaleX=FLOAT ',' toScaleY=FLOAT ')' |
+		(
+		  ('fromScaleX' fromScaleX=FLOAT)? &
+		  ('toScaleX' 	toScaleX=FLOAT)?   &
+		  ('fromScaleY' fromScaleY=FLOAT)? &
+		  ('toScaleY' toScaleY=FLOAT)?
+		) //?
+	 )? &
+	 (
+	   'pivot' '(' pivotX=FLOAT ',' pivotY=FLOAT ')' |
+	   	(('pivotX' pivotX=FLOAT)? & ('pivotY' pivotY=FLOAT)?)
+	 )? //&
+	 //TODO - Add more properties
+	)	
+;
+
+TranslateAnimation:
+	'translate:' {ScaleAnimation}
+	(
+	 (
+	 	'fromDelta' '(' fromXDelta=DeltaValue ',' fromYDelta=DeltaValue ')'
+	 	'toDelta' 	'(' toXDelta=DeltaValue ',' toYDelta=DeltaValue ')' |
+	 	'delta' '(' fromXDelta=DeltaValue ',' fromYDelta=DeltaValue ')'
+	 	'->' 	'(' toXDelta=DeltaValue ',' toYDelta=DeltaValue ')' |
+		(
+		  ('fromXDelta' fromXDelta=DeltaValue)? &
+		  ('toXDelta' 	toXDelta=DeltaValue)?   &
+		  ('fromYDelta' fromYDelta=DeltaValue)? &
+		  ('toYDelta' toYDelta=DeltaValue)?
+		)
+	 )? //&
+	 //TODO - Add more properties
+	)
+;
+
+RotateAnimation:
+	'translate:' {RotateAnimation}
+	(
+	 (
+	 	'degrees' '(' fromDegrees=FLOAT ')' '->' '(' toDegrees=FLOAT ')' |
+		(
+		  ('fromDegrees' fromDegrees=FLOAT)? &
+		  ('toDegrees' 	toDegrees=FLOAT)?
+		)
+	 )? &
+	 (
+	   'pivot' '(' pivotX=DeltaValue ',' pivotY=DeltaValue ')' |
+	   	(('pivotX' pivotX=DeltaValue)? & ('pivotY' pivotY=DeltaValue)?)
+	 )? //&
+	 //TODO - Add more properties
+	)
+
+;
+
 TweenAnimationResource:
 	'tweenAnimation' {TweenAnimationResource} name=ID '{'
-		//widgets+=Widget*
+		animationElements+=AnimationElement+
 	'}'
 ;
 
 FrameAnimationResource:
 	'frameAnimation' {FrameAnimationResource} name=ID '{'
-		//widgets+=Widget*
+		(oneShot?='oneShot')
+		animationItems+=FrameAnimationItem+
 	'}'
+;
+
+FrameAnimationItem:
+	'frame' drawable=DrawableResourcePropertyValue ('->' duration=INT)? 
 ;
 
 
@@ -439,8 +575,24 @@ DrawableImageResourcePropertyValue:
 	(resource=[DrawableResource] | '(' externalResource=ID ')' )
 ;
 
+InterpolatorPropertyValue:
+	(predefinedInterpolator=InterpolatorsKind | '(' customInterpolator=ID ')')
+;
+
 enum DimensionKind :
   dp | sp | pt | px | mm | in
+;
+
+enum InterpolatorsKind :
+  accelerate_decelerate |
+  accelerate |
+  anticipate |
+  anticipate_overshoot |
+  bounce |
+  cycle |
+  decelerate |
+  linear |
+  overshoot
 ;
 
 //data type rule (returns EDataType instead EClass)
@@ -457,6 +609,10 @@ QualifiedName:
 BOOL returns ecore::EBooleanObject:
 //	'YES' | 'NO'
 	'true' | 'false'
+;
+
+DeltaValue:
+	INT ('%'|'%p')?
 ;
 
 FLOAT returns ecore::EFloatObject:
