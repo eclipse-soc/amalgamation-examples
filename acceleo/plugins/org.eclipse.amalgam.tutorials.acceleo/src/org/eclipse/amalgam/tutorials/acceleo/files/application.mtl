@@ -2,10 +2,9 @@
 [module application('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
 [import org::eclipse::amalgam::tutorials::acceleo::files::manifest /]
-[import org::eclipse::amalgam::tutorials::acceleo::files::resourceXML /]
+[import org::eclipse::amalgam::tutorials::acceleo::files::valueResourceXML /]
 
 [template public application(aApplication : Application)]
-
 	[file ('AndroidManifest.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,8 +13,7 @@
       android:versionName="1.0">
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-				[comment Deveria obter o primeiro activity /]
-        <activity android:name=".HelloWorld"
+        <activity android:name=".[aApplication.eContents(Activity)->first().name.toUpperFirst()/]"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,13 +25,33 @@
     
   	[manifest(aApplication.manifest)/]
     
-</manifest>	[/file]
-
+</manifest>
+	[/file]
 [/template]
 
 
 [template public applicationResources(app : Application)]
-	[for (res : StringValueResource | app.resources.eContents(StringValueResource))]
-		
-	[/for]
+	[comment stringResourceXML(app.eContents(StringValueResource))/]
+
+  [stringResourceXML(app)/]
+
+  [integerResourceXML(app.resources->filter(IntegerValueResource))/]
+  [colorResourceXML(app.resources->filter(ColorValueResource))/]
+	[dimensionResourceXML(app.resources->filter(DimensionValueResource))/]
+[/template]
+
+
+[template private stringResourceXML(app : Application)]
+	[file ('/res/values/strings.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Auto-generated from Application.name -->
+  <string name="app_name">[app.name/]</string>
+
+  <!-- resources -->
+[for (resource : StringValueResource | app.resources->filter(StringValueResource))]
+  <string name="[resource.name/]">[resource.value/]</string>
+[/for]
+</resources>
+	[/file]
 [/template]

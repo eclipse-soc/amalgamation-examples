@@ -13,7 +13,7 @@
     >
 
 	[for (widget : Widget | aLayout.widgets)]
-		[widgetXML(widget)/]
+[widgetXML(widget)/]
 	[/for]
 
 </LinearLayout>

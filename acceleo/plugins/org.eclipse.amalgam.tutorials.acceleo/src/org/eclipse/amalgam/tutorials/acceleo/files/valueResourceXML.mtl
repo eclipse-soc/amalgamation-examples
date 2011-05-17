@@ -22,8 +22,48 @@
 
 [/template]
 
+
+[template public integerResourceXML(resourceSeq : OrderedSet(IntegerValueResource))]
+	[file ('/res/values/integers.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+[for (resource : IntegerValueResource | resourceSeq)]
+  <integer name="[resource.name/]">[resource.value/]</integer>
+[/for]
+</resources>
+	[/file]
+[/template]
+
+
+
+[template public colorResourceXML(resourceSeq : OrderedSet(ColorValueResource))]
+	[file ('/res/values/colors.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+[for (resource : ColorValueResource | resourceSeq)]
+  <color name="[resource.name/]">[resource.value/]</color>
+[/for]
+</resources>
+	[/file]
+[/template]
+
+
+[template public dimensionResourceXML(resourceSeq : OrderedSet(DimensionValueResource))]
+	[file ('/res/values/dimensions.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+[for (resource : DimensionValueResource | resourceSeq)]
+  <dimension name="[resource.name/]">[resource.value/][resource.unit/]</dimension>
+[/for]
+</resources>
+	[/file]
+[/template]
+
+
+
+
 [template public valueResourceXML(aValueResource : ValueResource)]
-	[file (aValueResource.name.concat('.xml'), false, 'UTF-8')]
+	[file ('/res/values/heheh.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello, Android! I am a string resource!</string>
