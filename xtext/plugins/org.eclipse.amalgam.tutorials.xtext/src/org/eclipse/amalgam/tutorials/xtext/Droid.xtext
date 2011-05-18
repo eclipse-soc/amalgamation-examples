@@ -10,289 +10,57 @@
  ******************************************************************************/
 
 grammar org.eclipse.amalgam.tutorials.xtext.Droid with org.eclipse.xtext.common.Terminals
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 
-import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Application:
 	'application' name=STRING packageName=QualifiedName
 	'{'
 		(manifest=ManifestFile)?
 		(resources+=Resource | layouts+=Layout | activities+=Activity)+
-
-		//elements+=ApplicationElement+ //Will not care about the order
-		
-		/*
-		resources+=Resource*	//Resources first
-		layouts+=Layout*
-		activities+=Activity+	//Activities Next
-		*/
-		
-		//services+=[Service|QualifiedName]*
-		//fragments+=[Fragments|QualifiedName]*
 	'}'
 ;
 
-//Teria que criar um id diferente pra cada uma das classes concretas
-//ApplicationElement:
-//	(Resource | Activity)
-//;
 
+/*
+
+manifest {
+	userPermission {
+		com.android.CONTACT_LIST,
+		com.android.GPS
+	}
+	
+	sdk {
+		from 1 to 5
+		target 5
+	}
+	
+	requires {
+		fiveWayNav
+		hardKeyboard
+		keyboardType
+		navigation
+		touchScreen
+	}
+	
+	intents {
+	}
+	
+	libraries {
+	}
+
+}
+
+*/
+
+//PENDING
 ManifestFile:
 	{ManifestFile}
 	'manifest' '{'
-/*
-    #permission
-    #api level
-    #features
-    #libraries
-    #intent-filter
-    #requirements
-*/
 	'}'
 ;
-
-
-Resource:
-	(GenericResource /* | Layout */ | MenuResource | ValueResource | DrawableResource | AnimationResource)
-;
-
-//?
-GenericResource:
-	'resource' {GenericResource} name=ID '{'
-		//widgets+=Widget*
-	'}'
-;
-
-//PENDING
-//Implement attributes: http://developer.android.com/guide/topics/resources/menu-resource.html
-MenuResource:
-	'menu' {MenuResource} name=ID '{'
-		(menuItems+=MenuItem | subMenus+=SubMenu | groups+=MenuItemGroup)*
-	'}'
-;
-
-MenuItem:
-	'item' {MenuItem} '{'
-		subMenus+=SubMenu*
-	'}'
-;
-
-MenuItemGroup:
-	'group' {MenuGroup} '{'
-		items+=MenuItem+
-	'}'
-;
-
-SubMenu:
-	'submenu' {SubMenu} '{'
-		(menuItems+=MenuItem | groups+=MenuItemGroup)*
-	'}'
-;
-
-
-
-
-ValueResource:
-	(
-	  StringValueResource | IntegerValueResource |
-	  BooleanValueResource | ColorValueResource |
-	  DimensionValueResource  | ArrayValueResource 
-	)
-;
-
-StringValueResource:
-	'string' name=ID '=' value=STRING
-;
-
-IntegerValueResource:
-	'integer' name=ID '=' value=INT
-;
-
-BooleanValueResource:
-	'bool' name=ID '=' value=BOOL
-;
-
-ColorValueResource:
-	'color' name=ID '=' value=HEX_COLOR
-;
-
-DimensionValueResource:
-	'dimension' name=ID '=' value=FLOAT unit=DimensionKind
-;
-
-ArrayValueResource:
-	'array'
-/*
-	('(string)' {StringArrayValueResource} | '(integer)' {IntegerArrayValueResource} )?
-	name=ID '=' '['
-*/
-	(IntegerArrayValueResource | StringArrayValueResource | TypedArrayValueResource)
-;
-
-/*
-array primeira = [
-	referencia para recurso ou tipo primitivo =D
-]
-
-array(string) segunda = [
-  "ahusua", "ahsuahsuhaus", "iasiasiajsi", "ijasiajisjaisjia"
-] 
-
-array(integer) terceira = [
-	1, 2, 3, 4, 5
-]
-
-*/
-
-//Deveria criar algo como ResourceRefecence para englobar esse conceito:
-//ResourceRefecenre:
-//internalResource=[ValueResource] | '(' externalResource=ID ')' ;
-IntegerArrayValueResource:
-	'(integer)' {IntegerArrayValueResource}
-	name=ID '=' '['
-		(items+=INT (',' items+=INT)* )?
-	']'
-;
-
-StringArrayValueResource:
-	'(string)' {StringArrayValueResource}
-	name=ID '=' '['
-		(items+=STRING (',' items+=STRING)* )?
-	']'
-;
-
-TypedArrayValueResource:
-	{TypedArrayValueResource}
-	name=ID '=' '['
-		(items+=PropertyValue (',' items+=PropertyValue)* )?
-/*		(
-		 (internalItem+=[ValueResource]? & ('(' externalItem+=ID ')')? & (valueItem=VALUE =p )?
-		)*
-*/
-	']'
-;
-
-//http://developer.android.com/guide/topics/resources/drawable-resource.html
-DrawableResource:
-	(BitmapDrawableResource | TransitionDrawableResource)
-;
-
-//http://developer.android.com/guide/topics/resources/drawable-resource.html#Bitmap
-BitmapDrawableResource:
-	'bitmap' name=ID '=' filename=ID
-;
-
-//http://developer.android.com/guide/topics/resources/drawable-resource.html#Transition
-TransitionDrawableResource:
-	'transition' from=[DrawableResource] '<->' to=[DrawableResource]
-;
-
-
-AnimationResource:
-	(TweenAnimationResource | FrameAnimationResource)
-;
-
-AnimationElement:
-	(AnimationSet | AlphaAnimation | ScaleAnimation | TranslateAnimation | RotateAnimation)
-;
-
-AnimationSet:
-	'set' '{'
-	(shareInterpolator?='shared'
-	'interpolator' interpolator=InterpolatorPropertyValue)?
-		animationElements+=AnimationElement+
-	'}'
-;
-
-AlphaAnimation:
-	'fade:' {AlphaAnimation}
-	(
-	 //TODO - Add more properties
-	 ('from' fromAlpha=FLOAT)? &
-	 ('to' toAlpha=FLOAT)?
-	)//?
-;
-
-ScaleAnimation:
-	'scale:' {ScaleAnimation}
-	(
-	 (
-	 	'fromScale' '(' fromScaleX=FLOAT ',' fromScaleY=FLOAT ')'
-	 	'toScale' 	'(' toScaleX=FLOAT ',' toScaleY=FLOAT ')' |
-	 	'scale' '(' fromScaleX=FLOAT ',' fromScaleY=FLOAT ')'
-	 	'->' 	'(' toScaleX=FLOAT ',' toScaleY=FLOAT ')' |
-		(
-		  ('fromScaleX' fromScaleX=FLOAT)? &
-		  ('toScaleX' 	toScaleX=FLOAT)?   &
-		  ('fromScaleY' fromScaleY=FLOAT)? &
-		  ('toScaleY' toScaleY=FLOAT)?
-		) //?
-	 )? &
-	 (
-	   'pivot' '(' pivotX=FLOAT ',' pivotY=FLOAT ')' |
-	   	(('pivotX' pivotX=FLOAT)? & ('pivotY' pivotY=FLOAT)?)
-	 )? //&
-	 //TODO - Add more properties
-	)	
-;
-
-TranslateAnimation:
-	'translate:' {ScaleAnimation}
-	(
-	 (
-	 	'fromDelta' '(' fromXDelta=DeltaValue ',' fromYDelta=DeltaValue ')'
-	 	'toDelta' 	'(' toXDelta=DeltaValue ',' toYDelta=DeltaValue ')' |
-	 	'delta' '(' fromXDelta=DeltaValue ',' fromYDelta=DeltaValue ')'
-	 	'->' 	'(' toXDelta=DeltaValue ',' toYDelta=DeltaValue ')' |
-		(
-		  ('fromXDelta' fromXDelta=DeltaValue)? &
-		  ('toXDelta' 	toXDelta=DeltaValue)?   &
-		  ('fromYDelta' fromYDelta=DeltaValue)? &
-		  ('toYDelta' toYDelta=DeltaValue)?
-		)
-	 )? //&
-	 //TODO - Add more properties
-	)
-;
-
-RotateAnimation:
-	'translate:' {RotateAnimation}
-	(
-	 (
-	 	'degrees' '(' fromDegrees=FLOAT ')' '->' '(' toDegrees=FLOAT ')' |
-		(
-		  ('fromDegrees' fromDegrees=FLOAT)? &
-		  ('toDegrees' 	toDegrees=FLOAT)?
-		)
-	 )? &
-	 (
-	   'pivot' '(' pivotX=DeltaValue ',' pivotY=DeltaValue ')' |
-	   	(('pivotX' pivotX=DeltaValue)? & ('pivotY' pivotY=DeltaValue)?)
-	 )? //&
-	 //TODO - Add more properties
-	)
-
-;
-
-TweenAnimationResource:
-	'tweenAnimation' {TweenAnimationResource} name=ID '{'
-		animationElements+=AnimationElement+
-	'}'
-;
-
-FrameAnimationResource:
-	'frameAnimation' {FrameAnimationResource} name=ID '{'
-		(oneShot?='oneShot')
-		animationItems+=FrameAnimationItem+
-	'}'
-;
-
-FrameAnimationItem:
-	'frame' drawable=DrawableResourcePropertyValue ('->' duration=INT)? 
-;
-
 
 Layout:
 	'layout' {Layout} name=ID '{'
@@ -519,14 +287,129 @@ InvokeActivityAction:
 	activity=[Activity|QualifiedName]
 ;
 
+
+
 //Loads a fixed resource
 //TODO: Load a dinamic resource from a URL, loadJson for example
+//MAYBE...
 LoadResourceAction:
 	'load' resource=ID
 	('->' toVar=ID)?
 	('=>' afterLoad=Action)?
 ;
 
+
+/*
+ * RESOURCES
+ */
+
+
+Resource:
+	(MenuResource | ValueResource | DrawableResource /*| AnimationResource */ )
+;
+
+//PENDING
+//Implement attributes: http://developer.android.com/guide/topics/resources/menu-resource.html
+MenuResource:
+	'menu' {MenuResource} name=ID '{'
+		(menuItems+=MenuItem | subMenus+=SubMenu | groups+=MenuItemGroup)*
+	'}'
+;
+
+MenuItem:
+	'item' {MenuItem} '{'
+		subMenus+=SubMenu*
+	'}'
+;
+
+MenuItemGroup:
+	'group' {MenuGroup} '{'
+		items+=MenuItem+
+	'}'
+;
+
+SubMenu:
+	'submenu' {SubMenu} '{'
+		(menuItems+=MenuItem | groups+=MenuItemGroup)*
+	'}'
+;
+
+ValueResource:
+  (
+	StringValueResource | IntegerValueResource |
+	BooleanValueResource | ColorValueResource |
+	DimensionValueResource  | ArrayValueResource
+  )
+;
+
+StringValueResource:
+	'string' name=ID '=' value=STRING
+;
+
+IntegerValueResource:
+	'integer' name=ID '=' value=INT
+;
+
+BooleanValueResource:
+	'bool' name=ID '=' value=BOOL
+;
+
+ColorValueResource:
+	'color' name=ID '=' value=HEX_COLOR
+;
+
+DimensionValueResource:
+	'dimension' name=ID '=' value=FLOAT unit=DimensionKind
+;
+
+ArrayValueResource:
+	'array'
+	(IntegerArrayValueResource | StringArrayValueResource | TypedArrayValueResource)
+;
+
+IntegerArrayValueResource:
+	'(integer)' {IntegerArrayValueResource}
+	name=ID '=' '['
+		(items+=INT (',' items+=INT)* )?
+	']'
+;
+
+StringArrayValueResource:
+	'(string)' {StringArrayValueResource}
+	name=ID '=' '['
+		(items+=STRING (',' items+=STRING)* )?
+	']'
+;
+
+//I should create something like ResourceRefecence to represent this concept.
+//ResourceRefecenre:
+//internalResource=[ValueResource] | '(' externalResource=ID ')' ;
+TypedArrayValueResource:
+	{TypedArrayValueResource}
+	name=ID '=' '['
+//		(items+=PropertyValue (',' items+=PropertyValue)* )?
+	']'
+;
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html
+DrawableResource:
+	(BitmapDrawableResource | TransitionDrawableResource)
+;
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html#Bitmap
+BitmapDrawableResource:
+	'bitmap' {BitmapDrawableResource} name=ID '=' filename=ID
+;
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html#Transition
+TransitionDrawableResource:
+	'transition' {TransitionDrawableResource} from=[BitmapDrawableResource] '<->' to=[BitmapDrawableResource]
+;
+
+
+/*
+ * Value of Properties which can be set using resources
+ */
 
 PropertyValue:
 	(
@@ -539,45 +422,143 @@ PropertyValue:
 	)
 ;
 
-
-/*
-button<primeiro>
-  top 		= 20
-  bottom 	= default_button_position
-  left 		= (outro_valor)
-*/
-
 StringPropertyValue:
-	(value=STRING |  (resource=[StringValueResource] | '(' externalResource=ID ')' ))
+	(value=STRING | resource=[StringValueResource] | externalResource=ExternalResourceReference )
 ;
 
 IntegerPropertyValue:
-	(value=INT | (resource=[IntegerValueResource] | '(' externalResource=ID ')' ))
+	(value=INT | resource=[IntegerValueResource] | externalResource=ExternalResourceReference)
 ;
 
 BooleanPropertyValue:
-	(value=BOOL | (resource=[BooleanValueResource] | '(' externalResource=ID ')' ))
+	(value=BOOL | resource=[BooleanValueResource] | externalResource=ExternalResourceReference)
 ;
 
 ColorPropertyValue:
-	(value=HEX_COLOR | (resource=[ColorValueResource] | '(' externalResource=ID ')' ))
+	(value=HEX_COLOR | resource=[ColorValueResource] | externalResource=ExternalResourceReference)
 ;
 
 DimensionPropertyValue:
-	(value=FLOAT | (resource=[DimensionValueResource] | '(' externalResource=ID ')' ))
+	(value=FLOAT | resource=[DimensionValueResource] | externalResource=ExternalResourceReference)
 ;
 
 DrawableResourcePropertyValue:
-	(value=HEX_COLOR | (resource=[DrawableResource] | '(' externalResource=ID ')' ))
+	(value=HEX_COLOR | resource=[DrawableResource] | externalResource=ExternalResourceReference)
 ;
 
 DrawableImageResourcePropertyValue:
-	(resource=[DrawableResource] | '(' externalResource=ID ')' )
+	(resource=[DrawableResource] | externalResource=ExternalResourceReference)
 ;
 
+//'(' customInterpolator=ID ')' t‡ dando muita left-recursion (acho que d‡ ambiguidade nessa droga)
 InterpolatorPropertyValue:
-	(predefinedInterpolator=InterpolatorsKind | '(' customInterpolator=ID ')')
+	 shareInterpolator?='shared'
+	 //Se der problema, tira o externalResource=ExternalResourceReference
+	 'interpolator' (externalResource=ExternalResourceReference | name=InterpolatorsKind )
+	//(predefinedInterpolator=InterpolatorsKind | '(' customInterpolator=ID ')')
 ;
+
+/*
+ * I think I should oversimplify the animation IF i'm going to include it. Reason: A LOT OF Left-recursion problems
+ */
+/*
+
+AnimationResource:
+	( TweenAnimationResource | FrameAnimationResource)
+;
+
+
+AnimationTerminalElements:
+	(AlphaAnimation | ScaleAnimation | TranslateAnimation | RotateAnimation)
+;
+
+
+//AnimationElement:
+//	(AnimationSet | AnimationTerminalElements)
+//;
+
+
+//Nao tire senao d‡ merda
+AbstractAnimationSet:
+	TerminalAnimationSet | AnimationSet
+;
+
+TerminalAnimationSet:
+	'set' '{' {TerminalAnimationSet}
+		//Isso chegou a dar problema, agora n‹o mais
+		interpolator=InterpolatorPropertyValue
+		(animationElements+=AnimationTerminalElements)+
+	'}'
+;
+
+AnimationSet:
+	'set' '{' {AnimationSet}
+	 	interpolator=InterpolatorPropertyValue
+		//(animationElements+=AnimationTerminalElements)+
+		(animationElements+=AnimationTerminalElements | animationElements+=TerminalAnimationSet )+
+	'}'
+;
+
+AlphaAnimation:
+	'fade:'
+	(
+	 ('from' fromAlpha=FLOAT) &
+	 ('to' toAlpha=FLOAT)
+	)
+;
+
+ScaleAnimation:
+	'scale:'
+	(
+	 ('from' fromAlpha=FLOAT) &
+	 ('to' toAlpha=FLOAT)
+	)
+;
+
+TranslateAnimation:
+	'translate:'
+	(
+	 ('from' fromAlpha=FLOAT) &
+	 ('to' toAlpha=FLOAT)
+	)
+;
+
+RotateAnimation:
+	'rotate:'
+	(
+	 ('from' fromAlpha=FLOAT) &
+	 ('to' toAlpha=FLOAT)
+	)
+;
+
+
+TweenAnimationResource:
+	'tweenAnimation' name=ID '{'
+		(animationElements+=AnimationTerminalElements | animationElements+=TerminalAnimationSet)+
+	'}'
+;
+
+FrameAnimationResource:
+	oneShot?='oneShot' 'frameAnimation' name=ID '{'
+		frames+=AnimationFrame+
+	'}'
+;
+
+AnimationFrame:
+	'frame:' drawable=DrawableResourcePropertyValue ('->' duration=INT)?
+;
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 enum DimensionKind :
   dp | sp | pt | px | mm | in
@@ -600,10 +581,9 @@ enum InterpolatorsKind :
 QualifiedName:
 	ID ('.' ID)*;
 
-/*
-QualifiedName:
-	ID | ((ID '.')+ ID);
-*/
+ExternalResourceReference:
+	'[' id=ID ']'
+;
 
 //Value Converter
 BOOL returns ecore::EBooleanObject:
@@ -611,9 +591,11 @@ BOOL returns ecore::EBooleanObject:
 	'true' | 'false'
 ;
 
-DeltaValue:
-	INT ('%'|'%p')?
+/*
+RelativePercentual:
+	INT ('%'|'%p')
 ;
+*/
 
 FLOAT returns ecore::EFloatObject:
 	INT ('.' INT)?
