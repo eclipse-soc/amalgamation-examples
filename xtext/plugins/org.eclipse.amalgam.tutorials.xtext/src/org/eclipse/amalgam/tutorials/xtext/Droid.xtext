@@ -15,64 +15,238 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 
 
+
+//TODO: adds Resource Definition and watch it falls
 Application:
 	'application' name=STRING packageName=QualifiedName
 	'{'
-		(manifest=ManifestFile)?
-		(resources+=Resource | layouts+=Layout | activities+=Activity)+
+		manifest=ManifestFile
+		//(resources+=Resource | layouts+=Layout | activities+=Activity)*
+		(resources+=Resource | activities+=Activity | layouts+=Layout)+
 	'}'
 ;
 
-
-/*
-
-manifest {
-	userPermission {
-		com.android.CONTACT_LIST,
-		com.android.GPS
-	}
-	
-	sdk {
-		from 1 to 5
-		target 5
-	}
-	
-	requires {
-		fiveWayNav
-		hardKeyboard
-		keyboardType
-		navigation
-		touchScreen
-	}
-	
-	intents {
-	}
-	
-	libraries {
-	}
-
-}
-
-*/
-
-//PENDING
 ManifestFile:
-	{ManifestFile}
 	'manifest' '{'
+		(sdk=ManifestSDK & usesPermission=ManifestUsesPermission?)
 	'}'
 ;
+
+ManifestSDK:
+	'sdk' '{'
+		(
+		 ('from' minSdkVersion=INT 'to' maxSdkVersion=INT) &
+		 ('target' targetSdkVersion=INT)
+		)
+	'}'
+;
+
+ManifestUsesPermission:
+	'usesPermission' '{'
+		//permissions+=ID (',' permissions+=ID)*
+		//Isso d‡ left recursion... Usar um enum em uma lista.
+		permissions+=BuiltInPermissionType (',' permissions+=BuiltInPermissionType)*
+	'}'
+;
+
+enum BuiltInPermissionType:
+	ACCESS_CHECKIN_PROPERTIES |
+	ACCESS_COARSE_LOCATION |
+	ACCESS_FINE_LOCATION |
+	ACCESS_LOCATION_EXTRA_COMMANDS |
+	ACCESS_MOCK_LOCATION |
+	ACCESS_NETWORK_STATE |
+	ACCESS_SURFACE_FLINGER	|
+	ACCESS_WIFI_STATE	|
+	ACCOUNT_MANAGER	|
+	AUTHENTICATE_ACCOUNTS	|
+	BATTERY_STATS	|
+	BIND_APPWIDGET	|
+	BIND_DEVICE_ADMIN	|
+	BIND_INPUT_METHOD	|
+	BIND_REMOTEVIEWS	|
+	BIND_WALLPAPER	|
+	BLUETOOTH	|
+	BLUETOOTH_ADMIN	|
+	BRICK	|
+	BROADCAST_PACKAGE_REMOVED	|
+	BROADCAST_SMS	|
+	BROADCAST_STICKY	|
+	BROADCAST_WAP_PUSH	|
+	CALL_PHONE	|
+	CALL_PRIVILEGED	|
+	CAMERA	|
+	CHANGE_COMPONENT_ENABLED_STATE	|
+	CHANGE_CONFIGURATION	|
+	CHANGE_NETWORK_STATE	|
+	CHANGE_WIFI_MULTICAST_STATE	|
+	CHANGE_WIFI_STATE	|
+	CLEAR_APP_CACHE	|
+	CLEAR_APP_USER_DATA	|
+	CONTROL_LOCATION_UPDATES	|
+	DELETE_CACHE_FILES	|
+	DELETE_PACKAGES	|
+	DEVICE_POWER	|
+	DIAGNOSTIC	|
+	DISABLE_KEYGUARD	|
+	DUMP	|
+	EXPAND_STATUS_BAR	|
+	FACTORY_TEST	|
+	FLASHLIGHT	|
+	FORCE_BACK	|
+	GET_ACCOUNTS	|
+	GET_PACKAGE_SIZE	|
+	GET_TASKS	|
+	GLOBAL_SEARCH	|
+	HARDWARE_TEST	|
+	INJECT_EVENTS	|
+	INSTALL_LOCATION_PROVIDER	|
+	INSTALL_PACKAGES	|
+	INTERNAL_SYSTEM_WINDOW	|
+	INTERNET	|
+	KILL_BACKGROUND_PROCESSES	|
+	MANAGE_ACCOUNTS	|
+	MANAGE_APP_TOKENS	|
+	MASTER_CLEAR	|
+	MODIFY_AUDIO_SETTINGS	|
+	MODIFY_PHONE_STATE	|
+	MOUNT_FORMAT_FILESYSTEMS	|
+	MOUNT_UNMOUNT_FILESYSTEMS	|
+	NFC	|
+	PERSISTENT_ACTIVITY	|
+	PROCESS_OUTGOING_CALLS	|
+	READ_CALENDAR	|
+	READ_CONTACTS	|
+	READ_FRAME_BUFFER	|
+	READ_HISTORY_BOOKMARKS	|
+	READ_INPUT_STATE	|
+	READ_LOGS	|
+	READ_PHONE_STATE	|
+	READ_SMS	|
+	READ_SYNC_SETTINGS	|
+	READ_SYNC_STATS	|
+	REBOOT	|
+	RECEIVE_BOOT_COMPLETED	|
+	RECEIVE_MMS	|
+	RECEIVE_SMS	|
+	RECEIVE_WAP_PUSH	|
+	RECORD_AUDIO	|
+	REORDER_TASKS	|
+	RESTART_PACKAGES	|
+	SEND_SMS	|
+	SET_ACTIVITY_WATCHER	|
+	SET_ALARM	|
+	SET_ALWAYS_FINISH	|
+	SET_ANIMATION_SCALE	|
+	SET_DEBUG_APP	|
+	SET_ORIENTATION	|
+	SET_PREFERRED_APPLICATIONS	|
+	SET_PROCESS_LIMIT	|
+	SET_TIME	|
+	SET_TIME_ZONE	|
+	SET_WALLPAPER	|
+	SET_WALLPAPER_HINTS	|
+	SIGNAL_PERSISTENT_PROCESSES	|
+	STATUS_BAR	|
+	SUBSCRIBED_FEEDS_READ	|
+	SUBSCRIBED_FEEDS_WRITE	|
+	SYSTEM_ALERT_WINDOW	|
+	UPDATE_DEVICE_STATS	|
+	USE_CREDENTIALS	|
+	USE_SIP	|
+	VIBRATE	|
+	WAKE_LOCK	|
+	WRITE_APN_SETTINGS	|
+	WRITE_CALENDAR	|
+	WRITE_CONTACTS	|
+	WRITE_EXTERNAL_STORAGE	|
+	WRITE_GSERVICES	|
+	WRITE_HISTORY_BOOKMARKS	|
+	WRITE_SECURE_SETTINGS	|
+	WRITE_SETTINGS	|
+	WRITE_SMS	|
+	WRITE_SYNC_SETTINGS	
+;
+
+//data type rule (returns EDataType instead EClass)
+//this one dont need a value converter because it handles string
+QualifiedName:
+	ID ('.' ID)*
+;
+
+
+// => (invoke second_activity)
+
+Action:
+	'=>' '('
+	(GoToURLAction /* | LoadURLAction */ | ShowLayoutAction | InvokeActivityAction /*| LoadResourceAction */)
+	')'
+;
+
+GoToURLAction:
+	'goTo' url=STRING;
+
+ShowLayoutAction:
+	'show' layout=[Layout];
+
+InvokeActivityAction:
+	'invoke' activity=[Activity|QualifiedName];
+
+//Loads a fixed resource
+//TODO: Load a dinamic resource from a URL, loadJson for example
+//MAYBE...
+//Pode ter recurs‹o...
+//LoadResourceAction:
+//	'load' resource=ID ('->' toVar=ID)? (afterLoad=Action)?
+//;
+
+
+
+
+Activity:
+	(GenericActivity | ListActivity | TabActivity)
+;
+
+GenericActivity:
+	'activity' name=QualifiedName '{'
+		(actions+=Action)*
+	'}'
+;
+
+ListActivity:
+	'listActivity' name=QualifiedName '{'
+		'data:' dataSource=ID
+		('layout:' layout=[Layout])?
+		'item:' itemLayout=[Layout]
+		(actions+=Action)*
+	'}'
+
+;
+
+TabActivity:
+	'tabActivity' name=QualifiedName '{'
+		(tabs+=Tab)+
+	'}'
+;
+
+Tab:
+	'tab:' activity=[Activity|QualifiedName] ';'
+;
+
+
 
 Layout:
 	'layout' {Layout} name=ID '{'
-		widgets+=Widget*
+		widgets+=Widget+
 	'}'
 ;
 
 
 Widget:
-	(GenericWidget | Button | ImageButton | Link | Spinner | EditText | TextView) //';'
+	( /*GenericWidget | */ Button | ImageButton | Link | Spinner | EditText | TextView) //';'
 ;
 
+/*
 GenericWidget:
 	'widget' {GenericWidget} ('<'id=ID'>')?
 	name=STRING
@@ -90,47 +264,49 @@ GenericWidget:
 	('->' actions+=Action )*
 ;
 
+*/
+
 TextView:
 	'textView' {TextView} ('<'id=ID'>')?
-	text=StringPropertyValue
+	text=StringVA
 	(
-	 ('top:' top=DimensionPropertyValue )? &
-	 ('left:' left=DimensionPropertyValue )? &
-	 ('width:' width=DimensionPropertyValue )? &
-	 ('height:' height=DimensionPropertyValue )? &
-	 ('background:' background=DrawableResourcePropertyValue )? &
-	 ('clickable?' clickable=BooleanPropertyValue )? &
-	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
-	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 ('top:' top=DimensionVA )? &
+	 ('left:' left=DimensionVA )? &
+	 ('width:' width=DimensionVA )? &
+	 ('height:' height=DimensionVA )? &
+	 ('background:' background=DrawableVA )? &
+	 ('clickable:' clickable=BooleanVA )? &
+	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
+	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
 	 // Specific properties
-	 ('hint:' hint=StringPropertyValue)? &
-	 ('textColor:' textColor=ColorPropertyValue)?
+	 ('hint:' hint=StringVA)? &
+	 ('textColor:' textColor=ColorVA)?
 	)
-	('->' actions+=Action )*
+	actions+=Action*
 ;
 
 Button:
 	'button' {Button} ('<'id=ID'>')?
-	text=StringPropertyValue
+	text=StringVA
 	(
-	 ('top:' top=DimensionPropertyValue )? &
-	 ('left:' left=DimensionPropertyValue )? &
-	 ('width:' width=DimensionPropertyValue )? &
-	 ('height:' height=DimensionPropertyValue )? &
-	 ('background:' background=DrawableResourcePropertyValue )? &
-	 ('clickable?' clickable=BooleanPropertyValue )? &
-	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
-	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 ('top:' top=DimensionVA )? &
+	 ('left:' left=DimensionVA )? &
+	 ('width:' width=DimensionVA )? &
+	 ('height:' height=DimensionVA )? &
+	 ('background:' background=DrawableVA )? &
+	 ('clickable:' clickable=BooleanVA )? &
+	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
+	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
 	 // Specific properties
-	 ('hint:' hint=StringPropertyValue)? &
-	 ('textColor:' textColor=ColorPropertyValue)?
+	 ('hint:' hint=StringVA)? &
+	 ('textColor:' textColor=ColorVA)?
 	)
-	('->' actions+=Action )*
+	actions+=Action*
 ;
 
 ImageButton:
 	'imageButton' {ImageButton} ('<'id=ID'>')?
-	src=DrawableImageResourcePropertyValue
+/*	src=DrawableImageResourcePropertyValue
 	(
 	 ('top:' top=DimensionPropertyValue )? &
 	 ('left:' left=DimensionPropertyValue )? &
@@ -145,12 +321,12 @@ ImageButton:
 	 ('textColor:' textColor=ColorPropertyValue)?
 	)
 	('->' actions+=Action )*
-;
+*/;
 
 //Button to an Activity
 Link:
 	'link' {Link} ('<'id=ID'>')?
-	text=StringPropertyValue
+/*	text=StringPropertyValue
 	(
 	 ('top:' top=DimensionPropertyValue )? &
 	 ('left:' left=DimensionPropertyValue )? &
@@ -164,16 +340,16 @@ Link:
 	 ('hint:' hint=StringPropertyValue)? &
 	 ('textColor:' textColor=ColorPropertyValue)?
 	)
-	'to' target=[Activity]
+	'to' target=[Activity|QualifiedName]
 	('->' actions+=Action )*
-;
+*/;
 
 //--Parei aqui
 
 
 Spinner:
 	'spinner' {Spinner} ('<'id=ID'>')?
-	(
+/*	(
 	 ('top:' top=DimensionPropertyValue )? &
 	 ('left:' left=DimensionPropertyValue )? &
 	 ('width:' width=DimensionPropertyValue )? &
@@ -185,12 +361,11 @@ Spinner:
 	 //Spinner properties
 	 ('prompt:' prompt=StringPropertyValue)?
 	)
-;
+*/;
 
 EditText:
 	'editText' {EditText} ('<'id=ID'>')?
-	text=StringPropertyValue
-
+/*	text=StringPropertyValue
 	(
 	 ('top:' top=DimensionPropertyValue )? &
 	 ('left:' left=DimensionPropertyValue )? &
@@ -208,105 +383,25 @@ EditText:
 	 ('password?' password=BooleanPropertyValue)? &
 	 ('phoneNumber?' phoneNumber=BooleanPropertyValue)?
 	)
-;
-
-
-
-Activity:
-	(GenericActivity | ListActivity | TabActivity)
-;
-
-GenericActivity:
-	'activity' name=QualifiedName '{'
-		(actions+=Action)*
-	'}'
-;
-
-ListActivity:
-	'listActivity' name=QualifiedName '{'
-		'data' dataSource=ID
-		('layout' layout=[Layout])?
-		'item' itemLayout=[Layout]
-		(actions+=Action)*
-	'}'
-
-;
-
-TabActivity:
-	'tabActivity' name=QualifiedName '{'
-		(tabs+=Tab)+
-	'}'
-;
-
-Tab:
-	'tab' activity=[Activity]
-;
-
-
-Action:
-	(GenericAction | GoToURLAction /* | LoadURLAction */ | ShowLayoutAction | InvokeActivityAction | LoadResourceAction)
-;
-
-/*
-Action
-
-ActionCondicional
- -> Action(semCondicao) + condicao
-	('if' condition+=Action )?
 */
-
-
-/*
-//ExtraComplexity
-ConditionalAction
-contition=Conditional
-
-Conditional
-firstCondition+=Conditional
-(operador=Operator
-secondCondition+=Conditional)?
-*/
-
-GenericAction:
-	'action'
-	name=QualifiedName
 ;
 
-GoToURLAction:
-	'goTo'
-	url=URL
-;
-
-ShowLayoutAction:
-	'show'
-	layout=[Layout]
-;
-
-InvokeActivityAction:
-	'invoke'
-	activity=[Activity|QualifiedName]
-;
-
-
-
-//Loads a fixed resource
-//TODO: Load a dinamic resource from a URL, loadJson for example
-//MAYBE...
-LoadResourceAction:
-	'load' resource=ID
-	('->' toVar=ID)?
-	('=>' afterLoad=Action)?
-;
-
-
-/*
- * RESOURCES
- */
 
 
 Resource:
-	(MenuResource | ValueResource | DrawableResource /*| AnimationResource */ )
+	(ValueResource | DrawableResource | MenuResource /*| AnimationResource */ )
 ;
+
+ValueResource:
+  (
+	StringResource | IntegerResource | BooleanResource | ColorResource |
+	DimensionResource  | ArrayResource
+  )
+;
+
+
+
+
 
 //PENDING
 //Implement attributes: http://developer.android.com/guide/topics/resources/menu-resource.html
@@ -334,168 +429,25 @@ SubMenu:
 	'}'
 ;
 
-ValueResource:
-  (
-	StringValueResource | IntegerValueResource |
-	BooleanValueResource | ColorValueResource |
-	DimensionValueResource  | ArrayValueResource
-  )
-;
-
-StringValueResource:
-	'string' name=ID '=' value=STRING
-;
-
-IntegerValueResource:
-	'integer' name=ID '=' value=INT
-;
-
-BooleanValueResource:
-	'bool' name=ID '=' value=BOOL
-;
-
-ColorValueResource:
-	'color' name=ID '=' value=HEX_COLOR
-;
-
-DimensionValueResource:
-	'dimension' name=ID '=' value=FLOAT unit=DimensionKind
-;
-
-ArrayValueResource:
-	'array'
-	(IntegerArrayValueResource | StringArrayValueResource | TypedArrayValueResource)
-;
-
-IntegerArrayValueResource:
-	'(integer)' {IntegerArrayValueResource}
-	name=ID '=' '['
-		(items+=INT (',' items+=INT)* )?
-	']'
-;
-
-StringArrayValueResource:
-	'(string)' {StringArrayValueResource}
-	name=ID '=' '['
-		(items+=STRING (',' items+=STRING)* )?
-	']'
-;
-
-//I should create something like ResourceRefecence to represent this concept.
-//ResourceRefecenre:
-//internalResource=[ValueResource] | '(' externalResource=ID ')' ;
-TypedArrayValueResource:
-	{TypedArrayValueResource}
-	name=ID '=' '['
-//		(items+=PropertyValue (',' items+=PropertyValue)* )?
-	']'
-;
-
-//http://developer.android.com/guide/topics/resources/drawable-resource.html
-DrawableResource:
-	(BitmapDrawableResource | TransitionDrawableResource)
-;
-
-//http://developer.android.com/guide/topics/resources/drawable-resource.html#Bitmap
-BitmapDrawableResource:
-	'bitmap' {BitmapDrawableResource} name=ID '=' filename=ID
-;
-
-//http://developer.android.com/guide/topics/resources/drawable-resource.html#Transition
-TransitionDrawableResource:
-	'transition' {TransitionDrawableResource} from=[BitmapDrawableResource] '<->' to=[BitmapDrawableResource]
-;
 
 
-/*
- * Value of Properties which can be set using resources
- */
 
-PropertyValue:
-	(
-	  StringPropertyValue | IntegerPropertyValue |
-	  BooleanPropertyValue | ColorPropertyValue |
-	  DimensionPropertyValue | /*
-	  IntegerArrayPropertyValue | StringArrayPropertyValue |
-	  Typed ArrayPropertyValue */
-	  DrawableResourcePropertyValue
-	)
-;
-
-StringPropertyValue:
-	(value=STRING | resource=[StringValueResource] | externalResource=ExternalResourceReference )
-;
-
-IntegerPropertyValue:
-	(value=INT | resource=[IntegerValueResource] | externalResource=ExternalResourceReference)
-;
-
-BooleanPropertyValue:
-	(value=BOOL | resource=[BooleanValueResource] | externalResource=ExternalResourceReference)
-;
-
-ColorPropertyValue:
-	(value=HEX_COLOR | resource=[ColorValueResource] | externalResource=ExternalResourceReference)
-;
-
-DimensionPropertyValue:
-	(value=FLOAT | resource=[DimensionValueResource] | externalResource=ExternalResourceReference)
-;
-
-DrawableResourcePropertyValue:
-	(value=HEX_COLOR | resource=[DrawableResource] | externalResource=ExternalResourceReference)
-;
-
-DrawableImageResourcePropertyValue:
-	(resource=[DrawableResource] | externalResource=ExternalResourceReference)
-;
-
-//'(' customInterpolator=ID ')' t‡ dando muita left-recursion (acho que d‡ ambiguidade nessa droga)
-InterpolatorPropertyValue:
-	 shareInterpolator?='shared'
-	 //Se der problema, tira o externalResource=ExternalResourceReference
-	 'interpolator' (externalResource=ExternalResourceReference | name=InterpolatorsKind )
-	//(predefinedInterpolator=InterpolatorsKind | '(' customInterpolator=ID ')')
-;
-
-/*
- * I think I should oversimplify the animation IF i'm going to include it. Reason: A LOT OF Left-recursion problems
- */
-/*
 
 AnimationResource:
 	( TweenAnimationResource | FrameAnimationResource)
 ;
 
 
-AnimationTerminalElements:
-	(AlphaAnimation | ScaleAnimation | TranslateAnimation | RotateAnimation)
+FrameAnimationElement:
+	(AlphaAnimation | ScaleAnimation | TranslateAnimation | RotateAnimation | TerminalAnimationSet)
 ;
 
-
-//AnimationElement:
-//	(AnimationSet | AnimationTerminalElements)
-//;
-
-
-//Nao tire senao d‡ merda
-AbstractAnimationSet:
-	TerminalAnimationSet | AnimationSet
-;
 
 TerminalAnimationSet:
-	'set' '{' {TerminalAnimationSet}
-		//Isso chegou a dar problema, agora n‹o mais
-		interpolator=InterpolatorPropertyValue
-		(animationElements+=AnimationTerminalElements)+
-	'}'
-;
-
-AnimationSet:
-	'set' '{' {AnimationSet}
-	 	interpolator=InterpolatorPropertyValue
-		//(animationElements+=AnimationTerminalElements)+
-		(animationElements+=AnimationTerminalElements | animationElements+=TerminalAnimationSet )+
+	'set' '{'
+		(shareInterpolator?='shared'
+	 	interpolator=InterpolatorVA)?
+		(elements+=FrameAnimationElement)+
 	'}'
 ;
 
@@ -534,7 +486,7 @@ RotateAnimation:
 
 TweenAnimationResource:
 	'tweenAnimation' name=ID '{'
-		(animationElements+=AnimationTerminalElements | animationElements+=TerminalAnimationSet)+
+		(elements+=FrameAnimationElement)+
 	'}'
 ;
 
@@ -545,13 +497,205 @@ FrameAnimationResource:
 ;
 
 AnimationFrame:
-	'frame:' drawable=DrawableResourcePropertyValue ('->' duration=INT)?
+	'frame:' drawable=DrawableVA ('->' duration=INT)?
+;
+
+
+
+
+
+
+StringResource:
+	'string' name=ID '=' value=STRING
+;
+
+IntegerResource:
+	'integer' name=ID '=' value=INT
+;
+
+BooleanResource:
+	'bool' name=ID '=' value=BOOL
+;
+
+ColorResource:
+	'color' name=ID '=' value=HEX_COLOR
+;
+
+DimensionResource:
+	'dimension' name=ID '=' value=FLOAT unit=DimensionKind
+;
+
+ArrayResource:
+	'array'
+	(IntegerArrayResource | StringArrayResource | TypedArrayResource)
+;
+
+IntegerArrayResource:
+	'(integer)'
+	name=ID '=' '['
+		(items+=INT (',' items+=INT)* )?
+	']'
+;
+
+StringArrayResource:
+	'(string)'
+	name=ID '=' '['
+		(items+=STRING (',' items+=STRING)* )?
+	']'
+;
+
+//That is going to generate some crazy rules =D
+TypedArrayResource:
+	name=ID '=' '['
+		(values+=TypedVA (',' values+=TypedVA)* )?
+	']'
+;
+
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html
+DrawableResource:
+	(BitmapDrawableResource | TransitionDrawableResource)
+;
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html#Bitmap
+BitmapDrawableResource:
+	'bitmap' {BitmapDrawableResource} name=ID '=' filename=ID
+;
+
+//http://developer.android.com/guide/topics/resources/drawable-resource.html#Transition
+TransitionDrawableResource:
+	'transition' {TransitionDrawableResource} from=[BitmapDrawableResource] '<->' to=[BitmapDrawableResource]
+;
+
+
+
+ValueDefinition:
+ 	(StringVD | IntegerVD | BooleanVD | ColorVD | DimensionVD)
+	/* IntegerArrayVD | StringArrayVD | TypedArrayVD */
+;
+
+StringVD:
+	value=STRING;
+
+IntegerVD:
+	value=INT;
+
+BooleanVD:
+	value=BOOL;
+
+ColorVD:
+	value=HEX_COLOR;
+
+DimensionVD:
+	value=FLOAT;
+
+/*
+No need
+InterpolatorVD:
+	 shareInterpolator?='shared'
+	 'interpolator' interpolator=InterpolatorRA
 ;
 */
 
+//TODO: test ExternalResourceReference
+TypedVA:
+	( StringVA | IntegerVA | BooleanVA |
+	  ColorVA | DimensionVA | DrawableVA | AnimationVA | InterpolatorVA
+	/* IntegerArrayVA | StringArrayVA | TypedArrayVA */
+	)
+;
+
+StringVA:
+	(StringRA | StringVD)
+;
+
+IntegerVA:
+	(IntegerRA | IntegerVD)
+;
 
 
+BooleanVA:
+	(BooleanRA | BooleanVD)
+;
 
+ColorVA:
+	(ColorRA | ColorVD)
+;
+
+DimensionVA:
+	(DimensionRA | DimensionVD)
+;
+
+DrawableVA:
+	(DrawableRA /*| DrawableVD */)
+;
+
+AnimationVA:
+	(AnimationRA /*| AnimationVD */)
+;
+
+InterpolatorVA:
+	(InterpolatorRA)
+;
+
+
+//I putted this @<type> just to allow the parser to resolve the ambiguity.
+//So, I followed the Android Conventions to typed resource references
+ResourceAccess:
+	(StringRA | IntegerRA | BooleanRA | ColorRA | DimensionRA | DrawableRA | AnimationRA) 
+;
+
+StringRA:
+	'@string'
+	(resource=[StringResource] | externalResource=STRING )
+;
+
+IntegerRA:
+	'@integer'
+	( resource=[IntegerResource]  | externalResource=STRING )
+;
+
+BooleanRA:
+	'@bool'
+	( resource=[BooleanResource]  | externalResource=STRING )
+;
+
+ColorRA:
+	'@color'
+	( resource=[ColorResource]  | externalResource=STRING )
+;
+
+DimensionRA:
+	'@dimen'
+	( resource=[DimensionResource]  | externalResource=STRING )
+;
+
+DrawableRA:
+	'@drawable'
+	( resource=[DrawableResource]  | externalResource=STRING )
+	//(DrawableImageResourceRA)
+;
+
+AnimationRA:
+	'@anim'
+	( resource=[AnimationResource]  | externalResource=STRING )
+	//(DrawableImageResourceRA)
+;
+
+InterpolatorRA:
+	'interpolator'
+	( resource=InterpolatorsKind | externalResource=STRING )
+;
+
+/*
+DrawableResourceRA:
+//	(value=HEX_COLOR | resource=[DrawableResource] | externalResource=ExternalResourceReference)
+;
+*/
+
+//DrawableImageResourceRA:
+//	resource=[DrawableImageResource]
+//;
 
 
 
@@ -576,13 +720,8 @@ enum InterpolatorsKind :
   overshoot
 ;
 
-//data type rule (returns EDataType instead EClass)
-//this one dont need a value converter because it handles string
-QualifiedName:
-	ID ('.' ID)*;
-
-ExternalResourceReference:
-	'[' id=ID ']'
+RelativePercentual:
+	(INT | FLOAT) ('%'|'%p')
 ;
 
 //Value Converter
@@ -591,14 +730,10 @@ BOOL returns ecore::EBooleanObject:
 	'true' | 'false'
 ;
 
-/*
-RelativePercentual:
-	INT ('%'|'%p')
-;
-*/
 
-FLOAT returns ecore::EFloatObject:
-	INT ('.' INT)?
+//TODO ValueCOnverter
+terminal FLOAT returns ecore::EFloatObject:
+	INT '.' INT
 ;
 
 terminal HEX_COLOR:

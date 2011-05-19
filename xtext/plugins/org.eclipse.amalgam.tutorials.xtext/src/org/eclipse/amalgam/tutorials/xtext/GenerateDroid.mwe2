@@ -92,6 +92,13 @@ Workflow {
 			// generates a more lightweight Antlr parser and lexer tailored for content assist  
 			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {}
 
+			// Fixes the problem: "xtext the code of method mTokens() is exceeding the 65535 bytes limit" 			
+			fragment = parser.antlr.XtextAntlrGeneratorFragment { 			  
+				options = { 			  		
+					classSplitting= true
+				}
+			}
+
 			// project wizard (optional) 
 			// fragment = projectWizard.SimpleProjectWizardFragment {
 			// 		generatorProjectName = "${projectName}.generator" 
