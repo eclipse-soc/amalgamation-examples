@@ -44,11 +44,137 @@ ManifestSDK:
 ManifestUsesPermission:
 	'usesPermission' '{'
 		//permissions+=ID (',' permissions+=ID)*
-		//Isso d‡ left recursion... Usar um enum em uma lista.
 		permissions+=BuiltInPermissionType (',' permissions+=BuiltInPermissionType)*
+		//permissions+=AndroidBuiltInPermission (',' permissions+=AndroidBuiltInPermission)*
 	'}'
 ;
 
+/*
+AndroidBuiltInPermission:
+  'android.permission.' 
+  (
+	'ACCESS_CHECKIN_PROPERTIES' |
+	'ACCESS_COARSE_LOCATION' |
+	'ACCESS_FINE_LOCATION' |
+	'ACCESS_LOCATION_EXTRA_COMMANDS' |
+	'ACCESS_MOCK_LOCATION' |
+	'ACCESS_NETWORK_STATE' |
+	'ACCESS_SURFACE_FLINGER' |
+	'ACCESS_WIFI_STATE' |
+	'ACCOUNT_MANAGER' |
+	'AUTHENTICATE_ACCOUNTS' |
+	'BATTERY_STATS' |
+	'BIND_APPWIDGET' |
+	'BIND_DEVICE_ADMIN' |
+	'BIND_INPUT_METHOD' |
+	'BIND_REMOTEVIEWS' |
+	'BIND_WALLPAPER' |
+	'BLUETOOTH' |
+	'BLUETOOTH_ADMIN' |
+	'BRICK' |
+	'BROADCAST_PACKAGE_REMOVED' |
+	'BROADCAST_SMS' |
+	'BROADCAST_STICKY' |
+	'BROADCAST_WAP_PUSH' |
+	'CALL_PHONE' |
+	'CALL_PRIVILEGED' |
+	'CAMERA' |
+	'CHANGE_COMPONENT_ENABLED_STATE' |
+	'CHANGE_CONFIGURATION' |
+	'CHANGE_NETWORK_STATE' |
+	'CHANGE_WIFI_MULTICAST_STATE' |
+	'CHANGE_WIFI_STATE' |
+	'CLEAR_APP_CACHE' |
+	'CLEAR_APP_USER_DATA' |
+	'CONTROL_LOCATION_UPDATES' |
+	'DELETE_CACHE_FILES' |
+	'DELETE_PACKAGES' |
+	'DEVICE_POWER' |
+	'DIAGNOSTIC' |
+	'DISABLE_KEYGUARD' |
+	'DUMP' |
+	'EXPAND_STATUS_BAR' |
+	'FACTORY_TEST' |
+	'FLASHLIGHT' |
+	'FORCE_BACK' |
+	'GET_ACCOUNTS' |
+	'GET_PACKAGE_SIZE' |
+	'GET_TASKS' |
+	'GLOBAL_SEARCH' |
+	'HARDWARE_TEST' |
+	'INJECT_EVENTS' |
+	'INSTALL_LOCATION_PROVIDER' |
+	'INSTALL_PACKAGES' |
+	'INTERNAL_SYSTEM_WINDOW' |
+	'INTERNET' |
+	'KILL_BACKGROUND_PROCESSES' |
+	'MANAGE_ACCOUNTS' |
+	'MANAGE_APP_TOKENS' |
+	'MASTER_CLEAR' |
+	'MODIFY_AUDIO_SETTINGS' |
+	'MODIFY_PHONE_STATE' |
+	'MOUNT_FORMAT_FILESYSTEMS' |
+	'MOUNT_UNMOUNT_FILESYSTEMS' |
+	'NFC' |
+	'PERSISTENT_ACTIVITY' |
+	'PROCESS_OUTGOING_CALLS' |
+	'READ_CALENDAR' |
+	'READ_CONTACTS' |
+	'READ_FRAME_BUFFER' |
+	'READ_HISTORY_BOOKMARKS' |
+	'READ_INPUT_STATE' |
+	'READ_LOGS' |
+	'READ_PHONE_STATE' |
+	'READ_SMS' |
+	'READ_SYNC_SETTINGS' |
+	'READ_SYNC_STATS' |
+	'REBOOT' |
+	'RECEIVE_BOOT_COMPLETED' |
+	'RECEIVE_MMS' |
+	'RECEIVE_SMS' |
+	'RECEIVE_WAP_PUSH' |
+	'RECORD_AUDIO' |
+	'REORDER_TASKS' |
+	'RESTART_PACKAGES' |
+	'SEND_SMS' |
+	'SET_ACTIVITY_WATCHER' |
+	'SET_ALARM' |
+	'SET_ALWAYS_FINISH' |
+	'SET_ANIMATION_SCALE' |
+	'SET_DEBUG_APP' |
+	'SET_ORIENTATION' |
+	'SET_PREFERRED_APPLICATIONS' |
+	'SET_PROCESS_LIMIT' |
+	'SET_TIME' |
+	'SET_TIME_ZONE' |
+	'SET_WALLPAPER' |
+	'SET_WALLPAPER_HINTS' |
+	'SIGNAL_PERSISTENT_PROCESSES' |
+	'STATUS_BAR' |
+	'SUBSCRIBED_FEEDS_READ' |
+	'SUBSCRIBED_FEEDS_WRITE' |
+	'SYSTEM_ALERT_WINDOW' |
+	'UPDATE_DEVICE_STATS' |
+	'USE_CREDENTIALS' |
+	'USE_SIP' |
+	'VIBRATE' |
+	'WAKE_LOCK' |
+	'WRITE_APN_SETTINGS' |
+	'WRITE_CALENDAR' |
+	'WRITE_CONTACTS' |
+	'WRITE_EXTERNAL_STORAGE' |
+	'WRITE_GSERVICES' |
+	'WRITE_HISTORY_BOOKMARKS' |
+	'WRITE_SECURE_SETTINGS' |
+	'WRITE_SETTINGS' |
+	'WRITE_SMS' |
+	'WRITE_SYNC_SETTINGS'
+  )
+;
+*/
+
+//To using enum rules to restrict string values is making to happen problems like this:
+//Reason: It increases the number of tokens (??)
 enum BuiltInPermissionType:
 	ACCESS_CHECKIN_PROPERTIES |
 	ACCESS_COARSE_LOCATION |
@@ -243,32 +369,19 @@ Layout:
 
 
 Widget:
-	( /*GenericWidget | */ Button | ImageButton | Link | Spinner | EditText | TextView) //';'
+	( TextView | Button | ImageView | ImageButton | Link | Spinner | EditText )
 ;
 
-/*
-GenericWidget:
-	'widget' {GenericWidget} ('<'id=ID'>')?
-	name=STRING
-	(
-	 ('top:' top=DimensionPropertyValue )? &
-	 ('left:' left=DimensionPropertyValue )? &
-	 ('width:' width=DimensionPropertyValue )? &
-	 ('height:' height=DimensionPropertyValue )? &
-	 ('background:' background=DrawableResourcePropertyValue )? &
-	 ('clickable?' clickable=BooleanPropertyValue )? &
-	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
-	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )?
-	 // Specific properties
-	)
-	('->' actions+=Action )*
+ActionSet:
+	'actions:' '{' actions+=Action+ '}'
 ;
 
-*/
+//The more widgets I add using unordered groups, the more I get a message like this:
+//warning(205): ../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g:1:8: ANTLR could not analyze this decision in rule Tokens; often this is because of recursive rule references visible from the left edge of alternatives.  ANTLR will re-analyze the decision with a fixed lookahead of k=1.  Consider using "options {k=1;}" for that decision and possibly adding a syntactic predicate.
 
 TextView:
-	'textView' {TextView} ('<'id=ID'>')?
-	text=StringVA
+	'textView' {TextView} ('<'id=ID'>') text=StringVA
+	'{'
 	(
 	 ('top:' top=DimensionVA )? &
 	 ('left:' left=DimensionVA )? &
@@ -282,12 +395,14 @@ TextView:
 	 ('hint:' hint=StringVA)? &
 	 ('textColor:' textColor=ColorVA)?
 	)
-	actions+=Action*
+	(actions=ActionSet)?
+	'}'
 ;
 
 Button:
-	'button' {Button} ('<'id=ID'>')?
+	'button' {Button} ('<'id=ID'>')
 	text=StringVA
+	'{'
 	(
 	 ('top:' top=DimensionVA )? &
 	 ('left:' left=DimensionVA )? &
@@ -301,95 +416,129 @@ Button:
 	 ('hint:' hint=StringVA)? &
 	 ('textColor:' textColor=ColorVA)?
 	)
-	actions+=Action*
+//	actions+=Action*
+	(actions=ActionSet)?
+	'}'
 ;
 
 ImageButton:
-	'imageButton' {ImageButton} ('<'id=ID'>')?
-/*	src=DrawableImageResourcePropertyValue
+	'imageButton' {ImageButton} ('<'id=ID'>')
+	//(src=DrawableVA | src=ColorVA)
+	src=DrawableVA
+	'{'
 	(
-	 ('top:' top=DimensionPropertyValue )? &
-	 ('left:' left=DimensionPropertyValue )? &
-	 ('width:' width=DimensionPropertyValue )? &
-	 ('height:' height=DimensionPropertyValue )? &
-	 ('background:' background=DrawableResourcePropertyValue )? &
-	 ('clickable?' clickable=BooleanPropertyValue )? &
-	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
-	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 ('top:' top=DimensionVA )? &
+	 ('left:' left=DimensionVA )? &
+	 ('width:' width=DimensionVA )? &
+	 ('height:' height=DimensionVA )? &
+	 ('background:' background=DrawableVA )? &
+	 ('clickable:' clickable=BooleanVA )? &
+	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
+	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
 	 // Specific properties
-	 ('hint:' hint=StringPropertyValue)? &
-	 ('textColor:' textColor=ColorPropertyValue)?
+	 ('hint:' hint=StringVA)? &
+	 ('textColor:' textColor=ColorVA)?
 	)
-	('->' actions+=Action )*
-*/;
+	//actions+=Action*
+	(actions=ActionSet)?
+	'}'
+;
+
+ImageView:
+	'imageView' {ImageView} ('<'id=ID'>')
+	//(src=DrawableVA | src=ColorVA)
+	src=DrawableVA
+	'{'
+	(
+	 ('top:' top=DimensionVA )? &
+	 ('left:' left=DimensionVA )? &
+	 ('width:' width=DimensionVA )? &
+	 ('height:' height=DimensionVA )? &
+	 ('background:' background=DrawableVA )? &
+	 ('clickable:' clickable=BooleanVA )? &
+	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
+	 ('isScrollContainer:' isScrollContainer=BooleanVA )?
+	 // Specific properties
+	)
+	'}'
+;
+
 
 //Button to an Activity
 Link:
-	'link' {Link} ('<'id=ID'>')?
-/*	text=StringPropertyValue
-	(
-	 ('top:' top=DimensionPropertyValue )? &
-	 ('left:' left=DimensionPropertyValue )? &
-	 ('width:' width=DimensionPropertyValue )? &
-	 ('height:' height=DimensionPropertyValue )? &
-	 ('background:' background=DrawableResourcePropertyValue )? &
-	 ('clickable?' clickable=BooleanPropertyValue )? &
-	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
-	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
-	 // Specific properties
-	 ('hint:' hint=StringPropertyValue)? &
-	 ('textColor:' textColor=ColorPropertyValue)?
-	)
+	'link' {Link} ('<'id=ID'>')
+	text=StringVA
 	'to' target=[Activity|QualifiedName]
-	('->' actions+=Action )*
-*/;
-
-//--Parei aqui
-
-
-Spinner:
-	'spinner' {Spinner} ('<'id=ID'>')?
-/*	(
-	 ('top:' top=DimensionPropertyValue )? &
-	 ('left:' left=DimensionPropertyValue )? &
-	 ('width:' width=DimensionPropertyValue )? &
-	 ('height:' height=DimensionPropertyValue )? &
-	 ('background:' background=DrawableResourcePropertyValue )? &
-	 ('clickable?' clickable=BooleanPropertyValue )? &
-	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
-	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
-	 //Spinner properties
-	 ('prompt:' prompt=StringPropertyValue)?
+	'{'
+	(
+	 ('top:' top=DimensionVA )? &
+	 ('left:' left=DimensionVA )? &
+	 ('width:' width=DimensionVA )? &
+	 ('height:' height=DimensionVA )? &
+	 ('background:' background=DrawableVA )? &
+	 ('clickable:' clickable=BooleanVA )? &
+	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
+	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
+	 // Specific properties
+	 ('hint:' hint=BooleanVA)? &
+	 ('textColor:' textColor=BooleanVA)?
 	)
-*/;
+	(actions=ActionSet)?
+	'}'
+;
+
+//Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
+Spinner:
+	'spinner' {Spinner} ('<'id=ID'>')
+	(prompt=StringVA)? //&
+	'{'
+	(
+	 ('top:' top=DimensionVA )? &
+	 ('left:' left=DimensionVA )? &
+	 ('width:' width=DimensionVA )? &
+	 ('height:' height=DimensionVA )? &
+	 ('background:' background=DrawableVA )? &
+	 ('clickable:' clickable=BooleanVA )? &
+	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
+	 ('isScrollContainer:' isScrollContainer=BooleanVA )? //&
+	 // Specific properties
+	//Does not work
+//	 ('gravity:' gravity+=SpinnerGravityKind+ )?
+	)
+	(actions=ActionSet)?
+	'}'
+;
+
 
 EditText:
-	'editText' {EditText} ('<'id=ID'>')?
-/*	text=StringPropertyValue
+	'editText' {EditText} ('<'id=ID'>')
+	text=StringVA
+	'{'
 	(
-	 ('top:' top=DimensionPropertyValue )? &
-	 ('left:' left=DimensionPropertyValue )? &
-	 ('width:' width=DimensionPropertyValue )? &
-	 ('height:' height=DimensionPropertyValue )? &
-	 ('background:' background=DrawableResourcePropertyValue )? &
-	 ('clickable?' clickable=BooleanPropertyValue )? &
-	 ('fadeScrollBars?' fadeScrollBars=BooleanPropertyValue )? &
-	 ('isScrollContainer?' isScrollContainer=BooleanPropertyValue )? &
+	 ('top:' top=DimensionVA )? &
+	 ('left:' left=DimensionVA )? &
+	 ('width:' width=DimensionVA )? &
+	 ('height:' height=DimensionVA )? &
+	 ('background:' background=DrawableVA )? &
+	 ('clickable:' clickable=BooleanVA )? &
+	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
+	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
 	 //EditText properties
-	 ('hint:' hint=StringPropertyValue)? &
-	 ('textColor:' textColor=ColorPropertyValue)? &
-	 ('editable?' editable=BooleanPropertyValue)? &
-	 ('numeric?' numeric=BooleanPropertyValue)? &
-	 ('password?' password=BooleanPropertyValue)? &
-	 ('phoneNumber?' phoneNumber=BooleanPropertyValue)?
+	 ('hint:' hint=StringVA)? &
+	 ('textColor:' textColor=ColorVA)? &
+	 ('editable:' editable=BooleanVA)? &
+	 ('numeric:' numeric=BooleanVA)? &
+	 ('password:' password=BooleanVA)? &
+	 ('phoneNumber:' phoneNumber=BooleanVA)?
 	)
-*/
+	(actions=ActionSet)?
+	'}'
 ;
 
 
 
 Resource:
-	(ValueResource | DrawableResource | MenuResource /*| AnimationResource */ )
+	(ValueResource | DrawableResource | MenuResource | AnimationResource )
 ;
 
 ValueResource:
@@ -439,9 +588,12 @@ AnimationResource:
 
 
 FrameAnimationElement:
-	(AlphaAnimation | ScaleAnimation | TranslateAnimation | RotateAnimation | TerminalAnimationSet)
+	(TerminalAnimationElements | TerminalAnimationSet)
 ;
 
+TerminalAnimationElements:
+	(AlphaAnimation | ScaleAnimation | TranslateAnimation | RotateAnimation)
+;
 
 TerminalAnimationSet:
 	'set' '{'
@@ -626,9 +778,12 @@ DimensionVA:
 	(DimensionRA | DimensionVD)
 ;
 
+//TODO: StyleRA
+//http://developer.android.com/guide/topics/ui/themes.html
 DrawableVA:
-	(DrawableRA /*| DrawableVD */)
+	(DrawableRA /*| DrawableVD */ )
 ;
+
 
 AnimationVA:
 	(AnimationRA /*| AnimationVD */)
@@ -725,9 +880,9 @@ RelativePercentual:
 ;
 
 //Value Converter
-BOOL returns ecore::EBooleanObject:
-//	'YES' | 'NO'
-	'true' | 'false'
+terminal BOOL returns ecore::EBooleanObject:
+	'YES' | 'NO'
+//	'TRUE' | 'FALSE'
 ;
 
 
