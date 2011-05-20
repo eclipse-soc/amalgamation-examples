@@ -51,9 +51,10 @@ Workflow {
 
 			// The antlr parser generator fragment.
 			fragment = parser.antlr.XtextAntlrGeneratorFragment {
-			//  options = {
-			//		backtrack = true
-			//	}
+			  //I enabled, but I heard that it can hide some ambiguities of the language
+			  options = {
+					backtrack = true
+				}
 			}
 
 			// java-based API for validation 
@@ -90,13 +91,27 @@ Workflow {
 			fragment = contentAssist.JavaBasedContentAssistFragment {}
 
 			// generates a more lightweight Antlr parser and lexer tailored for content assist  
-			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {}
-
-			// Fixes the problem: "xtext the code of method mTokens() is exceeding the 65535 bytes limit" 			
-			fragment = parser.antlr.XtextAntlrGeneratorFragment { 			  
-				options = { 			  		
-					classSplitting= true
+			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+				//FROM: http://www.eclipse.org/forums/index.php?t=msg&th=172425&start=0& 
+				//I enabled, but I heard that it can hide some ambiguities of the language
+				options = {
+					backtrack = true
 				}
+				
+				//http://www.antlr.org/pipermail/antlr-interest/2007-March/020014.html
+				//http://20000frames.blogspot.com/2010/09/dealing-with-could-not-even-do-k1-for.html
+				antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+			}
+
+			fragment = parser.antlr.XtextAntlrGeneratorFragment { 			  
+				// Fixes the problem: "xtext the code of method mTokens() is exceeding the 65535 bytes limit"
+				//options = { 			  		
+				//	classSplitting= true
+				//}
+				
+				//http://www.antlr.org/pipermail/antlr-interest/2007-March/020014.html
+				//http://20000frames.blogspot.com/2010/09/dealing-with-could-not-even-do-k1-for.html
+				antlrParam = "-Xconversiontimeout" antlrParam = "10000"
 			}
 
 			// project wizard (optional) 
