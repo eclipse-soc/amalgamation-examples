@@ -14,14 +14,10 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 
-
-
-//TODO: adds Resource Definition and watch it falls
 Application:
 	'application' name=STRING packageName=QualifiedName
 	'{'
 		manifest=ManifestFile
-		//(resources+=Resource | layouts+=Layout | activities+=Activity)*
 		(resources+=Resource | activities+=Activity | layouts+=Layout)+
 	'}'
 ;
@@ -43,7 +39,6 @@ ManifestSDK:
 
 ManifestUsesPermission:
 	'usesPermission' '{'
-		//permissions+=ID (',' permissions+=ID)*
 		permissions+=BuiltInPermissionType (',' permissions+=BuiltInPermissionType)*
 		//permissions+=AndroidBuiltInPermission (',' permissions+=AndroidBuiltInPermission)*
 	'}'
