@@ -35,9 +35,9 @@
 
   [stringResourceXML(app)/]
 
-  [integerResourceXML(app.resources->filter(IntegerValueResource))/]
-  [colorResourceXML(app.resources->filter(ColorValueResource))/]
-	[dimensionResourceXML(app.resources->filter(DimensionValueResource))/]
+  [integerResourceXML(app.resources->filter(IntegerResource))/]
+  [colorResourceXML(app.resources->filter(ColorResource))/]
+	[dimensionResourceXML(app.resources->filter(DimensionResource))/]
 [/template]
 
 
@@ -49,9 +49,7 @@
   <string name="app_name">[app.name/]</string>
 
   <!-- resources -->
-[for (resource : StringValueResource | app.resources->filter(StringValueResource))]
-  <string name="[resource.name/]">[resource.value/]</string>
-[/for]
+[stringResourceXMLElements(app.resources->filter(StringResource))/]
 </resources>
 	[/file]
 [/template]

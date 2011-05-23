@@ -4,18 +4,60 @@
 [import org::eclipse::amalgam::tutorials::acceleo::files::widgetXML /]
 
 [template public layoutResourceXML(aLayout : Layout)]
-	[file ('/res/layout/'.concat(aLayout.name.toLower()).concat('.xml'), false, 'UTF-8')]
+[file ('/res/layout/'.concat(aLayout.name.toLower()).concat('.xml'), false, 'UTF-8')]
+[if (aLayout.oclIsKindOf(LinearLayout))][aLayout.oclAsType(LinearLayout).layoutXML()/][/if]
+[if (aLayout.oclIsKindOf(RelativeLayout))][aLayout.oclAsType(RelativeLayout).layoutXML()/][/if]
+[/file]
+[/template]
+
+
+[template private layoutXML(aLayout : LinearLayout) post(trim())]
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+[if (aLayout.orientation <> null)]
+    android:orientation="[aLayout.orientation/]"
+[/if]
+[aLayout.viewGroupProperties()/]
+[xmlResourceProperties(aLayout.eContents(ValueAccess))/]
     >
-
-	[for (widget : Widget | aLayout.widgets)]
-[widgetXML(widget)/]
-	[/for]
-
+[for (widget : Widget | aLayout.widgets)][widgetXML(widget)/][/for]
 </LinearLayout>
-	[/file]
+[/template]
+
+
+[template private layoutXML(aLayout : RelativeLayout) post(trim())]
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		[aLayout.viewGroupProperties()/]
+    [xmlResourceProperties(aLayout.eContents(ValueAccess))/]
+    >
+[for (widget : Widget | aLayout.widgets)][widgetXML(widget)/][/for]
+</RelativeLayout>
+[/template]
+
+
+[template private viewGroupProperties(vg : Layout)]
+[if (vg.alpha <> null)]
+    android:alpha="[vg.alpha/]"
+[/if]
+[if (vg.layout_width.oclIsUndefined())]
+    android:layout_width="fill_parent"
+[/if]
+[if (vg.layout_height.oclIsUndefined())]
+    android:layout_height="fill_parent"
+[/if]
+[if (vg.layout_width <> null)]
+    android:layout_width="[vg.layout_width/]"
+[/if]
+[if (vg.layout_height <> null)]
+    android:layout_height="[vg.layout_height/]"
+[/if]
+[if (vg.visibility <> null)]
+    android:visibility="[vg.visibility/]"
+[/if]
+[comment]How can I serialize a collection using a separator like this: first | second[/comment]
+[comment]android:gravity="[for (gravity : String | vg.gravity)][/][/for]"[/comment]
+[if (vg.gravity->size() > 0)]
+		android:gravity="[vg.gravity->first()/]"
+[/if]
 [/template]

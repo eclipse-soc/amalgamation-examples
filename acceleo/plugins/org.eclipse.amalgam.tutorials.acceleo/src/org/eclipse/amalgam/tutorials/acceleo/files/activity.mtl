@@ -2,7 +2,7 @@
 [module activity('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
 [template public activity(aActivity : Activity)]
-	[file (aActivity.name.concat('.java'), false, 'MacRoman')]
+[file (aActivity.eContainer(Application).packageName.replaceAll('\\.', '/').concat('/').concat(aActivity.name.concat('.java')), false, 'MacRoman')]
 package [aActivity.eContainer(Application).packageName/];
 
 import android.app.Activity;
@@ -15,7 +15,8 @@ public class [aActivity.name.toUpperFirst()/] extends Activity {
         super.onCreate(savedInstanceState);
         [activityActions(aActivity)/]
     }
-}	[/file]
+}
+[/file]
 [/template]
 
 

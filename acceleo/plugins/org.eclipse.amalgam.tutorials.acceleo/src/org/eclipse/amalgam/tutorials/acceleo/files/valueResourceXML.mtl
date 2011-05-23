@@ -1,13 +1,13 @@
 [comment encoding = UTF-8 /]
 [module valueResourceXML('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
-[template public propertyValue(p : PropertyValue) post (trim())]
+[comment][template public propertyValue(p : PropertyValue) post (trim())]
 	[if (p.oclIsKindOf(StringPropertyValue))]
 		[stringPropertyValue(p.oclAsType(StringPropertyValue))/]
 	[/if]
-[/template]
+[/template][/comment]
 
-[template private stringPropertyValue(p : StringPropertyValue) post (trim())]
+[comment][template private stringPropertyValue(p : StringPropertyValue) post (trim())]
 	[if (p.resource <> null)]
 		"@string/[p.resource.name/]"
 	[/if]
@@ -20,14 +20,14 @@
 		"[p.value/]"
 	[/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public integerResourceXML(resourceSeq : OrderedSet(IntegerValueResource))]
+[template public integerResourceXML(resourceSeq : OrderedSet(IntegerResource))]
 	[file ('/res/values/integers.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-[for (resource : IntegerValueResource | resourceSeq)]
+[for (resource : IntegerResource | resourceSeq)]
   <integer name="[resource.name/]">[resource.value/]</integer>
 [/for]
 </resources>
@@ -36,11 +36,11 @@
 
 
 
-[template public colorResourceXML(resourceSeq : OrderedSet(ColorValueResource))]
+[template public colorResourceXML(resourceSeq : OrderedSet(ColorResource))]
 	[file ('/res/values/colors.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-[for (resource : ColorValueResource | resourceSeq)]
+[for (resource : ColorResource | resourceSeq)]
   <color name="[resource.name/]">[resource.value/]</color>
 [/for]
 </resources>
@@ -48,17 +48,23 @@
 [/template]
 
 
-[template public dimensionResourceXML(resourceSeq : OrderedSet(DimensionValueResource))]
+[template public dimensionResourceXML(resourceSeq : OrderedSet(DimensionResource))]
 	[file ('/res/values/dimensions.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-[for (resource : DimensionValueResource | resourceSeq)]
+[for (resource : DimensionResource | resourceSeq)]
   <dimension name="[resource.name/]">[resource.value/][resource.unit/]</dimension>
 [/for]
 </resources>
 	[/file]
 [/template]
 
+
+[template public stringResourceXMLElements(resourceSeq : OrderedSet(StringResource))]
+[for (resource : StringResource | resourceSeq)]
+  <string name="[resource.name/]">[resource.value/]</string>
+[/for]
+[/template]
 
 
 
