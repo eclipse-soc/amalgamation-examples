@@ -21,7 +21,7 @@ generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 Application:
 	'application' name=STRING packageName=QualifiedName
 	'{'
-		manifest=ManifestFile
+		manifest=ManifestFile?
 		(resources+=Resource | activities+=Activity | layouts+=Layout)+
 	'}'
 ;
@@ -55,13 +55,96 @@ Activity:
 	GenericActivity | ListActivity | TabActivity
 ;
 
-
 Layout:
-	'layout' {Layout} name=ID '{'
+	LinearLayout | RelativeLayout //| SlideDrawer | AdapterView //| FrameLayout
+	| (name=ID)
+;
+
+/*AdapterView:
+	ListView | GridView | Gallery //| Spinner
+;*/
+
+
+LinearLayout:
+	'linear'? 'layout' name=ID '{'
+		('properties' '=>' '{'
+		 ('height:' layout_height=LayoutDimensionVA )? &
+		 ('width:' layout_width=LayoutDimensionVA )? &
+
+		 ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )? &
+		 ('orientation:' orientation=LayoutOrientationKind )? &
+		 ('visibility:' visibility=LayoutVisibilityKind)? &
+		 //('alpha:' alpha=FloatVA )? &
+		 ('alpha:' alpha=FLOAT )? &
+
+		 ('animation:' layoutAnimation=AnimationVA )? &
+		 ('background:' background=DrawableVA )? &
+		 ('minHeight:' minHeight=DimensionVA )? &
+		 ('minWidth:' minWidth=DimensionVA )? &
+		 ('padding:' padding=DimensionVA )? &
+		 //('padding:' '('
+		 //	paddingTop=DimensionVA ','
+		 //	paddingRight=DimensionVA ','
+		 //	paddingBottom=DimensionVA ','
+		 //	paddingLeft=DimensionVA ')'
+		 //)? &
+		 ('paddingTop:' paddingTop=DimensionVA)? &
+		 ('paddingRight:' paddingRight=DimensionVA)? &
+		 ('paddingBottom:' paddingBottom=DimensionVA)? &
+		 ('paddingLeft:' paddingLeft=DimensionVA)? &
+
+		 ('rotation:' rotation=DimensionVA)? &
+		 ('rotationX:' rotationX=DimensionVA)? &
+		 ('rotationY:' rotationY=DimensionVA)? &
+		 ('scaleX:' scaleX=DimensionVA)? &
+		 ('scaleY:' scaleY=DimensionVA)? &
+		 ('scrollX:' scrollX=DimensionVA)? &
+		 ('scrollY:' scrollY=DimensionVA)? &
+		 ('scrollbars:' scrollbars=BooleanVA)?
+		'}')?
 		widgets+=Widget+
 	'}'
 ;
 
+RelativeLayout:
+	'relative' 'layout' name=ID '{'
+		('properties' '=>' '{'
+		 ('height:' layout_height=LayoutDimensionVA )? &
+		 ('width:' layout_width=LayoutDimensionVA )? &
+
+		 ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )? &
+		 ('visibility:' visibility=LayoutVisibilityKind)? &
+		 //('alpha:' alpha=FloatVA )? &
+		 ('alpha:' alpha=FLOAT )? &
+
+		 ('animation:' layoutAnimation=AnimationVA )? &
+		 ('background:' background=DrawableVA )? &
+		 ('minHeight:' minHeight=DimensionVA )? &
+		 ('minWidth:' minWidth=DimensionVA )? &
+		 ('padding:' padding=DimensionVA )? &
+		 //('padding:' '('
+		 //	paddingTop=DimensionVA ','
+		 //	paddingRight=DimensionVA ','
+		 //	paddingBottom=DimensionVA ','
+		 //	paddingLeft=DimensionVA ')'
+		 //)? &
+		 ('paddingTop:' paddingTop=DimensionVA)? &
+		 ('paddingRight:' paddingRight=DimensionVA)? &
+		 ('paddingBottom:' paddingBottom=DimensionVA)? &
+		 ('paddingLeft:' paddingLeft=DimensionVA)? &
+
+		 ('rotation:' rotation=DimensionVA)? &
+		 ('rotationX:' rotationX=DimensionVA)? &
+		 ('rotationY:' rotationY=DimensionVA)? &
+		 ('scaleX:' scaleX=DimensionVA)? &
+		 ('scaleY:' scaleY=DimensionVA)? &
+		 ('scrollX:' scrollX=DimensionVA)? &
+		 ('scrollY:' scrollY=DimensionVA)? &
+		 ('scrollbars:' scrollbars=BooleanVA)?
+		'}')?
+		widgets+=Widget+
+	'}'
+;
 
 /******************************************************************************
  * Activities
@@ -137,7 +220,7 @@ Widget:
 ;
 
 TextView:
-	'textView' {TextView} ('<'id=ID'>') text=StringVA
+	'textView' {TextView} ('<'id=ID'>')? text=StringVA
 	'{'
 	(
 	 ('top:' top=DimensionVA )? &
@@ -157,7 +240,7 @@ TextView:
 ;
 
 Button:
-	'button' {Button} ('<'id=ID'>')
+	'button' {Button} ('<'id=ID'>')?
 	text=StringVA
 	'{'
 	(
@@ -179,7 +262,7 @@ Button:
 ;
 
 ImageButton:
-	'imageButton' {ImageButton} ('<'id=ID'>')
+	'imageButton' {ImageButton} ('<'id=ID'>')?
 	//(src=DrawableVA | src=ColorVA)
 	src=DrawableVA
 	'{'
@@ -202,7 +285,7 @@ ImageButton:
 ;
 
 ImageView:
-	'imageView' {ImageView} ('<'id=ID'>')
+	'imageView' {ImageView} ('<'id=ID'>')?
 	//(src=DrawableVA | src=ColorVA)
 	src=DrawableVA
 	'{'
@@ -223,7 +306,7 @@ ImageView:
 
 //Button to an Activity
 Link:
-	'link' {Link} ('<'id=ID'>')
+	'link' {Link} ('<'id=ID'>')?
 	text=StringVA
 	'to' target=[Activity|QualifiedName]
 	'{'
@@ -246,7 +329,7 @@ Link:
 
 //Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
 Spinner:
-	'spinner' {Spinner} ('<'id=ID'>')
+	'spinner' {Spinner} ('<'id=ID'>')?
 	(prompt=StringVA)? //&
 	'{'
 	(
@@ -268,7 +351,7 @@ Spinner:
 
 
 EditText:
-	'editText' {EditText} ('<'id=ID'>')
+	'editText' {EditText} ('<'id=ID'>')?
 	text=StringVA
 	'{'
 	(
@@ -297,49 +380,64 @@ EditText:
  * Value Access
  ******************************************************************************
  * If something (like a property) have a value of any resource kind, this value
- * is a value access.
+ * is a value access. Always have as associated type.
  ******************************************************************************/
-//TODO: test ExternalResourceReference
-TypedVA:
+ValueAccess:
 	StringVA | IntegerVA | BooleanVA | ColorVA | DimensionVA
 		| DrawableVA | AnimationVA | InterpolatorVA
 		//| IntegerArrayVA | StringArrayVA | TypedArrayVA
 ;
 
+//This delegation pattern is only making the things harder because I can not
+//put an abstract property (access) in the ValueAccess abstract class
+
 StringVA:
-	StringRA | StringVD
+	//(StringRA | StringVD)
+	access=StringRA | value=StringVD
 ;
 
 IntegerVA:
-	IntegerRA | IntegerVD
+	//(IntegerRA | IntegerVD)
+	access=IntegerRA | value=IntegerVD
 ;
 
 
 BooleanVA:
-	BooleanRA | BooleanVD
+	//(BooleanRA | BooleanVD)
+	access=BooleanRA | value=BooleanVD
 ;
 
 ColorVA:
-	ColorRA | ColorVD
+	//(ColorRA | ColorVD)
+	access=ColorRA | value=ColorVD
 ;
 
 DimensionVA:
-	DimensionRA | DimensionVD
+	//(DimensionRA | DimensionVD)
+	access=DimensionRA | value=DimensionVD
+;
+
+//Used only in layout_width and layout_height
+LayoutDimensionVA:
+	DimensionVA | ( constant_value=LayoutDimensionKind )
 ;
 
 //TODO: StyleRA
 //http://developer.android.com/guide/topics/ui/themes.html
 DrawableVA:
-	DrawableRA /*| DrawableVD */
+	//(DrawableRA)
+	access=DrawableRA /*| DrawableVD */
 ;
 
 
 AnimationVA:
-	AnimationRA /*| AnimationVD */
+	//(AnimationRA)
+	access=AnimationRA /*| AnimationVD */
 ;
 
 InterpolatorVA:
-	InterpolatorRA
+	//(InterpolatorRA)
+	access=InterpolatorRA
 ;
 
 
@@ -435,7 +533,7 @@ StringArrayResource:
 //That is going to generate some crazy rules =D
 TypedArrayResource:
 	name=ID '=' '['
-		(values+=TypedVA (',' values+=TypedVA)* )?
+		(values+=ValueAccess (',' values+=ValueAccess)* )?
 	']'
 ;
 
@@ -455,7 +553,7 @@ BitmapDrawableResource:
 
 //http://developer.android.com/guide/topics/resources/drawable-resource.html#Transition
 TransitionDrawableResource:
-	'transition' {TransitionDrawableResource}
+	'transition' {TransitionDrawableResource} name=ID
 		from=[BitmapDrawableResource] '<->' to=[BitmapDrawableResource]
 ;
 
@@ -573,14 +671,17 @@ AnimationFrame:
 // the parent common class because the attributes were not of the same
 // concrete type (they were of the same abstract type)
 //Used only to enforce the abstract property (resource) in the Abstract Class
-AbstractResourceAccess:
-	(ResourceAccess) | ( resource=[Resource] | externalResource=STRING )
-;
+//BUG?: Why when using this the concrete class's resource attribute don't
+// override the abstract resource attribute? 
+//AbstractResourceAccess:
+//	(ResourceAccess) | ( resource=[Resource] | externalResource=STRING )
+//;
 
 //I putted this @<type> just to allow the parser to resolve the ambiguity.
 //So, I followed the Android Conventions to typed resource references
 ResourceAccess:
-	StringRA | IntegerRA | BooleanRA | ColorRA | DimensionRA | DrawableRA | AnimationRA 
+	StringRA | IntegerRA | BooleanRA | ColorRA | DimensionRA
+	| DrawableRA | AnimationRA | InterpolatorRA 
 ;
 
 StringRA:
@@ -590,22 +691,22 @@ StringRA:
 
 IntegerRA:
 	'@integer'
-	( resource=[IntegerResource]  | externalResource=STRING )
+	( resource=[IntegerResource] | externalResource=STRING )
 ;
 
 BooleanRA:
 	'@bool'
-	( resource=[BooleanResource]  | externalResource=STRING )
+	( resource=[BooleanResource] | externalResource=STRING )
 ;
 
 ColorRA:
 	'@color'
-	( resource=[ColorResource]  | externalResource=STRING )
+	( resource=[ColorResource] | externalResource=STRING )
 ;
 
 DimensionRA:
 	'@dimen'
-	( resource=[DimensionResource]  | externalResource=STRING )
+	( resource=[DimensionResource] | externalResource=STRING )
 ;
 
 /*
@@ -627,8 +728,8 @@ AnimationRA:
 ;
 
 InterpolatorRA:
-	'interpolator'
-	( resource=InterpolatorsKind | externalResource=STRING )
+	'@interpolator' externalResource=InterpolatorsKind
+	//( interpolatorName=InterpolatorsKind | externalResource=STRING )
 ;
 
 /*
@@ -789,6 +890,24 @@ enum InterpolatorsKind :
   overshoot
 ;
 
+enum LayoutDimensionKind:
+	fill_parent | match_parent | wrap_content
+;
+
+enum LayoutGravityKind :
+	top | bottom | left | right |
+	center | center_vertical | center_horizontal |
+	fill | fill_vertical | fill_horizontal |
+	clip_vertical | clip_horizontal
+;
+
+enum LayoutOrientationKind:
+	horizontal | vertical
+;
+
+enum LayoutVisibilityKind:
+	visible | invisible | gone
+;
 
 /*
  * Datatypes
