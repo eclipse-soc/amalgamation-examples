@@ -2,7 +2,7 @@
 [module activity('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
 [template public activity(aActivity : Activity)]
-[file (aActivity.eContainer(Application).packageName.replaceAll('\\.', '/').concat('/').concat(aActivity.name.concat('.java')), false, 'MacRoman')]
+[file ('src-gen/'.concat(aActivity.eContainer(Application).packageName.replaceAll('\\.', '/').concat('/').concat(aActivity.name.concat('.java'))), false, 'MacRoman')]
 package [aActivity.eContainer(Application).packageName/];
 
 import android.app.Activity;

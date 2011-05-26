@@ -42,7 +42,7 @@
 
 
 [template private stringResourceXML(app : Application)]
-	[file ('/res/values/strings.xml', false, 'UTF-8')]
+	[file ('/res/values/gen-strings.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <!-- Auto-generated from Application.name -->
