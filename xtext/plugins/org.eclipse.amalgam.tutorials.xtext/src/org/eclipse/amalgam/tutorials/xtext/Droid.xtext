@@ -14,6 +14,14 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 
+//The ammount of available RAM to the JVM is a restriction to the
+//DSL generation. The usage of unordered groups tend to increase the RAM needed
+//in order to generate the language 
+
+//Debug is a big problem. If you forget to add an & during the definition of a
+//unordered-Group yout WILL get memory problems
+//(stack overflows, heap out of memory, etc)
+
 /******************************************************************************
  * Application
  ******************************************************************************/
@@ -55,10 +63,25 @@ Activity:
 	GenericActivity | ListActivity | TabActivity
 ;
 
+AbstractLayout:
+	Layout |
+	(name=ID) //Enforces 'name' inside AbstractLayout interface
+;
+
 Layout:
 	LinearLayout | RelativeLayout //| SlideDrawer | AdapterView //| FrameLayout
-	| (name=ID)
 ;
+
+/*
+ViewGroup:
+	AbstractLinearLayout | RelativeLayout | RadioGroup
+;
+
+AbstractLinearLayout:
+	LinearLayout | RadioGroup | NumberPicker | SearchView | TabWidget |
+	TableLayout | TableRow | ZoomControls
+*/
+
 
 /*AdapterView:
 	ListView | GridView | Gallery //| Spinner
@@ -68,39 +91,34 @@ Layout:
 LinearLayout:
 	'linear'? 'layout' name=ID '{'
 		('properties' '=>' '{'
-		 ('height:' layout_height=LayoutDimensionVA )? &
-		 ('width:' layout_width=LayoutDimensionVA )? &
+		 ('height:' layout_height=LayoutDimensionVA )?
+		 & ('width:' layout_width=LayoutDimensionVA )?
 
-		 ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )? &
-		 ('orientation:' orientation=LayoutOrientationKind )? &
-		 ('visibility:' visibility=LayoutVisibilityKind)? &
-		 //('alpha:' alpha=FloatVA )? &
-		 ('alpha:' alpha=FLOAT )? &
+		 & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+		 & ('orientation:' orientation=LayoutOrientationKind )?
+		 & ('visibility:' visibility=LayoutVisibilityKind)?
+		 //& ('alpha:' alpha=FloatVA )?
+		 & ('alpha:' alpha=FLOAT )?
 
-		 ('animation:' layoutAnimation=AnimationVA )? &
-		 ('background:' background=DrawableVA )? &
-		 ('minHeight:' minHeight=DimensionVA )? &
-		 ('minWidth:' minWidth=DimensionVA )? &
-		 ('padding:' padding=DimensionVA )? &
-		 //('padding:' '('
-		 //	paddingTop=DimensionVA ','
-		 //	paddingRight=DimensionVA ','
-		 //	paddingBottom=DimensionVA ','
-		 //	paddingLeft=DimensionVA ')'
-		 //)? &
-		 ('paddingTop:' paddingTop=DimensionVA)? &
-		 ('paddingRight:' paddingRight=DimensionVA)? &
-		 ('paddingBottom:' paddingBottom=DimensionVA)? &
-		 ('paddingLeft:' paddingLeft=DimensionVA)? &
+		 & ('animation:' layoutAnimation=AnimationVA )?
+		 & ('background:' background=DrawableVA )?
+		 & ('minHeight:' minHeight=DimensionVA )?
+		 & ('minWidth:' minWidth=DimensionVA )?
+		 & ('padding:' padding=DimensionVA )?
 
-		 ('rotation:' rotation=DimensionVA)? &
-		 ('rotationX:' rotationX=DimensionVA)? &
-		 ('rotationY:' rotationY=DimensionVA)? &
-		 ('scaleX:' scaleX=DimensionVA)? &
-		 ('scaleY:' scaleY=DimensionVA)? &
-		 ('scrollX:' scrollX=DimensionVA)? &
-		 ('scrollY:' scrollY=DimensionVA)? &
-		 ('scrollbars:' scrollbars=BooleanVA)?
+		 & ('paddingTop:' paddingTop=DimensionVA)?
+		 & ('paddingRight:' paddingRight=DimensionVA)?
+		 & ('paddingBottom:' paddingBottom=DimensionVA)?
+		 & ('paddingLeft:' paddingLeft=DimensionVA)?
+
+		 & ('rotation:' rotation=DimensionVA)?
+		 & ('rotationX:' rotationX=DimensionVA)?
+		 & ('rotationY:' rotationY=DimensionVA)?
+		 & ('scaleX:' scaleX=DimensionVA)?
+		 & ('scaleY:' scaleY=DimensionVA)?
+		 & ('scrollX:' scrollX=DimensionVA)?
+		 & ('scrollY:' scrollY=DimensionVA)?
+		 & ('scrollbars:' scrollbars=BooleanVA)?
 		'}')?
 		widgets+=Widget+
 	'}'
@@ -109,38 +127,34 @@ LinearLayout:
 RelativeLayout:
 	'relative' 'layout' name=ID '{'
 		('properties' '=>' '{'
-		 ('height:' layout_height=LayoutDimensionVA )? &
-		 ('width:' layout_width=LayoutDimensionVA )? &
+		 ('height:' layout_height=LayoutDimensionVA )?
+		 & ('width:' layout_width=LayoutDimensionVA )?
 
-		 ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )? &
-		 ('visibility:' visibility=LayoutVisibilityKind)? &
-		 //('alpha:' alpha=FloatVA )? &
-		 ('alpha:' alpha=FLOAT )? &
+		 & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+		 & ('orientation:' orientation=LayoutOrientationKind )?
+		 & ('visibility:' visibility=LayoutVisibilityKind)?
+		 //& ('alpha:' alpha=FloatVA )?
+		 & ('alpha:' alpha=FLOAT )?
 
-		 ('animation:' layoutAnimation=AnimationVA )? &
-		 ('background:' background=DrawableVA )? &
-		 ('minHeight:' minHeight=DimensionVA )? &
-		 ('minWidth:' minWidth=DimensionVA )? &
-		 ('padding:' padding=DimensionVA )? &
-		 //('padding:' '('
-		 //	paddingTop=DimensionVA ','
-		 //	paddingRight=DimensionVA ','
-		 //	paddingBottom=DimensionVA ','
-		 //	paddingLeft=DimensionVA ')'
-		 //)? &
-		 ('paddingTop:' paddingTop=DimensionVA)? &
-		 ('paddingRight:' paddingRight=DimensionVA)? &
-		 ('paddingBottom:' paddingBottom=DimensionVA)? &
-		 ('paddingLeft:' paddingLeft=DimensionVA)? &
+		 & ('animation:' layoutAnimation=AnimationVA )?
+		 & ('background:' background=DrawableVA )?
+		 & ('minHeight:' minHeight=DimensionVA )?
+		 & ('minWidth:' minWidth=DimensionVA )?
+		 & ('padding:' padding=DimensionVA )?
 
-		 ('rotation:' rotation=DimensionVA)? &
-		 ('rotationX:' rotationX=DimensionVA)? &
-		 ('rotationY:' rotationY=DimensionVA)? &
-		 ('scaleX:' scaleX=DimensionVA)? &
-		 ('scaleY:' scaleY=DimensionVA)? &
-		 ('scrollX:' scrollX=DimensionVA)? &
-		 ('scrollY:' scrollY=DimensionVA)? &
-		 ('scrollbars:' scrollbars=BooleanVA)?
+		 & ('paddingTop:' paddingTop=DimensionVA)?
+		 & ('paddingRight:' paddingRight=DimensionVA)?
+		 & ('paddingBottom:' paddingBottom=DimensionVA)?
+		 & ('paddingLeft:' paddingLeft=DimensionVA)?
+
+		 & ('rotation:' rotation=DimensionVA)?
+		 & ('rotationX:' rotationX=DimensionVA)?
+		 & ('rotationY:' rotationY=DimensionVA)?
+		 & ('scaleX:' scaleX=DimensionVA)?
+		 & ('scaleY:' scaleY=DimensionVA)?
+		 & ('scrollX:' scrollX=DimensionVA)?
+		 & ('scrollY:' scrollY=DimensionVA)?
+		 & ('scrollbars:' scrollbars=BooleanVA)?
 		'}')?
 		widgets+=Widget+
 	'}'
@@ -216,89 +230,132 @@ InvokeActivityAction:
  * Widgets
  ******************************************************************************/
 Widget:
-	TextView | Button | ImageView | ImageButton | Link | Spinner | EditText
+	TextView | Button |  Link |
+	ImageView | ImageButton | ImageLink |
+	EditText | CheckBox | RadioButton |
+	RadioGroup | Spinner
+;
+
+AbstractTextView:
+	TextView | Button | EditText
 ;
 
 TextView:
-	'textView' {TextView} ('<'id=ID'>')? text=StringVA
-	'{'
-	(
-	 ('top:' top=DimensionVA )? &
-	 ('left:' left=DimensionVA )? &
-	 ('width:' width=DimensionVA )? &
-	 ('height:' height=DimensionVA )? &
-	 ('background:' background=DrawableVA )? &
-	 ('clickable:' clickable=BooleanVA )? &
-	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
-	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
-	 // Specific properties
-	 ('hint:' hint=StringVA)? &
-	 ('textColor:' textColor=ColorVA)?
-	)
-	(actions=ActionSet)?
-	'}'
-;
-
-Button:
-	'button' {Button} ('<'id=ID'>')?
+	'textView:' ('<'id=ID'>')?
 	text=StringVA
 	'{'
 	(
-	 ('top:' top=DimensionVA )? &
-	 ('left:' left=DimensionVA )? &
-	 ('width:' width=DimensionVA )? &
-	 ('height:' height=DimensionVA )? &
-	 ('background:' background=DrawableVA )? &
-	 ('clickable:' clickable=BooleanVA )? &
-	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
-	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
-	 // Specific properties
-	 ('hint:' hint=StringVA)? &
-	 ('textColor:' textColor=ColorVA)?
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+
+	 //TextView attributes
+	 & ('autoLink:' autoLink=AutoLinkKind )?
+	 & ('autoText:' autoText=BooleanVA )?
+	 & ('capitalize:' capitalize=CapitalizeKind )?
+	 & ('digits:' digits=StringVA )?
+	 & ('editable:' editable=BooleanVA)?
+	 & ('hint:' hint=StringVA)?
+	 & ('numeric:' numeric=BooleanVA)?
+	 & ('password:' password=BooleanVA)?
+	 & ('phoneNumber:' phoneNumber=BooleanVA)?
+	 & ('singleLine:' singleLine=BooleanVA )?
+	 & ('textColor:' textColor=ColorVA)?
+	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
 	)
-//	actions+=Action*
-	(actions=ActionSet)?
 	'}'
 ;
 
-ImageButton:
-	'imageButton' {ImageButton} ('<'id=ID'>')?
-	//(src=DrawableVA | src=ColorVA)
-	src=DrawableVA
+AbstractButton:
+	Button | ImageButton | Link | ImageLink
+;
+
+//Button < TextView
+Button:
+	'button:' ('<'id=ID'>')?
+	text=StringVA
 	'{'
 	(
-	 ('top:' top=DimensionVA )? &
-	 ('left:' left=DimensionVA )? &
-	 ('width:' width=DimensionVA )? &
-	 ('height:' height=DimensionVA )? &
-	 ('background:' background=DrawableVA )? &
-	 ('clickable:' clickable=BooleanVA )? &
-	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
-	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
-	 // Specific properties
-	 ('hint:' hint=StringVA)? &
-	 ('textColor:' textColor=ColorVA)?
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+
+	 //TextView attributes
+	 & ('autoLink:' autoLink=AutoLinkKind )?
+	 & ('autoText:' autoText=BooleanVA )?
+	 & ('capitalize:' capitalize=CapitalizeKind )?
+	 & ('digits:' digits=StringVA )?
+	 & ('editable:' editable=BooleanVA)?
+	 & ('hint:' hint=StringVA)?
+	 & ('numeric:' numeric=BooleanVA)?
+	 & ('password:' password=BooleanVA)?
+	 & ('phoneNumber:' phoneNumber=BooleanVA)?
+	 & ('singleLine:' singleLine=BooleanVA )?
+	 & ('textColor:' textColor=ColorVA)?
+	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
+
+	 //Button Attributes
+	 //TODO: Decide how will it be defined
+	 //Idea: To create an ActionVA
+	 & ('onClick:' onClick=Action)?
 	)
-	//actions+=Action*
-	(actions=ActionSet)?
 	'}'
+;
+
+AbstractImageView:
+	ImageView | ImageButton
 ;
 
 ImageView:
-	'imageView' {ImageView} ('<'id=ID'>')?
+	'imageView:' ('<'id=ID'>')?
 	//(src=DrawableVA | src=ColorVA)
 	src=DrawableVA
 	'{'
 	(
-	 ('top:' top=DimensionVA )? &
-	 ('left:' left=DimensionVA )? &
-	 ('width:' width=DimensionVA )? &
-	 ('height:' height=DimensionVA )? &
-	 ('background:' background=DrawableVA )? &
-	 ('clickable:' clickable=BooleanVA )? &
-	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
-	 ('isScrollContainer:' isScrollContainer=BooleanVA )?
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+	)
+	'}'
+;
+
+
+//ImageButton < ImageView
+ImageButton:
+	'imageButton:' ('<'id=ID'>')?
+	//(src=DrawableVA | src=ColorVA)
+	src=DrawableVA
+	'{'
+	(
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+
 	 // Specific properties
+	 & ('hint:' hint=StringVA)?
+//	 & ('textColor:' textColor=ColorVA)?
 	)
 	'}'
 ;
@@ -306,72 +363,168 @@ ImageView:
 
 //Button to an Activity
 Link:
-	'link' {Link} ('<'id=ID'>')?
+	'link:' ('<'id=ID'>')?
 	text=StringVA
 	'to' target=[Activity|QualifiedName]
 	'{'
 	(
-	 ('top:' top=DimensionVA )? &
-	 ('left:' left=DimensionVA )? &
-	 ('width:' width=DimensionVA )? &
-	 ('height:' height=DimensionVA )? &
-	 ('background:' background=DrawableVA )? &
-	 ('clickable:' clickable=BooleanVA )? &
-	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
-	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
-	 // Specific properties
-	 ('hint:' hint=BooleanVA)? &
-	 ('textColor:' textColor=BooleanVA)?
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+
+	 //TextView attributes
+	 & ('autoLink:' autoLink=AutoLinkKind )?
+	 & ('autoText:' autoText=BooleanVA )?
+	 & ('capitalize:' capitalize=CapitalizeKind )?
+	 & ('digits:' digits=StringVA )?
+	 & ('editable:' editable=BooleanVA)?
+	 & ('hint:' hint=StringVA)?
+	 & ('numeric:' numeric=BooleanVA)?
+	 & ('password:' password=BooleanVA)?
+	 & ('phoneNumber:' phoneNumber=BooleanVA)?
+	 & ('singleLine:' singleLine=BooleanVA )?
+	 & ('textColor:' textColor=ColorVA)?
+	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
 	)
-	(actions=ActionSet)?
 	'}'
 ;
+
+
+//Button to an Activity
+ImageLink:
+	'imageLink:' ('<'id=ID'>')?
+	src=DrawableVA
+	'to' target=[Activity|QualifiedName]
+	'{'
+	(
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+	 // Specific properties
+	 & ('hint:' hint=BooleanVA)?
+	 & ('textColor:' textColor=BooleanVA)?
+	)
+	'}'
+;
+
 
 //Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
 Spinner:
-	'spinner' {Spinner} ('<'id=ID'>')?
-	(prompt=StringVA)? //&
+	'spinner:' ('<'id=ID'>')?
+	prompt=StringVA
 	'{'
 	(
-	 ('top:' top=DimensionVA )? &
-	 ('left:' left=DimensionVA )? &
-	 ('width:' width=DimensionVA )? &
-	 ('height:' height=DimensionVA )? &
-	 ('background:' background=DrawableVA )? &
-	 ('clickable:' clickable=BooleanVA )? &
-	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
-	 ('isScrollContainer:' isScrollContainer=BooleanVA )? //&
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+
 	 // Specific properties
-	//Does not work
-//	 ('gravity:' gravity+=SpinnerGravityKind+ )?
+//	 & ('gravity:' gravity+=SpinnerGravityKind ('|' gravity+=SpinnerGravityKind )* )?
 	)
-	(actions=ActionSet)?
+	'}'
+;
+
+//EditText < TextView
+EditText:
+	'editText:' ('<'id=ID'>')?
+	text=StringVA
+	'{'
+	(
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+
+	 //TextView attributes
+	 & ('autoLink:' autoLink=AutoLinkKind )?
+	 & ('autoText:' autoText=BooleanVA )?
+	 & ('capitalize:' capitalize=CapitalizeKind )?
+	 & ('digits:' digits=StringVA )?
+	 & ('editable:' editable=BooleanVA)?
+	 & ('hint:' hint=StringVA)?
+	 & ('numeric:' numeric=BooleanVA)?
+	 & ('password:' password=BooleanVA)?
+	 & ('phoneNumber:' phoneNumber=BooleanVA)?
+	 & ('singleLine:' singleLine=BooleanVA )?
+	 & ('textColor:' textColor=ColorVA)?
+	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
+	)
 	'}'
 ;
 
 
-EditText:
-	'editText' {EditText} ('<'id=ID'>')?
+//CheckBox < TextView
+CheckBox:
+	'check:' ('<'id=ID'>')?
 	text=StringVA
 	'{'
 	(
-	 ('top:' top=DimensionVA )? &
-	 ('left:' left=DimensionVA )? &
-	 ('width:' width=DimensionVA )? &
-	 ('height:' height=DimensionVA )? &
-	 ('background:' background=DrawableVA )? &
-	 ('clickable:' clickable=BooleanVA )? &
-	 ('fadeScrollBars:' fadeScrollBars=BooleanVA )? &
-	 ('isScrollContainer:' isScrollContainer=BooleanVA )? &
-	 //EditText properties
-	 ('hint:' hint=StringVA)? &
-	 ('textColor:' textColor=ColorVA)? &
-	 ('editable:' editable=BooleanVA)? &
-	 ('numeric:' numeric=BooleanVA)? &
-	 ('password:' password=BooleanVA)? &
-	 ('phoneNumber:' phoneNumber=BooleanVA)?
+	 ('top:' top=DimensionVA )?
+	 & ('left:' left=DimensionVA )?
+	 & ('width:' width=DimensionVA )?
+	 & ('height:' height=DimensionVA )?
+	 & ('background:' background=DrawableVA )?
+	 & ('clickable:' clickable=BooleanVA )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+
+	 //TextView attributes
+	 & ('autoLink:' autoLink=AutoLinkKind )?
+	 & ('autoText:' autoText=BooleanVA )?
+	 & ('capitalize:' capitalize=CapitalizeKind )?
+	 & ('digits:' digits=StringVA )?
+	 & ('editable:' editable=BooleanVA)?
+	 & ('hint:' hint=StringVA)?
+	 & ('numeric:' numeric=BooleanVA)?
+	 & ('password:' password=BooleanVA)?
+	 & ('phoneNumber:' phoneNumber=BooleanVA)?
+	 & ('singleLine:' singleLine=BooleanVA )?
+	 & ('textColor:' textColor=ColorVA)?
+	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
+
+	 //TODO: Decide how will it be defined
+	 //Idea: To create an ActionVA
+	 & ('onCheck:' onClick=Action)?
 	)
-	(actions=ActionSet)?
+	'}'
+;
+
+//EditText < TextView
+RadioButton:
+	'radio:' ('<'id=ID'>')?
+	text=StringVA
+	'{'
+		('onCheck:' onClick=Action)?
+	'}'
+;
+
+//EditText < TextView
+RadioGroup:
+	'radioGroup:' ('<'id=ID'>')?
+	'{'
+		radioButtons+=[RadioButton] (',' radioButtons+=[RadioButton])*
 	'}'
 ;
 
@@ -907,6 +1060,22 @@ enum LayoutOrientationKind:
 
 enum LayoutVisibilityKind:
 	visible | invisible | gone
+;
+
+enum TypefaceKind:
+	normal | sans | serif | monospace
+;
+
+enum TextStyleKind:
+	normal | bold | italic
+;
+
+enum AutoLinkKind:
+	none | web | email | phone | map | all
+;
+
+enum CapitalizeKind:
+	none | sentences | words | characters
 ;
 
 /*
