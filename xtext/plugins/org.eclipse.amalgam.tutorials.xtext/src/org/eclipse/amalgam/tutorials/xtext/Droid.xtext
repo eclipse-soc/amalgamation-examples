@@ -63,16 +63,25 @@ Activity:
 	GenericActivity | ListActivity | TabActivity
 ;
 
-AbstractLayout:
-	Layout |
-	(name=ID) //Enforces 'name' inside AbstractLayout interface
-;
-
 Layout:
 	LinearLayout | RelativeLayout //| SlideDrawer | AdapterView //| FrameLayout
 ;
 
+//TODO: Make this hierarchy reflect Android widgets hierarchy
+AbstractView:
+	View | (name=ID) //Enforces 'name' inside AbstractLayout interface
+;
+
+View:
+	Widget | Layout
+;
+
+
 /*
+View:
+	ViewGroup | ImageView | KeyboardView | ViewGroup 
+;
+
 ViewGroup:
 	AbstractLinearLayout | RelativeLayout | RadioGroup
 ;
@@ -89,75 +98,152 @@ AbstractLinearLayout:
 
 
 LinearLayout:
-	'linear'? 'layout' name=ID '{'
-		('properties' '=>' '{'
-		 ('height:' layout_height=LayoutDimensionVA )?
-		 & ('width:' layout_width=LayoutDimensionVA )?
+	'linear'? 'layout' name=ID? '{'
+	  ('properties' '{'
+		(
+		  //View Properties
+		  ('alpha:' alpha=FLOAT )?
+		  & ('background:' background=DrawableVA )?
+		  & ('minHeight:' minHeight=DimensionVA )?
+		  & ('minWidth:' minWidth=DimensionVA )?
+		  & ('nextFocusDown:' nextFocusDown=[View] )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
+		  & ('nextFocusRight:' nextFocusRight=[View] )?
+		  & ('nextFocusUp:' nextFocusUp=[View] )?
+		  & ('onClick:' onClick=Action)?
+		  & ('padding:' padding=DimensionVA )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA)?
+		  & ('paddingLeft:' paddingLeft=DimensionVA)?
+		  & ('paddingRight:' paddingRight=DimensionVA)?
+		  & ('paddingTop:' paddingTop=DimensionVA)?
+		  & ('rotation:' rotation=DimensionVA)?
+		  & ('rotationX:' rotationX=DimensionVA)?
+		  & ('rotationY:' rotationY=DimensionVA)?
+		  & ('saveEnabled:' saveEnabled=BooleanVA)?
+		  & ('scaleX:' scaleX=DimensionVA)?
+		  & ('scaleY:' scaleY=DimensionVA)?
+		  & ('scrollX:' scrollX=DimensionVA)?
+		  & ('scrollY:' scrollY=DimensionVA)?
+		  & ('scrollbars:' scrollbars=BooleanVA)?
+		  & ('transformPivotX:' transformPivotX=DimensionVA)?
+		  & ('transformPivotY:' transformPivotY=DimensionVA)?
+		  & ('translationX:' translationX=DimensionVA)?
+		  & ('translationY:' translationY=DimensionVA)?
+		  & ('visibility:' visibility=LayoutVisibilityKind)?
 
-		 & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-		 & ('orientation:' orientation=LayoutOrientationKind )?
-		 & ('visibility:' visibility=LayoutVisibilityKind)?
-		 //& ('alpha:' alpha=FloatVA )?
-		 & ('alpha:' alpha=FLOAT )?
+		  //LinearLayout.LayoutParams
+		  //NOTE: All its children can have this layout parameters too
+		  & ('layout:' layoutParams=LinearLayoutParams )?
 
-		 & ('animation:' layoutAnimation=AnimationVA )?
-		 & ('background:' background=DrawableVA )?
-		 & ('minHeight:' minHeight=DimensionVA )?
-		 & ('minWidth:' minWidth=DimensionVA )?
-		 & ('padding:' padding=DimensionVA )?
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA )?
 
-		 & ('paddingTop:' paddingTop=DimensionVA)?
-		 & ('paddingRight:' paddingRight=DimensionVA)?
-		 & ('paddingBottom:' paddingBottom=DimensionVA)?
-		 & ('paddingLeft:' paddingLeft=DimensionVA)?
-
-		 & ('rotation:' rotation=DimensionVA)?
-		 & ('rotationX:' rotationX=DimensionVA)?
-		 & ('rotationY:' rotationY=DimensionVA)?
-		 & ('scaleX:' scaleX=DimensionVA)?
-		 & ('scaleY:' scaleY=DimensionVA)?
-		 & ('scrollX:' scrollX=DimensionVA)?
-		 & ('scrollY:' scrollY=DimensionVA)?
-		 & ('scrollbars:' scrollbars=BooleanVA)?
-		'}')?
-		widgets+=Widget+
+		  //LinearLayout
+		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+		  & ('orientation:' orientation=LayoutOrientationKind )?
+		)
+	  '}')?
+	  widgets+=View+
 	'}'
 ;
 
 RelativeLayout:
-	'relative' 'layout' name=ID '{'
-		('properties' '=>' '{'
-		 ('height:' layout_height=LayoutDimensionVA )?
-		 & ('width:' layout_width=LayoutDimensionVA )?
+	'relative' 'layout' name=ID? '{'
+	  ('properties' '{'
+		(
+		  //View Properties
+		  ('alpha:' alpha=FLOAT )?
+		  & ('background:' background=DrawableVA )?
+		  & ('minHeight:' minHeight=DimensionVA )?
+		  & ('minWidth:' minWidth=DimensionVA )?
+		  & ('nextFocusDown:' nextFocusDown=[View] )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
+		  & ('nextFocusRight:' nextFocusRight=[View] )?
+		  & ('nextFocusUp:' nextFocusUp=[View] )?
+		  & ('onClick:' onClick=Action)?
+		  & ('padding:' padding=DimensionVA )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA)?
+		  & ('paddingLeft:' paddingLeft=DimensionVA)?
+		  & ('paddingRight:' paddingRight=DimensionVA)?
+		  & ('paddingTop:' paddingTop=DimensionVA)?
+		  & ('rotation:' rotation=DimensionVA)?
+		  & ('rotationX:' rotationX=DimensionVA)?
+		  & ('rotationY:' rotationY=DimensionVA)?
+		  & ('saveEnabled:' saveEnabled=BooleanVA)?
+		  & ('scaleX:' scaleX=DimensionVA)?
+		  & ('scaleY:' scaleY=DimensionVA)?
+		  & ('scrollX:' scrollX=DimensionVA)?
+		  & ('scrollY:' scrollY=DimensionVA)?
+		  & ('scrollbars:' scrollbars=BooleanVA)?
+		  & ('transformPivotX:' transformPivotX=DimensionVA)?
+		  & ('transformPivotY:' transformPivotY=DimensionVA)?
+		  & ('translationX:' translationX=DimensionVA)?
+		  & ('translationY:' translationY=DimensionVA)?
+		  & ('visibility:' visibility=LayoutVisibilityKind)?
 
-		 & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-		 & ('orientation:' orientation=LayoutOrientationKind )?
-		 & ('visibility:' visibility=LayoutVisibilityKind)?
-		 //& ('alpha:' alpha=FloatVA )?
-		 & ('alpha:' alpha=FLOAT )?
+		  //RelativeLayout.LayoutParams
+		  //NOTE: All its children can have this layout parameters too
+		  & ('layout:' layoutParams=RelativeLayoutParams )?
 
-		 & ('animation:' layoutAnimation=AnimationVA )?
-		 & ('background:' background=DrawableVA )?
-		 & ('minHeight:' minHeight=DimensionVA )?
-		 & ('minWidth:' minWidth=DimensionVA )?
-		 & ('padding:' padding=DimensionVA )?
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA )?
 
-		 & ('paddingTop:' paddingTop=DimensionVA)?
-		 & ('paddingRight:' paddingRight=DimensionVA)?
-		 & ('paddingBottom:' paddingBottom=DimensionVA)?
-		 & ('paddingLeft:' paddingLeft=DimensionVA)?
-
-		 & ('rotation:' rotation=DimensionVA)?
-		 & ('rotationX:' rotationX=DimensionVA)?
-		 & ('rotationY:' rotationY=DimensionVA)?
-		 & ('scaleX:' scaleX=DimensionVA)?
-		 & ('scaleY:' scaleY=DimensionVA)?
-		 & ('scrollX:' scrollX=DimensionVA)?
-		 & ('scrollY:' scrollY=DimensionVA)?
-		 & ('scrollbars:' scrollbars=BooleanVA)?
-		'}')?
-		widgets+=Widget+
+		  //RelativeLayout
+		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+		  & ('orientation:' orientation=LayoutOrientationKind )?
+		)
+	  '}')?
+	  widgets+=View+
 	'}'
+;
+
+LayoutParams:
+	LinearLayoutParams | RelativeLayoutParams
+;
+
+LinearLayoutParams:
+	'{' {LinearLayoutParams}
+	(
+	  ('height:' layout_height=LayoutDimensionVA )?
+	  & ('width:' layout_width=LayoutDimensionVA )?
+	  & ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+	  & ('weight:' layout_weight=IntegerVA )?
+	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
+	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
+	  & ('marginRight:' layout_marginRight=DimensionVA )?
+	  & ('marginTop:' layout_marginTop=DimensionVA )?
+	)
+	'}'
+;
+
+RelativeLayoutParams:
+ 	'{' {RelativeLayoutParams}
+	(
+	  ('height:' layout_height=LayoutDimensionVA )?
+	  & ('width:' layout_width=LayoutDimensionVA )?
+	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
+	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
+	  & ('marginRight:' layout_marginRight=DimensionVA )?
+	  & ('marginTop:' layout_marginTop=DimensionVA )?
+
+	  & ('above:' layout_above=[View] )?
+	  & ('alignBaseline:' layout_alignBaseline=[View] )?
+	  & ('alignBottom:' layout_alignBottom=[View] )?
+	  & ('alignLeft:' layout_alignLeft=[View] )?
+	  & ('alignParentBottom:' layout_alignParentBottom=BooleanVA )?
+	  & ('alignParentLeft:' layout_alignParentLeft=BooleanVA )?
+	  & ('alignParentRight:' layout_alignParentRight=BooleanVA )?
+	  & ('alignParentTop:' layout_alignParentTop=BooleanVA )?
+	  & ('alignTop:' layout_alignTop=[View] )?
+	  & ('alignWithParentIfMissing:' layout_alignWithParentIfMissing=BooleanVA )?
+	  & ('below:' layout_below=[View] )?
+	  & ('centerHorizontal:' layout_centerHorizontal=BooleanVA )?
+	  & ('centerInParent:' layout_centerInParent=BooleanVA )?
+	  & ('centerVertical:' layout_centerVertical=BooleanVA )?
+	  & ('toLeftOf:' layout_toLeftOf=[View] )?
+	  & ('toRightOf:' layout_toRightOf=[View] )?
+	)
+ 	'}'
 ;
 
 /******************************************************************************
@@ -241,11 +327,12 @@ AbstractTextView:
 ;
 
 TextView:
-	'textView:' ('<'id=ID'>')?
+	'textView:' ('<'name=ID'>')?
 	text=StringVA
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -260,6 +347,7 @@ TextView:
 	 & ('capitalize:' capitalize=CapitalizeKind )?
 	 & ('digits:' digits=StringVA )?
 	 & ('editable:' editable=BooleanVA)?
+	 & ('gravity:' gravity=LayoutGravityKind)?
 	 & ('hint:' hint=StringVA)?
 	 & ('numeric:' numeric=BooleanVA)?
 	 & ('password:' password=BooleanVA)?
@@ -267,9 +355,10 @@ TextView:
 	 & ('singleLine:' singleLine=BooleanVA )?
 	 & ('textColor:' textColor=ColorVA)?
 	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
 	)
-	'}'
+	'}')?
 ;
 
 AbstractButton:
@@ -278,11 +367,12 @@ AbstractButton:
 
 //Button < TextView
 Button:
-	'button:' ('<'id=ID'>')?
+	'button:' ('<'name=ID'>')?
 	text=StringVA
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -297,6 +387,7 @@ Button:
 	 & ('capitalize:' capitalize=CapitalizeKind )?
 	 & ('digits:' digits=StringVA )?
 	 & ('editable:' editable=BooleanVA)?
+	 & ('gravity:' gravity=LayoutGravityKind)?
 	 & ('hint:' hint=StringVA)?
 	 & ('numeric:' numeric=BooleanVA)?
 	 & ('password:' password=BooleanVA)?
@@ -304,6 +395,7 @@ Button:
 	 & ('singleLine:' singleLine=BooleanVA )?
 	 & ('textColor:' textColor=ColorVA)?
 	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
 
 	 //Button Attributes
@@ -311,7 +403,7 @@ Button:
 	 //Idea: To create an ActionVA
 	 & ('onClick:' onClick=Action)?
 	)
-	'}'
+	'}')?
 ;
 
 AbstractImageView:
@@ -319,12 +411,13 @@ AbstractImageView:
 ;
 
 ImageView:
-	'imageView:' ('<'id=ID'>')?
+	'imageView:' ('<'name=ID'>')?
 	//(src=DrawableVA | src=ColorVA)
 	src=DrawableVA
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -333,18 +426,19 @@ ImageView:
 	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
 	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
 	)
-	'}'
+	'}')?
 ;
 
 
 //ImageButton < ImageView
 ImageButton:
-	'imageButton:' ('<'id=ID'>')?
+	'imageButton:' ('<'name=ID'>')?
 	//(src=DrawableVA | src=ColorVA)
 	src=DrawableVA
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -357,18 +451,19 @@ ImageButton:
 	 & ('hint:' hint=StringVA)?
 //	 & ('textColor:' textColor=ColorVA)?
 	)
-	'}'
+	'}')?
 ;
 
 
 //Button to an Activity
 Link:
-	'link:' ('<'id=ID'>')?
+	'link:' ('<'name=ID'>')?
 	text=StringVA
 	'to' target=[Activity|QualifiedName]
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -383,6 +478,7 @@ Link:
 	 & ('capitalize:' capitalize=CapitalizeKind )?
 	 & ('digits:' digits=StringVA )?
 	 & ('editable:' editable=BooleanVA)?
+	 & ('gravity:' gravity=LayoutGravityKind)?
 	 & ('hint:' hint=StringVA)?
 	 & ('numeric:' numeric=BooleanVA)?
 	 & ('password:' password=BooleanVA)?
@@ -390,20 +486,22 @@ Link:
 	 & ('singleLine:' singleLine=BooleanVA )?
 	 & ('textColor:' textColor=ColorVA)?
 	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
 	)
-	'}'
+	'}')?
 ;
 
 
 //Button to an Activity
 ImageLink:
-	'imageLink:' ('<'id=ID'>')?
+	'imageLink:' ('<'name=ID'>')?
 	src=DrawableVA
 	'to' target=[Activity|QualifiedName]
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -415,17 +513,18 @@ ImageLink:
 	 & ('hint:' hint=BooleanVA)?
 	 & ('textColor:' textColor=BooleanVA)?
 	)
-	'}'
+	'}')?
 ;
 
 
 //Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
 Spinner:
-	'spinner:' ('<'id=ID'>')?
+	'spinner:' ('<'name=ID'>')?
 	prompt=StringVA
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -437,16 +536,17 @@ Spinner:
 	 // Specific properties
 //	 & ('gravity:' gravity+=SpinnerGravityKind ('|' gravity+=SpinnerGravityKind )* )?
 	)
-	'}'
+	'}')?
 ;
 
 //EditText < TextView
 EditText:
-	'editText:' ('<'id=ID'>')?
+	'editText:' ('<'name=ID'>')?
 	text=StringVA
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -461,6 +561,7 @@ EditText:
 	 & ('capitalize:' capitalize=CapitalizeKind )?
 	 & ('digits:' digits=StringVA )?
 	 & ('editable:' editable=BooleanVA)?
+	 & ('gravity:' gravity=LayoutGravityKind)?
 	 & ('hint:' hint=StringVA)?
 	 & ('numeric:' numeric=BooleanVA)?
 	 & ('password:' password=BooleanVA)?
@@ -468,19 +569,21 @@ EditText:
 	 & ('singleLine:' singleLine=BooleanVA )?
 	 & ('textColor:' textColor=ColorVA)?
 	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
 	)
-	'}'
+	'}')?
 ;
 
 
 //CheckBox < TextView
 CheckBox:
-	'check:' ('<'id=ID'>')?
+	'check:' ('<'name=ID'>')?
 	text=StringVA
-	'{'
+	('{'
 	(
-	 ('top:' top=DimensionVA )?
+	 ('layout:' layoutParams=LayoutParams )?
+	 & ('top:' top=DimensionVA )?
 	 & ('left:' left=DimensionVA )?
 	 & ('width:' width=DimensionVA )?
 	 & ('height:' height=DimensionVA )?
@@ -495,6 +598,7 @@ CheckBox:
 	 & ('capitalize:' capitalize=CapitalizeKind )?
 	 & ('digits:' digits=StringVA )?
 	 & ('editable:' editable=BooleanVA)?
+	 & ('gravity:' gravity=LayoutGravityKind)?
 	 & ('hint:' hint=StringVA)?
 	 & ('numeric:' numeric=BooleanVA)?
 	 & ('password:' password=BooleanVA)?
@@ -502,28 +606,31 @@ CheckBox:
 	 & ('singleLine:' singleLine=BooleanVA )?
 	 & ('textColor:' textColor=ColorVA)?
 	 & ('typeface:' typeface=TypefaceKind )?
+	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
 
 	 //TODO: Decide how will it be defined
 	 //Idea: To create an ActionVA
-	 & ('onCheck:' onClick=Action)?
+	 & ('onCheck:' onCheck=Action)?
 	)
-	'}'
+	'}')?
 ;
 
 //EditText < TextView
 RadioButton:
-	'radio:' ('<'id=ID'>')?
+	'radio:' ('<'name=ID'>')?
 	text=StringVA
-	'{'
-		('onCheck:' onClick=Action)?
-	'}'
+	('{'
+		('layout:' layoutParams=LayoutParams )?
+	 	& ('onCheck:' onClick=Action)?
+	'}')?
 ;
 
 //EditText < TextView
 RadioGroup:
-	'radioGroup:' ('<'id=ID'>')?
+	'radioGroup:' ('<'name=ID'>')?
 	'{'
+		('layout:' layoutParams=LayoutParams )?
 		radioButtons+=[RadioButton] (',' radioButtons+=[RadioButton])*
 	'}'
 ;
@@ -579,13 +686,12 @@ LayoutDimensionVA:
 //http://developer.android.com/guide/topics/ui/themes.html
 DrawableVA:
 	//(DrawableRA)
-	access=DrawableRA /*| DrawableVD */
+	ColorVA | (access=DrawableRA) //| DrawableVD
 ;
-
 
 AnimationVA:
 	//(AnimationRA)
-	access=AnimationRA /*| AnimationVD */
+	access=AnimationRA //| AnimationVD
 ;
 
 InterpolatorVA:
@@ -593,6 +699,47 @@ InterpolatorVA:
 	access=InterpolatorRA
 ;
 
+
+/******************************************************************************
+ * Property Value (a replacement to VA)
+ ******************************************************************************/
+/*
+PropertyValue:
+	StringPV | IntegerPV |
+	BooleanPV | ColorPV |
+	DimensionPV | DrawablePV 
+;
+
+StringVA: StringPV;
+StringPV:
+	(value=STRING | (resource=[StringResource] | '(' externalResource=ID ')' ))
+;
+
+IntegerVA: IntegerPV; 
+IntegerPV:
+	(value=INT | (resource=[IntegerResource] | '(' externalResource=ID ')' ))
+;
+
+BooleanVA: BooleanPV;
+BooleanPV:
+	(value=BOOL | (resource=[BooleanResource] | '(' externalResource=ID ')' ))
+;
+
+ColorVA: ColorPV;
+ColorPV:
+	(value=HEX_COLOR | (resource=[ColorResource] | '(' externalResource=ID ')' ))
+;
+
+DimensionVA: DimensionPV;
+DimensionPV:
+	((value=FLOAT unit=DimensionKind) | (resource=[DimensionResource] | '(' externalResource=ID ')' ))
+;
+
+DrawableVA: DrawablePV;
+DrawablePV:
+	(resource=[DrawableResource] | '(' externalResource=ID ')')
+;
+*/
 
 
 /******************************************************************************
@@ -616,7 +763,8 @@ ColorVD:
 	value=HEX_COLOR;
 
 DimensionVD:
-	value=FLOAT;
+	value=DimensionValue
+;
 
 /*
 No need
@@ -657,7 +805,7 @@ ColorResource:
 ;
 
 DimensionResource:
-	'dimension' name=ID '=' value=FLOAT unit=DimensionKind
+	'dimension' name=ID '=' value=DimensionValue
 ;
 
 //
@@ -1027,9 +1175,11 @@ enum BuiltInPermissionType:
 	WRITE_SYNC_SETTINGS	
 ;
 
+/*
 enum DimensionKind :
   dp | sp | pt | px | mm | in
 ;
+*/
 
 enum InterpolatorsKind :
   accelerate_decelerate |
@@ -1094,6 +1244,9 @@ URL:
 	ID '://' QualifiedName ('/'  (QualifiedName '/')* )?
 ;
 
+DimensionValue:
+	(FLOAT | INT) ('dp' | 'sp' | 'pt' | 'px' | 'mm' | 'in')
+;
 
 /*
  * Terminals
