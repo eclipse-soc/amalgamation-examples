@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.amalgam.tutorials.xtext.generator
 Bundle-Vendor: Reinaldo de Souza Junior
-Bundle-Version: 1.0.5
+Bundle-Version: 1.0.5.qualifier
 Bundle-SymbolicName: org.eclipse.amalgam.tutorials.xtext.generator; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.amalgam.tutorials.xtext;bundle-version="1.0.5";visibility:=reexport,
