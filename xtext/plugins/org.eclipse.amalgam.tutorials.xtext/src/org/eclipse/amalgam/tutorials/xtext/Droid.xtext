@@ -18,8 +18,8 @@ generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 //DSL generation. The usage of unordered groups tend to increase the RAM needed
 //in order to generate the language 
 
-//Debug is a big problem. If you forget to add an & during the definition of a
-//unordered-Group yout WILL get memory problems
+//Debug is a big problem. For example, if you forget to add an & during the
+//definition of a unordered-Group yout WILL get memory problems
 //(stack overflows, heap out of memory, etc)
 
 /******************************************************************************
@@ -64,7 +64,11 @@ Activity:
 ;
 
 Layout:
-	LinearLayout | RelativeLayout //| SlideDrawer | AdapterView //| FrameLayout
+	AbstractLinearLayout | RelativeLayout | TabHost | FrameLayout //| SlideDrawer | AdapterView //
+;
+
+AbstractLinearLayout:
+	LinearLayout | TabWidget | RadioGroup
 ;
 
 //TODO: Make this hierarchy reflect Android widgets hierarchy
@@ -104,7 +108,7 @@ LinearLayout:
 		  //View Properties
 		  ('alpha:' alpha=FLOAT )?
 		  & ('background:' background=DrawableVA )?
-		  & ('minHeight:' minHeight=DimensionVA )?
+/*		  & ('minHeight:' minHeight=DimensionVA )?
 		  & ('minWidth:' minWidth=DimensionVA )?
 		  & ('nextFocusDown:' nextFocusDown=[View] )?
 		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
@@ -130,7 +134,7 @@ LinearLayout:
 		  & ('translationX:' translationX=DimensionVA)?
 		  & ('translationY:' translationY=DimensionVA)?
 		  & ('visibility:' visibility=LayoutVisibilityKind)?
-
+*/
 		  //LinearLayout.LayoutParams
 		  //NOTE: All its children can have this layout parameters too
 		  & ('layout:' layoutParams=LinearLayoutParams )?
@@ -154,7 +158,7 @@ RelativeLayout:
 		  //View Properties
 		  ('alpha:' alpha=FLOAT )?
 		  & ('background:' background=DrawableVA )?
-		  & ('minHeight:' minHeight=DimensionVA )?
+/*		  & ('minHeight:' minHeight=DimensionVA )?
 		  & ('minWidth:' minWidth=DimensionVA )?
 		  & ('nextFocusDown:' nextFocusDown=[View] )?
 		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
@@ -180,7 +184,7 @@ RelativeLayout:
 		  & ('translationX:' translationX=DimensionVA)?
 		  & ('translationY:' translationY=DimensionVA)?
 		  & ('visibility:' visibility=LayoutVisibilityKind)?
-
+*/
 		  //RelativeLayout.LayoutParams
 		  //NOTE: All its children can have this layout parameters too
 		  & ('layout:' layoutParams=RelativeLayoutParams )?
@@ -197,8 +201,157 @@ RelativeLayout:
 	'}'
 ;
 
+//OCL restriction: Must have a TabWidget and a FrameLayout
+TabHost:
+	'tab' 'layout' name=ID? '{'
+	  ('properties' '{'
+		(
+		  //View Properties
+		  ('alpha:' alpha=FLOAT )?
+		  & ('background:' background=DrawableVA )?
+/*		  & ('minHeight:' minHeight=DimensionVA )?
+		  & ('minWidth:' minWidth=DimensionVA )?
+		  & ('nextFocusDown:' nextFocusDown=[View] )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
+		  & ('nextFocusRight:' nextFocusRight=[View] )?
+		  & ('nextFocusUp:' nextFocusUp=[View] )?
+		  & ('onClick:' onClick=Action)?
+		  & ('padding:' padding=DimensionVA )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA)?
+		  & ('paddingLeft:' paddingLeft=DimensionVA)?
+		  & ('paddingRight:' paddingRight=DimensionVA)?
+		  & ('paddingTop:' paddingTop=DimensionVA)?
+		  & ('rotation:' rotation=DimensionVA)?
+		  & ('rotationX:' rotationX=DimensionVA)?
+		  & ('rotationY:' rotationY=DimensionVA)?
+		  & ('saveEnabled:' saveEnabled=BooleanVA)?
+		  & ('scaleX:' scaleX=DimensionVA)?
+		  & ('scaleY:' scaleY=DimensionVA)?
+		  & ('scrollX:' scrollX=DimensionVA)?
+		  & ('scrollY:' scrollY=DimensionVA)?
+		  & ('scrollbars:' scrollbars=BooleanVA)?
+		  & ('transformPivotX:' transformPivotX=DimensionVA)?
+		  & ('transformPivotY:' transformPivotY=DimensionVA)?
+		  & ('translationX:' translationX=DimensionVA)?
+		  & ('translationY:' translationY=DimensionVA)?
+		  & ('visibility:' visibility=LayoutVisibilityKind)?
+*/
+		  & ('layout:' layoutParams=LinearLayoutParams )?
+
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA )?
+		)
+	  '}')?
+	  layout=Layout
+	  //widgets+=View+
+	'}'
+;
+
+TabWidget:
+	'tabWidget' name=ID? '{'
+	  ('properties' '{'
+		(
+		  //View Properties
+		  ('alpha:' alpha=FLOAT )?
+		  & ('background:' background=DrawableVA )?
+/*		  & ('minHeight:' minHeight=DimensionVA )?
+		  & ('minWidth:' minWidth=DimensionVA )?
+		  & ('nextFocusDown:' nextFocusDown=[View] )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
+		  & ('nextFocusRight:' nextFocusRight=[View] )?
+		  & ('nextFocusUp:' nextFocusUp=[View] )?
+		  & ('onClick:' onClick=Action)?
+		  & ('padding:' padding=DimensionVA )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA)?
+		  & ('paddingLeft:' paddingLeft=DimensionVA)?
+		  & ('paddingRight:' paddingRight=DimensionVA)?
+		  & ('paddingTop:' paddingTop=DimensionVA)?
+		  & ('rotation:' rotation=DimensionVA)?
+		  & ('rotationX:' rotationX=DimensionVA)?
+		  & ('rotationY:' rotationY=DimensionVA)?
+		  & ('saveEnabled:' saveEnabled=BooleanVA)?
+		  & ('scaleX:' scaleX=DimensionVA)?
+		  & ('scaleY:' scaleY=DimensionVA)?
+		  & ('scrollX:' scrollX=DimensionVA)?
+		  & ('scrollY:' scrollY=DimensionVA)?
+		  & ('scrollbars:' scrollbars=BooleanVA)?
+		  & ('transformPivotX:' transformPivotX=DimensionVA)?
+		  & ('transformPivotY:' transformPivotY=DimensionVA)?
+		  & ('translationX:' translationX=DimensionVA)?
+		  & ('translationY:' translationY=DimensionVA)?
+		  & ('visibility:' visibility=LayoutVisibilityKind)?
+*/
+		  //LinearLayout.LayoutParams
+		  //NOTE: All its children can have this layout parameters too
+		  & ('layout:' layoutParams=LinearLayoutParams )?
+
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA )?
+
+		  //LinearLayout
+		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+		  & ('orientation:' orientation=LayoutOrientationKind )?
+		  
+		  //TabWidget
+		  & ('divider:' divider=DrawableVA )?
+		  & ('tabStrip:' trabStripEnabled=BooleanVA )?
+		  & ('tabStripLeft:' trabStripLeft=DrawableVA )?
+		  & ('tabStripRight:' tabStripRight=DrawableVA )?
+
+		)
+	  '}')?
+	  widgets+=View+
+	'}'
+;
+
+
+FrameLayout:
+	'frame' 'layout' name=ID? '{'
+	  ('properties' '{'
+		(
+		  //View Properties
+		  ('alpha:' alpha=FLOAT )?
+		  & ('background:' background=DrawableVA )?
+/*		  & ('minHeight:' minHeight=DimensionVA )?
+		  & ('minWidth:' minWidth=DimensionVA )?
+		  & ('nextFocusDown:' nextFocusDown=[View] )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
+		  & ('nextFocusRight:' nextFocusRight=[View] )?
+		  & ('nextFocusUp:' nextFocusUp=[View] )?
+		  & ('onClick:' onClick=Action)?
+		  & ('padding:' padding=DimensionVA )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA)?
+		  & ('paddingLeft:' paddingLeft=DimensionVA)?
+		  & ('paddingRight:' paddingRight=DimensionVA)?
+		  & ('paddingTop:' paddingTop=DimensionVA)?
+		  & ('rotation:' rotation=DimensionVA)?
+		  & ('rotationX:' rotationX=DimensionVA)?
+		  & ('rotationY:' rotationY=DimensionVA)?
+		  & ('saveEnabled:' saveEnabled=BooleanVA)?
+		  & ('scaleX:' scaleX=DimensionVA)?
+		  & ('scaleY:' scaleY=DimensionVA)?
+		  & ('scrollX:' scrollX=DimensionVA)?
+		  & ('scrollY:' scrollY=DimensionVA)?
+		  & ('scrollbars:' scrollbars=BooleanVA)?
+		  & ('transformPivotX:' transformPivotX=DimensionVA)?
+		  & ('transformPivotY:' transformPivotY=DimensionVA)?
+		  & ('translationX:' translationX=DimensionVA)?
+		  & ('translationY:' translationY=DimensionVA)?
+		  & ('visibility:' visibility=LayoutVisibilityKind)?
+*/
+		  & ('layout:' layoutParams=FrameLayoutParams )?
+
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA )?
+		)
+	  '}')?
+	  layout=Layout
+	  //widgets+=View+
+	'}'
+;
+
 LayoutParams:
-	LinearLayoutParams | RelativeLayoutParams
+	LinearLayoutParams | RelativeLayoutParams | FrameLayoutParams
 ;
 
 LinearLayoutParams:
@@ -246,6 +399,20 @@ RelativeLayoutParams:
  	'}'
 ;
 
+FrameLayoutParams:
+ 	'{' {FrameLayoutParams}
+	(
+	  ('height:' layout_height=LayoutDimensionVA )?
+	  & ('width:' layout_width=LayoutDimensionVA )?
+	  & ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
+	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
+	  & ('marginRight:' layout_marginRight=DimensionVA )?
+	  & ('marginTop:' layout_marginTop=DimensionVA )?
+	)
+	'}'
+;
+
 /******************************************************************************
  * Activities
  ******************************************************************************/
@@ -269,11 +436,20 @@ ListActivity:
 TabActivity:
 	'tabActivity' name=QualifiedName '{'
 		(tabs+=Tab)+
+		(actions+=Action)*
 	'}'
 ;
 
 Tab:
-	'tab:' activity=[Activity|QualifiedName] ';'
+	'tab:' caption=StringVA name=QualifiedName? '{'
+		(
+		  ('icon:' icon=DrawableRA )?
+		  & ('selectedIcon:' selectedIcon=DrawableRA )?
+		  & ('activity:' activity=[Activity|QualifiedName] )?
+		  & ('layout:' layout=[Layout] )?
+		)
+		(actions+=Action)*
+	 '}'
 ;
 
 //
@@ -340,7 +516,7 @@ TextView:
 	 & ('clickable:' clickable=BooleanVA )?
 	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
 	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-
+/*
 	 //TextView attributes
 	 & ('autoLink:' autoLink=AutoLinkKind )?
 	 & ('autoText:' autoText=BooleanVA )?
@@ -357,7 +533,7 @@ TextView:
 	 & ('typeface:' typeface=TypefaceKind )?
 	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-	)
+*/	)
 	'}')?
 ;
 
@@ -382,7 +558,7 @@ Button:
 	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
 
 	 //TextView attributes
-	 & ('autoLink:' autoLink=AutoLinkKind )?
+/*	 & ('autoLink:' autoLink=AutoLinkKind )?
 	 & ('autoText:' autoText=BooleanVA )?
 	 & ('capitalize:' capitalize=CapitalizeKind )?
 	 & ('digits:' digits=StringVA )?
@@ -397,7 +573,7 @@ Button:
 	 & ('typeface:' typeface=TypefaceKind )?
 	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-
+*/
 	 //Button Attributes
 	 //TODO: Decide how will it be defined
 	 //Idea: To create an ActionVA
@@ -471,7 +647,7 @@ Link:
 	 & ('clickable:' clickable=BooleanVA )?
 	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
 	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-
+/*
 	 //TextView attributes
 	 & ('autoLink:' autoLink=AutoLinkKind )?
 	 & ('autoText:' autoText=BooleanVA )?
@@ -488,7 +664,7 @@ Link:
 	 & ('typeface:' typeface=TypefaceKind )?
 	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-	)
+*/	)
 	'}')?
 ;
 
@@ -519,8 +695,8 @@ ImageLink:
 
 //Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
 Spinner:
-	'spinner:' ('<'name=ID'>')?
-	prompt=StringVA
+	'spinner:' {Spinner} ('<'name=ID'>')?
+	prompt=StringVA?
 	('{'
 	(
 	 ('layout:' layoutParams=LayoutParams )?
@@ -541,8 +717,8 @@ Spinner:
 
 //EditText < TextView
 EditText:
-	'editText:' ('<'name=ID'>')?
-	text=StringVA
+	'editText:' {EditText} ('<'name=ID'>')?
+	text=StringVA?
 	('{'
 	(
 	 ('layout:' layoutParams=LayoutParams )?
@@ -554,7 +730,7 @@ EditText:
 	 & ('clickable:' clickable=BooleanVA )?
 	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
 	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-
+/*
 	 //TextView attributes
 	 & ('autoLink:' autoLink=AutoLinkKind )?
 	 & ('autoText:' autoText=BooleanVA )?
@@ -571,7 +747,7 @@ EditText:
 	 & ('typeface:' typeface=TypefaceKind )?
 	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-	)
+*/	)
 	'}')?
 ;
 
@@ -591,7 +767,7 @@ CheckBox:
 	 & ('clickable:' clickable=BooleanVA )?
 	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
 	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-
+/*
 	 //TextView attributes
 	 & ('autoLink:' autoLink=AutoLinkKind )?
 	 & ('autoText:' autoText=BooleanVA )?
@@ -608,7 +784,7 @@ CheckBox:
 	 & ('typeface:' typeface=TypefaceKind )?
 	 & ('textSize:' textSize=DimensionVA )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-
+*/
 	 //TODO: Decide how will it be defined
 	 //Idea: To create an ActionVA
 	 & ('onCheck:' onCheck=Action)?
@@ -684,9 +860,11 @@ LayoutDimensionVA:
 
 //TODO: StyleRA
 //http://developer.android.com/guide/topics/ui/themes.html
+AnyDrawableVA:
+	DrawableVA | ColorVA
+;
 DrawableVA:
-	//(DrawableRA)
-	ColorVA | (access=DrawableRA) //| DrawableVD
+	(access=DrawableRA)
 ;
 
 AnimationVA:
@@ -980,6 +1158,9 @@ AnimationFrame:
 
 //I putted this @<type> just to allow the parser to resolve the ambiguity.
 //So, I followed the Android Conventions to typed resource references
+AbstractResourceAccess:
+	ResourceAccess | (externalResource=STRING)
+;
 ResourceAccess:
 	StringRA | IntegerRA | BooleanRA | ColorRA | DimensionRA
 	| DrawableRA | AnimationRA | InterpolatorRA 
@@ -1029,23 +1210,9 @@ AnimationRA:
 ;
 
 InterpolatorRA:
-	'@interpolator' externalResource=InterpolatorsKind
-	//( interpolatorName=InterpolatorsKind | externalResource=STRING )
+	'@interpolator'
+	( interpolatorName=InterpolatorsKind | externalResource=STRING )
 ;
-
-/*
-DrawableResourceRA:
-//	(value=HEX_COLOR | resource=[DrawableResource] | externalResource=ExternalResourceReference)
-;
-*/
-
-//DrawableImageResourceRA:
-//	resource=[DrawableImageResource]
-//;
-
-
-
-
 
 
 /******************************************************************************
