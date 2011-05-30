@@ -6,8 +6,8 @@
 [template public widgetXML(aWidget : Widget)]
 [if (oclIsKindOf(TextView))]
 	<TextView
-[if (aWidget.id <> null)]
-		android:id="@+id/[aWidget.id/]"	
+[if (aWidget.name <> null)]
+		android:id="@+id/[aWidget.name/]"	
 [/if]
 		[widgetAttributes(aWidget)/]
 	/>

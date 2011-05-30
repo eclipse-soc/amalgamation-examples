@@ -53,7 +53,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 [for (resource : DimensionResource | resourceSeq)]
-  <dimen name="[resource.name/]">[resource.value/][resource.unit/]</dimen>
+  <dimen name="[resource.name/]">[resource.value/]</dimen>
 [/for]
 </resources>
 	[/file]
