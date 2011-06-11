@@ -1,0 +1,55 @@
+/*
+ * Relative Layout Example
+ * Based on: http://developer.android.com/resources/tutorials/views/hello-relativelayout.html
+ */
+application "Hello, Android!" com.example.android.hellodroid {
+
+	activity HelloDroid {
+		=> show main
+	}
+
+	relative layout main {
+		properties {
+			layout: {
+				width: fill_parent
+				height: fill_parent
+			}
+		}
+		
+		textView: <label> "Type here:" {
+			layout: {
+				width: fill_parent
+				height: wrap_content
+			}
+		}
+		
+		editText: <entry> "" {
+			background: @drawable "editbox_background"
+			layout: {
+				width: fill_parent
+				height: wrap_content
+				below: label
+			}			
+		}
+		
+		button: <ok> "OK" {
+			layout: {
+				width: wrap_content
+				height: wrap_content
+				below: entry
+				alignParentRight: TRUE
+				marginLeft: 10dp //or dip
+			}	
+		}
+		
+		button: "Cancel" {
+			layout: {
+				width: wrap_content
+				height: wrap_content
+				toLeftOf: ok
+				alignTop: ok
+			}
+		}
+	}
+
+}

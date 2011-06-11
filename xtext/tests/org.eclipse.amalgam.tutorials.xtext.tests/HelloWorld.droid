@@ -1,0 +1,19 @@
+/*
+ * HelloWorld Example
+ * Based on: http://developer.android.com/resources/tutorials/hello-world.html
+ */
+application "Hello, Android!" com.example.android.hellodroid {
+
+	string hello = "Hello, Android! I am a string resource!"
+
+	activity HelloDroid {
+		=> show main
+	}
+
+	//ADD an OCL restriction: All the application layouts must have an ID
+	layout main {
+		textView: @string hello
+//		textView: "Hello, textView: Android! I am a string resource!"
+	}
+
+}

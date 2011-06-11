@@ -1,0 +1,58 @@
+/*
+ * Relative Layout Example
+ * Based on: http://developer.android.com/resources/tutorials/views/hello-relativelayout.html
+ */
+application "Hello, Android!" com.example.android.hellodroid {
+
+	tabActivity main {
+		tab "Artists" {
+//			activity: artists_act
+		}
+
+		tab: "Albums" {
+		}
+
+		tab: "Songs" {
+		}
+
+		=> show main
+	}
+
+	tab layout main{
+		properties {
+			
+		}
+		
+		linear layout {
+			tabWidget tabs {
+			}
+		}
+	}
+
+/*
+	//Default GENERATED
+	activity artists {
+		=> show artists
+	}
+	
+	activity albums {
+		=> show albums
+	}
+
+	activity songs {
+		=> show songs
+	}
+
+	layout artists {
+		textView: "This is the Artists tab"
+	}
+
+	layout albums {
+		textView: "This is the Albums tab"
+	}
+	
+	layout songs {
+		textView: "This is the Songs tab"
+	}
+*/
+}
