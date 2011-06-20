@@ -9,6 +9,11 @@
  *    Reinaldo Junior (Google Summer of Code) - initial API and implementation
  ******************************************************************************/
 
+/*
+ * Instructions:
+ * 1) Add -Xmx512m to VM parameters of GenerateDroid.mwe2's Run Configuration
+ */
+
 grammar org.eclipse.amalgam.tutorials.xtext.Droid with org.eclipse.xtext.common.Terminals
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
@@ -27,31 +32,9 @@ generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
  ******************************************************************************/
 
 Application:
-	'application' name=STRING packageName=QualifiedName
+	'application' name=STRING '=>' packageName=QualifiedName
 	'{'
-		manifest=ManifestFile?
 		(resources+=Resource | activities+=Activity | layouts+=Layout)+
-	'}'
-;
-
-ManifestFile:
-	'manifest' '{'
-		(sdk=ManifestSDK & usesPermission=ManifestUsesPermission?)
-	'}'
-;
-
-ManifestSDK:
-	'sdk' '{'
-		(
-		 ('from' minSdkVersion=INT 'to' maxSdkVersion=INT) &
-		 ('target' targetSdkVersion=INT)
-		)
-	'}'
-;
-
-ManifestUsesPermission:
-	'usesPermission' '{'
-		permissions+=BuiltInPermissionType (',' permissions+=BuiltInPermissionType)*
 	'}'
 ;
 
@@ -59,369 +42,32 @@ Resource:
 	ValueResource | MenuResource
 ;
 
-Activity:
-	GenericActivity | ListActivity | TabActivity
-;
-
 Layout:
 	AbstractLinearLayout | RelativeLayout | TabHost | FrameLayout //| SlideDrawer | AdapterView //
-;
-
-AbstractLinearLayout:
-	LinearLayout | TabWidget | RadioGroup
-;
-
-//TODO: Make this hierarchy reflect Android widgets hierarchy
-AbstractView:
-	View | (name=ID) //Enforces 'name' inside AbstractLayout interface
-;
-
-View:
-	Widget | Layout
-;
-
-
-/*
-View:
-	ViewGroup | ImageView | KeyboardView | ViewGroup 
-;
-
-ViewGroup:
-	AbstractLinearLayout | RelativeLayout | RadioGroup
-;
-
-AbstractLinearLayout:
-	LinearLayout | RadioGroup | NumberPicker | SearchView | TabWidget |
-	TableLayout | TableRow | ZoomControls
-*/
-
-
-/*AdapterView:
-	ListView | GridView | Gallery //| Spinner
-;*/
-
-
-LinearLayout:
-	'linear'? 'layout' name=ID? '{'
-	  ('properties' '{'
-		(
-		  //View Properties
-		  ('alpha:' alpha=FLOAT )?
-		  & ('background:' background=DrawableVA )?
-/*		  & ('minHeight:' minHeight=DimensionVA )?
-		  & ('minWidth:' minWidth=DimensionVA )?
-		  & ('nextFocusDown:' nextFocusDown=[View] )?
-		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
-		  & ('nextFocusRight:' nextFocusRight=[View] )?
-		  & ('nextFocusUp:' nextFocusUp=[View] )?
-		  & ('onClick:' onClick=Action)?
-		  & ('padding:' padding=DimensionVA )?
-		  & ('paddingBottom:' paddingBottom=DimensionVA)?
-		  & ('paddingLeft:' paddingLeft=DimensionVA)?
-		  & ('paddingRight:' paddingRight=DimensionVA)?
-		  & ('paddingTop:' paddingTop=DimensionVA)?
-		  & ('rotation:' rotation=DimensionVA)?
-		  & ('rotationX:' rotationX=DimensionVA)?
-		  & ('rotationY:' rotationY=DimensionVA)?
-		  & ('saveEnabled:' saveEnabled=BooleanVA)?
-		  & ('scaleX:' scaleX=DimensionVA)?
-		  & ('scaleY:' scaleY=DimensionVA)?
-		  & ('scrollX:' scrollX=DimensionVA)?
-		  & ('scrollY:' scrollY=DimensionVA)?
-		  & ('scrollbars:' scrollbars=BooleanVA)?
-		  & ('transformPivotX:' transformPivotX=DimensionVA)?
-		  & ('transformPivotY:' transformPivotY=DimensionVA)?
-		  & ('translationX:' translationX=DimensionVA)?
-		  & ('translationY:' translationY=DimensionVA)?
-		  & ('visibility:' visibility=LayoutVisibilityKind)?
-*/
-		  //LinearLayout.LayoutParams
-		  //NOTE: All its children can have this layout parameters too
-		  & ('layout:' layoutParams=LinearLayoutParams )?
-
-		  //ViewGroup
-		  & ('animation:' layoutAnimation=AnimationVA )?
-
-		  //LinearLayout
-		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-		  & ('orientation:' orientation=LayoutOrientationKind )?
-		)
-	  '}')?
-	  widgets+=View+
-	'}'
-;
-
-RelativeLayout:
-	'relative' 'layout' name=ID? '{'
-	  ('properties' '{'
-		(
-		  //View Properties
-		  ('alpha:' alpha=FLOAT )?
-		  & ('background:' background=DrawableVA )?
-/*		  & ('minHeight:' minHeight=DimensionVA )?
-		  & ('minWidth:' minWidth=DimensionVA )?
-		  & ('nextFocusDown:' nextFocusDown=[View] )?
-		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
-		  & ('nextFocusRight:' nextFocusRight=[View] )?
-		  & ('nextFocusUp:' nextFocusUp=[View] )?
-		  & ('onClick:' onClick=Action)?
-		  & ('padding:' padding=DimensionVA )?
-		  & ('paddingBottom:' paddingBottom=DimensionVA)?
-		  & ('paddingLeft:' paddingLeft=DimensionVA)?
-		  & ('paddingRight:' paddingRight=DimensionVA)?
-		  & ('paddingTop:' paddingTop=DimensionVA)?
-		  & ('rotation:' rotation=DimensionVA)?
-		  & ('rotationX:' rotationX=DimensionVA)?
-		  & ('rotationY:' rotationY=DimensionVA)?
-		  & ('saveEnabled:' saveEnabled=BooleanVA)?
-		  & ('scaleX:' scaleX=DimensionVA)?
-		  & ('scaleY:' scaleY=DimensionVA)?
-		  & ('scrollX:' scrollX=DimensionVA)?
-		  & ('scrollY:' scrollY=DimensionVA)?
-		  & ('scrollbars:' scrollbars=BooleanVA)?
-		  & ('transformPivotX:' transformPivotX=DimensionVA)?
-		  & ('transformPivotY:' transformPivotY=DimensionVA)?
-		  & ('translationX:' translationX=DimensionVA)?
-		  & ('translationY:' translationY=DimensionVA)?
-		  & ('visibility:' visibility=LayoutVisibilityKind)?
-*/
-		  //RelativeLayout.LayoutParams
-		  //NOTE: All its children can have this layout parameters too
-		  & ('layout:' layoutParams=RelativeLayoutParams )?
-
-		  //ViewGroup
-		  & ('animation:' layoutAnimation=AnimationVA )?
-
-		  //RelativeLayout
-		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-		  & ('orientation:' orientation=LayoutOrientationKind )?
-		)
-	  '}')?
-	  widgets+=View+
-	'}'
-;
-
-//OCL restriction: Must have a TabWidget and a FrameLayout
-TabHost:
-	'tab' 'layout' name=ID? '{'
-	  ('properties' '{'
-		(
-		  //View Properties
-		  ('alpha:' alpha=FLOAT )?
-		  & ('background:' background=DrawableVA )?
-/*		  & ('minHeight:' minHeight=DimensionVA )?
-		  & ('minWidth:' minWidth=DimensionVA )?
-		  & ('nextFocusDown:' nextFocusDown=[View] )?
-		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
-		  & ('nextFocusRight:' nextFocusRight=[View] )?
-		  & ('nextFocusUp:' nextFocusUp=[View] )?
-		  & ('onClick:' onClick=Action)?
-		  & ('padding:' padding=DimensionVA )?
-		  & ('paddingBottom:' paddingBottom=DimensionVA)?
-		  & ('paddingLeft:' paddingLeft=DimensionVA)?
-		  & ('paddingRight:' paddingRight=DimensionVA)?
-		  & ('paddingTop:' paddingTop=DimensionVA)?
-		  & ('rotation:' rotation=DimensionVA)?
-		  & ('rotationX:' rotationX=DimensionVA)?
-		  & ('rotationY:' rotationY=DimensionVA)?
-		  & ('saveEnabled:' saveEnabled=BooleanVA)?
-		  & ('scaleX:' scaleX=DimensionVA)?
-		  & ('scaleY:' scaleY=DimensionVA)?
-		  & ('scrollX:' scrollX=DimensionVA)?
-		  & ('scrollY:' scrollY=DimensionVA)?
-		  & ('scrollbars:' scrollbars=BooleanVA)?
-		  & ('transformPivotX:' transformPivotX=DimensionVA)?
-		  & ('transformPivotY:' transformPivotY=DimensionVA)?
-		  & ('translationX:' translationX=DimensionVA)?
-		  & ('translationY:' translationY=DimensionVA)?
-		  & ('visibility:' visibility=LayoutVisibilityKind)?
-*/
-		  & ('layout:' layoutParams=LinearLayoutParams )?
-
-		  //ViewGroup
-		  & ('animation:' layoutAnimation=AnimationVA )?
-		)
-	  '}')?
-	  layout=Layout
-	  //widgets+=View+
-	'}'
-;
-
-TabWidget:
-	'tabWidget' name=ID? '{'
-	  ('properties' '{'
-		(
-		  //View Properties
-		  ('alpha:' alpha=FLOAT )?
-		  & ('background:' background=DrawableVA )?
-/*		  & ('minHeight:' minHeight=DimensionVA )?
-		  & ('minWidth:' minWidth=DimensionVA )?
-		  & ('nextFocusDown:' nextFocusDown=[View] )?
-		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
-		  & ('nextFocusRight:' nextFocusRight=[View] )?
-		  & ('nextFocusUp:' nextFocusUp=[View] )?
-		  & ('onClick:' onClick=Action)?
-		  & ('padding:' padding=DimensionVA )?
-		  & ('paddingBottom:' paddingBottom=DimensionVA)?
-		  & ('paddingLeft:' paddingLeft=DimensionVA)?
-		  & ('paddingRight:' paddingRight=DimensionVA)?
-		  & ('paddingTop:' paddingTop=DimensionVA)?
-		  & ('rotation:' rotation=DimensionVA)?
-		  & ('rotationX:' rotationX=DimensionVA)?
-		  & ('rotationY:' rotationY=DimensionVA)?
-		  & ('saveEnabled:' saveEnabled=BooleanVA)?
-		  & ('scaleX:' scaleX=DimensionVA)?
-		  & ('scaleY:' scaleY=DimensionVA)?
-		  & ('scrollX:' scrollX=DimensionVA)?
-		  & ('scrollY:' scrollY=DimensionVA)?
-		  & ('scrollbars:' scrollbars=BooleanVA)?
-		  & ('transformPivotX:' transformPivotX=DimensionVA)?
-		  & ('transformPivotY:' transformPivotY=DimensionVA)?
-		  & ('translationX:' translationX=DimensionVA)?
-		  & ('translationY:' translationY=DimensionVA)?
-		  & ('visibility:' visibility=LayoutVisibilityKind)?
-*/
-		  //LinearLayout.LayoutParams
-		  //NOTE: All its children can have this layout parameters too
-		  & ('layout:' layoutParams=LinearLayoutParams )?
-
-		  //ViewGroup
-		  & ('animation:' layoutAnimation=AnimationVA )?
-
-		  //LinearLayout
-		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-		  & ('orientation:' orientation=LayoutOrientationKind )?
-		  
-		  //TabWidget
-		  & ('divider:' divider=DrawableVA )?
-		  & ('tabStrip:' trabStripEnabled=BooleanVA )?
-		  & ('tabStripLeft:' trabStripLeft=DrawableVA )?
-		  & ('tabStripRight:' tabStripRight=DrawableVA )?
-
-		)
-	  '}')?
-	  widgets+=View+
-	'}'
-;
-
-
-FrameLayout:
-	'frame' 'layout' name=ID? '{'
-	  ('properties' '{'
-		(
-		  //View Properties
-		  ('alpha:' alpha=FLOAT )?
-		  & ('background:' background=DrawableVA )?
-/*		  & ('minHeight:' minHeight=DimensionVA )?
-		  & ('minWidth:' minWidth=DimensionVA )?
-		  & ('nextFocusDown:' nextFocusDown=[View] )?
-		  & ('nextFocusLeft:' nextFocusLeft=[View] )?
-		  & ('nextFocusRight:' nextFocusRight=[View] )?
-		  & ('nextFocusUp:' nextFocusUp=[View] )?
-		  & ('onClick:' onClick=Action)?
-		  & ('padding:' padding=DimensionVA )?
-		  & ('paddingBottom:' paddingBottom=DimensionVA)?
-		  & ('paddingLeft:' paddingLeft=DimensionVA)?
-		  & ('paddingRight:' paddingRight=DimensionVA)?
-		  & ('paddingTop:' paddingTop=DimensionVA)?
-		  & ('rotation:' rotation=DimensionVA)?
-		  & ('rotationX:' rotationX=DimensionVA)?
-		  & ('rotationY:' rotationY=DimensionVA)?
-		  & ('saveEnabled:' saveEnabled=BooleanVA)?
-		  & ('scaleX:' scaleX=DimensionVA)?
-		  & ('scaleY:' scaleY=DimensionVA)?
-		  & ('scrollX:' scrollX=DimensionVA)?
-		  & ('scrollY:' scrollY=DimensionVA)?
-		  & ('scrollbars:' scrollbars=BooleanVA)?
-		  & ('transformPivotX:' transformPivotX=DimensionVA)?
-		  & ('transformPivotY:' transformPivotY=DimensionVA)?
-		  & ('translationX:' translationX=DimensionVA)?
-		  & ('translationY:' translationY=DimensionVA)?
-		  & ('visibility:' visibility=LayoutVisibilityKind)?
-*/
-		  & ('layout:' layoutParams=FrameLayoutParams )?
-
-		  //ViewGroup
-		  & ('animation:' layoutAnimation=AnimationVA )?
-		)
-	  '}')?
-	  layout=Layout
-	  //widgets+=View+
-	'}'
-;
-
-LayoutParams:
-	LinearLayoutParams | RelativeLayoutParams | FrameLayoutParams
-;
-
-LinearLayoutParams:
-	'{' {LinearLayoutParams}
-	(
-	  ('height:' layout_height=LayoutDimensionVA )?
-	  & ('width:' layout_width=LayoutDimensionVA )?
-	  & ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-	  & ('weight:' layout_weight=IntegerVA )?
-	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
-	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
-	  & ('marginRight:' layout_marginRight=DimensionVA )?
-	  & ('marginTop:' layout_marginTop=DimensionVA )?
-	)
-	'}'
-;
-
-RelativeLayoutParams:
- 	'{' {RelativeLayoutParams}
-	(
-	  ('height:' layout_height=LayoutDimensionVA )?
-	  & ('width:' layout_width=LayoutDimensionVA )?
-	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
-	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
-	  & ('marginRight:' layout_marginRight=DimensionVA )?
-	  & ('marginTop:' layout_marginTop=DimensionVA )?
-
-	  & ('above:' layout_above=[View] )?
-	  & ('alignBaseline:' layout_alignBaseline=[View] )?
-	  & ('alignBottom:' layout_alignBottom=[View] )?
-	  & ('alignLeft:' layout_alignLeft=[View] )?
-	  & ('alignParentBottom:' layout_alignParentBottom=BooleanVA )?
-	  & ('alignParentLeft:' layout_alignParentLeft=BooleanVA )?
-	  & ('alignParentRight:' layout_alignParentRight=BooleanVA )?
-	  & ('alignParentTop:' layout_alignParentTop=BooleanVA )?
-	  & ('alignTop:' layout_alignTop=[View] )?
-	  & ('alignWithParentIfMissing:' layout_alignWithParentIfMissing=BooleanVA )?
-	  & ('below:' layout_below=[View] )?
-	  & ('centerHorizontal:' layout_centerHorizontal=BooleanVA )?
-	  & ('centerInParent:' layout_centerInParent=BooleanVA )?
-	  & ('centerVertical:' layout_centerVertical=BooleanVA )?
-	  & ('toLeftOf:' layout_toLeftOf=[View] )?
-	  & ('toRightOf:' layout_toRightOf=[View] )?
-	)
- 	'}'
-;
-
-FrameLayoutParams:
- 	'{' {FrameLayoutParams}
-	(
-	  ('height:' layout_height=LayoutDimensionVA )?
-	  & ('width:' layout_width=LayoutDimensionVA )?
-	  & ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
-	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
-	  & ('marginRight:' layout_marginRight=DimensionVA )?
-	  & ('marginTop:' layout_marginTop=DimensionVA )?
-	)
-	'}'
 ;
 
 /******************************************************************************
  * Activities
  ******************************************************************************/
 
+Activity:
+	GenericActivity | ListActivity | TabActivity
+;
+
 GenericActivity:
-	'activity' name=QualifiedName '{'
-		(actions+=Action)*
+	'screen' name=QualifiedName '{'
+		(
+		 ('layout:' referencedLayout=[Layout])
+		 | widgets=ViewCollection
+		)
+		//(actions+=Action)*
 	'}'
 ;
+
+ViewCollection:
+	('#' widgets+=View)+
+;
+
 
 ListActivity:
 	'listActivity' name=QualifiedName '{'
@@ -479,23 +125,334 @@ ShowLayoutAction:
 InvokeActivityAction:
 	'invoke' activity=[Activity|QualifiedName];
 
-//Loads a fixed resource
-//TODO: Load a dinamic resource from a URL, loadJson for example
-//MAYBE...
-//Pode ter recurs‹o...
-//LoadResourceAction:
-//	'load' resource=ID ('->' toVar=ID)? (afterLoad=Action)?
-//;
+/******************************************************************************
+ * Layouts
+ ******************************************************************************/
+AbstractLinearLayout:
+	LinearLayout | TabWidget //| RadioGroup
+;
+
+//TODO: Make this hierarchy reflect Android widgets hierarchy
+AbstractView:
+	View | (name=ID) //Enforces 'name' inside AbstractLayout interface
+;
+
+View:
+	Widget | Layout
+;
+
+LinearLayout:
+	'linear'? 'layout' {LinearLayout} name=ID? '{'
+		(
+		  //View Properties
+		  ('alpha:' alpha=FLOAT ';' )?
+		  & ('background:' background=AnyDrawableVA ';' )?
+		  & ('minHeight:' minHeight=DimensionVA ';' )?
+		  & ('minWidth:' minWidth=DimensionVA ';' )?
+		  & ('nextFocusDown:' nextFocusDown=[View] ';' )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] ';' )?
+		  & ('nextFocusRight:' nextFocusRight=[View] ';' )?
+		  & ('nextFocusUp:' nextFocusUp=[View] ';' )?
+		  & ('onClick:' onClick=Action';' )?
+		  & ('padding:' padding=DimensionVA ';' )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA';' )?
+		  & ('paddingLeft:' paddingLeft=DimensionVA';' )?
+		  & ('paddingRight:' paddingRight=DimensionVA';' )?
+		  & ('paddingTop:' paddingTop=DimensionVA';' )?
+//		  & ('rotation:' rotation=DimensionVA';' )?
+//		  & ('rotationX:' rotationX=DimensionVA';' )?
+//		  & ('rotationY:' rotationY=DimensionVA';' )?
+//		  & ('saveEnabled:' saveEnabled=BooleanVA';' )?
+//		  & ('scaleX:' scaleX=DimensionVA';' )?
+//		  & ('scaleY:' scaleY=DimensionVA';' )?
+//		  & ('scrollX:' scrollX=DimensionVA';' )?
+//		  & ('scrollY:' scrollY=DimensionVA';' )?
+		  & ('scrollbars:' scrollbars=BooleanVA';' )?
+//		  & ('transformPivotX:' transformPivotX=DimensionVA';' )?
+//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
+//		  & ('translationX:' translationX=DimensionVA';' )?
+//		  & ('translationY:' translationY=DimensionVA';' )?
+		  & ('visibility:' visibility=LayoutVisibilityKind';' )?
+
+		  //LinearLayout.LayoutParams
+		  //NOTE: All its children can have this layout parameters too
+//		  & ('layout:' layoutParams=LinearLayoutParams ';' )?
+
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA ';' )?
+
+		  //LinearLayout
+//		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
+		  & ('orientation:' orientation=LayoutOrientationKind ';' )?
+		)
+	  widgets+=ViewCollection?
+	'}'
+;
+
+RelativeLayout:
+	'relative' 'layout' {RelativeLayout} name=ID? '{'
+		(
+		  //View Properties
+		  ('alpha:' alpha=FLOAT ';' )?
+		  & ('background:' background=AnyDrawableVA ';' )?
+		  & ('minHeight:' minHeight=DimensionVA ';' )?
+		  & ('minWidth:' minWidth=DimensionVA ';' )?
+		  & ('nextFocusDown:' nextFocusDown=[View] ';' )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] ';' )?
+		  & ('nextFocusRight:' nextFocusRight=[View] ';' )?
+		  & ('nextFocusUp:' nextFocusUp=[View] ';' )?
+		  & ('onClick:' onClick=Action';' )?
+		  & ('padding:' padding=DimensionVA ';' )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA';' )?
+		  & ('paddingLeft:' paddingLeft=DimensionVA';' )?
+		  & ('paddingRight:' paddingRight=DimensionVA';' )?
+		  & ('paddingTop:' paddingTop=DimensionVA';' )?
+//		  & ('rotation:' rotation=DimensionVA';' )?
+//		  & ('rotationX:' rotationX=DimensionVA';' )?
+//		  & ('rotationY:' rotationY=DimensionVA';' )?
+//		  & ('saveEnabled:' saveEnabled=BooleanVA';' )?
+//		  & ('scaleX:' scaleX=DimensionVA';' )?
+//		  & ('scaleY:' scaleY=DimensionVA';' )?
+//		  & ('scrollX:' scrollX=DimensionVA';' )?
+//		  & ('scrollY:' scrollY=DimensionVA';' )?
+		  & ('scrollbars:' scrollbars=BooleanVA';' )?
+//		  & ('transformPivotX:' transformPivotX=DimensionVA';' )?
+//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
+//		  & ('translationX:' translationX=DimensionVA';' )?
+//		  & ('translationY:' translationY=DimensionVA';' )?
+		  & ('visibility:' visibility=LayoutVisibilityKind';' )?
+
+		  //RelativeLayout.LayoutParams
+		  //NOTE: All its children can have this layout parameters too
+//		  & ('layout:' layoutParams=RelativeLayoutParams ';' )?
+
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA ';' )?
+
+		  //RelativeLayout
+//		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
+		  & ('orientation:' orientation=LayoutOrientationKind ';' )?
+		)
+	  widgets+=ViewCollection?
+	'}'
+;
+
+//OCL restriction: Must have a TabWidget and a FrameLayout
+TabHost:
+	'tab' 'layout' {TabHost} name=ID? '{'
+		(
+		  ('alpha:' alpha=FLOAT ';' )?
+		  & ('background:' background=AnyDrawableVA ';' )?
+		  & ('minHeight:' minHeight=DimensionVA ';' )?
+		  & ('minWidth:' minWidth=DimensionVA ';' )?
+		  & ('nextFocusDown:' nextFocusDown=[View] ';' )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] ';' )?
+		  & ('nextFocusRight:' nextFocusRight=[View] ';' )?
+		  & ('nextFocusUp:' nextFocusUp=[View] ';' )?
+		  & ('onClick:' onClick=Action';' )?
+		  & ('padding:' padding=DimensionVA ';' )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA';' )?
+		  & ('paddingLeft:' paddingLeft=DimensionVA';' )?
+		  & ('paddingRight:' paddingRight=DimensionVA';' )?
+		  & ('paddingTop:' paddingTop=DimensionVA';' )?
+//		  & ('rotation:' rotation=DimensionVA';' )?
+//		  & ('rotationX:' rotationX=DimensionVA';' )?
+//		  & ('rotationY:' rotationY=DimensionVA';' )?
+//		  & ('saveEnabled:' saveEnabled=BooleanVA';' )?
+//		  & ('scaleX:' scaleX=DimensionVA';' )?
+//		  & ('scaleY:' scaleY=DimensionVA';' )?
+//		  & ('scrollX:' scrollX=DimensionVA';' )?
+//		  & ('scrollY:' scrollY=DimensionVA';' )?
+		  & ('scrollbars:' scrollbars=BooleanVA';' )?
+//		  & ('transformPivotX:' transformPivotX=DimensionVA';' )?
+//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
+//		  & ('translationX:' translationX=DimensionVA';' )?
+//		  & ('translationY:' translationY=DimensionVA';' )?
+		  & ('visibility:' visibility=LayoutVisibilityKind';' )?
+//		  & ('layout:' layoutParams=LinearLayoutParams ';' )?
+
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA ';' )?
+		)
+//	  layout=Layout
+	  //widgets+=View+
+	'}'
+;
+
+TabWidget:
+	'tabWidget' name=ID? '{'
+		(
+		  ('alpha:' alpha=FLOAT ';' )?
+		  & ('background:' background=AnyDrawableVA ';' )?
+		  & ('minHeight:' minHeight=DimensionVA ';' )?
+		  & ('minWidth:' minWidth=DimensionVA ';' )?
+		  & ('nextFocusDown:' nextFocusDown=[View] ';' )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] ';' )?
+		  & ('nextFocusRight:' nextFocusRight=[View] ';' )?
+		  & ('nextFocusUp:' nextFocusUp=[View] ';' )?
+		  & ('onClick:' onClick=Action';' )?
+		  & ('padding:' padding=DimensionVA ';' )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA';' )?
+		  & ('paddingLeft:' paddingLeft=DimensionVA';' )?
+		  & ('paddingRight:' paddingRight=DimensionVA';' )?
+		  & ('paddingTop:' paddingTop=DimensionVA';' )?
+//		  & ('rotation:' rotation=DimensionVA';' )?
+//		  & ('rotationX:' rotationX=DimensionVA';' )?
+//		  & ('rotationY:' rotationY=DimensionVA';' )?
+//		  & ('saveEnabled:' saveEnabled=BooleanVA';' )?
+//		  & ('scaleX:' scaleX=DimensionVA';' )?
+//		  & ('scaleY:' scaleY=DimensionVA';' )?
+//		  & ('scrollX:' scrollX=DimensionVA';' )?
+//		  & ('scrollY:' scrollY=DimensionVA';' )?
+		  & ('scrollbars:' scrollbars=BooleanVA';' )?
+//		  & ('transformPivotX:' transformPivotX=DimensionVA';' )?
+//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
+//		  & ('translationX:' translationX=DimensionVA';' )?
+//		  & ('translationY:' translationY=DimensionVA';' )?
+		  & ('visibility:' visibility=LayoutVisibilityKind';' )?
+
+		  //LinearLayout.LayoutParams
+		  //NOTE: All its children can have this layout parameters too
+//		  & ('layout:' layoutParams=LinearLayoutParams ';' )?
+
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA ';' )?
+
+		  //LinearLayout
+		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
+		  & ('orientation:' orientation=LayoutOrientationKind ';' )?
+		  
+		  //TabWidget
+		  & ('divider:' divider=AnyDrawableVA ';' )?
+		  & ('tabStrip:' trabStripEnabled=BooleanVA ';' )?
+		  & ('tabStripLeft:' trabStripLeft=AnyDrawableVA ';' )?
+		  & ('tabStripRight:' tabStripRight=AnyDrawableVA ';' )?
+
+		)
+	  widgets=ViewCollection
+	'}'
+;
+
+
+FrameLayout:
+	'frame' 'layout' {FrameLayout} name=ID? '{'
+		(
+		  ('alpha:' alpha=FLOAT ';' )?
+		  & ('background:' background=AnyDrawableVA ';' )?
+		  & ('minHeight:' minHeight=DimensionVA ';' )?
+		  & ('minWidth:' minWidth=DimensionVA ';' )?
+		  & ('nextFocusDown:' nextFocusDown=[View] ';' )?
+		  & ('nextFocusLeft:' nextFocusLeft=[View] ';' )?
+		  & ('nextFocusRight:' nextFocusRight=[View] ';' )?
+		  & ('nextFocusUp:' nextFocusUp=[View] ';' )?
+		  & ('onClick:' onClick=Action';' )?
+		  & ('padding:' padding=DimensionVA ';' )?
+		  & ('paddingBottom:' paddingBottom=DimensionVA';' )?
+		  & ('paddingLeft:' paddingLeft=DimensionVA';' )?
+		  & ('paddingRight:' paddingRight=DimensionVA';' )?
+		  & ('paddingTop:' paddingTop=DimensionVA';' )?
+//		  & ('rotation:' rotation=DimensionVA';' )?
+//		  & ('rotationX:' rotationX=DimensionVA';' )?
+//		  & ('rotationY:' rotationY=DimensionVA';' )?
+//		  & ('saveEnabled:' saveEnabled=BooleanVA';' )?
+//		  & ('scaleX:' scaleX=DimensionVA';' )?
+//		  & ('scaleY:' scaleY=DimensionVA';' )?
+//		  & ('scrollX:' scrollX=DimensionVA';' )?
+//		  & ('scrollY:' scrollY=DimensionVA';' )?
+		  & ('scrollbars:' scrollbars=BooleanVA';' )?
+//		  & ('transformPivotX:' transformPivotX=DimensionVA';' )?
+//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
+//		  & ('translationX:' translationX=DimensionVA';' )?
+//		  & ('translationY:' translationY=DimensionVA';' )?
+		  & ('visibility:' visibility=LayoutVisibilityKind';' )?
+
+//		  & ('layout:' layoutParams=FrameLayoutParams ';' )?
+
+		  //ViewGroup
+		  & ('animation:' layoutAnimation=AnimationVA ';' )?
+		)
+//	  layout=Layout
+	  //widgets+=View+
+	'}'
+;
+
+
+
+
+
+/*
+LayoutParams:
+	LinearLayoutParams | RelativeLayoutParams | FrameLayoutParams
+;
+
+LinearLayoutParams:
+	'layout:' '{' {LinearLayoutParams}
+	(
+	  ('height:' layout_height=LayoutDimensionVA )?
+	  & ('width:' layout_width=LayoutDimensionVA )?
+//	  & ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+	  & ('weight:' layout_weight=IntegerVA )?
+	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
+	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
+	  & ('marginRight:' layout_marginRight=DimensionVA )?
+	  & ('marginTop:' layout_marginTop=DimensionVA )?
+	)
+	'}'
+;
+
+RelativeLayoutParams:
+ 	'layout:' '{' {RelativeLayoutParams}
+	(
+	  ('height:' layout_height=LayoutDimensionVA )?
+	  & ('width:' layout_width=LayoutDimensionVA )?
+	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
+	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
+	  & ('marginRight:' layout_marginRight=DimensionVA )?
+	  & ('marginTop:' layout_marginTop=DimensionVA )?
+
+	  & ('above:' layout_above=[View] )?
+	  & ('alignBaseline:' layout_alignBaseline=[View] )?
+	  & ('alignBottom:' layout_alignBottom=[View] )?
+	  & ('alignLeft:' layout_alignLeft=[View] )?
+	  & ('alignParentBottom:' layout_alignParentBottom=BooleanVA )?
+	  & ('alignParentLeft:' layout_alignParentLeft=BooleanVA )?
+	  & ('alignParentRight:' layout_alignParentRight=BooleanVA )?
+	  & ('alignParentTop:' layout_alignParentTop=BooleanVA )?
+	  & ('alignTop:' layout_alignTop=[View] )?
+	  & ('alignWithParentIfMissing:' layout_alignWithParentIfMissing=BooleanVA )?
+	  & ('below:' layout_below=[View] )?
+	  & ('centerHorizontal:' layout_centerHorizontal=BooleanVA )?
+	  & ('centerInParent:' layout_centerInParent=BooleanVA )?
+	  & ('centerVertical:' layout_centerVertical=BooleanVA )?
+	  & ('toLeftOf:' layout_toLeftOf=[View] )?
+	  & ('toRightOf:' layout_toRightOf=[View] )?
+	)
+ 	'}'
+;
+
+FrameLayoutParams:
+ 	'layout:' '{' {FrameLayoutParams}
+	(
+	  ('height:' layout_height=LayoutDimensionVA )?
+	  & ('width:' layout_width=LayoutDimensionVA )?
+//	  & ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
+	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
+	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
+	  & ('marginRight:' layout_marginRight=DimensionVA )?
+	  & ('marginTop:' layout_marginTop=DimensionVA )?
+	)
+	'}'
+;
+*/
+
 
 
 /******************************************************************************
  * Widgets
  ******************************************************************************/
 Widget:
-	TextView | Button |  Link |
-	ImageView | ImageButton | ImageLink |
-	EditText | CheckBox | RadioButton |
-	RadioGroup | Spinner
+	TextView | Button |  Link
+	| ImageView | EditText | Spinner
 ;
 
 AbstractTextView:
@@ -507,187 +464,110 @@ TextView:
 	text=StringVA
 	('{'
 	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-/*
-	 //TextView attributes
-	 & ('autoLink:' autoLink=AutoLinkKind )?
-	 & ('autoText:' autoText=BooleanVA )?
-	 & ('capitalize:' capitalize=CapitalizeKind )?
-	 & ('digits:' digits=StringVA )?
-	 & ('editable:' editable=BooleanVA)?
-	 & ('gravity:' gravity=LayoutGravityKind)?
-	 & ('hint:' hint=StringVA)?
-	 & ('numeric:' numeric=BooleanVA)?
-	 & ('password:' password=BooleanVA)?
-	 & ('phoneNumber:' phoneNumber=BooleanVA)?
-	 & ('singleLine:' singleLine=BooleanVA )?
-	 & ('textColor:' textColor=ColorVA)?
-	 & ('typeface:' typeface=TypefaceKind )?
-	 & ('textSize:' textSize=DimensionVA )?
-	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-*/	)
-	'}')?
-;
-
-AbstractButton:
-	Button | ImageButton | Link | ImageLink
-;
-
-//Button < TextView
-Button:
-	'button:' ('<'name=ID'>')?
-	text=StringVA
-	('{'
-	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+	 //(layoutParams=LayoutParams)?
+	 ('top:' top=DimensionVA ';')?
+	 & ('left:' left=DimensionVA ';')?
+	 & ('width:' width=DimensionVA ';')?
+	 & ('height:' height=DimensionVA ';')?
+	 & ('background:' background=AnyDrawableVA ';')?
+	 & ('clickable:' clickable=BooleanVA ';' )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';' )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA ';' )?
 
 	 //TextView attributes
-/*	 & ('autoLink:' autoLink=AutoLinkKind )?
-	 & ('autoText:' autoText=BooleanVA )?
-	 & ('capitalize:' capitalize=CapitalizeKind )?
-	 & ('digits:' digits=StringVA )?
-	 & ('editable:' editable=BooleanVA)?
-	 & ('gravity:' gravity=LayoutGravityKind)?
-	 & ('hint:' hint=StringVA)?
-	 & ('numeric:' numeric=BooleanVA)?
-	 & ('password:' password=BooleanVA)?
-	 & ('phoneNumber:' phoneNumber=BooleanVA)?
-	 & ('singleLine:' singleLine=BooleanVA )?
-	 & ('textColor:' textColor=ColorVA)?
-	 & ('typeface:' typeface=TypefaceKind )?
-	 & ('textSize:' textSize=DimensionVA )?
-	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-*/
-	 //Button Attributes
-	 //TODO: Decide how will it be defined
-	 //Idea: To create an ActionVA
-	 & ('onClick:' onClick=Action)?
+	 & ('autoLink:' autoLink=AutoLinkKind ';' )?
+	 & ('autoText:' autoText=BooleanVA ';' )?
+	 & ('capitalize:' capitalize=CapitalizeKind ';' )?
+	 & ('digits:' digits=StringVA ';' )?
+	 & ('editable:' editable=BooleanVA';' )?
+	 & ('gravity:' gravity=LayoutGravityKind';' )?
+	 & ('hint:' hint=StringVA';' )?
+	 & ('numeric:' numeric=BooleanVA';' )?
+	 & ('password:' password=BooleanVA';' )?
+	 & ('phoneNumber:' phoneNumber=BooleanVA';' )?
+	 & ('singleLine:' singleLine=BooleanVA ';' )?
+	 & ('textColor:' textColor=ColorVA';' )?
+	 & ('typeface:' typeface=TypefaceKind ';' )?
+	 & ('textSize:' textSize=DimensionVA ';' )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* ';' )?
 	)
 	'}')?
-;
-
-AbstractImageView:
-	ImageView | ImageButton
 ;
 
 ImageView:
 	'imageView:' ('<'name=ID'>')?
-	//(src=DrawableVA | src=ColorVA)
-	src=DrawableVA
+	src=AnyDrawableVA
 	('{'
 	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+	 //('layout:' layoutParams=LayoutParams ';' )?
+	  ('top:' top=DimensionVA ';' )?
+	 & ('left:' left=DimensionVA ';' )?
+	 & ('width:' width=DimensionVA ';' )?
+	 & ('height:' height=DimensionVA ';' )?
+	 & ('background:' background=AnyDrawableVA ';' )?
+	 & ('clickable:' clickable=BooleanVA ';' )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';' )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA ';' )?
 	)
 	'}')?
 ;
 
 
-//ImageButton < ImageView
-ImageButton:
-	'imageButton:' ('<'name=ID'>')?
-	//(src=DrawableVA | src=ColorVA)
-	src=DrawableVA
-	('{'
+//Button and ImageButton (depending on parameters)
+Button:
+	'button:' {Button} ('<'name=ID'>')?
+	'{'
 	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+//	 ('layout:' layoutParams=LayoutParams ';' )?
+	  ('image:' image=AnyDrawableVA ';' )?
+	 & ('top:' top=DimensionVA ';' )?
+	 & ('left:' left=DimensionVA ';' )?
+	 & ('width:' width=DimensionVA ';' )?
+	 & ('height:' height=DimensionVA ';' )?
+	 & ('background:' background=AnyDrawableVA ';' )?
+	 & ('clickable:' clickable=BooleanVA ';' )?
 
 	 // Specific properties
-	 & ('hint:' hint=StringVA)?
-//	 & ('textColor:' textColor=ColorVA)?
+	 & ('hint:' hint=StringVA ';' )?
 	)
-	'}')?
+	'}'
 ;
 
 
 //Button to an Activity
 Link:
 	'link:' ('<'name=ID'>')?
-	text=StringVA
-	'to' target=[Activity|QualifiedName]
+	text=StringVA 'to' target=[Activity|QualifiedName]
 	('{'
 	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-/*
+//	 ('layout:' layoutParams=LayoutParams ';' )?
+	  ('top:' top=DimensionVA ';' )?
+	 & ('left:' left=DimensionVA ';' )?
+	 & ('width:' width=DimensionVA ';' )?
+	 & ('height:' height=DimensionVA ';' )?
+	 & ('background:' background=AnyDrawableVA ';' )?
+	 & ('clickable:' clickable=BooleanVA ';' )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';' )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA ';' )?
+
+	 & ('image:' image=AnyDrawableVA ';' )?
+
 	 //TextView attributes
-	 & ('autoLink:' autoLink=AutoLinkKind )?
-	 & ('autoText:' autoText=BooleanVA )?
-	 & ('capitalize:' capitalize=CapitalizeKind )?
-	 & ('digits:' digits=StringVA )?
-	 & ('editable:' editable=BooleanVA)?
-	 & ('gravity:' gravity=LayoutGravityKind)?
-	 & ('hint:' hint=StringVA)?
-	 & ('numeric:' numeric=BooleanVA)?
-	 & ('password:' password=BooleanVA)?
-	 & ('phoneNumber:' phoneNumber=BooleanVA)?
-	 & ('singleLine:' singleLine=BooleanVA )?
-	 & ('textColor:' textColor=ColorVA)?
-	 & ('typeface:' typeface=TypefaceKind )?
-	 & ('textSize:' textSize=DimensionVA )?
-	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-*/	)
-	'}')?
-;
-
-
-//Button to an Activity
-ImageLink:
-	'imageLink:' ('<'name=ID'>')?
-	src=DrawableVA
-	'to' target=[Activity|QualifiedName]
-	('{'
-	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-	 // Specific properties
-	 & ('hint:' hint=BooleanVA)?
-	 & ('textColor:' textColor=BooleanVA)?
+	 & ('autoLink:' autoLink=AutoLinkKind ';' )?
+	 & ('autoText:' autoText=BooleanVA ';' )?
+	 & ('capitalize:' capitalize=CapitalizeKind ';' )?
+	 & ('digits:' digits=StringVA ';' )?
+	 & ('editable:' editable=BooleanVA';' )?
+	 & ('gravity:' gravity=LayoutGravityKind';' )?
+	 & ('hint:' hint=StringVA';' )?
+	 & ('numeric:' numeric=BooleanVA';' )?
+	 & ('password:' password=BooleanVA';' )?
+	 & ('phoneNumber:' phoneNumber=BooleanVA';' )?
+	 & ('singleLine:' singleLine=BooleanVA ';' )?
+	 & ('textColor:' textColor=ColorVA';' )?
+	 & ('typeface:' typeface=TypefaceKind ';' )?
+	 & ('textSize:' textSize=DimensionVA ';' )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* ';' )?
 	)
 	'}')?
 ;
@@ -699,18 +579,18 @@ Spinner:
 	prompt=StringVA?
 	('{'
 	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
+	 //('layout:' layoutParams=LayoutParams ';' )?
+	  ('top:' top=DimensionVA ';' )?
+	 & ('left:' left=DimensionVA ';' )?
+	 & ('width:' width=DimensionVA ';' )?
+	 & ('height:' height=DimensionVA ';' )?
+	 & ('background:' background=AnyDrawableVA ';' )?
+	 & ('clickable:' clickable=BooleanVA ';' )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';' )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA ';' )?
 
 	 // Specific properties
-//	 & ('gravity:' gravity+=SpinnerGravityKind ('|' gravity+=SpinnerGravityKind )* )?
+//	 & ('gravity:' gravity+=SpinnerGravityKind ('|' gravity+=SpinnerGravityKind )* ';' )?
 	)
 	'}')?
 ;
@@ -721,96 +601,35 @@ EditText:
 	text=StringVA?
 	('{'
 	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-/*
-	 //TextView attributes
-	 & ('autoLink:' autoLink=AutoLinkKind )?
-	 & ('autoText:' autoText=BooleanVA )?
-	 & ('capitalize:' capitalize=CapitalizeKind )?
-	 & ('digits:' digits=StringVA )?
-	 & ('editable:' editable=BooleanVA)?
-	 & ('gravity:' gravity=LayoutGravityKind)?
-	 & ('hint:' hint=StringVA)?
-	 & ('numeric:' numeric=BooleanVA)?
-	 & ('password:' password=BooleanVA)?
-	 & ('phoneNumber:' phoneNumber=BooleanVA)?
-	 & ('singleLine:' singleLine=BooleanVA )?
-	 & ('textColor:' textColor=ColorVA)?
-	 & ('typeface:' typeface=TypefaceKind )?
-	 & ('textSize:' textSize=DimensionVA )?
-	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-*/	)
-	'}')?
-;
+	 //('layout:' layoutParams=LayoutParams ';' )?
+	  ('top:' top=DimensionVA ';' )?
+	 & ('left:' left=DimensionVA ';' )?
+	 & ('width:' width=DimensionVA ';' )?
+	 & ('height:' height=DimensionVA ';' )?
+	 & ('background:' background=AnyDrawableVA ';' )?
+	 & ('clickable:' clickable=BooleanVA ';' )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';' )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA ';' )?
 
-
-//CheckBox < TextView
-CheckBox:
-	'check:' ('<'name=ID'>')?
-	text=StringVA
-	('{'
-	(
-	 ('layout:' layoutParams=LayoutParams )?
-	 & ('top:' top=DimensionVA )?
-	 & ('left:' left=DimensionVA )?
-	 & ('width:' width=DimensionVA )?
-	 & ('height:' height=DimensionVA )?
-	 & ('background:' background=DrawableVA )?
-	 & ('clickable:' clickable=BooleanVA )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA )?
-/*
 	 //TextView attributes
-	 & ('autoLink:' autoLink=AutoLinkKind )?
-	 & ('autoText:' autoText=BooleanVA )?
-	 & ('capitalize:' capitalize=CapitalizeKind )?
-	 & ('digits:' digits=StringVA )?
-	 & ('editable:' editable=BooleanVA)?
-	 & ('gravity:' gravity=LayoutGravityKind)?
-	 & ('hint:' hint=StringVA)?
-	 & ('numeric:' numeric=BooleanVA)?
-	 & ('password:' password=BooleanVA)?
-	 & ('phoneNumber:' phoneNumber=BooleanVA)?
-	 & ('singleLine:' singleLine=BooleanVA )?
-	 & ('textColor:' textColor=ColorVA)?
-	 & ('typeface:' typeface=TypefaceKind )?
-	 & ('textSize:' textSize=DimensionVA )?
-	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* )?
-*/
-	 //TODO: Decide how will it be defined
-	 //Idea: To create an ActionVA
-	 & ('onCheck:' onCheck=Action)?
+	 & ('autoLink:' autoLink=AutoLinkKind ';' )?
+	 & ('autoText:' autoText=BooleanVA ';' )?
+	 & ('capitalize:' capitalize=CapitalizeKind ';' )?
+	 & ('digits:' digits=StringVA ';' )?
+	 & ('editable:' editable=BooleanVA';' )?
+	 & ('gravity:' gravity=LayoutGravityKind';' )?
+	 & ('hint:' hint=StringVA';' )?
+	 & ('numeric:' numeric=BooleanVA';' )?
+	 & ('password:' password=BooleanVA';' )?
+	 & ('phoneNumber:' phoneNumber=BooleanVA';' )?
+	 & ('singleLine:' singleLine=BooleanVA ';' )?
+	 & ('textColor:' textColor=ColorVA';' )?
+	 & ('typeface:' typeface=TypefaceKind ';' )?
+	 & ('textSize:' textSize=DimensionVA ';' )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* ';' )?
 	)
 	'}')?
 ;
-
-//EditText < TextView
-RadioButton:
-	'radio:' ('<'name=ID'>')?
-	text=StringVA
-	('{'
-		('layout:' layoutParams=LayoutParams )?
-	 	& ('onCheck:' onClick=Action)?
-	'}')?
-;
-
-//EditText < TextView
-RadioGroup:
-	'radioGroup:' ('<'name=ID'>')?
-	'{'
-		('layout:' layoutParams=LayoutParams )?
-		radioButtons+=[RadioButton] (',' radioButtons+=[RadioButton])*
-	'}'
-;
-
 
 /******************************************************************************
  * Value Access
@@ -876,48 +695,6 @@ InterpolatorVA:
 	//(InterpolatorRA)
 	access=InterpolatorRA
 ;
-
-
-/******************************************************************************
- * Property Value (a replacement to VA)
- ******************************************************************************/
-/*
-PropertyValue:
-	StringPV | IntegerPV |
-	BooleanPV | ColorPV |
-	DimensionPV | DrawablePV 
-;
-
-StringVA: StringPV;
-StringPV:
-	(value=STRING | (resource=[StringResource] | '(' externalResource=ID ')' ))
-;
-
-IntegerVA: IntegerPV; 
-IntegerPV:
-	(value=INT | (resource=[IntegerResource] | '(' externalResource=ID ')' ))
-;
-
-BooleanVA: BooleanPV;
-BooleanPV:
-	(value=BOOL | (resource=[BooleanResource] | '(' externalResource=ID ')' ))
-;
-
-ColorVA: ColorPV;
-ColorPV:
-	(value=HEX_COLOR | (resource=[ColorResource] | '(' externalResource=ID ')' ))
-;
-
-DimensionVA: DimensionPV;
-DimensionPV:
-	((value=FLOAT unit=DimensionKind) | (resource=[DimensionResource] | '(' externalResource=ID ')' ))
-;
-
-DrawableVA: DrawablePV;
-DrawablePV:
-	(resource=[DrawableResource] | '(' externalResource=ID ')')
-;
-*/
 
 
 /******************************************************************************
@@ -1137,7 +914,7 @@ FrameAnimationResource:
 ;
 
 AnimationFrame:
-	'frame:' drawable=DrawableVA ('->' duration=INT)?
+	'frame:' drawable=AnyDrawableVA ('->' duration=INT)?
 ;
 
 
@@ -1212,6 +989,65 @@ AnimationRA:
 InterpolatorRA:
 	'@interpolator'
 	( interpolatorName=InterpolatorsKind | externalResource=STRING )
+;
+
+
+
+
+//CheckBox < TextView
+CheckBox:
+	'check:' ('<'name=ID'>')?
+	text=StringVA
+	('{'
+	(
+	 ('top:' top=DimensionVA ';' )?
+	 & ('left:' left=DimensionVA ';' )?
+	 & ('width:' width=DimensionVA ';' )?
+	 & ('height:' height=DimensionVA ';' )?
+	 & ('background:' background=AnyDrawableVA ';' )?
+	 & ('clickable:' clickable=BooleanVA ';' )?
+	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';' )?
+	 & ('isScrollContainer:' isScrollContainer=BooleanVA ';' )?
+
+	 //TextView attributes
+	 & ('autoLink:' autoLink=AutoLinkKind ';' )?
+	 & ('autoText:' autoText=BooleanVA ';' )?
+	 & ('capitalize:' capitalize=CapitalizeKind ';' )?
+	 & ('digits:' digits=StringVA ';' )?
+	 & ('editable:' editable=BooleanVA';' )?
+	 & ('gravity:' gravity=LayoutGravityKind';' )?
+	 & ('hint:' hint=StringVA';' )?
+	 & ('numeric:' numeric=BooleanVA';' )?
+	 & ('password:' password=BooleanVA';' )?
+	 & ('phoneNumber:' phoneNumber=BooleanVA';' )?
+	 & ('singleLine:' singleLine=BooleanVA ';' )?
+	 & ('textColor:' textColor=ColorVA';' )?
+	 & ('typeface:' typeface=TypefaceKind ';' )?
+	 & ('textSize:' textSize=DimensionVA ';' )?
+	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* ';' )?
+
+	 //TODO: Decide how will it be defined
+	 //Idea: To create an ActionVA
+	 & ('onCheck:' onCheck=Action';' )?
+	)
+	'}')?
+;
+
+//EditText < TextView
+RadioButton:
+	'radio:' ('<'name=ID'>')?
+	text=StringVA
+	('{'
+	 	('onCheck:' onClick=Action';' )?
+	'}')?
+;
+
+//EditText < TextView
+RadioGroup:
+	'radioGroup:' ('<'name=ID'>')?
+	'{'
+		radioButtons+=[RadioButton]+
+	'}'
 ;
 
 
@@ -1341,12 +1177,6 @@ enum BuiltInPermissionType:
 	WRITE_SMS	|
 	WRITE_SYNC_SETTINGS	
 ;
-
-/*
-enum DimensionKind :
-  dp | sp | pt | px | mm | in
-;
-*/
 
 enum InterpolatorsKind :
   accelerate_decelerate |
