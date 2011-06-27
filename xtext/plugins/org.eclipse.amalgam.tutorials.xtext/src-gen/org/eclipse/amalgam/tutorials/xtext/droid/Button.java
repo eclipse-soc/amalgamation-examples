@@ -14,7 +14,9 @@ package org.eclipse.amalgam.tutorials.xtext.droid;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getImage <em>Image</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getHint <em>Hint</em>}</li>
  * </ul>
  * </p>
@@ -25,6 +27,32 @@ package org.eclipse.amalgam.tutorials.xtext.droid;
  */
 public interface Button extends Widget, AbstractTextView
 {
+  /**
+   * Returns the value of the '<em><b>Text</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Text</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Text</em>' containment reference.
+   * @see #setText(StringVA)
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getButton_Text()
+   * @model containment="true"
+   * @generated
+   */
+  StringVA getText();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getText <em>Text</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Text</em>' containment reference.
+   * @see #getText()
+   * @generated
+   */
+  void setText(StringVA value);
+
   /**
    * Returns the value of the '<em><b>Image</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -50,6 +78,32 @@ public interface Button extends Widget, AbstractTextView
    * @generated
    */
   void setImage(AnyDrawableVA value);
+
+  /**
+   * Returns the value of the '<em><b>Target</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Target</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Target</em>' reference.
+   * @see #setTarget(Activity)
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getButton_Target()
+   * @model
+   * @generated
+   */
+  Activity getTarget();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getTarget <em>Target</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Target</em>' reference.
+   * @see #getTarget()
+   * @generated
+   */
+  void setTarget(Activity value);
 
   /**
    * Returns the value of the '<em><b>Hint</b></em>' containment reference.

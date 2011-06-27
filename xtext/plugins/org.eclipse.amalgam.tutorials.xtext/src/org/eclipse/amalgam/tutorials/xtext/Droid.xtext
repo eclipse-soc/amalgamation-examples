@@ -451,8 +451,7 @@ FrameLayoutParams:
  * Widgets
  ******************************************************************************/
 Widget:
-	TextView | Button |  Link
-	| ImageView | EditText | Spinner
+	TextView | Button | ImageView | EditText | Spinner
 ;
 
 AbstractTextView:
@@ -516,11 +515,13 @@ ImageView:
 //Button and ImageButton (depending on parameters)
 Button:
 	'button:' {Button} ('<'name=ID'>')?
+	( text=StringVA |  image=AnyDrawableVA )
+	('to' target=[Activity|QualifiedName])?
 	'{'
 	(
 //	 ('layout:' layoutParams=LayoutParams ';' )?
-	  ('image:' image=AnyDrawableVA ';' )?
-	 & ('top:' top=DimensionVA ';' )?
+//	  ('image:' image=AnyDrawableVA ';' )?
+	 ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?
 	 & ('width:' width=DimensionVA ';' )?
 	 & ('height:' height=DimensionVA ';' )?
@@ -531,45 +532,6 @@ Button:
 	 & ('hint:' hint=StringVA ';' )?
 	)
 	'}'
-;
-
-
-//Button to an Activity
-Link:
-	'link:' ('<'name=ID'>')?
-	text=StringVA 'to' target=[Activity|QualifiedName]
-	('{'
-	(
-//	 ('layout:' layoutParams=LayoutParams ';' )?
-	  ('top:' top=DimensionVA ';' )?
-	 & ('left:' left=DimensionVA ';' )?
-	 & ('width:' width=DimensionVA ';' )?
-	 & ('height:' height=DimensionVA ';' )?
-	 & ('background:' background=AnyDrawableVA ';' )?
-	 & ('clickable:' clickable=BooleanVA ';' )?
-	 & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';' )?
-	 & ('isScrollContainer:' isScrollContainer=BooleanVA ';' )?
-
-	 & ('image:' image=AnyDrawableVA ';' )?
-
-	 //TextView attributes
-	 & ('autoLink:' autoLink=AutoLinkKind ';' )?
-	 & ('autoText:' autoText=BooleanVA ';' )?
-	 & ('capitalize:' capitalize=CapitalizeKind ';' )?
-	 & ('digits:' digits=StringVA ';' )?
-	 & ('editable:' editable=BooleanVA';' )?
-	 & ('gravity:' gravity=LayoutGravityKind';' )?
-	 & ('hint:' hint=StringVA';' )?
-	 & ('numeric:' numeric=BooleanVA';' )?
-	 & ('password:' password=BooleanVA';' )?
-	 & ('phoneNumber:' phoneNumber=BooleanVA';' )?
-	 & ('singleLine:' singleLine=BooleanVA ';' )?
-	 & ('textColor:' textColor=ColorVA';' )?
-	 & ('typeface:' typeface=TypefaceKind ';' )?
-	 & ('textSize:' textSize=DimensionVA ';' )?
-	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* ';' )?
-	)
-	'}')?
 ;
 
 

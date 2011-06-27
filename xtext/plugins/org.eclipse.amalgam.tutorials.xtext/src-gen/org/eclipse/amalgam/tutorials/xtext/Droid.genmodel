@@ -321,30 +321,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ImageView/isScrollContainer"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Button">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/text"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/image"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/hint"/>
-    </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//Link">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/text"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/fadeScrollBars"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/isScrollContainer"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/image"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Link/autoLink"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/autoText"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Link/capitalize"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/digits"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/editable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Link/gravity"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/hint"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/numeric"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/password"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/phoneNumber"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/singleLine"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/textColor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Link/typeface"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Link/textSize"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Link/textStyle"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Spinner">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Spinner/prompt"/>

@@ -187,47 +187,13 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Button" eSuperTypes="#//Widget #//AbstractTextView">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="image" eType="#//AnyDrawableVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hint" eType="#//StringVA"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="#//Widget">
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//StringVA"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Activity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fadeScrollBars" eType="#//BooleanVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="isScrollContainer" eType="#//BooleanVA"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="image" eType="#//AnyDrawableVA"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoLink" eType="#//AutoLinkKind"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="autoText" eType="#//BooleanVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capitalize" eType="#//CapitalizeKind"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="digits" eType="#//StringVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="editable" eType="#//BooleanVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gravity" eType="#//LayoutGravityKind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Activity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hint" eType="#//StringVA"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="numeric" eType="#//BooleanVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="password" eType="#//BooleanVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="phoneNumber" eType="#//BooleanVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="singleLine" eType="#//BooleanVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="textColor" eType="#//ColorVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeface" eType="#//TypefaceKind"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="textSize" eType="#//DimensionVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textStyle" unique="false"
-        upperBound="-1" eType="#//TextStyleKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Spinner" eSuperTypes="#//Widget">
     <eStructuralFeatures xsi:type="ecore:EReference" name="prompt" eType="#//StringVA"

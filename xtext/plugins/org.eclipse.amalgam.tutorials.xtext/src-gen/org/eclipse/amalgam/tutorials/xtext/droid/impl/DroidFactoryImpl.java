@@ -95,7 +95,6 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
       case DroidPackage.TEXT_VIEW: return createTextView();
       case DroidPackage.IMAGE_VIEW: return createImageView();
       case DroidPackage.BUTTON: return createButton();
-      case DroidPackage.LINK: return createLink();
       case DroidPackage.SPINNER: return createSpinner();
       case DroidPackage.EDIT_TEXT: return createEditText();
       case DroidPackage.VALUE_ACCESS: return createValueAccess();
@@ -527,17 +526,6 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
   {
     ButtonImpl button = new ButtonImpl();
     return button;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Link createLink()
-  {
-    LinkImpl link = new LinkImpl();
-    return link;
   }
 
   /**

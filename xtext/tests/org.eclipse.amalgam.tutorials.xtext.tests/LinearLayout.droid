@@ -2,123 +2,62 @@
  * HelloViews (Linear Layout)
  * Based on: http://developer.android.com/resources/tutorials/views/hello-linearlayout.html
  */
-application "Hello, Android!" com.example.android.hellodroid {
+application "Hello, Android!" => com.example.android.hellodroid {
 
-	activity HelloDroid {
-		=> show main
-	}
-
-	linear layout main {
-		properties {
-			orientation: vertical
-			layout: {
-				width: fill_parent
-				height: fill_parent
-			}
+	screen HelloDroid {
+		# linear layout main {
+			orientation: vertical;
 		}
 
-		layout {
-			properties {
-				orientation: horizontal
-				layout: {
-					width: fill_parent
-					height: fill_parent
-					weight: 1
-				}
-			}
+		# layout {
+			orientation: horizontal;
+		}
 
-			textView: "red" {
-				//gravity: center_horizontal
-				//background:  #aa0000
-				layout: {
-					width: wrap_content
-					height: fill_parent
-					weight: 1
-				}
-			}
+		# textView: "red" {
+			gravity: center_horizontal;
+			background:  #aa0000;
+		}
 
-			textView: "green" {
-				//gravity: center_horizontal
-				//background: #00aa00
-				layout: {
-					width: wrap_content
-					height: fill_parent
-					weight: 1
-				}
-			}
+		# textView: "green" {
+			gravity: center_horizontal;
+			background: #00aa00;
+		}
 
-			textView: "blue" {
-				//gravity: center_horizontal
-				//background: #0000aa
-				layout: {
-					width: wrap_content
-					height: fill_parent
-					weight: 1
-				}
-			}
+		# textView: "blue" {
+			gravity: center_horizontal;
+			background: #0000aa;
+		}
 
-			textView: "yellow" {
-				//gravity: center_horizontal
-				//background: #aaaa00
-				layout: {
-					width: wrap_content
-					height: fill_parent
-					weight: 1
-				}
-			}
+		# textView: "yellow" {
+			gravity: center_horizontal;
+			background: #aaaa00;
 		}
 		
-		layout {
-			properties {
-				orientation: vertical
-				layout: {
-					width: fill_parent
-					height: fill_parent
-				}
+		# layout {
+			orientation: vertical;
+			
+			# textView: "row one" {
+				textSize: 15pt;
+				gravity: center_horizontal;
+				background: #aaaa00;
 			}
 			
-			textView: "row one" {
-				//textSize: 15pt
-				//gravity: center_horizontal
-				//background: #aaaa00
-				layout: {
-					height: wrap_content
-					width: fill_parent
-					weight: 1
-				}
+			# textView: "row two" {
+				textSize: 15pt;
+				gravity: center_horizontal;
+				background: #aaaa00;
 			}
 			
-			textView: "row two" {
-				//textSize: 15pt
-				//gravity: center_horizontal
-				//background: #aaaa00
-				layout: {
-					height: wrap_content
-					width: fill_parent
-					weight: 1
-				}
+			# textView: "row three" {
+				textSize: 15pt;
+				gravity: center_horizontal;
+				background: #aaaa00;
 			}
 			
-			textView: "row three" {
-				//textSize: 15pt
-				//gravity: center_horizontal
-				//background: #aaaa00
-				layout: {
-					height: wrap_content
-					width: fill_parent
-					weight: 1
-				}
-			}
-			
-			textView: "row four" {
-				//textSize: 15pt
-				//gravity: center_horizontal
-				//background: #aaaa00
-				layout: {
-					height: wrap_content
-					width: fill_parent
-					weight: 1
-				}
+			# textView: "row four" {
+				textSize: 15pt;
+				gravity: center_horizontal;
+				background: #aaaa00;
 			}
 		}
 	}

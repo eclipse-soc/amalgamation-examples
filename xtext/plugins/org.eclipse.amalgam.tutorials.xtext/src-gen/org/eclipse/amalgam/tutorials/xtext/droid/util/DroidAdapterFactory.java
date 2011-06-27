@@ -213,11 +213,6 @@ public class DroidAdapterFactory extends AdapterFactoryImpl
         return createButtonAdapter();
       }
       @Override
-      public Adapter caseLink(Link object)
-      {
-        return createLinkAdapter();
-      }
-      @Override
       public Adapter caseSpinner(Spinner object)
       {
         return createSpinnerAdapter();
@@ -945,21 +940,6 @@ public class DroidAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createButtonAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.amalgam.tutorials.xtext.droid.Link <em>Link</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.amalgam.tutorials.xtext.droid.Link
-   * @generated
-   */
-  public Adapter createLinkAdapter()
   {
     return null;
   }

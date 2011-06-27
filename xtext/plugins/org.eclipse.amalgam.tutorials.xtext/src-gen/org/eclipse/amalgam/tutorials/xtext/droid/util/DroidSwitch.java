@@ -326,16 +326,6 @@ public class DroidSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DroidPackage.LINK:
-      {
-        Link link = (Link)theEObject;
-        T result = caseLink(link);
-        if (result == null) result = caseWidget(link);
-        if (result == null) result = caseView(link);
-        if (result == null) result = caseAbstractView(link);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DroidPackage.SPINNER:
       {
         Spinner spinner = (Spinner)theEObject;
@@ -1285,22 +1275,6 @@ public class DroidSwitch<T>
    * @generated
    */
   public T caseButton(Button object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Link</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Link</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLink(Link object)
   {
     return null;
   }
