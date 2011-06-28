@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ViewCollectionImpl#getWidgets <em>Widgets</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ViewCollectionImpl#getViews <em>Views</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,14 +39,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ViewCollectionImpl extends MinimalEObjectImpl.Container implements ViewCollection
 {
   /**
-   * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference list.
+   * The cached value of the '{@link #getViews() <em>Views</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWidgets()
+   * @see #getViews()
    * @generated
    * @ordered
    */
-  protected EList<View> widgets;
+  protected EList<View> views;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,13 +74,13 @@ public class ViewCollectionImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<View> getWidgets()
+  public EList<View> getViews()
   {
-    if (widgets == null)
+    if (views == null)
     {
-      widgets = new EObjectContainmentEList<View>(View.class, this, DroidPackage.VIEW_COLLECTION__WIDGETS);
+      views = new EObjectContainmentEList<View>(View.class, this, DroidPackage.VIEW_COLLECTION__VIEWS);
     }
-    return widgets;
+    return views;
   }
 
   /**
@@ -93,8 +93,8 @@ public class ViewCollectionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case DroidPackage.VIEW_COLLECTION__WIDGETS:
-        return ((InternalEList<?>)getWidgets()).basicRemove(otherEnd, msgs);
+      case DroidPackage.VIEW_COLLECTION__VIEWS:
+        return ((InternalEList<?>)getViews()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -109,8 +109,8 @@ public class ViewCollectionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case DroidPackage.VIEW_COLLECTION__WIDGETS:
-        return getWidgets();
+      case DroidPackage.VIEW_COLLECTION__VIEWS:
+        return getViews();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -126,9 +126,9 @@ public class ViewCollectionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case DroidPackage.VIEW_COLLECTION__WIDGETS:
-        getWidgets().clear();
-        getWidgets().addAll((Collection<? extends View>)newValue);
+      case DroidPackage.VIEW_COLLECTION__VIEWS:
+        getViews().clear();
+        getViews().addAll((Collection<? extends View>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -144,8 +144,8 @@ public class ViewCollectionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case DroidPackage.VIEW_COLLECTION__WIDGETS:
-        getWidgets().clear();
+      case DroidPackage.VIEW_COLLECTION__VIEWS:
+        getViews().clear();
         return;
     }
     super.eUnset(featureID);
@@ -161,8 +161,8 @@ public class ViewCollectionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case DroidPackage.VIEW_COLLECTION__WIDGETS:
-        return widgets != null && !widgets.isEmpty();
+      case DroidPackage.VIEW_COLLECTION__VIEWS:
+        return views != null && !views.isEmpty();
     }
     return super.eIsSet(featureID);
   }

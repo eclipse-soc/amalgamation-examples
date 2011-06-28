@@ -93,6 +93,11 @@ public class DroidAdapterFactory extends AdapterFactoryImpl
         return createLayoutAdapter();
       }
       @Override
+      public Adapter caseAbstractActivity(AbstractActivity object)
+      {
+        return createAbstractActivityAdapter();
+      }
+      @Override
       public Adapter caseActivity(Activity object)
       {
         return createActivityAdapter();
@@ -580,6 +585,21 @@ public class DroidAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLayoutAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.amalgam.tutorials.xtext.droid.AbstractActivity <em>Abstract Activity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.AbstractActivity
+   * @generated
+   */
+  public Adapter createAbstractActivityAdapter()
   {
     return null;
   }

@@ -5,59 +5,59 @@
 application "Hello, Android!" => com.example.android.hellodroid {
 
 	screen HelloDroid {
-		# linear layout main {
+		# linear layout {
 			orientation: vertical;
-		}
 
-		# layout {
-			orientation: horizontal;
-		}
-
-		# textView: "red" {
-			gravity: center_horizontal;
-			background:  #aa0000;
-		}
-
-		# textView: "green" {
-			gravity: center_horizontal;
-			background: #00aa00;
-		}
-
-		# textView: "blue" {
-			gravity: center_horizontal;
-			background: #0000aa;
-		}
-
-		# textView: "yellow" {
-			gravity: center_horizontal;
-			background: #aaaa00;
-		}
+			# layout {
+				orientation: horizontal;
+	
+				# textView: "red" {
+					gravity: center_horizontal;
+					background:  #aa0000;
+				}
 		
-		# layout {
-			orientation: vertical;
-			
-			# textView: "row one" {
-				textSize: 15pt;
-				gravity: center_horizontal;
-				background: #aaaa00;
+				# textView: "green" {
+					gravity: center_horizontal;
+					background: #00aa00;
+				}
+		
+				# textView: "blue" {
+					gravity: center_horizontal;
+					background: #0000aa;
+				}
+		
+				# textView: "yellow" {
+					gravity: center_horizontal;
+					background: #aaaa00;
+				}
 			}
 			
-			# textView: "row two" {
-				textSize: 15pt;
-				gravity: center_horizontal;
-				background: #aaaa00;
-			}
-			
-			# textView: "row three" {
-				textSize: 15pt;
-				gravity: center_horizontal;
-				background: #aaaa00;
-			}
-			
-			# textView: "row four" {
-				textSize: 15pt;
-				gravity: center_horizontal;
-				background: #aaaa00;
+			# layout {
+				orientation: vertical;
+				
+				# textView: "row one" {
+					textSize: 15pt;
+					gravity: center_horizontal;
+					background: #aaaa00;
+				}
+				
+				# textView: "row two" {
+					textSize: 15pt;
+					gravity: center_horizontal;
+					background: #aaaa00;
+				}
+				
+				# textView: "row three" {
+					textSize: 15pt;
+					gravity: center_horizontal;
+					background: #aaaa00;
+				}
+				
+				# textView: "row four" {
+					textSize: 15pt;
+					gravity: center_horizontal;
+					background: #aaaa00;
+				}
 			}
 		}
 	}

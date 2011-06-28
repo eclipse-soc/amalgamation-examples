@@ -12,7 +12,6 @@ import org.eclipse.amalgam.tutorials.xtext.droid.BooleanVA;
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
 import org.eclipse.amalgam.tutorials.xtext.droid.LayoutGravityKind;
 import org.eclipse.amalgam.tutorials.xtext.droid.TabWidget;
-import org.eclipse.amalgam.tutorials.xtext.droid.ViewCollection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -38,7 +37,6 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TabWidgetImpl#getTrabStripEnabled <em>Trab Strip Enabled</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TabWidgetImpl#getTrabStripLeft <em>Trab Strip Left</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TabWidgetImpl#getTabStripRight <em>Tab Strip Right</em>}</li>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TabWidgetImpl#getWidgets <em>Widgets</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,16 +93,6 @@ public class TabWidgetImpl extends AbstractLinearLayoutImpl implements TabWidget
    * @ordered
    */
   protected AnyDrawableVA tabStripRight;
-
-  /**
-   * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWidgets()
-   * @generated
-   * @ordered
-   */
-  protected ViewCollection widgets;
 
   /**
    * <!-- begin-user-doc -->
@@ -338,54 +326,6 @@ public class TabWidgetImpl extends AbstractLinearLayoutImpl implements TabWidget
    * <!-- end-user-doc -->
    * @generated
    */
-  public ViewCollection getWidgets()
-  {
-    return widgets;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetWidgets(ViewCollection newWidgets, NotificationChain msgs)
-  {
-    ViewCollection oldWidgets = widgets;
-    widgets = newWidgets;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DroidPackage.TAB_WIDGET__WIDGETS, oldWidgets, newWidgets);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setWidgets(ViewCollection newWidgets)
-  {
-    if (newWidgets != widgets)
-    {
-      NotificationChain msgs = null;
-      if (widgets != null)
-        msgs = ((InternalEObject)widgets).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DroidPackage.TAB_WIDGET__WIDGETS, null, msgs);
-      if (newWidgets != null)
-        msgs = ((InternalEObject)newWidgets).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DroidPackage.TAB_WIDGET__WIDGETS, null, msgs);
-      msgs = basicSetWidgets(newWidgets, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.TAB_WIDGET__WIDGETS, newWidgets, newWidgets));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -399,8 +339,6 @@ public class TabWidgetImpl extends AbstractLinearLayoutImpl implements TabWidget
         return basicSetTrabStripLeft(null, msgs);
       case DroidPackage.TAB_WIDGET__TAB_STRIP_RIGHT:
         return basicSetTabStripRight(null, msgs);
-      case DroidPackage.TAB_WIDGET__WIDGETS:
-        return basicSetWidgets(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -425,8 +363,6 @@ public class TabWidgetImpl extends AbstractLinearLayoutImpl implements TabWidget
         return getTrabStripLeft();
       case DroidPackage.TAB_WIDGET__TAB_STRIP_RIGHT:
         return getTabStripRight();
-      case DroidPackage.TAB_WIDGET__WIDGETS:
-        return getWidgets();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -458,9 +394,6 @@ public class TabWidgetImpl extends AbstractLinearLayoutImpl implements TabWidget
       case DroidPackage.TAB_WIDGET__TAB_STRIP_RIGHT:
         setTabStripRight((AnyDrawableVA)newValue);
         return;
-      case DroidPackage.TAB_WIDGET__WIDGETS:
-        setWidgets((ViewCollection)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -490,9 +423,6 @@ public class TabWidgetImpl extends AbstractLinearLayoutImpl implements TabWidget
       case DroidPackage.TAB_WIDGET__TAB_STRIP_RIGHT:
         setTabStripRight((AnyDrawableVA)null);
         return;
-      case DroidPackage.TAB_WIDGET__WIDGETS:
-        setWidgets((ViewCollection)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -517,8 +447,6 @@ public class TabWidgetImpl extends AbstractLinearLayoutImpl implements TabWidget
         return trabStripLeft != null;
       case DroidPackage.TAB_WIDGET__TAB_STRIP_RIGHT:
         return tabStripRight != null;
-      case DroidPackage.TAB_WIDGET__WIDGETS:
-        return widgets != null;
     }
     return super.eIsSet(featureID);
   }

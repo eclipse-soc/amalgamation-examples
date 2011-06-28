@@ -219,19 +219,19 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Layout/visibility"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Layout/layoutAnimation"/>
     </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//AbstractActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//AbstractActivity/referencedLayout"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//AbstractActivity/widgets"/>
+    </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Activity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//Activity/name"/>
     </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//GenericActivity">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//GenericActivity/referencedLayout"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//GenericActivity/widgets"/>
-    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//GenericActivity"/>
     <genClasses ecoreClass="Droid.ecore#//ViewCollection">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ViewCollection/widgets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ViewCollection/views"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//ListActivity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//ListActivity/dataSource"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//ListActivity/layout"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//ListActivity/itemLayout"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//ListActivity/actions"/>
     </genClasses>
@@ -266,16 +266,14 @@
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//AbstractView">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//AbstractView/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//AbstractView/widgets"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//View">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//View/background"/>
     </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//LinearLayout">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//LinearLayout/widgets"/>
-    </genClasses>
+    <genClasses ecoreClass="Droid.ecore#//LinearLayout"/>
     <genClasses ecoreClass="Droid.ecore#//RelativeLayout">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//RelativeLayout/orientation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//RelativeLayout/widgets"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//TabHost"/>
     <genClasses ecoreClass="Droid.ecore#//TabWidget">
@@ -284,7 +282,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TabWidget/trabStripEnabled"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TabWidget/trabStripLeft"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TabWidget/tabStripRight"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TabWidget/widgets"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//FrameLayout"/>
     <genClasses ecoreClass="Droid.ecore#//Widget">
@@ -322,7 +319,7 @@
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Button">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/text"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/image"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/src"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Button/hint"/>
     </genClasses>

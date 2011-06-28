@@ -71,6 +71,7 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
       case DroidPackage.APPLICATION: return createApplication();
       case DroidPackage.RESOURCE: return createResource();
       case DroidPackage.LAYOUT: return createLayout();
+      case DroidPackage.ABSTRACT_ACTIVITY: return createAbstractActivity();
       case DroidPackage.ACTIVITY: return createActivity();
       case DroidPackage.GENERIC_ACTIVITY: return createGenericActivity();
       case DroidPackage.VIEW_COLLECTION: return createViewCollection();
@@ -262,6 +263,17 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
   {
     LayoutImpl layout = new LayoutImpl();
     return layout;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AbstractActivity createAbstractActivity()
+  {
+    AbstractActivityImpl abstractActivity = new AbstractActivityImpl();
+    return abstractActivity;
   }
 
   /**

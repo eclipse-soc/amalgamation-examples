@@ -5,7 +5,6 @@
  */
 package org.eclipse.amalgam.tutorials.xtext.droid;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Activity extends EObject
+public interface Activity extends AbstractActivity
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

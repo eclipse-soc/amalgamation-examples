@@ -7,10 +7,13 @@ package org.eclipse.amalgam.tutorials.xtext.droid.impl;
 
 import org.eclipse.amalgam.tutorials.xtext.droid.AbstractView;
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
+import org.eclipse.amalgam.tutorials.xtext.droid.ViewCollection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -23,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.AbstractViewImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.AbstractViewImpl#getWidgets <em>Widgets</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,6 +53,16 @@ public class AbstractViewImpl extends MinimalEObjectImpl.Container implements Ab
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWidgets()
+   * @generated
+   * @ordered
+   */
+  protected ViewCollection widgets;
 
   /**
    * <!-- begin-user-doc -->
@@ -99,6 +113,70 @@ public class AbstractViewImpl extends MinimalEObjectImpl.Container implements Ab
    * <!-- end-user-doc -->
    * @generated
    */
+  public ViewCollection getWidgets()
+  {
+    return widgets;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetWidgets(ViewCollection newWidgets, NotificationChain msgs)
+  {
+    ViewCollection oldWidgets = widgets;
+    widgets = newWidgets;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DroidPackage.ABSTRACT_VIEW__WIDGETS, oldWidgets, newWidgets);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWidgets(ViewCollection newWidgets)
+  {
+    if (newWidgets != widgets)
+    {
+      NotificationChain msgs = null;
+      if (widgets != null)
+        msgs = ((InternalEObject)widgets).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DroidPackage.ABSTRACT_VIEW__WIDGETS, null, msgs);
+      if (newWidgets != null)
+        msgs = ((InternalEObject)newWidgets).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DroidPackage.ABSTRACT_VIEW__WIDGETS, null, msgs);
+      msgs = basicSetWidgets(newWidgets, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.ABSTRACT_VIEW__WIDGETS, newWidgets, newWidgets));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DroidPackage.ABSTRACT_VIEW__WIDGETS:
+        return basicSetWidgets(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -106,6 +184,8 @@ public class AbstractViewImpl extends MinimalEObjectImpl.Container implements Ab
     {
       case DroidPackage.ABSTRACT_VIEW__NAME:
         return getName();
+      case DroidPackage.ABSTRACT_VIEW__WIDGETS:
+        return getWidgets();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -122,6 +202,9 @@ public class AbstractViewImpl extends MinimalEObjectImpl.Container implements Ab
     {
       case DroidPackage.ABSTRACT_VIEW__NAME:
         setName((String)newValue);
+        return;
+      case DroidPackage.ABSTRACT_VIEW__WIDGETS:
+        setWidgets((ViewCollection)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -140,6 +223,9 @@ public class AbstractViewImpl extends MinimalEObjectImpl.Container implements Ab
       case DroidPackage.ABSTRACT_VIEW__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DroidPackage.ABSTRACT_VIEW__WIDGETS:
+        setWidgets((ViewCollection)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -156,6 +242,8 @@ public class AbstractViewImpl extends MinimalEObjectImpl.Container implements Ab
     {
       case DroidPackage.ABSTRACT_VIEW__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DroidPackage.ABSTRACT_VIEW__WIDGETS:
+        return widgets != null;
     }
     return super.eIsSet(featureID);
   }

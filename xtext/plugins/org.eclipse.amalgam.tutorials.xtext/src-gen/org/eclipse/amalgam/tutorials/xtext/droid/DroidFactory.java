@@ -53,6 +53,15 @@ public interface DroidFactory extends EFactory
   Layout createLayout();
 
   /**
+   * Returns a new object of class '<em>Abstract Activity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Abstract Activity</em>'.
+   * @generated
+   */
+  AbstractActivity createAbstractActivity();
+
+  /**
    * Returns a new object of class '<em>Activity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

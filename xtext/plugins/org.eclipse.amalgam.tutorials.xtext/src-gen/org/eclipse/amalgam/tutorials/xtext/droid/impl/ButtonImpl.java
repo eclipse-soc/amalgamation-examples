@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ButtonImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ButtonImpl#getImage <em>Image</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ButtonImpl#getSrc <em>Src</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ButtonImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ButtonImpl#getHint <em>Hint</em>}</li>
  * </ul>
@@ -48,14 +48,14 @@ public class ButtonImpl extends WidgetImpl implements Button
   protected StringVA text;
 
   /**
-   * The cached value of the '{@link #getImage() <em>Image</em>}' containment reference.
+   * The cached value of the '{@link #getSrc() <em>Src</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getImage()
+   * @see #getSrc()
    * @generated
    * @ordered
    */
-  protected AnyDrawableVA image;
+  protected AnyDrawableVA src;
 
   /**
    * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -151,9 +151,9 @@ public class ButtonImpl extends WidgetImpl implements Button
    * <!-- end-user-doc -->
    * @generated
    */
-  public AnyDrawableVA getImage()
+  public AnyDrawableVA getSrc()
   {
-    return image;
+    return src;
   }
 
   /**
@@ -161,13 +161,13 @@ public class ButtonImpl extends WidgetImpl implements Button
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetImage(AnyDrawableVA newImage, NotificationChain msgs)
+  public NotificationChain basicSetSrc(AnyDrawableVA newSrc, NotificationChain msgs)
   {
-    AnyDrawableVA oldImage = image;
-    image = newImage;
+    AnyDrawableVA oldSrc = src;
+    src = newSrc;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DroidPackage.BUTTON__IMAGE, oldImage, newImage);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DroidPackage.BUTTON__SRC, oldSrc, newSrc);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -178,20 +178,20 @@ public class ButtonImpl extends WidgetImpl implements Button
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setImage(AnyDrawableVA newImage)
+  public void setSrc(AnyDrawableVA newSrc)
   {
-    if (newImage != image)
+    if (newSrc != src)
     {
       NotificationChain msgs = null;
-      if (image != null)
-        msgs = ((InternalEObject)image).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DroidPackage.BUTTON__IMAGE, null, msgs);
-      if (newImage != null)
-        msgs = ((InternalEObject)newImage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DroidPackage.BUTTON__IMAGE, null, msgs);
-      msgs = basicSetImage(newImage, msgs);
+      if (src != null)
+        msgs = ((InternalEObject)src).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DroidPackage.BUTTON__SRC, null, msgs);
+      if (newSrc != null)
+        msgs = ((InternalEObject)newSrc).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DroidPackage.BUTTON__SRC, null, msgs);
+      msgs = basicSetSrc(newSrc, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.BUTTON__IMAGE, newImage, newImage));
+      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.BUTTON__SRC, newSrc, newSrc));
   }
 
   /**
@@ -297,8 +297,8 @@ public class ButtonImpl extends WidgetImpl implements Button
     {
       case DroidPackage.BUTTON__TEXT:
         return basicSetText(null, msgs);
-      case DroidPackage.BUTTON__IMAGE:
-        return basicSetImage(null, msgs);
+      case DroidPackage.BUTTON__SRC:
+        return basicSetSrc(null, msgs);
       case DroidPackage.BUTTON__HINT:
         return basicSetHint(null, msgs);
     }
@@ -317,8 +317,8 @@ public class ButtonImpl extends WidgetImpl implements Button
     {
       case DroidPackage.BUTTON__TEXT:
         return getText();
-      case DroidPackage.BUTTON__IMAGE:
-        return getImage();
+      case DroidPackage.BUTTON__SRC:
+        return getSrc();
       case DroidPackage.BUTTON__TARGET:
         if (resolve) return getTarget();
         return basicGetTarget();
@@ -341,8 +341,8 @@ public class ButtonImpl extends WidgetImpl implements Button
       case DroidPackage.BUTTON__TEXT:
         setText((StringVA)newValue);
         return;
-      case DroidPackage.BUTTON__IMAGE:
-        setImage((AnyDrawableVA)newValue);
+      case DroidPackage.BUTTON__SRC:
+        setSrc((AnyDrawableVA)newValue);
         return;
       case DroidPackage.BUTTON__TARGET:
         setTarget((Activity)newValue);
@@ -367,8 +367,8 @@ public class ButtonImpl extends WidgetImpl implements Button
       case DroidPackage.BUTTON__TEXT:
         setText((StringVA)null);
         return;
-      case DroidPackage.BUTTON__IMAGE:
-        setImage((AnyDrawableVA)null);
+      case DroidPackage.BUTTON__SRC:
+        setSrc((AnyDrawableVA)null);
         return;
       case DroidPackage.BUTTON__TARGET:
         setTarget((Activity)null);
@@ -392,8 +392,8 @@ public class ButtonImpl extends WidgetImpl implements Button
     {
       case DroidPackage.BUTTON__TEXT:
         return text != null;
-      case DroidPackage.BUTTON__IMAGE:
-        return image != null;
+      case DroidPackage.BUTTON__SRC:
+        return src != null;
       case DroidPackage.BUTTON__TARGET:
         return target != null;
       case DroidPackage.BUTTON__HINT:

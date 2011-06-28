@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.ListActivity#getDataSource <em>Data Source</em>}</li>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.ListActivity#getLayout <em>Layout</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.ListActivity#getItemLayout <em>Item Layout</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.ListActivity#getActions <em>Actions</em>}</li>
  * </ul>
@@ -53,32 +52,6 @@ public interface ListActivity extends Activity
    * @generated
    */
   void setDataSource(String value);
-
-  /**
-   * Returns the value of the '<em><b>Layout</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Layout</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Layout</em>' reference.
-   * @see #setLayout(Layout)
-   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getListActivity_Layout()
-   * @model
-   * @generated
-   */
-  Layout getLayout();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.ListActivity#getLayout <em>Layout</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Layout</em>' reference.
-   * @see #getLayout()
-   * @generated
-   */
-  void setLayout(Layout value);
 
   /**
    * Returns the value of the '<em><b>Item Layout</b></em>' reference.

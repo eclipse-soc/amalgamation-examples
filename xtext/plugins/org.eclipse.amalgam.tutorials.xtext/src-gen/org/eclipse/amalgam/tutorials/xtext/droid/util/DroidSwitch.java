@@ -118,10 +118,18 @@ public class DroidSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DroidPackage.ABSTRACT_ACTIVITY:
+      {
+        AbstractActivity abstractActivity = (AbstractActivity)theEObject;
+        T result = caseAbstractActivity(abstractActivity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DroidPackage.ACTIVITY:
       {
         Activity activity = (Activity)theEObject;
         T result = caseActivity(activity);
+        if (result == null) result = caseAbstractActivity(activity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -130,6 +138,7 @@ public class DroidSwitch<T>
         GenericActivity genericActivity = (GenericActivity)theEObject;
         T result = caseGenericActivity(genericActivity);
         if (result == null) result = caseActivity(genericActivity);
+        if (result == null) result = caseAbstractActivity(genericActivity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -145,6 +154,7 @@ public class DroidSwitch<T>
         ListActivity listActivity = (ListActivity)theEObject;
         T result = caseListActivity(listActivity);
         if (result == null) result = caseActivity(listActivity);
+        if (result == null) result = caseAbstractActivity(listActivity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -153,6 +163,7 @@ public class DroidSwitch<T>
         TabActivity tabActivity = (TabActivity)theEObject;
         T result = caseTabActivity(tabActivity);
         if (result == null) result = caseActivity(tabActivity);
+        if (result == null) result = caseAbstractActivity(tabActivity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -891,6 +902,22 @@ public class DroidSwitch<T>
    * @generated
    */
   public T caseLayout(Layout object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Activity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAbstractActivity(AbstractActivity object)
   {
     return null;
   }

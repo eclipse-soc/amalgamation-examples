@@ -50,6 +50,10 @@ Layout:
  * Activities
  ******************************************************************************/
 
+AbstractActivity:
+	Activity | (referencedLayout=[Layout] widgets=ViewCollection)
+;
+
 Activity:
 	GenericActivity | ListActivity | TabActivity
 ;
@@ -65,14 +69,15 @@ GenericActivity:
 ;
 
 ViewCollection:
-	('#' widgets+=View)+
+	('#' views+=View)+
 ;
 
 
 ListActivity:
 	'listActivity' name=QualifiedName '{'
 		'data:' dataSource=ID
-		('layout:' layout=[Layout])?
+		 (('layout:' referencedLayout=[Layout])
+		 | widgets=ViewCollection)?
 		'item:' itemLayout=[Layout]
 		(actions+=Action)*
 	'}'
@@ -81,6 +86,8 @@ ListActivity:
 
 TabActivity:
 	'tabActivity' name=QualifiedName '{'
+	(('layout:' referencedLayout=[Layout])
+		 | widgets=ViewCollection)?
 		(tabs+=Tab)+
 		(actions+=Action)*
 	'}'
@@ -132,9 +139,8 @@ AbstractLinearLayout:
 	LinearLayout | TabWidget //| RadioGroup
 ;
 
-//TODO: Make this hierarchy reflect Android widgets hierarchy
 AbstractView:
-	View | (name=ID) //Enforces 'name' inside AbstractLayout interface
+	View | (name=ID widgets=ViewCollection) //Enforces properties inside AbstractView interface
 ;
 
 View:
@@ -185,7 +191,7 @@ LinearLayout:
 //		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
 		  & ('orientation:' orientation=LayoutOrientationKind ';' )?
 		)
-	  widgets+=ViewCollection?
+	  widgets=ViewCollection?
 	'}'
 ;
 
@@ -233,7 +239,7 @@ RelativeLayout:
 //		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
 		  & ('orientation:' orientation=LayoutOrientationKind ';' )?
 		)
-	  widgets+=ViewCollection?
+	  widgets=ViewCollection?
 	'}'
 ;
 
@@ -275,12 +281,12 @@ TabHost:
 		  & ('animation:' layoutAnimation=AnimationVA ';' )?
 		)
 //	  layout=Layout
-	  //widgets+=View+
+	  widgets=ViewCollection?
 	'}'
 ;
 
 TabWidget:
-	'tabWidget' name=ID? '{'
+	'tabWidget' {TabWidget} name=ID? '{'
 		(
 		  ('alpha:' alpha=FLOAT ';' )?
 		  & ('background:' background=AnyDrawableVA ';' )?
@@ -329,7 +335,7 @@ TabWidget:
 		  & ('tabStripRight:' tabStripRight=AnyDrawableVA ';' )?
 
 		)
-	  widgets=ViewCollection
+	  widgets=ViewCollection?
 	'}'
 ;
 
@@ -372,7 +378,7 @@ FrameLayout:
 		  & ('animation:' layoutAnimation=AnimationVA ';' )?
 		)
 //	  layout=Layout
-	  //widgets+=View+
+	  widgets=ViewCollection?
 	'}'
 ;
 
@@ -515,7 +521,7 @@ ImageView:
 //Button and ImageButton (depending on parameters)
 Button:
 	'button:' {Button} ('<'name=ID'>')?
-	( text=StringVA |  image=AnyDrawableVA )
+	( text=StringVA |  src=AnyDrawableVA )
 	('to' target=[Activity|QualifiedName])?
 	'{'
 	(

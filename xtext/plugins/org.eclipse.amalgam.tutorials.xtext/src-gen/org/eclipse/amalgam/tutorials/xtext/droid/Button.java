@@ -15,7 +15,7 @@ package org.eclipse.amalgam.tutorials.xtext.droid;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getText <em>Text</em>}</li>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getImage <em>Image</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getSrc <em>Src</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getHint <em>Hint</em>}</li>
  * </ul>
@@ -54,30 +54,30 @@ public interface Button extends Widget, AbstractTextView
   void setText(StringVA value);
 
   /**
-   * Returns the value of the '<em><b>Image</b></em>' containment reference.
+   * Returns the value of the '<em><b>Src</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Image</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Src</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Image</em>' containment reference.
-   * @see #setImage(AnyDrawableVA)
-   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getButton_Image()
+   * @return the value of the '<em>Src</em>' containment reference.
+   * @see #setSrc(AnyDrawableVA)
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getButton_Src()
    * @model containment="true"
    * @generated
    */
-  AnyDrawableVA getImage();
+  AnyDrawableVA getSrc();
 
   /**
-   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getImage <em>Image</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Button#getSrc <em>Src</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Image</em>' containment reference.
-   * @see #getImage()
+   * @param value the new value of the '<em>Src</em>' containment reference.
+   * @see #getSrc()
    * @generated
    */
-  void setImage(AnyDrawableVA value);
+  void setSrc(AnyDrawableVA value);
 
   /**
    * Returns the value of the '<em><b>Target</b></em>' reference.

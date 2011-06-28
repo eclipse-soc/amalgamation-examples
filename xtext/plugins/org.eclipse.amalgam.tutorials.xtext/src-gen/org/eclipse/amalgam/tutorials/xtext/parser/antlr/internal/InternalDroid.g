@@ -339,6 +339,8 @@ ruleLayout returns [EObject current=null]
 
 
 
+
+
 // Entry rule entryRuleActivity
 entryRuleActivity returns [EObject current=null] 
 	:
@@ -516,9 +518,9 @@ ruleViewCollection returns [EObject current=null]
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getViewCollectionAccess().getWidgetsViewParserRuleCall_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getViewCollectionAccess().getViewsViewParserRuleCall_1_0(), currentNode); 
 	    }
-		lv_widgets_1_0=ruleView		{
+		lv_views_1_0=ruleView		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getViewCollectionRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -526,8 +528,8 @@ ruleViewCollection returns [EObject current=null]
 	        try {
 	       		add(
 	       			$current, 
-	       			"widgets",
-	        		lv_widgets_1_0, 
+	       			"views",
+	        		lv_views_1_0, 
 	        		"View", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -620,9 +622,9 @@ ruleListActivity returns [EObject current=null]
 	    }
 
 )
-)(	'layout:' 
+)((	'layout:' 
     {
-        createLeafNode(grammarAccess.getListActivityAccess().getLayoutKeyword_5_0(), null); 
+        createLeafNode(grammarAccess.getListActivityAccess().getLayoutKeyword_5_0_0(), null); 
     }
 (
 (
@@ -634,8 +636,33 @@ ruleListActivity returns [EObject current=null]
         }
 	RULE_ID
 	{
-		createLeafNode(grammarAccess.getListActivityAccess().getLayoutLayoutCrossReference_5_1_0(), "layout"); 
+		createLeafNode(grammarAccess.getListActivityAccess().getReferencedLayoutLayoutCrossReference_5_0_1_0(), "referencedLayout"); 
 	}
+
+)
+))
+    |(
+(
+		{ 
+	        currentNode=createCompositeNode(grammarAccess.getListActivityAccess().getWidgetsViewCollectionParserRuleCall_5_1_0(), currentNode); 
+	    }
+		lv_widgets_7_0=ruleViewCollection		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getListActivityRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"widgets",
+	        		lv_widgets_7_0, 
+	        		"ViewCollection", 
+	        		currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
 
 )
 ))?	'item:' 
@@ -661,7 +688,7 @@ ruleListActivity returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getListActivityAccess().getActionsActionParserRuleCall_8_0(), currentNode); 
 	    }
-		lv_actions_9_0=ruleAction		{
+		lv_actions_10_0=ruleAction		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getListActivityRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -670,7 +697,7 @@ ruleListActivity returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"actions",
-	        		lv_actions_9_0, 
+	        		lv_actions_10_0, 
 	        		"Action", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -739,12 +766,55 @@ ruleTabActivity returns [EObject current=null]
     {
         createLeafNode(grammarAccess.getTabActivityAccess().getLeftCurlyBracketKeyword_2(), null); 
     }
+((	'layout:' 
+    {
+        createLeafNode(grammarAccess.getTabActivityAccess().getLayoutKeyword_3_0_0(), null); 
+    }
 (
+(
+		{
+			if ($current==null) {
+	            $current = factory.create(grammarAccess.getTabActivityRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+        }
+	RULE_ID
+	{
+		createLeafNode(grammarAccess.getTabActivityAccess().getReferencedLayoutLayoutCrossReference_3_0_1_0(), "referencedLayout"); 
+	}
+
+)
+))
+    |(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabActivityAccess().getTabsTabParserRuleCall_3_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabActivityAccess().getWidgetsViewCollectionParserRuleCall_3_1_0(), currentNode); 
 	    }
-		lv_tabs_3_0=ruleTab		{
+		lv_widgets_5_0=ruleViewCollection		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getTabActivityRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"widgets",
+	        		lv_widgets_5_0, 
+	        		"ViewCollection", 
+	        		currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+
+)
+))?(
+(
+		{ 
+	        currentNode=createCompositeNode(grammarAccess.getTabActivityAccess().getTabsTabParserRuleCall_4_0(), currentNode); 
+	    }
+		lv_tabs_6_0=ruleTab		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabActivityRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -753,7 +823,7 @@ ruleTabActivity returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"tabs",
-	        		lv_tabs_3_0, 
+	        		lv_tabs_6_0, 
 	        		"Tab", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -766,9 +836,9 @@ ruleTabActivity returns [EObject current=null]
 )+(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabActivityAccess().getActionsActionParserRuleCall_4_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabActivityAccess().getActionsActionParserRuleCall_5_0(), currentNode); 
 	    }
-		lv_actions_4_0=ruleAction		{
+		lv_actions_7_0=ruleAction		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabActivityRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -777,7 +847,7 @@ ruleTabActivity returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"actions",
-	        		lv_actions_4_0, 
+	        		lv_actions_7_0, 
 	        		"Action", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -789,7 +859,7 @@ ruleTabActivity returns [EObject current=null]
 )
 )*	'}' 
     {
-        createLeafNode(grammarAccess.getTabActivityAccess().getRightCurlyBracketKeyword_5(), null); 
+        createLeafNode(grammarAccess.getTabActivityAccess().getRightCurlyBracketKeyword_6(), null); 
     }
 )
 ;
@@ -2184,7 +2254,7 @@ ruleLinearLayout returns [EObject current=null]
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
 	        }
 	        try {
-	       		add(
+	       		set(
 	       			$current, 
 	       			"widgets",
 	        		lv_widgets_60_0, 
@@ -3050,7 +3120,7 @@ ruleRelativeLayout returns [EObject current=null]
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
 	        }
 	        try {
-	       		add(
+	       		set(
 	       			$current, 
 	       			"widgets",
 	        		lv_widgets_60_0, 
@@ -3861,9 +3931,33 @@ ruleTabHost returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getTabHostAccess().getUnorderedGroup_5());
 	}
 
-)	'}' 
+)(
+(
+		{ 
+	        currentNode=createCompositeNode(grammarAccess.getTabHostAccess().getWidgetsViewCollectionParserRuleCall_6_0(), currentNode); 
+	    }
+		lv_widgets_57_0=ruleViewCollection		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getTabHostRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"widgets",
+	        		lv_widgets_57_0, 
+	        		"ViewCollection", 
+	        		currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+
+)
+)?	'}' 
     {
-        createLeafNode(grammarAccess.getTabHostAccess().getRightCurlyBracketKeyword_6(), null); 
+        createLeafNode(grammarAccess.getTabHostAccess().getRightCurlyBracketKeyword_7(), null); 
     }
 )
 ;
@@ -3893,10 +3987,21 @@ ruleTabWidget returns [EObject current=null]
         createLeafNode(grammarAccess.getTabWidgetAccess().getTabWidgetKeyword_0(), null); 
     }
 (
+    { 
+        temp=factory.create(grammarAccess.getTabWidgetAccess().getTabWidgetAction_1().getType().getClassifier());
+        $current = temp; 
+        temp = null;
+        CompositeNode newNode = createCompositeNode(grammarAccess.getTabWidgetAccess().getTabWidgetAction_1(), currentNode.getParent());
+    newNode.getChildren().add(currentNode);
+    moveLookaheadInfo(currentNode, newNode);
+    currentNode = newNode; 
+        associateNodeWithAstElement(currentNode, $current); 
+    }
+)(
 (
-		lv_name_1_0=RULE_ID
+		lv_name_2_0=RULE_ID
 		{
-			createLeafNode(grammarAccess.getTabWidgetAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
+			createLeafNode(grammarAccess.getTabWidgetAccess().getNameIDTerminalRuleCall_2_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -3907,7 +4012,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"name",
-	        		lv_name_1_0, 
+	        		lv_name_2_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -3918,31 +4023,31 @@ ruleTabWidget returns [EObject current=null]
 )
 )?	'{' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getLeftCurlyBracketKeyword_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getLeftCurlyBracketKeyword_3(), null); 
     }
 (
 
 (
 	{ 
-	  getUnorderedGroupHelper().enter(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	  getUnorderedGroupHelper().enter(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	}
 	(
 		(
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 0)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 0)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 0);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 0);
 	 				}
 					(	'alpha:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getAlphaKeyword_3_0_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getAlphaKeyword_4_0_0(), null); 
     }
 (
 (
-		lv_alpha_5_0=RULE_FLOAT
+		lv_alpha_6_0=RULE_FLOAT
 		{
-			createLeafNode(grammarAccess.getTabWidgetAccess().getAlphaFLOATTerminalRuleCall_3_0_1_0(), "alpha"); 
+			createLeafNode(grammarAccess.getTabWidgetAccess().getAlphaFLOATTerminalRuleCall_4_0_1_0(), "alpha"); 
 		}
 		{
 	        if ($current==null) {
@@ -3953,7 +4058,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"alpha",
-	        		lv_alpha_5_0, 
+	        		lv_alpha_6_0, 
 	        		"FLOAT", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -3964,30 +4069,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_0_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_0_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 1)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 1)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 1);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 1);
 	 				}
 					(	'background:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getBackgroundKeyword_3_1_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getBackgroundKeyword_4_1_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getBackgroundAnyDrawableVAParserRuleCall_3_1_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getBackgroundAnyDrawableVAParserRuleCall_4_1_1_0(), currentNode); 
 	    }
-		lv_background_8_0=ruleAnyDrawableVA		{
+		lv_background_9_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -3996,7 +4101,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"background",
-	        		lv_background_8_0, 
+	        		lv_background_9_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4008,30 +4113,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_1_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_1_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 2)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 2)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 2);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 2);
 	 				}
 					(	'minHeight:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getMinHeightKeyword_3_2_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getMinHeightKeyword_4_2_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getMinHeightDimensionVAParserRuleCall_3_2_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getMinHeightDimensionVAParserRuleCall_4_2_1_0(), currentNode); 
 	    }
-		lv_minHeight_11_0=ruleDimensionVA		{
+		lv_minHeight_12_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4040,7 +4145,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"minHeight",
-	        		lv_minHeight_11_0, 
+	        		lv_minHeight_12_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4052,30 +4157,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_2_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_2_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 3)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 3)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 3);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 3);
 	 				}
 					(	'minWidth:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getMinWidthKeyword_3_3_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getMinWidthKeyword_4_3_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getMinWidthDimensionVAParserRuleCall_3_3_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getMinWidthDimensionVAParserRuleCall_4_3_1_0(), currentNode); 
 	    }
-		lv_minWidth_14_0=ruleDimensionVA		{
+		lv_minWidth_15_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4084,7 +4189,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"minWidth",
-	        		lv_minWidth_14_0, 
+	        		lv_minWidth_15_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4096,23 +4201,23 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_3_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_3_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 4)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 4)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 4);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 4);
 	 				}
 					(	'nextFocusDown:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusDownKeyword_3_4_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusDownKeyword_4_4_0(), null); 
     }
 (
 (
@@ -4124,29 +4229,29 @@ ruleTabWidget returns [EObject current=null]
         }
 	RULE_ID
 	{
-		createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusDownViewCrossReference_3_4_1_0(), "nextFocusDown"); 
+		createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusDownViewCrossReference_4_4_1_0(), "nextFocusDown"); 
 	}
 
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_4_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_4_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 5)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 5)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 5);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 5);
 	 				}
 					(	'nextFocusLeft:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusLeftKeyword_3_5_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusLeftKeyword_4_5_0(), null); 
     }
 (
 (
@@ -4158,29 +4263,29 @@ ruleTabWidget returns [EObject current=null]
         }
 	RULE_ID
 	{
-		createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusLeftViewCrossReference_3_5_1_0(), "nextFocusLeft"); 
+		createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusLeftViewCrossReference_4_5_1_0(), "nextFocusLeft"); 
 	}
 
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_5_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_5_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 6)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 6)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 6);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 6);
 	 				}
 					(	'nextFocusRight:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusRightKeyword_3_6_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusRightKeyword_4_6_0(), null); 
     }
 (
 (
@@ -4192,29 +4297,29 @@ ruleTabWidget returns [EObject current=null]
         }
 	RULE_ID
 	{
-		createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusRightViewCrossReference_3_6_1_0(), "nextFocusRight"); 
+		createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusRightViewCrossReference_4_6_1_0(), "nextFocusRight"); 
 	}
 
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_6_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_6_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 7)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 7)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 7);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 7);
 	 				}
 					(	'nextFocusUp:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusUpKeyword_3_7_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusUpKeyword_4_7_0(), null); 
     }
 (
 (
@@ -4226,36 +4331,36 @@ ruleTabWidget returns [EObject current=null]
         }
 	RULE_ID
 	{
-		createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusUpViewCrossReference_3_7_1_0(), "nextFocusUp"); 
+		createLeafNode(grammarAccess.getTabWidgetAccess().getNextFocusUpViewCrossReference_4_7_1_0(), "nextFocusUp"); 
 	}
 
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_7_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_7_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 8)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 8)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 8);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 8);
 	 				}
 					(	'onClick:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getOnClickKeyword_3_8_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getOnClickKeyword_4_8_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getOnClickActionParserRuleCall_3_8_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getOnClickActionParserRuleCall_4_8_1_0(), currentNode); 
 	    }
-		lv_onClick_29_0=ruleAction		{
+		lv_onClick_30_0=ruleAction		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4264,7 +4369,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"onClick",
-	        		lv_onClick_29_0, 
+	        		lv_onClick_30_0, 
 	        		"Action", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4276,30 +4381,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_8_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_8_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 9)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 9)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 9);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 9);
 	 				}
 					(	'padding:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingKeyword_3_9_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingKeyword_4_9_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingDimensionVAParserRuleCall_3_9_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingDimensionVAParserRuleCall_4_9_1_0(), currentNode); 
 	    }
-		lv_padding_32_0=ruleDimensionVA		{
+		lv_padding_33_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4308,7 +4413,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"padding",
-	        		lv_padding_32_0, 
+	        		lv_padding_33_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4320,30 +4425,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_9_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_9_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 10)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 10)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 10);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 10);
 	 				}
 					(	'paddingBottom:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingBottomKeyword_3_10_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingBottomKeyword_4_10_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingBottomDimensionVAParserRuleCall_3_10_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingBottomDimensionVAParserRuleCall_4_10_1_0(), currentNode); 
 	    }
-		lv_paddingBottom_35_0=ruleDimensionVA		{
+		lv_paddingBottom_36_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4352,7 +4457,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"paddingBottom",
-	        		lv_paddingBottom_35_0, 
+	        		lv_paddingBottom_36_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4364,30 +4469,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_10_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_10_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 11)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 11)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 11);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 11);
 	 				}
 					(	'paddingLeft:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingLeftKeyword_3_11_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingLeftKeyword_4_11_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingLeftDimensionVAParserRuleCall_3_11_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingLeftDimensionVAParserRuleCall_4_11_1_0(), currentNode); 
 	    }
-		lv_paddingLeft_38_0=ruleDimensionVA		{
+		lv_paddingLeft_39_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4396,7 +4501,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"paddingLeft",
-	        		lv_paddingLeft_38_0, 
+	        		lv_paddingLeft_39_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4408,30 +4513,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_11_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_11_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 12)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 12)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 12);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 12);
 	 				}
 					(	'paddingRight:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingRightKeyword_3_12_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingRightKeyword_4_12_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingRightDimensionVAParserRuleCall_3_12_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingRightDimensionVAParserRuleCall_4_12_1_0(), currentNode); 
 	    }
-		lv_paddingRight_41_0=ruleDimensionVA		{
+		lv_paddingRight_42_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4440,7 +4545,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"paddingRight",
-	        		lv_paddingRight_41_0, 
+	        		lv_paddingRight_42_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4452,30 +4557,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_12_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_12_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 13)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 13)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 13);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 13);
 	 				}
 					(	'paddingTop:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingTopKeyword_3_13_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getPaddingTopKeyword_4_13_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingTopDimensionVAParserRuleCall_3_13_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getPaddingTopDimensionVAParserRuleCall_4_13_1_0(), currentNode); 
 	    }
-		lv_paddingTop_44_0=ruleDimensionVA		{
+		lv_paddingTop_45_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4484,7 +4589,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"paddingTop",
-	        		lv_paddingTop_44_0, 
+	        		lv_paddingTop_45_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4496,30 +4601,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_13_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_13_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 14)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 14)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 14);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 14);
 	 				}
 					(	'scrollbars:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getScrollbarsKeyword_3_14_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getScrollbarsKeyword_4_14_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getScrollbarsBooleanVAParserRuleCall_3_14_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getScrollbarsBooleanVAParserRuleCall_4_14_1_0(), currentNode); 
 	    }
-		lv_scrollbars_47_0=ruleBooleanVA		{
+		lv_scrollbars_48_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4528,7 +4633,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"scrollbars",
-	        		lv_scrollbars_47_0, 
+	        		lv_scrollbars_48_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4540,30 +4645,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_14_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_14_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 15)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 15)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 15);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 15);
 	 				}
 					(	'visibility:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getVisibilityKeyword_3_15_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getVisibilityKeyword_4_15_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getVisibilityLayoutVisibilityKindEnumRuleCall_3_15_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getVisibilityLayoutVisibilityKindEnumRuleCall_4_15_1_0(), currentNode); 
 	    }
-		lv_visibility_50_0=ruleLayoutVisibilityKind		{
+		lv_visibility_51_0=ruleLayoutVisibilityKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4572,7 +4677,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"visibility",
-	        		lv_visibility_50_0, 
+	        		lv_visibility_51_0, 
 	        		"LayoutVisibilityKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4584,30 +4689,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_15_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_15_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 16)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 16)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 16);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 16);
 	 				}
 					(	'animation:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getAnimationKeyword_3_16_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getAnimationKeyword_4_16_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getLayoutAnimationAnimationVAParserRuleCall_3_16_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getLayoutAnimationAnimationVAParserRuleCall_4_16_1_0(), currentNode); 
 	    }
-		lv_layoutAnimation_53_0=ruleAnimationVA		{
+		lv_layoutAnimation_54_0=ruleAnimationVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4616,7 +4721,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"layoutAnimation",
-	        		lv_layoutAnimation_53_0, 
+	        		lv_layoutAnimation_54_0, 
 	        		"AnimationVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4628,30 +4733,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_16_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_16_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 17)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 17)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 17);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 17);
 	 				}
 					(	'gravity:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getGravityKeyword_3_17_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getGravityKeyword_4_17_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getGravityLayoutGravityKindEnumRuleCall_3_17_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getGravityLayoutGravityKindEnumRuleCall_4_17_1_0(), currentNode); 
 	    }
-		lv_gravity_56_0=ruleLayoutGravityKind		{
+		lv_gravity_57_0=ruleLayoutGravityKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4660,7 +4765,7 @@ ruleTabWidget returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"gravity",
-	        		lv_gravity_56_0, 
+	        		lv_gravity_57_0, 
 	        		"LayoutGravityKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4672,14 +4777,14 @@ ruleTabWidget returns [EObject current=null]
 )
 )(	'|' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getVerticalLineKeyword_3_17_2_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getVerticalLineKeyword_4_17_2_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getGravityLayoutGravityKindEnumRuleCall_3_17_2_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getGravityLayoutGravityKindEnumRuleCall_4_17_2_1_0(), currentNode); 
 	    }
-		lv_gravity_58_0=ruleLayoutGravityKind		{
+		lv_gravity_59_0=ruleLayoutGravityKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4688,7 +4793,7 @@ ruleTabWidget returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"gravity",
-	        		lv_gravity_58_0, 
+	        		lv_gravity_59_0, 
 	        		"LayoutGravityKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4700,30 +4805,30 @@ ruleTabWidget returns [EObject current=null]
 )
 ))*	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_17_3(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_17_3(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 18)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 18)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 18);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 18);
 	 				}
 					(	'orientation:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getOrientationKeyword_3_18_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getOrientationKeyword_4_18_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getOrientationLayoutOrientationKindEnumRuleCall_3_18_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getOrientationLayoutOrientationKindEnumRuleCall_4_18_1_0(), currentNode); 
 	    }
-		lv_orientation_61_0=ruleLayoutOrientationKind		{
+		lv_orientation_62_0=ruleLayoutOrientationKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4732,7 +4837,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"orientation",
-	        		lv_orientation_61_0, 
+	        		lv_orientation_62_0, 
 	        		"LayoutOrientationKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4744,30 +4849,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_18_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_18_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 19)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 19)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 19);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 19);
 	 				}
 					(	'divider:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getDividerKeyword_3_19_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getDividerKeyword_4_19_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getDividerAnyDrawableVAParserRuleCall_3_19_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getDividerAnyDrawableVAParserRuleCall_4_19_1_0(), currentNode); 
 	    }
-		lv_divider_64_0=ruleAnyDrawableVA		{
+		lv_divider_65_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4776,7 +4881,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"divider",
-	        		lv_divider_64_0, 
+	        		lv_divider_65_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4788,30 +4893,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_19_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_19_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 20)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 20)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 20);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 20);
 	 				}
 					(	'tabStrip:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getTabStripKeyword_3_20_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getTabStripKeyword_4_20_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getTrabStripEnabledBooleanVAParserRuleCall_3_20_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getTrabStripEnabledBooleanVAParserRuleCall_4_20_1_0(), currentNode); 
 	    }
-		lv_trabStripEnabled_67_0=ruleBooleanVA		{
+		lv_trabStripEnabled_68_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4820,7 +4925,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"trabStripEnabled",
-	        		lv_trabStripEnabled_67_0, 
+	        		lv_trabStripEnabled_68_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4832,30 +4937,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_20_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_20_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 21)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 21)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 21);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 21);
 	 				}
 					(	'tabStripLeft:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getTabStripLeftKeyword_3_21_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getTabStripLeftKeyword_4_21_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getTrabStripLeftAnyDrawableVAParserRuleCall_3_21_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getTrabStripLeftAnyDrawableVAParserRuleCall_4_21_1_0(), currentNode); 
 	    }
-		lv_trabStripLeft_70_0=ruleAnyDrawableVA		{
+		lv_trabStripLeft_71_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4864,7 +4969,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"trabStripLeft",
-	        		lv_trabStripLeft_70_0, 
+	        		lv_trabStripLeft_71_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4876,30 +4981,30 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_21_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_21_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 22)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 22)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3(), 22);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4(), 22);
 	 				}
 					(	'tabStripRight:' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getTabStripRightKeyword_3_22_0(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getTabStripRightKeyword_4_22_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getTabStripRightAnyDrawableVAParserRuleCall_3_22_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getTabStripRightAnyDrawableVAParserRuleCall_4_22_1_0(), currentNode); 
 	    }
-		lv_tabStripRight_73_0=ruleAnyDrawableVA		{
+		lv_tabStripRight_74_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4908,7 +5013,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"tabStripRight",
-	        		lv_tabStripRight_73_0, 
+	        		lv_tabStripRight_74_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4920,11 +5025,11 @@ ruleTabWidget returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_3_22_2(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getSemicolonKeyword_4_22_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	 				}
  				)
 			)  
@@ -4933,15 +5038,15 @@ ruleTabWidget returns [EObject current=null]
 	)
 )
 	{ 
-	  getUnorderedGroupHelper().leave(grammarAccess.getTabWidgetAccess().getUnorderedGroup_3());
+	  getUnorderedGroupHelper().leave(grammarAccess.getTabWidgetAccess().getUnorderedGroup_4());
 	}
 
 )(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getWidgetsViewCollectionParserRuleCall_4_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabWidgetAccess().getWidgetsViewCollectionParserRuleCall_5_0(), currentNode); 
 	    }
-		lv_widgets_75_0=ruleViewCollection		{
+		lv_widgets_76_0=ruleViewCollection		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -4950,7 +5055,7 @@ ruleTabWidget returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"widgets",
-	        		lv_widgets_75_0, 
+	        		lv_widgets_76_0, 
 	        		"ViewCollection", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -4960,9 +5065,9 @@ ruleTabWidget returns [EObject current=null]
 	    }
 
 )
-)	'}' 
+)?	'}' 
     {
-        createLeafNode(grammarAccess.getTabWidgetAccess().getRightCurlyBracketKeyword_5(), null); 
+        createLeafNode(grammarAccess.getTabWidgetAccess().getRightCurlyBracketKeyword_6(), null); 
     }
 )
 ;
@@ -5758,9 +5863,33 @@ ruleFrameLayout returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getFrameLayoutAccess().getUnorderedGroup_5());
 	}
 
-)	'}' 
+)(
+(
+		{ 
+	        currentNode=createCompositeNode(grammarAccess.getFrameLayoutAccess().getWidgetsViewCollectionParserRuleCall_6_0(), currentNode); 
+	    }
+		lv_widgets_57_0=ruleViewCollection		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getFrameLayoutRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"widgets",
+	        		lv_widgets_57_0, 
+	        		"ViewCollection", 
+	        		currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+
+)
+)?	'}' 
     {
-        createLeafNode(grammarAccess.getFrameLayoutAccess().getRightCurlyBracketKeyword_6(), null); 
+        createLeafNode(grammarAccess.getFrameLayoutAccess().getRightCurlyBracketKeyword_7(), null); 
     }
 )
 ;
@@ -7540,9 +7669,9 @@ ruleButton returns [EObject current=null]
     |(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getImageAnyDrawableVAParserRuleCall_3_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getSrcAnyDrawableVAParserRuleCall_3_1_0(), currentNode); 
 	    }
-		lv_image_6_0=ruleAnyDrawableVA		{
+		lv_src_6_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7550,8 +7679,8 @@ ruleButton returns [EObject current=null]
 	        try {
 	       		set(
 	       			$current, 
-	       			"image",
-	        		lv_image_6_0, 
+	       			"src",
+	        		lv_src_6_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {

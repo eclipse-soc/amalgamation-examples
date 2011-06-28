@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.TabWidget#getTrabStripEnabled <em>Trab Strip Enabled</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.TabWidget#getTrabStripLeft <em>Trab Strip Left</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.TabWidget#getTabStripRight <em>Tab Strip Right</em>}</li>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.TabWidget#getWidgets <em>Widgets</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,31 +150,5 @@ public interface TabWidget extends AbstractLinearLayout
    * @generated
    */
   void setTabStripRight(AnyDrawableVA value);
-
-  /**
-   * Returns the value of the '<em><b>Widgets</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Widgets</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Widgets</em>' containment reference.
-   * @see #setWidgets(ViewCollection)
-   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getTabWidget_Widgets()
-   * @model containment="true"
-   * @generated
-   */
-  ViewCollection getWidgets();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.TabWidget#getWidgets <em>Widgets</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Widgets</em>' containment reference.
-   * @see #getWidgets()
-   * @generated
-   */
-  void setWidgets(ViewCollection value);
 
 } // TabWidget

@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ListActivityImpl#getDataSource <em>Data Source</em>}</li>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ListActivityImpl#getLayout <em>Layout</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ListActivityImpl#getItemLayout <em>Item Layout</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ListActivityImpl#getActions <em>Actions</em>}</li>
  * </ul>
@@ -62,16 +61,6 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
    * @ordered
    */
   protected String dataSource = DATA_SOURCE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getLayout() <em>Layout</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLayout()
-   * @generated
-   * @ordered
-   */
-  protected Layout layout;
 
   /**
    * The cached value of the '{@link #getItemLayout() <em>Item Layout</em>}' reference.
@@ -135,49 +124,6 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
     dataSource = newDataSource;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.LIST_ACTIVITY__DATA_SOURCE, oldDataSource, dataSource));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Layout getLayout()
-  {
-    if (layout != null && layout.eIsProxy())
-    {
-      InternalEObject oldLayout = (InternalEObject)layout;
-      layout = (Layout)eResolveProxy(oldLayout);
-      if (layout != oldLayout)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DroidPackage.LIST_ACTIVITY__LAYOUT, oldLayout, layout));
-      }
-    }
-    return layout;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Layout basicGetLayout()
-  {
-    return layout;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLayout(Layout newLayout)
-  {
-    Layout oldLayout = layout;
-    layout = newLayout;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.LIST_ACTIVITY__LAYOUT, oldLayout, layout));
   }
 
   /**
@@ -265,9 +211,6 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
     {
       case DroidPackage.LIST_ACTIVITY__DATA_SOURCE:
         return getDataSource();
-      case DroidPackage.LIST_ACTIVITY__LAYOUT:
-        if (resolve) return getLayout();
-        return basicGetLayout();
       case DroidPackage.LIST_ACTIVITY__ITEM_LAYOUT:
         if (resolve) return getItemLayout();
         return basicGetItemLayout();
@@ -290,9 +233,6 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
     {
       case DroidPackage.LIST_ACTIVITY__DATA_SOURCE:
         setDataSource((String)newValue);
-        return;
-      case DroidPackage.LIST_ACTIVITY__LAYOUT:
-        setLayout((Layout)newValue);
         return;
       case DroidPackage.LIST_ACTIVITY__ITEM_LAYOUT:
         setItemLayout((Layout)newValue);
@@ -318,9 +258,6 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
       case DroidPackage.LIST_ACTIVITY__DATA_SOURCE:
         setDataSource(DATA_SOURCE_EDEFAULT);
         return;
-      case DroidPackage.LIST_ACTIVITY__LAYOUT:
-        setLayout((Layout)null);
-        return;
       case DroidPackage.LIST_ACTIVITY__ITEM_LAYOUT:
         setItemLayout((Layout)null);
         return;
@@ -343,8 +280,6 @@ public class ListActivityImpl extends ActivityImpl implements ListActivity
     {
       case DroidPackage.LIST_ACTIVITY__DATA_SOURCE:
         return DATA_SOURCE_EDEFAULT == null ? dataSource != null : !DATA_SOURCE_EDEFAULT.equals(dataSource);
-      case DroidPackage.LIST_ACTIVITY__LAYOUT:
-        return layout != null;
       case DroidPackage.LIST_ACTIVITY__ITEM_LAYOUT:
         return itemLayout != null;
       case DroidPackage.LIST_ACTIVITY__ACTIONS:

@@ -5,25 +5,15 @@
  */
 package org.eclipse.amalgam.tutorials.xtext.droid.impl;
 
-import java.util.Collection;
-
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
 import org.eclipse.amalgam.tutorials.xtext.droid.LayoutOrientationKind;
 import org.eclipse.amalgam.tutorials.xtext.droid.RelativeLayout;
-import org.eclipse.amalgam.tutorials.xtext.droid.ViewCollection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +23,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.RelativeLayoutImpl#getOrientation <em>Orientation</em>}</li>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.RelativeLayoutImpl#getWidgets <em>Widgets</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,16 +49,6 @@ public class RelativeLayoutImpl extends LayoutImpl implements RelativeLayout
    * @ordered
    */
   protected LayoutOrientationKind orientation = ORIENTATION_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWidgets()
-   * @generated
-   * @ordered
-   */
-  protected EList<ViewCollection> widgets;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,36 +99,6 @@ public class RelativeLayoutImpl extends LayoutImpl implements RelativeLayout
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ViewCollection> getWidgets()
-  {
-    if (widgets == null)
-    {
-      widgets = new EObjectContainmentEList<ViewCollection>(ViewCollection.class, this, DroidPackage.RELATIVE_LAYOUT__WIDGETS);
-    }
-    return widgets;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case DroidPackage.RELATIVE_LAYOUT__WIDGETS:
-        return ((InternalEList<?>)getWidgets()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -157,8 +106,6 @@ public class RelativeLayoutImpl extends LayoutImpl implements RelativeLayout
     {
       case DroidPackage.RELATIVE_LAYOUT__ORIENTATION:
         return getOrientation();
-      case DroidPackage.RELATIVE_LAYOUT__WIDGETS:
-        return getWidgets();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -168,7 +115,6 @@ public class RelativeLayoutImpl extends LayoutImpl implements RelativeLayout
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -176,10 +122,6 @@ public class RelativeLayoutImpl extends LayoutImpl implements RelativeLayout
     {
       case DroidPackage.RELATIVE_LAYOUT__ORIENTATION:
         setOrientation((LayoutOrientationKind)newValue);
-        return;
-      case DroidPackage.RELATIVE_LAYOUT__WIDGETS:
-        getWidgets().clear();
-        getWidgets().addAll((Collection<? extends ViewCollection>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -198,9 +140,6 @@ public class RelativeLayoutImpl extends LayoutImpl implements RelativeLayout
       case DroidPackage.RELATIVE_LAYOUT__ORIENTATION:
         setOrientation(ORIENTATION_EDEFAULT);
         return;
-      case DroidPackage.RELATIVE_LAYOUT__WIDGETS:
-        getWidgets().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -217,8 +156,6 @@ public class RelativeLayoutImpl extends LayoutImpl implements RelativeLayout
     {
       case DroidPackage.RELATIVE_LAYOUT__ORIENTATION:
         return orientation != ORIENTATION_EDEFAULT;
-      case DroidPackage.RELATIVE_LAYOUT__WIDGETS:
-        return widgets != null && !widgets.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -44,21 +44,21 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="layoutAnimation" eType="#//AnimationVA"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Activity">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenericActivity" eSuperTypes="#//Activity">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractActivity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="referencedLayout" eType="#//Layout"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" eType="#//ViewCollection"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//AbstractActivity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GenericActivity" eSuperTypes="#//Activity"/>
   <eClassifiers xsi:type="ecore:EClass" name="ViewCollection">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="views" upperBound="-1"
         eType="#//View" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ListActivity" eSuperTypes="#//Activity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataSource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="layout" eType="#//Layout"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itemLayout" eType="#//Layout"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action" containment="true"/>
@@ -101,19 +101,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractView">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" eType="#//ViewCollection"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="View" eSuperTypes="#//AbstractView">
     <eStructuralFeatures xsi:type="ecore:EReference" name="background" eType="#//AnyDrawableVA"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LinearLayout" eSuperTypes="#//AbstractLinearLayout">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" upperBound="-1"
-        eType="#//ViewCollection" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinearLayout" eSuperTypes="#//AbstractLinearLayout"/>
   <eClassifiers xsi:type="ecore:EClass" name="RelativeLayout" eSuperTypes="#//Layout">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="orientation" eType="#//LayoutOrientationKind"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" upperBound="-1"
-        eType="#//ViewCollection" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TabHost" eSuperTypes="#//Layout"/>
   <eClassifiers xsi:type="ecore:EClass" name="TabWidget" eSuperTypes="#//AbstractLinearLayout">
@@ -126,8 +123,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="trabStripLeft" eType="#//AnyDrawableVA"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tabStripRight" eType="#//AnyDrawableVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" eType="#//ViewCollection"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FrameLayout" eSuperTypes="#//Layout"/>
@@ -189,7 +184,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Button" eSuperTypes="#//Widget #//AbstractTextView">
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//StringVA"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="image" eType="#//AnyDrawableVA"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="src" eType="#//AnyDrawableVA"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Activity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hint" eType="#//StringVA"

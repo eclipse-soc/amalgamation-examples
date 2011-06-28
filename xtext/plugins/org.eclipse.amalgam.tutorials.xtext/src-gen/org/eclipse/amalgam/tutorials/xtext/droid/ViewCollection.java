@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.ViewCollection#getWidgets <em>Widgets</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.ViewCollection#getViews <em>Views</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,19 +28,19 @@ import org.eclipse.emf.ecore.EObject;
 public interface ViewCollection extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Widgets</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Views</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.amalgam.tutorials.xtext.droid.View}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Widgets</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Views</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Widgets</em>' containment reference list.
-   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getViewCollection_Widgets()
+   * @return the value of the '<em>Views</em>' containment reference list.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getViewCollection_Views()
    * @model containment="true"
    * @generated
    */
-  EList<View> getWidgets();
+  EList<View> getViews();
 
 } // ViewCollection
