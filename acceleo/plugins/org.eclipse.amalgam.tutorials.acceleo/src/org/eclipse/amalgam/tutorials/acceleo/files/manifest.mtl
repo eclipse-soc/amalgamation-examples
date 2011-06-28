@@ -2,6 +2,7 @@
 [module manifest('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
 [comment //aManifestFile.name.concat - DEVERIA ter isso na application /]
-[template public manifest(aManifestFile : ManifestFile)]
+[comment]//Removed[/comment]
+[comment][template public manifest(aManifestFile : ManifestFile)]
 <!-- Manifest Generated -->
-[/template]
+[/template][/comment]

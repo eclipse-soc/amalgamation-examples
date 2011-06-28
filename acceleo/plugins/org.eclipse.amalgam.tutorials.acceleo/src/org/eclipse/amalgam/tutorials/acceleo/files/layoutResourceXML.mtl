@@ -3,35 +3,75 @@
 
 [import org::eclipse::amalgam::tutorials::acceleo::files::widgetXML /]
 
-[template public layoutResourceXML(aLayout : Layout)]
-[file ('/res/layout/'.concat(aLayout.name.toLower()).concat('.xml'), false, 'UTF-8')]
-[if (aLayout.oclIsKindOf(LinearLayout))][aLayout.oclAsType(LinearLayout).layoutXML()/][/if]
-[if (aLayout.oclIsKindOf(RelativeLayout))][aLayout.oclAsType(RelativeLayout).layoutXML()/][/if]
+[template public layoutResourceFile(layout : Layout)]
+[file ('/res/layout/'.concat(layout.name.toLower()).concat('.xml'), false, 'UTF-8')]
+<?xml version="1.0" encoding="utf-8"?>
+[layout.layoutXML()/]
 [/file]
 [/template]
 
 
-[template private layoutXML(aLayout : LinearLayout) post(trim())]
+[template public layoutResourceXMLfromActivity(activity : Activity)]
+[if (activity.widgets <> null)]
+  [comment][if (activity.widgets.views->size() = 1 and activity.widgets.views->first().oclIsKindOf(Layout))]
+	[activity.widgets.views->first().oclAsType(Layout).layoutXML()/]
+  [else][/comment]
+
+    [file ('/res/layout/'.concat(activity.name.toLower()).concat('_screen.xml'), false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
+[viewCollectionXML(activity.widgets)/]
+    [/file]
+
+  [comment][/if][/comment]
+[/if]
+[/template]
+
+
+[template private viewCollectionXML(viewCollection : ViewCollection) post(trim())]
+[for (view : View | viewCollection.views)][viewXML(view)/][/for]
+[/template]
+
+
+[template public layoutXML(layout : Layout) post(trim())]
+[if (layout.oclIsKindOf(LinearLayout))]
+	[layout.oclAsType(LinearLayout).layoutXML()/]
+
+[comment][elseif (layout.oclIsKindOf(TabWidget))]
+	[layout.oclAsType(TabWidget).layoutXML()/]
+
+[elseif (layout.oclIsKindOf(TabHost))]
+	[layout.oclAsType(TabHost).layoutXML()/][/comment]
+
+[elseif (layout.oclIsKindOf(RelativeLayout))]
+	[layout.oclAsType(RelativeLayout).layoutXML()/]
+
+[comment][elseif (layout.oclIsKindOf(FrameLayout))]
+	[layout.oclAsType(FrameLayout).layoutXML()/][/comment]
+	
+[/if]
+[/template]
+
+
+[comment]This XML Namespace should appear only if this is the first item in a file. What is the best way to do it?[/comment]
+[template private layoutXML(aLayout : LinearLayout) post(trim())]
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 [if (aLayout.orientation <> null)]
     android:orientation="[aLayout.orientation/]"
 [/if]
 [aLayout.viewGroupProperties()/]
-[xmlResourceProperties(aLayout.eContents(ValueAccess))/]
-    >
-[for (widget : Widget | aLayout.widgets)][widgetXML(widget)/][/for]
+	>
+[viewCollectionXML(aLayout.widgets)/]
 </LinearLayout>
 [/template]
 
 
+[comment]This XML Namespace should appear only if this is the first item in a file. What is the best way to do it?[/comment]
 [template private layoutXML(aLayout : RelativeLayout) post(trim())]
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		[aLayout.viewGroupProperties()/]
-    [xmlResourceProperties(aLayout.eContents(ValueAccess))/]
-    >
-[for (widget : Widget | aLayout.widgets)][widgetXML(widget)/][/for]
+[aLayout.viewGroupProperties()/]
+[comment][xmlResourceProperties(aLayout.eContents(ValueAccess))/][/comment]
+	>
+[viewCollectionXML(aLayout.widgets)/]
 </RelativeLayout>
 [/template]
 

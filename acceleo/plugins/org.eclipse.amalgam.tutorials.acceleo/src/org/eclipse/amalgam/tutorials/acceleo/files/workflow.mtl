@@ -6,18 +6,19 @@
 [import org::eclipse::amalgam::tutorials::acceleo::files::layoutResourceXML /]
 [import org::eclipse::amalgam::tutorials::acceleo::files::valueResourceXML /]
 
+[comment @main /]
 [template public workflow(aApplication : Application)]
-
-	[comment @main /]
+	
 	[application(aApplication)/]
 	[applicationResources(aApplication)/]
 
 	[for (aActivity : Activity | aApplication.activities)]
 		[activity(aActivity)/]
+		[layoutResourceXMLfromActivity(aActivity)/]
 	[/for]
 
 	[for (aLayout : Layout | aApplication.layouts)]
-		[layoutResourceXML(aLayout)/]
+		[layoutResourceFile(aLayout)/]
 	[/for]
 
 [/template]

@@ -23,7 +23,7 @@
 
     </application>
     
-  	[manifest(aApplication.manifest)/]
+  	[comment][manifest(aApplication.manifest)/][/comment]
     
 </manifest>
 	[/file]
@@ -32,11 +32,9 @@
 
 [template public applicationResources(app : Application)]
 	[comment stringResourceXML(app.eContents(StringValueResource))/]
-
-  [stringResourceXML(app)/]
-
-  [integerResourceXML(app.resources->filter(IntegerResource))/]
-  [colorResourceXML(app.resources->filter(ColorResource))/]
+  	[stringResourceXML(app)/]
+  	[integerResourceXML(app.resources->filter(IntegerResource))/]
+  	[colorResourceXML(app.resources->filter(ColorResource))/]
 	[dimensionResourceXML(app.resources->filter(DimensionResource))/]
 [/template]
 

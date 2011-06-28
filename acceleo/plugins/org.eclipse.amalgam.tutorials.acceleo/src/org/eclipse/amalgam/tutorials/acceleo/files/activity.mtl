@@ -1,32 +1,39 @@
-[comment encoding = MacRoman /]
+[comment encoding = UTF-8 /]
 [module activity('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
-[template public activity(aActivity : Activity)]
-[file ('src-gen/'.concat(aActivity.eContainer(Application).packageName.replaceAll('\\.', '/').concat('/').concat(aActivity.name.concat('.java'))), false, 'MacRoman')]
-package [aActivity.eContainer(Application).packageName/];
+[template public activity(activity : Activity)]
+[file ('src-gen/'.concat(activity.eContainer(Application).packageName.replaceAll('\\.', '/').concat('/').concat(activity.name.concat('.java'))), false, 'UTF-8')]
+package [activity.eContainer(Application).packageName/];
 
 import android.app.Activity;
 import android.os.Bundle;
 
-public class [aActivity.name.toUpperFirst()/] extends Activity {
+public class [activity.name.toUpperFirst()/] extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        [activityActions(aActivity)/]
+
+[comment][activity.activityActions()/][/comment]
+[if (activity.widgets <> null)]
+		setContentView(R.layout.[activity.name.toLower()/]_screen);
+[/if]
+[if (activity.referencedLayout <> null)]
+		setContentView(R.layout.[activity.referencedLayout.name/]);
+[/if]
     }
 }
 [/file]
 [/template]
 
 
-[template private activityActions(activity : Activity) post (trim())]
+[comment][template private activityActions(activity : Activity) post (trim())]
 	[if (activity.oclIsTypeOf(GenericActivity))]
 		[for (action : Action | activity.oclAsType(GenericActivity).actions)]
 [actionCode(action)/]
 		[/for]		
 	[/if]
-[/template]
+[/template][/comment]
 
 
 [template private actionCode(action : Action) post (trim())]

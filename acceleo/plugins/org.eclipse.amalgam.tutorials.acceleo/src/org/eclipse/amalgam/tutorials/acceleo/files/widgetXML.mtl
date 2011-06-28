@@ -1,23 +1,64 @@
 [comment encoding = UTF-8 /]
 [module widgetXML('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
+[import org::eclipse::amalgam::tutorials::acceleo::files::layoutResourceXML /]
 [import org::eclipse::amalgam::tutorials::acceleo::files::valueResourceXML /]
 
-[template public widgetXML(aWidget : Widget)]
-[if (oclIsKindOf(TextView))]
-	<TextView
-[if (aWidget.name <> null)]
-		android:id="@+id/[aWidget.name/]"	
+[template public viewXML(view : View)]
+[if (view.oclIsKindOf(Widget))]
+[view.oclAsType(Widget).widgetXML()/]
 [/if]
-		[widgetAttributes(aWidget)/]
-	/>
+
+[if (view.oclIsKindOf(Layout))]
+[layoutXML(view.oclAsType(Layout))/]
 [/if]
 [/template]
 
+
+[template public widgetXML(widget : Widget)]
+<[widget.widgetXMLheader()/]
+[widget.viewDefaultProperties()/]
+[widgetAttributes(widget)/]
+/>
+[/template]
+
+
+[template public viewDefaultProperties(view : View)]
+  [if (view.name <> null)]
+  android:id="@+id/[view.name/]"	
+  [/if]
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+[/template]
+
+
+[template private widgetXMLheader(widget : Widget)]
+[comment][/comment]
+[/template]
+
+[template private widgetXMLheader(textView : TextView)]
+TextView
+[/template]
+
+
+[template private widgetXMLheader(editText : EditText)]
+EditText
+[/template]
+
+
+[template private widgetXMLheader(button : Button)]
+[if (button.src <> null)]ImageButton[else]Button[/if]
+[/template]
+
+
 [template public xmlResourceProperties(seq : Sequence(ValueAccess))]
 [for (va : ValueAccess | seq)]
-[comment]<!-- [va.eContainingFeature().name/] -->[/comment]
-[widgetAttributeDefinition(va)/]
+[if (va.eAllContents()->isEmpty() = false)]
+  <!-- [va.eContainingFeature().name/] -->
+  [widgetAttributeDefinition(va)/]
+[/if]
 [/for]
 [/template]
 
@@ -46,7 +87,7 @@
 
 
 [template private widgetAttributes(widget : Widget) ]
-[comment]<!-- Specified Attributes -->[/comment]
+  <!-- Defined Attributes -->
 [xmlResourceProperties(widget.eContents(ValueAccess))/]
 [/template]
 
@@ -62,33 +103,33 @@
 
 [comment]I have to make this because xtext is not allowing me to use an specialized abstract property[/comment]
 [template private valueAttribute(va : StringVA) post(trim())]
-[if va.attributeValue().trim().size() > 0 ]
+[comment][if va.attributeValue().trim().size() > 0 ][/comment]
 	android:[va.eContainingFeature().name/]="[attributeValue(va)/]"
-[/if]
+[comment][/if][/comment]
 [/template]
 
 [template private valueAttribute(va : IntegerVA) post(trim())]
-[if va.attributeValue().trim().size() > 0 ]
+[comment][if va.attributeValue().trim().size() > 0 ][/comment]
 	android:[va.eContainingFeature().name/]="[attributeValue(va)/]"
-[/if]
+[comment][/if][/comment]
 [/template]
 
 [template private valueAttribute(va : BooleanVA) post(trim())]
-[if va.attributeValue().trim().size() > 0 ]
+[comment][if va.attributeValue().trim().size() > 0 ][/comment]
 	android:[va.eContainingFeature().name/]="[attributeValue(va)/]"
-[/if]
+[comment][/if][/comment]
 [/template]
 
 [template private valueAttribute(va : ColorVA) post(trim())]
-[if va.attributeValue().trim().size() > 0 ]
+[comment][if va.attributeValue().trim().size() > 0 ][/comment]
 	android:[va.eContainingFeature().name/]="[attributeValue(va)/]"
-[/if]
+[comment][/if][/comment]
 [/template]
 
 [template private valueAttribute(va : DimensionVA) post(trim())]
-[if va.attributeValue().trim().size() > 0 ]
+[comment][if va.attributeValue().trim().size() > 0 ][/comment]
 	android:[va.eContainingFeature().name/]="[attributeValue(va)/]"
-[/if]
+[comment][/if][/comment]
 [/template]
 
 [template private valueAttribute(va : DrawableVA) post(trim())]
