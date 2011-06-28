@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text="Now, the last one"
+
+/>
+
+<Button
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text="< Back"
+
+/>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text="And this is the second screen"
+
+/>
+
+<Button
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text="< Back"
+
+/>
+
+<Button
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text="Next >"
+
+/>

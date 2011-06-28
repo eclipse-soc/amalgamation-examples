@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+	>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+
+	>
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- background -->
+  android:background="#aa0000"
+  <!-- text -->
+  android:text="red"
+
+/>
+
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- background -->
+  android:background="#00aa00"
+  <!-- text -->
+  android:text="green"
+
+/>
+
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- background -->
+  android:background="#0000aa"
+  <!-- text -->
+  android:text="blue"
+
+/>
+
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- background -->
+  android:background="#aaaa00"
+  <!-- text -->
+  android:text="yellow"
+
+/>
+</LinearLayout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+	>
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- background -->
+  android:background="#aaaa00"
+  <!-- text -->
+  android:text="row one"
+  <!-- textSize -->
+  android:textSize="15pt"
+
+/>
+
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- background -->
+  android:background="#aaaa00"
+  <!-- text -->
+  android:text="row two"
+  <!-- textSize -->
+  android:textSize="15pt"
+
+/>
+
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- background -->
+  android:background="#aaaa00"
+  <!-- text -->
+  android:text="row three"
+  <!-- textSize -->
+  android:textSize="15pt"
+
+/>
+
+<TextView
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- background -->
+  android:background="#aaaa00"
+  <!-- text -->
+  android:text="row four"
+  <!-- textSize -->
+  android:textSize="15pt"
+
+/>
+</LinearLayout>
+</LinearLayout>

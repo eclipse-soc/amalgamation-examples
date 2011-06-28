@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+	>
+<TextView
+  android:id="@+id/label"	
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text="Type here:"
+
+/>
+
+<EditText
+  android:id="@+id/entry"	
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text=""
+
+/>
+
+<Button
+  android:id="@+id/ok"	
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text="OK"
+
+/>
+
+<Button
+  <!-- BEGIN - default layout values -->
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  <!-- END - default layout values -->
+  <!-- Defined Attributes -->
+  <!-- text -->
+  android:text="Cancel"
+
+/>
+</RelativeLayout>

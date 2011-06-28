@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Auto-generated from Application.name -->
+  <string name="app_name">Hello, Android!</string>
+
+  <!-- resources -->
+  <string name="hello">Hello, Android! I am a string resource!</string>
+
+</resources>
