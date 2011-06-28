@@ -17,6 +17,9 @@
 
 [template public widgetXML(widget : Widget)]
 <[widget.widgetXMLheader()/]
+[if (false = widget.eContainer(ViewCollection).eContainer().oclIsKindOf(View))]
+    xmlns:android="http://schemas.android.com/apk/res/android"
+[/if]
 [widget.viewDefaultProperties()/]
 [widgetAttributes(widget)/]
 />
@@ -34,8 +37,8 @@
 [/template]
 
 
+[comment]I created this template just to make it work as a polymorphic template[/comment]
 [template private widgetXMLheader(widget : Widget)]
-[comment][/comment]
 [/template]
 
 [template private widgetXMLheader(textView : TextView)]

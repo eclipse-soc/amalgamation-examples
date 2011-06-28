@@ -54,7 +54,10 @@
 
 [comment]This XML Namespace should appear only if this is the first item in a file. What is the best way to do it?[/comment]
 [template private layoutXML(aLayout : LinearLayout) post(trim())]
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+[if (false = aLayout.eContainer(ViewCollection).eContainer().oclIsKindOf(View))]
+    xmlns:android="http://schemas.android.com/apk/res/android"
+[/if]
 [if (aLayout.orientation <> null)]
     android:orientation="[aLayout.orientation/]"
 [/if]
@@ -67,7 +70,10 @@
 
 [comment]This XML Namespace should appear only if this is the first item in a file. What is the best way to do it?[/comment]
 [template private layoutXML(aLayout : RelativeLayout) post(trim())]
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+[if (false = aLayout.eContainer(ViewCollection).eContainer().oclIsKindOf(View))]
+    xmlns:android="http://schemas.android.com/apk/res/android"
+[/if]
 [aLayout.viewGroupProperties()/]
 [comment][xmlResourceProperties(aLayout.eContents(ValueAccess))/][/comment]
 	>
