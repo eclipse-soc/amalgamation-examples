@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+>
 <TextView
-  <!-- BEGIN - default layout values -->
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  <!-- END - default layout values -->
-  <!-- Defined Attributes -->
-  <!-- text -->
+  android:layout_height="wrap_content"
+
+  <!-- This is an error. -->
   android:text="Now, the last one"
 
 />
 
 <Button
-  <!-- BEGIN - default layout values -->
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  <!-- END - default layout values -->
-  <!-- Defined Attributes -->
-  <!-- text -->
+  android:layout_height="wrap_content"
+
+  android:onClick="goToSecondScreen"
+
   android:text="< Back"
 
 />
+</LinearLayout>

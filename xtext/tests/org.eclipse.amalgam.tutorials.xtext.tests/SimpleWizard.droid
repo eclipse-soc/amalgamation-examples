@@ -1,17 +1,17 @@
 application "SimpleWizard" => org.android.example.wizard {
 	screen First {
 		# textView: "This is the first screen" {}
-		# button: "Next >" to Second {}
+		# button: "Next &gt;" to Second {}
 	}
 	
 	screen Second {
 		# textView: "And this is the second screen" {}
-		# button: "< Back" to First {}
-		# button: "Next >" to Third {}
+		# button: "&lt; Back" to First {}
+		# button: "Next &gt;" to Third {}
 	}
 
 	screen Third {
 		# textView: "Now, the last one" {}
-		# button: "< Back" to Second {}
+		# button: "&lt; Back" to Second {}
 	}
 }
