@@ -24,14 +24,14 @@
 
 
 [template public integerResourceXML(resourceSeq : OrderedSet(IntegerResource))]
-	[file ('/res/values/gen-integers.xml', false, 'UTF-8')]
+[file ('/res/values/gen-integers.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 [for (resource : IntegerResource | resourceSeq)]
   <integer name="[resource.name/]">[resource.value/]</integer>
 [/for]
 </resources>
-	[/file]
+[/file]
 [/template]
 
 

@@ -13,18 +13,19 @@
       android:versionName="1.0">
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".[aApplication.eContents(Activity)->first().name.toUpperFirst()/]"
+        <activity android:name=".[aApplication.eContents(Activity)->first().name.toUpperFirst()/]Screen"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+[comment][for (activity : Activity | aApplication.activities->first()->followingSiblings(Activity))][/comment]
+[for (activity : Activity | aApplication.activities->subOrderedSet(2, aApplication.activities->size()))]
+		<activity android:name=".[activity.name.toUpperFirst()/]Screen"></activity>	
+[/for]
     </application>
-    
   	[comment][manifest(aApplication.manifest)/][/comment]
-    
 </manifest>
 	[/file]
 [/template]

@@ -17,10 +17,11 @@
 
 [template public widgetXML(widget : Widget)]
 <[widget.widgetXMLheader()/]
-[if (false = widget.eContainer(ViewCollection).eContainer().oclIsKindOf(View))]
+[comment][if (false = widget.eContainer(ViewCollection).eContainer().oclIsKindOf(View))]
     xmlns:android="http://schemas.android.com/apk/res/android"
-[/if]
+[/if][/comment]
 [widget.viewDefaultProperties()/]
+
 [widgetAttributes(widget)/]
 />
 [/template]
@@ -30,10 +31,8 @@
   [if (view.name <> null)]
   android:id="@+id/[view.name/]"	
   [/if]
-  <!-- BEGIN - default layout values -->
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  <!-- END - default layout values -->
+  android:layout_height="wrap_content"
 [/template]
 
 
@@ -59,7 +58,6 @@ EditText
 [template public xmlResourceProperties(seq : Sequence(ValueAccess))]
 [for (va : ValueAccess | seq)]
 [if (va.eAllContents()->isEmpty() = false)]
-  <!-- [va.eContainingFeature().name/] -->
   [widgetAttributeDefinition(va)/]
 [/if]
 [/for]
@@ -90,9 +88,24 @@ EditText
 
 
 [template private widgetAttributes(widget : Widget) ]
-  <!-- Defined Attributes -->
+[widgetSpecificAttributes(widget)/]
 [xmlResourceProperties(widget.eContents(ValueAccess))/]
 [/template]
+
+
+
+[template public widgetSpecificAttributes(widget : Widget)]
+[comment]<!-- This is an error. -->[/comment]
+[/template]
+
+[template public widgetSpecificAttributes(button : Button)]
+[if (button.target <> null)]
+  android:onClick="goTo[button.target.name.toUpperFirst()/]Screen"
+[/if]
+[/template]
+
+
+
 
 [template private widgetAttributeDefinition(va : ValueAccess) post (trim())]
 [if (va.oclIsKindOf(StringVA))][va.oclAsType(StringVA).valueAttribute()/][/if]

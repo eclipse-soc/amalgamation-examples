@@ -2,13 +2,16 @@
 [module activity('http://www.eclipse.org/amalgam/tutorials/xtext/Droid')/]
 
 [template public activity(activity : Activity)]
-[file ('src-gen/'.concat(activity.eContainer(Application).packageName.replaceAll('\\.', '/').concat('/').concat(activity.name.concat('.java'))), false, 'UTF-8')]
+[file ('src-gen/'.concat(activity.eContainer(Application).packageName.replaceAll('\\.', '/').concat('/').concat(activity.name.concat('Screen.java'))), false, 'UTF-8')]
 package [activity.eContainer(Application).packageName/];
 
 import android.app.Activity;
 import android.os.Bundle;
 
-public class [activity.name.toUpperFirst()/] extends Activity {
+import android.content.Intent;
+import android.view.View;
+
+public class [activity.name.toUpperFirst()/]Screen extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,16 @@ public class [activity.name.toUpperFirst()/] extends Activity {
 		setContentView(R.layout.[activity.referencedLayout.name/]);
 [/if]
     }
+
+[for (button : Button | activity.eAllContents(Button))]
+[if (button.target <> null)]
+
+	//[button.name/].onClick
+	public void goTo[button.target.name.toUpperFirst()/]Screen(View view) {
+	    startActivityForResult(new Intent(view.getContext(), [button.target.name.toUpperFirst()/]Screen.class), 0);
+	}
+[/if]
+[/for]
 }
 [/file]
 [/template]
