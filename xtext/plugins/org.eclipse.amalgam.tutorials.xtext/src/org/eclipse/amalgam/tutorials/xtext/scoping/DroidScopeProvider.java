@@ -21,8 +21,8 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  */
 public class DroidScopeProvider extends AbstractDeclarativeScopeProvider {
 
-	public IScope scope_LayoutParams_below(LayoutParams lp, EReference ref){
-		//Only the siblings of the containing View
+	public IScope scope_LayoutParams_layout_below(LayoutParams lp, EReference ref){
+		//Only the siblings of the container View
 		View containingView = ((View) lp.eContainingFeature().eContainer() );
 		ViewCollection containingCollection = ((ViewCollection) containingView.eContainingFeature().eContainer() );
 		return Scopes.scopeFor(containingCollection.getViews());
