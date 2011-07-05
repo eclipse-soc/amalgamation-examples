@@ -55,6 +55,13 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass applicationUsesSDKEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass resourceEClass = null;
 
   /**
@@ -203,6 +210,13 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * @generated
    */
   private EClass frameLayoutEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass layoutParamsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -836,9 +850,39 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getApplication_VersionCode()
+  {
+        return (EAttribute)getApplication().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getApplication_VersionName()
+  {
+        return (EAttribute)getApplication().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getApplication_SdkVersion()
+  {
+        return (EReference)getApplication().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getApplication_Resources()
   {
-        return (EReference)getApplication().getEStructuralFeatures().get(2);
+        return (EReference)getApplication().getEStructuralFeatures().get(5);
   }
 
   /**
@@ -848,7 +892,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getApplication_Activities()
   {
-        return (EReference)getApplication().getEStructuralFeatures().get(3);
+        return (EReference)getApplication().getEStructuralFeatures().get(6);
   }
 
   /**
@@ -858,7 +902,51 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getApplication_Layouts()
   {
-        return (EReference)getApplication().getEStructuralFeatures().get(4);
+        return (EReference)getApplication().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getApplicationUsesSDK()
+  {
+    if (applicationUsesSDKEClass == null)
+    {
+      applicationUsesSDKEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(1);
+    }
+    return applicationUsesSDKEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getApplicationUsesSDK_MinSdkVersion()
+  {
+        return (EAttribute)getApplicationUsesSDK().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getApplicationUsesSDK_MaxSdkVersion()
+  {
+        return (EAttribute)getApplicationUsesSDK().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getApplicationUsesSDK_TargetSdkVersion()
+  {
+        return (EAttribute)getApplicationUsesSDK().getEStructuralFeatures().get(2);
   }
 
   /**
@@ -870,7 +958,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (resourceEClass == null)
     {
-      resourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(1);
+      resourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(2);
     }
     return resourceEClass;
   }
@@ -894,7 +982,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (layoutEClass == null)
     {
-      layoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(2);
+      layoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(3);
     }
     return layoutEClass;
   }
@@ -1068,7 +1156,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (abstractActivityEClass == null)
     {
-      abstractActivityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(3);
+      abstractActivityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(4);
     }
     return abstractActivityEClass;
   }
@@ -1102,7 +1190,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (activityEClass == null)
     {
-      activityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(4);
+      activityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(5);
     }
     return activityEClass;
   }
@@ -1126,7 +1214,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (genericActivityEClass == null)
     {
-      genericActivityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(5);
+      genericActivityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(6);
     }
     return genericActivityEClass;
   }
@@ -1140,7 +1228,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (viewCollectionEClass == null)
     {
-      viewCollectionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(6);
+      viewCollectionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(7);
     }
     return viewCollectionEClass;
   }
@@ -1164,7 +1252,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (listActivityEClass == null)
     {
-      listActivityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(7);
+      listActivityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(8);
     }
     return listActivityEClass;
   }
@@ -1208,7 +1296,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (tabActivityEClass == null)
     {
-      tabActivityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(8);
+      tabActivityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(9);
     }
     return tabActivityEClass;
   }
@@ -1242,7 +1330,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (tabEClass == null)
     {
-      tabEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(9);
+      tabEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(10);
     }
     return tabEClass;
   }
@@ -1326,7 +1414,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (actionSetEClass == null)
     {
-      actionSetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(10);
+      actionSetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(11);
     }
     return actionSetEClass;
   }
@@ -1350,7 +1438,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (actionEClass == null)
     {
-      actionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(11);
+      actionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(12);
     }
     return actionEClass;
   }
@@ -1364,7 +1452,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (goToURLActionEClass == null)
     {
-      goToURLActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(12);
+      goToURLActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(13);
     }
     return goToURLActionEClass;
   }
@@ -1388,7 +1476,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (showLayoutActionEClass == null)
     {
-      showLayoutActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(13);
+      showLayoutActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(14);
     }
     return showLayoutActionEClass;
   }
@@ -1412,7 +1500,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (invokeActivityActionEClass == null)
     {
-      invokeActivityActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(14);
+      invokeActivityActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(15);
     }
     return invokeActivityActionEClass;
   }
@@ -1436,7 +1524,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (abstractLinearLayoutEClass == null)
     {
-      abstractLinearLayoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(15);
+      abstractLinearLayoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(16);
     }
     return abstractLinearLayoutEClass;
   }
@@ -1460,7 +1548,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (abstractViewEClass == null)
     {
-      abstractViewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(16);
+      abstractViewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(17);
     }
     return abstractViewEClass;
   }
@@ -1494,7 +1582,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (viewEClass == null)
     {
-      viewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(17);
+      viewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(18);
     }
     return viewEClass;
   }
@@ -1518,7 +1606,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (linearLayoutEClass == null)
     {
-      linearLayoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(18);
+      linearLayoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(19);
     }
     return linearLayoutEClass;
   }
@@ -1532,7 +1620,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (relativeLayoutEClass == null)
     {
-      relativeLayoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(19);
+      relativeLayoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(20);
     }
     return relativeLayoutEClass;
   }
@@ -1556,7 +1644,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (tabHostEClass == null)
     {
-      tabHostEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(20);
+      tabHostEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(21);
     }
     return tabHostEClass;
   }
@@ -1570,7 +1658,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (tabWidgetEClass == null)
     {
-      tabWidgetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(21);
+      tabWidgetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(22);
     }
     return tabWidgetEClass;
   }
@@ -1634,9 +1722,253 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (frameLayoutEClass == null)
     {
-      frameLayoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(22);
+      frameLayoutEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(23);
     }
     return frameLayoutEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLayoutParams()
+  {
+    if (layoutParamsEClass == null)
+    {
+      layoutParamsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(24);
+    }
+    return layoutParamsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_height()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_width()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_weight()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_marginBottom()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_marginLeft()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_marginRight()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_marginTop()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_above()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignBaseline()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignBottom()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignLeft()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignParentBottom()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignParentLeft()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignParentRight()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignParentTop()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignTop()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_alignWithParentIfMissing()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_below()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_centerHorizontal()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(18);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_centerInParent()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(19);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_centerVertical()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(20);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_toLeftOf()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(21);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLayoutParams_Layout_toRightOf()
+  {
+        return (EReference)getLayoutParams().getEStructuralFeatures().get(22);
   }
 
   /**
@@ -1648,7 +1980,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (widgetEClass == null)
     {
-      widgetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(23);
+      widgetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(25);
     }
     return widgetEClass;
   }
@@ -1712,7 +2044,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (abstractTextViewEClass == null)
     {
-      abstractTextViewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(24);
+      abstractTextViewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(26);
     }
     return abstractTextViewEClass;
   }
@@ -1726,7 +2058,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (textViewEClass == null)
     {
-      textViewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(25);
+      textViewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(27);
     }
     return textViewEClass;
   }
@@ -1746,7 +2078,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTextView_FadeScrollBars()
+  public EReference getTextView_LayoutParams()
   {
         return (EReference)getTextView().getEStructuralFeatures().get(1);
   }
@@ -1756,7 +2088,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTextView_IsScrollContainer()
+  public EReference getTextView_FadeScrollBars()
   {
         return (EReference)getTextView().getEStructuralFeatures().get(2);
   }
@@ -1766,9 +2098,19 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getTextView_IsScrollContainer()
+  {
+        return (EReference)getTextView().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getTextView_AutoLink()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(3);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1778,7 +2120,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_AutoText()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(4);
+        return (EReference)getTextView().getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1788,7 +2130,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EAttribute getTextView_Capitalize()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(5);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1798,7 +2140,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Digits()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(6);
+        return (EReference)getTextView().getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1808,7 +2150,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Editable()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(7);
+        return (EReference)getTextView().getEStructuralFeatures().get(8);
   }
 
   /**
@@ -1818,7 +2160,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EAttribute getTextView_Gravity()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(8);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(9);
   }
 
   /**
@@ -1828,7 +2170,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Hint()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(9);
+        return (EReference)getTextView().getEStructuralFeatures().get(10);
   }
 
   /**
@@ -1838,7 +2180,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Numeric()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(10);
+        return (EReference)getTextView().getEStructuralFeatures().get(11);
   }
 
   /**
@@ -1848,7 +2190,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Password()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(11);
+        return (EReference)getTextView().getEStructuralFeatures().get(12);
   }
 
   /**
@@ -1858,7 +2200,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_PhoneNumber()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(12);
+        return (EReference)getTextView().getEStructuralFeatures().get(13);
   }
 
   /**
@@ -1868,7 +2210,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_SingleLine()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(13);
+        return (EReference)getTextView().getEStructuralFeatures().get(14);
   }
 
   /**
@@ -1878,7 +2220,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_TextColor()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(14);
+        return (EReference)getTextView().getEStructuralFeatures().get(15);
   }
 
   /**
@@ -1888,7 +2230,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EAttribute getTextView_Typeface()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(15);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(16);
   }
 
   /**
@@ -1898,7 +2240,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_TextSize()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(16);
+        return (EReference)getTextView().getEStructuralFeatures().get(17);
   }
 
   /**
@@ -1908,7 +2250,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EAttribute getTextView_TextStyle()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(17);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(18);
   }
 
   /**
@@ -1920,7 +2262,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (imageViewEClass == null)
     {
-      imageViewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(26);
+      imageViewEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(28);
     }
     return imageViewEClass;
   }
@@ -1964,7 +2306,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (buttonEClass == null)
     {
-      buttonEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(27);
+      buttonEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(29);
     }
     return buttonEClass;
   }
@@ -2018,7 +2360,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (spinnerEClass == null)
     {
-      spinnerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(28);
+      spinnerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(30);
     }
     return spinnerEClass;
   }
@@ -2062,7 +2404,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (editTextEClass == null)
     {
-      editTextEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(29);
+      editTextEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(31);
     }
     return editTextEClass;
   }
@@ -2256,7 +2598,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (valueAccessEClass == null)
     {
-      valueAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(30);
+      valueAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(32);
     }
     return valueAccessEClass;
   }
@@ -2270,7 +2612,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (stringVAEClass == null)
     {
-      stringVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(31);
+      stringVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(33);
     }
     return stringVAEClass;
   }
@@ -2304,7 +2646,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (integerVAEClass == null)
     {
-      integerVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(32);
+      integerVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(34);
     }
     return integerVAEClass;
   }
@@ -2338,7 +2680,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (booleanVAEClass == null)
     {
-      booleanVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(33);
+      booleanVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(35);
     }
     return booleanVAEClass;
   }
@@ -2372,7 +2714,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (colorVAEClass == null)
     {
-      colorVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(34);
+      colorVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(36);
     }
     return colorVAEClass;
   }
@@ -2406,7 +2748,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (dimensionVAEClass == null)
     {
-      dimensionVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(35);
+      dimensionVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(37);
     }
     return dimensionVAEClass;
   }
@@ -2440,7 +2782,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (layoutDimensionVAEClass == null)
     {
-      layoutDimensionVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(36);
+      layoutDimensionVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(38);
     }
     return layoutDimensionVAEClass;
   }
@@ -2464,7 +2806,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (anyDrawableVAEClass == null)
     {
-      anyDrawableVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(37);
+      anyDrawableVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(39);
     }
     return anyDrawableVAEClass;
   }
@@ -2478,7 +2820,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (drawableVAEClass == null)
     {
-      drawableVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(38);
+      drawableVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(40);
     }
     return drawableVAEClass;
   }
@@ -2502,7 +2844,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (animationVAEClass == null)
     {
-      animationVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(39);
+      animationVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(41);
     }
     return animationVAEClass;
   }
@@ -2526,7 +2868,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (interpolatorVAEClass == null)
     {
-      interpolatorVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(40);
+      interpolatorVAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(42);
     }
     return interpolatorVAEClass;
   }
@@ -2550,7 +2892,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (valueDefinitionEClass == null)
     {
-      valueDefinitionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(41);
+      valueDefinitionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(43);
     }
     return valueDefinitionEClass;
   }
@@ -2564,7 +2906,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (stringVDEClass == null)
     {
-      stringVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(42);
+      stringVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(44);
     }
     return stringVDEClass;
   }
@@ -2588,7 +2930,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (integerVDEClass == null)
     {
-      integerVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(43);
+      integerVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(45);
     }
     return integerVDEClass;
   }
@@ -2612,7 +2954,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (booleanVDEClass == null)
     {
-      booleanVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(44);
+      booleanVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(46);
     }
     return booleanVDEClass;
   }
@@ -2636,7 +2978,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (colorVDEClass == null)
     {
-      colorVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(45);
+      colorVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(47);
     }
     return colorVDEClass;
   }
@@ -2660,7 +3002,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (dimensionVDEClass == null)
     {
-      dimensionVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(46);
+      dimensionVDEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(48);
     }
     return dimensionVDEClass;
   }
@@ -2684,7 +3026,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (valueResourceEClass == null)
     {
-      valueResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(47);
+      valueResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(49);
     }
     return valueResourceEClass;
   }
@@ -2698,7 +3040,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (stringResourceEClass == null)
     {
-      stringResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(48);
+      stringResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(50);
     }
     return stringResourceEClass;
   }
@@ -2722,7 +3064,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (integerResourceEClass == null)
     {
-      integerResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(49);
+      integerResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(51);
     }
     return integerResourceEClass;
   }
@@ -2746,7 +3088,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (booleanResourceEClass == null)
     {
-      booleanResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(50);
+      booleanResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(52);
     }
     return booleanResourceEClass;
   }
@@ -2770,7 +3112,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (colorResourceEClass == null)
     {
-      colorResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(51);
+      colorResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(53);
     }
     return colorResourceEClass;
   }
@@ -2794,7 +3136,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (dimensionResourceEClass == null)
     {
-      dimensionResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(52);
+      dimensionResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(54);
     }
     return dimensionResourceEClass;
   }
@@ -2818,7 +3160,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (arrayResourceEClass == null)
     {
-      arrayResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(53);
+      arrayResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(55);
     }
     return arrayResourceEClass;
   }
@@ -2832,7 +3174,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (integerArrayResourceEClass == null)
     {
-      integerArrayResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(54);
+      integerArrayResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(56);
     }
     return integerArrayResourceEClass;
   }
@@ -2856,7 +3198,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (stringArrayResourceEClass == null)
     {
-      stringArrayResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(55);
+      stringArrayResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(57);
     }
     return stringArrayResourceEClass;
   }
@@ -2880,7 +3222,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (typedArrayResourceEClass == null)
     {
-      typedArrayResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(56);
+      typedArrayResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(58);
     }
     return typedArrayResourceEClass;
   }
@@ -2904,7 +3246,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (drawableResourceEClass == null)
     {
-      drawableResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(57);
+      drawableResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(59);
     }
     return drawableResourceEClass;
   }
@@ -2918,7 +3260,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (bitmapDrawableResourceEClass == null)
     {
-      bitmapDrawableResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(58);
+      bitmapDrawableResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(60);
     }
     return bitmapDrawableResourceEClass;
   }
@@ -2942,7 +3284,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (transitionDrawableResourceEClass == null)
     {
-      transitionDrawableResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(59);
+      transitionDrawableResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(61);
     }
     return transitionDrawableResourceEClass;
   }
@@ -2976,7 +3318,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (menuResourceEClass == null)
     {
-      menuResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(60);
+      menuResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(62);
     }
     return menuResourceEClass;
   }
@@ -3020,7 +3362,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (menuItemEClass == null)
     {
-      menuItemEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(61);
+      menuItemEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(63);
     }
     return menuItemEClass;
   }
@@ -3044,7 +3386,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (menuItemGroupEClass == null)
     {
-      menuItemGroupEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(62);
+      menuItemGroupEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(64);
     }
     return menuItemGroupEClass;
   }
@@ -3058,7 +3400,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (subMenuEClass == null)
     {
-      subMenuEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(63);
+      subMenuEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(65);
     }
     return subMenuEClass;
   }
@@ -3092,7 +3434,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (animationResourceEClass == null)
     {
-      animationResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(64);
+      animationResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(66);
     }
     return animationResourceEClass;
   }
@@ -3106,7 +3448,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (frameAnimationElementEClass == null)
     {
-      frameAnimationElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(65);
+      frameAnimationElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(67);
     }
     return frameAnimationElementEClass;
   }
@@ -3120,7 +3462,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (terminalAnimationElementsEClass == null)
     {
-      terminalAnimationElementsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(66);
+      terminalAnimationElementsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(68);
     }
     return terminalAnimationElementsEClass;
   }
@@ -3154,7 +3496,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (terminalAnimationSetEClass == null)
     {
-      terminalAnimationSetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(67);
+      terminalAnimationSetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(69);
     }
     return terminalAnimationSetEClass;
   }
@@ -3198,7 +3540,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (alphaAnimationEClass == null)
     {
-      alphaAnimationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(68);
+      alphaAnimationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(70);
     }
     return alphaAnimationEClass;
   }
@@ -3212,7 +3554,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (scaleAnimationEClass == null)
     {
-      scaleAnimationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(69);
+      scaleAnimationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(71);
     }
     return scaleAnimationEClass;
   }
@@ -3226,7 +3568,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (translateAnimationEClass == null)
     {
-      translateAnimationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(70);
+      translateAnimationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(72);
     }
     return translateAnimationEClass;
   }
@@ -3240,7 +3582,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (rotateAnimationEClass == null)
     {
-      rotateAnimationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(71);
+      rotateAnimationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(73);
     }
     return rotateAnimationEClass;
   }
@@ -3254,7 +3596,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (tweenAnimationResourceEClass == null)
     {
-      tweenAnimationResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(72);
+      tweenAnimationResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(74);
     }
     return tweenAnimationResourceEClass;
   }
@@ -3278,7 +3620,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (frameAnimationResourceEClass == null)
     {
-      frameAnimationResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(73);
+      frameAnimationResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(75);
     }
     return frameAnimationResourceEClass;
   }
@@ -3312,7 +3654,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (animationFrameEClass == null)
     {
-      animationFrameEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(74);
+      animationFrameEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(76);
     }
     return animationFrameEClass;
   }
@@ -3346,7 +3688,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (abstractResourceAccessEClass == null)
     {
-      abstractResourceAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(75);
+      abstractResourceAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(77);
     }
     return abstractResourceAccessEClass;
   }
@@ -3370,7 +3712,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (resourceAccessEClass == null)
     {
-      resourceAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(76);
+      resourceAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(78);
     }
     return resourceAccessEClass;
   }
@@ -3384,7 +3726,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (stringRAEClass == null)
     {
-      stringRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(77);
+      stringRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(79);
     }
     return stringRAEClass;
   }
@@ -3408,7 +3750,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (integerRAEClass == null)
     {
-      integerRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(78);
+      integerRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(80);
     }
     return integerRAEClass;
   }
@@ -3432,7 +3774,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (booleanRAEClass == null)
     {
-      booleanRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(79);
+      booleanRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(81);
     }
     return booleanRAEClass;
   }
@@ -3456,7 +3798,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (colorRAEClass == null)
     {
-      colorRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(80);
+      colorRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(82);
     }
     return colorRAEClass;
   }
@@ -3480,7 +3822,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (dimensionRAEClass == null)
     {
-      dimensionRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(81);
+      dimensionRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(83);
     }
     return dimensionRAEClass;
   }
@@ -3504,7 +3846,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (drawableRAEClass == null)
     {
-      drawableRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(82);
+      drawableRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(84);
     }
     return drawableRAEClass;
   }
@@ -3528,7 +3870,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (animationRAEClass == null)
     {
-      animationRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(83);
+      animationRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(85);
     }
     return animationRAEClass;
   }
@@ -3552,7 +3894,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (interpolatorRAEClass == null)
     {
-      interpolatorRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(84);
+      interpolatorRAEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(86);
     }
     return interpolatorRAEClass;
   }
@@ -3576,7 +3918,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (checkBoxEClass == null)
     {
-      checkBoxEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(85);
+      checkBoxEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(87);
     }
     return checkBoxEClass;
   }
@@ -3850,7 +4192,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (radioButtonEClass == null)
     {
-      radioButtonEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(86);
+      radioButtonEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(88);
     }
     return radioButtonEClass;
   }
@@ -3894,7 +4236,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (radioGroupEClass == null)
     {
-      radioGroupEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(87);
+      radioGroupEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(89);
     }
     return radioGroupEClass;
   }
@@ -3928,7 +4270,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (menuGroupEClass == null)
     {
-      menuGroupEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(98);
+      menuGroupEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(100);
     }
     return menuGroupEClass;
   }
@@ -3952,7 +4294,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (builtInPermissionTypeEEnum == null)
     {
-      builtInPermissionTypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(88);
+      builtInPermissionTypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(90);
     }
     return builtInPermissionTypeEEnum;
   }
@@ -3966,7 +4308,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (interpolatorsKindEEnum == null)
     {
-      interpolatorsKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(89);
+      interpolatorsKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(91);
     }
     return interpolatorsKindEEnum;
   }
@@ -3980,7 +4322,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (layoutDimensionKindEEnum == null)
     {
-      layoutDimensionKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(90);
+      layoutDimensionKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(92);
     }
     return layoutDimensionKindEEnum;
   }
@@ -3994,7 +4336,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (layoutGravityKindEEnum == null)
     {
-      layoutGravityKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(91);
+      layoutGravityKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(93);
     }
     return layoutGravityKindEEnum;
   }
@@ -4008,7 +4350,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (layoutOrientationKindEEnum == null)
     {
-      layoutOrientationKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(92);
+      layoutOrientationKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(94);
     }
     return layoutOrientationKindEEnum;
   }
@@ -4022,7 +4364,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (layoutVisibilityKindEEnum == null)
     {
-      layoutVisibilityKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(93);
+      layoutVisibilityKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(95);
     }
     return layoutVisibilityKindEEnum;
   }
@@ -4036,7 +4378,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (typefaceKindEEnum == null)
     {
-      typefaceKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(94);
+      typefaceKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(96);
     }
     return typefaceKindEEnum;
   }
@@ -4050,7 +4392,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (textStyleKindEEnum == null)
     {
-      textStyleKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(95);
+      textStyleKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(97);
     }
     return textStyleKindEEnum;
   }
@@ -4064,7 +4406,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (autoLinkKindEEnum == null)
     {
-      autoLinkKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(96);
+      autoLinkKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(98);
     }
     return autoLinkKindEEnum;
   }
@@ -4078,7 +4420,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
   {
     if (capitalizeKindEEnum == null)
     {
-      capitalizeKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(97);
+      capitalizeKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(99);
     }
     return capitalizeKindEEnum;
   }

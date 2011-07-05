@@ -35,6 +35,15 @@ public interface DroidFactory extends EFactory
   Application createApplication();
 
   /**
+   * Returns a new object of class '<em>Application Uses SDK</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Application Uses SDK</em>'.
+   * @generated
+   */
+  ApplicationUsesSDK createApplicationUsesSDK();
+
+  /**
    * Returns a new object of class '<em>Resource</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -231,6 +240,15 @@ public interface DroidFactory extends EFactory
    * @generated
    */
   FrameLayout createFrameLayout();
+
+  /**
+   * Returns a new object of class '<em>Layout Params</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Layout Params</em>'.
+   * @generated
+   */
+  LayoutParams createLayoutParams();
 
   /**
    * Returns a new object of class '<em>Widget</em>'.

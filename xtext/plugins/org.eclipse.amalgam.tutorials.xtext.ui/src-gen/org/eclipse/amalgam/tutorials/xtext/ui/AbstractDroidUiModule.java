@@ -48,11 +48,6 @@ public abstract class AbstractDroidUiModule extends DefaultUiModule {
 		binder.bind(org.eclipse.xtext.parser.antlr.ITokenDefProvider.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.ui.LexerUIBindings.HIGHLIGHTING)).to(org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider.class);
 	}
 
-	// contributed by org.eclipse.xtext.generator.exporting.QualifiedNamesFragment
-	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher> bindPrefixMatcher() {
-		return org.eclipse.xtext.ui.editor.contentassist.FQNPrefixMatcher.class;
-	}
-
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
 	public void configureIResourceDescriptionsBuilderScope(com.google.inject.Binder binder) {
 		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.scoping.impl.AbstractGlobalScopeProvider.NAMED_BUILDER_SCOPE)).to(org.eclipse.xtext.builder.builderState.ShadowingResourceDescriptions.class);

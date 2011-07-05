@@ -89,13 +89,40 @@ public interface DroidPackage extends EPackage
   int APPLICATION__PACKAGE_NAME = 1;
 
   /**
+   * The feature id for the '<em><b>Version Code</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int APPLICATION__VERSION_CODE = 2;
+
+  /**
+   * The feature id for the '<em><b>Version Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int APPLICATION__VERSION_NAME = 3;
+
+  /**
+   * The feature id for the '<em><b>Sdk Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int APPLICATION__SDK_VERSION = 4;
+
+  /**
    * The feature id for the '<em><b>Resources</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int APPLICATION__RESOURCES = 2;
+  int APPLICATION__RESOURCES = 5;
 
   /**
    * The feature id for the '<em><b>Activities</b></em>' containment reference list.
@@ -104,7 +131,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int APPLICATION__ACTIVITIES = 3;
+  int APPLICATION__ACTIVITIES = 6;
 
   /**
    * The feature id for the '<em><b>Layouts</b></em>' containment reference list.
@@ -113,7 +140,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int APPLICATION__LAYOUTS = 4;
+  int APPLICATION__LAYOUTS = 7;
 
   /**
    * The number of structural features of the '<em>Application</em>' class.
@@ -122,7 +149,53 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int APPLICATION_FEATURE_COUNT = 5;
+  int APPLICATION_FEATURE_COUNT = 8;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationUsesSDKImpl <em>Application Uses SDK</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationUsesSDKImpl
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getApplicationUsesSDK()
+   * @generated
+   */
+  int APPLICATION_USES_SDK = 1;
+
+  /**
+   * The feature id for the '<em><b>Min Sdk Version</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int APPLICATION_USES_SDK__MIN_SDK_VERSION = 0;
+
+  /**
+   * The feature id for the '<em><b>Max Sdk Version</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int APPLICATION_USES_SDK__MAX_SDK_VERSION = 1;
+
+  /**
+   * The feature id for the '<em><b>Target Sdk Version</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int APPLICATION_USES_SDK__TARGET_SDK_VERSION = 2;
+
+  /**
+   * The number of structural features of the '<em>Application Uses SDK</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int APPLICATION_USES_SDK_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ResourceImpl <em>Resource</em>}' class.
@@ -132,7 +205,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getResource()
    * @generated
    */
-  int RESOURCE = 1;
+  int RESOURCE = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -160,7 +233,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAbstractView()
    * @generated
    */
-  int ABSTRACT_VIEW = 16;
+  int ABSTRACT_VIEW = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -197,7 +270,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getView()
    * @generated
    */
-  int VIEW = 17;
+  int VIEW = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -243,7 +316,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getLayout()
    * @generated
    */
-  int LAYOUT = 2;
+  int LAYOUT = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -433,7 +506,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAbstractActivity()
    * @generated
    */
-  int ABSTRACT_ACTIVITY = 3;
+  int ABSTRACT_ACTIVITY = 4;
 
   /**
    * The feature id for the '<em><b>Referenced Layout</b></em>' reference.
@@ -470,7 +543,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getActivity()
    * @generated
    */
-  int ACTIVITY = 4;
+  int ACTIVITY = 5;
 
   /**
    * The feature id for the '<em><b>Referenced Layout</b></em>' reference.
@@ -516,7 +589,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getGenericActivity()
    * @generated
    */
-  int GENERIC_ACTIVITY = 5;
+  int GENERIC_ACTIVITY = 6;
 
   /**
    * The feature id for the '<em><b>Referenced Layout</b></em>' reference.
@@ -562,7 +635,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getViewCollection()
    * @generated
    */
-  int VIEW_COLLECTION = 6;
+  int VIEW_COLLECTION = 7;
 
   /**
    * The feature id for the '<em><b>Views</b></em>' containment reference list.
@@ -590,7 +663,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getListActivity()
    * @generated
    */
-  int LIST_ACTIVITY = 7;
+  int LIST_ACTIVITY = 8;
 
   /**
    * The feature id for the '<em><b>Referenced Layout</b></em>' reference.
@@ -663,7 +736,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTabActivity()
    * @generated
    */
-  int TAB_ACTIVITY = 8;
+  int TAB_ACTIVITY = 9;
 
   /**
    * The feature id for the '<em><b>Referenced Layout</b></em>' reference.
@@ -727,7 +800,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTab()
    * @generated
    */
-  int TAB = 9;
+  int TAB = 10;
 
   /**
    * The feature id for the '<em><b>Caption</b></em>' containment reference.
@@ -809,7 +882,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getActionSet()
    * @generated
    */
-  int ACTION_SET = 10;
+  int ACTION_SET = 11;
 
   /**
    * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -837,7 +910,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAction()
    * @generated
    */
-  int ACTION = 11;
+  int ACTION = 12;
 
   /**
    * The number of structural features of the '<em>Action</em>' class.
@@ -856,7 +929,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getGoToURLAction()
    * @generated
    */
-  int GO_TO_URL_ACTION = 12;
+  int GO_TO_URL_ACTION = 13;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -884,7 +957,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getShowLayoutAction()
    * @generated
    */
-  int SHOW_LAYOUT_ACTION = 13;
+  int SHOW_LAYOUT_ACTION = 14;
 
   /**
    * The feature id for the '<em><b>Layout</b></em>' reference.
@@ -912,7 +985,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getInvokeActivityAction()
    * @generated
    */
-  int INVOKE_ACTIVITY_ACTION = 14;
+  int INVOKE_ACTIVITY_ACTION = 15;
 
   /**
    * The feature id for the '<em><b>Activity</b></em>' reference.
@@ -940,7 +1013,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAbstractLinearLayout()
    * @generated
    */
-  int ABSTRACT_LINEAR_LAYOUT = 15;
+  int ABSTRACT_LINEAR_LAYOUT = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1139,7 +1212,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getLinearLayout()
    * @generated
    */
-  int LINEAR_LAYOUT = 18;
+  int LINEAR_LAYOUT = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1338,7 +1411,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getRelativeLayout()
    * @generated
    */
-  int RELATIVE_LAYOUT = 19;
+  int RELATIVE_LAYOUT = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1537,7 +1610,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTabHost()
    * @generated
    */
-  int TAB_HOST = 20;
+  int TAB_HOST = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1727,7 +1800,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTabWidget()
    * @generated
    */
-  int TAB_WIDGET = 21;
+  int TAB_WIDGET = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1971,7 +2044,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getFrameLayout()
    * @generated
    */
-  int FRAME_LAYOUT = 22;
+  int FRAME_LAYOUT = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2154,6 +2227,232 @@ public interface DroidPackage extends EPackage
   int FRAME_LAYOUT_FEATURE_COUNT = LAYOUT_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.LayoutParamsImpl <em>Layout Params</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.LayoutParamsImpl
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getLayoutParams()
+   * @generated
+   */
+  int LAYOUT_PARAMS = 24;
+
+  /**
+   * The feature id for the '<em><b>Layout height</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_HEIGHT = 0;
+
+  /**
+   * The feature id for the '<em><b>Layout width</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_WIDTH = 1;
+
+  /**
+   * The feature id for the '<em><b>Layout weight</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_WEIGHT = 2;
+
+  /**
+   * The feature id for the '<em><b>Layout margin Bottom</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_MARGIN_BOTTOM = 3;
+
+  /**
+   * The feature id for the '<em><b>Layout margin Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_MARGIN_LEFT = 4;
+
+  /**
+   * The feature id for the '<em><b>Layout margin Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_MARGIN_RIGHT = 5;
+
+  /**
+   * The feature id for the '<em><b>Layout margin Top</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_MARGIN_TOP = 6;
+
+  /**
+   * The feature id for the '<em><b>Layout above</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ABOVE = 7;
+
+  /**
+   * The feature id for the '<em><b>Layout align Baseline</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_BASELINE = 8;
+
+  /**
+   * The feature id for the '<em><b>Layout align Bottom</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_BOTTOM = 9;
+
+  /**
+   * The feature id for the '<em><b>Layout align Left</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_LEFT = 10;
+
+  /**
+   * The feature id for the '<em><b>Layout align Parent Bottom</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_PARENT_BOTTOM = 11;
+
+  /**
+   * The feature id for the '<em><b>Layout align Parent Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_PARENT_LEFT = 12;
+
+  /**
+   * The feature id for the '<em><b>Layout align Parent Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_PARENT_RIGHT = 13;
+
+  /**
+   * The feature id for the '<em><b>Layout align Parent Top</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_PARENT_TOP = 14;
+
+  /**
+   * The feature id for the '<em><b>Layout align Top</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_TOP = 15;
+
+  /**
+   * The feature id for the '<em><b>Layout align With Parent If Missing</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_ALIGN_WITH_PARENT_IF_MISSING = 16;
+
+  /**
+   * The feature id for the '<em><b>Layout below</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_BELOW = 17;
+
+  /**
+   * The feature id for the '<em><b>Layout center Horizontal</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_CENTER_HORIZONTAL = 18;
+
+  /**
+   * The feature id for the '<em><b>Layout center In Parent</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_CENTER_IN_PARENT = 19;
+
+  /**
+   * The feature id for the '<em><b>Layout center Vertical</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_CENTER_VERTICAL = 20;
+
+  /**
+   * The feature id for the '<em><b>Layout to Left Of</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_TO_LEFT_OF = 21;
+
+  /**
+   * The feature id for the '<em><b>Layout to Right Of</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS__LAYOUT_TO_RIGHT_OF = 22;
+
+  /**
+   * The number of structural features of the '<em>Layout Params</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LAYOUT_PARAMS_FEATURE_COUNT = 23;
+
+  /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.WidgetImpl <em>Widget</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2161,7 +2460,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getWidget()
    * @generated
    */
-  int WIDGET = 23;
+  int WIDGET = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2252,7 +2551,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAbstractTextView()
    * @generated
    */
-  int ABSTRACT_TEXT_VIEW = 24;
+  int ABSTRACT_TEXT_VIEW = 26;
 
   /**
    * The number of structural features of the '<em>Abstract Text View</em>' class.
@@ -2271,7 +2570,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTextView()
    * @generated
    */
-  int TEXT_VIEW = 25;
+  int TEXT_VIEW = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2355,13 +2654,22 @@ public interface DroidPackage extends EPackage
   int TEXT_VIEW__TEXT = WIDGET_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEXT_VIEW__LAYOUT_PARAMS = WIDGET_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Fade Scroll Bars</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__FADE_SCROLL_BARS = WIDGET_FEATURE_COUNT + 1;
+  int TEXT_VIEW__FADE_SCROLL_BARS = WIDGET_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Is Scroll Container</b></em>' containment reference.
@@ -2370,7 +2678,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__IS_SCROLL_CONTAINER = WIDGET_FEATURE_COUNT + 2;
+  int TEXT_VIEW__IS_SCROLL_CONTAINER = WIDGET_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Auto Link</b></em>' attribute.
@@ -2379,7 +2687,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__AUTO_LINK = WIDGET_FEATURE_COUNT + 3;
+  int TEXT_VIEW__AUTO_LINK = WIDGET_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Auto Text</b></em>' containment reference.
@@ -2388,7 +2696,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__AUTO_TEXT = WIDGET_FEATURE_COUNT + 4;
+  int TEXT_VIEW__AUTO_TEXT = WIDGET_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Capitalize</b></em>' attribute.
@@ -2397,7 +2705,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__CAPITALIZE = WIDGET_FEATURE_COUNT + 5;
+  int TEXT_VIEW__CAPITALIZE = WIDGET_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Digits</b></em>' containment reference.
@@ -2406,7 +2714,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__DIGITS = WIDGET_FEATURE_COUNT + 6;
+  int TEXT_VIEW__DIGITS = WIDGET_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Editable</b></em>' containment reference.
@@ -2415,7 +2723,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__EDITABLE = WIDGET_FEATURE_COUNT + 7;
+  int TEXT_VIEW__EDITABLE = WIDGET_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Gravity</b></em>' attribute.
@@ -2424,7 +2732,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__GRAVITY = WIDGET_FEATURE_COUNT + 8;
+  int TEXT_VIEW__GRAVITY = WIDGET_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Hint</b></em>' containment reference.
@@ -2433,7 +2741,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__HINT = WIDGET_FEATURE_COUNT + 9;
+  int TEXT_VIEW__HINT = WIDGET_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Numeric</b></em>' containment reference.
@@ -2442,7 +2750,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__NUMERIC = WIDGET_FEATURE_COUNT + 10;
+  int TEXT_VIEW__NUMERIC = WIDGET_FEATURE_COUNT + 11;
 
   /**
    * The feature id for the '<em><b>Password</b></em>' containment reference.
@@ -2451,7 +2759,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__PASSWORD = WIDGET_FEATURE_COUNT + 11;
+  int TEXT_VIEW__PASSWORD = WIDGET_FEATURE_COUNT + 12;
 
   /**
    * The feature id for the '<em><b>Phone Number</b></em>' containment reference.
@@ -2460,7 +2768,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__PHONE_NUMBER = WIDGET_FEATURE_COUNT + 12;
+  int TEXT_VIEW__PHONE_NUMBER = WIDGET_FEATURE_COUNT + 13;
 
   /**
    * The feature id for the '<em><b>Single Line</b></em>' containment reference.
@@ -2469,7 +2777,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__SINGLE_LINE = WIDGET_FEATURE_COUNT + 13;
+  int TEXT_VIEW__SINGLE_LINE = WIDGET_FEATURE_COUNT + 14;
 
   /**
    * The feature id for the '<em><b>Text Color</b></em>' containment reference.
@@ -2478,7 +2786,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__TEXT_COLOR = WIDGET_FEATURE_COUNT + 14;
+  int TEXT_VIEW__TEXT_COLOR = WIDGET_FEATURE_COUNT + 15;
 
   /**
    * The feature id for the '<em><b>Typeface</b></em>' attribute.
@@ -2487,7 +2795,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__TYPEFACE = WIDGET_FEATURE_COUNT + 15;
+  int TEXT_VIEW__TYPEFACE = WIDGET_FEATURE_COUNT + 16;
 
   /**
    * The feature id for the '<em><b>Text Size</b></em>' containment reference.
@@ -2496,7 +2804,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__TEXT_SIZE = WIDGET_FEATURE_COUNT + 16;
+  int TEXT_VIEW__TEXT_SIZE = WIDGET_FEATURE_COUNT + 17;
 
   /**
    * The feature id for the '<em><b>Text Style</b></em>' attribute list.
@@ -2505,7 +2813,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__TEXT_STYLE = WIDGET_FEATURE_COUNT + 17;
+  int TEXT_VIEW__TEXT_STYLE = WIDGET_FEATURE_COUNT + 18;
 
   /**
    * The number of structural features of the '<em>Text View</em>' class.
@@ -2514,7 +2822,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 18;
+  int TEXT_VIEW_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 19;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ImageViewImpl <em>Image View</em>}' class.
@@ -2524,7 +2832,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getImageView()
    * @generated
    */
-  int IMAGE_VIEW = 26;
+  int IMAGE_VIEW = 28;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2642,7 +2950,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getButton()
    * @generated
    */
-  int BUTTON = 27;
+  int BUTTON = 29;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2769,7 +3077,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getSpinner()
    * @generated
    */
-  int SPINNER = 28;
+  int SPINNER = 30;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2887,7 +3195,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getEditText()
    * @generated
    */
-  int EDIT_TEXT = 29;
+  int EDIT_TEXT = 31;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3140,7 +3448,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getValueAccess()
    * @generated
    */
-  int VALUE_ACCESS = 30;
+  int VALUE_ACCESS = 32;
 
   /**
    * The number of structural features of the '<em>Value Access</em>' class.
@@ -3159,7 +3467,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getStringVA()
    * @generated
    */
-  int STRING_VA = 31;
+  int STRING_VA = 33;
 
   /**
    * The feature id for the '<em><b>Access</b></em>' containment reference.
@@ -3196,7 +3504,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getIntegerVA()
    * @generated
    */
-  int INTEGER_VA = 32;
+  int INTEGER_VA = 34;
 
   /**
    * The feature id for the '<em><b>Access</b></em>' containment reference.
@@ -3233,7 +3541,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getBooleanVA()
    * @generated
    */
-  int BOOLEAN_VA = 33;
+  int BOOLEAN_VA = 35;
 
   /**
    * The feature id for the '<em><b>Access</b></em>' containment reference.
@@ -3270,7 +3578,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getColorVA()
    * @generated
    */
-  int COLOR_VA = 34;
+  int COLOR_VA = 36;
 
   /**
    * The feature id for the '<em><b>Access</b></em>' containment reference.
@@ -3307,7 +3615,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getDimensionVA()
    * @generated
    */
-  int DIMENSION_VA = 35;
+  int DIMENSION_VA = 37;
 
   /**
    * The feature id for the '<em><b>Constant value</b></em>' attribute.
@@ -3353,7 +3661,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getLayoutDimensionVA()
    * @generated
    */
-  int LAYOUT_DIMENSION_VA = 36;
+  int LAYOUT_DIMENSION_VA = 38;
 
   /**
    * The feature id for the '<em><b>Constant value</b></em>' attribute.
@@ -3381,7 +3689,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAnyDrawableVA()
    * @generated
    */
-  int ANY_DRAWABLE_VA = 37;
+  int ANY_DRAWABLE_VA = 39;
 
   /**
    * The number of structural features of the '<em>Any Drawable VA</em>' class.
@@ -3400,7 +3708,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getDrawableVA()
    * @generated
    */
-  int DRAWABLE_VA = 38;
+  int DRAWABLE_VA = 40;
 
   /**
    * The feature id for the '<em><b>Access</b></em>' containment reference.
@@ -3428,7 +3736,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAnimationVA()
    * @generated
    */
-  int ANIMATION_VA = 39;
+  int ANIMATION_VA = 41;
 
   /**
    * The feature id for the '<em><b>Access</b></em>' containment reference.
@@ -3456,7 +3764,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getInterpolatorVA()
    * @generated
    */
-  int INTERPOLATOR_VA = 40;
+  int INTERPOLATOR_VA = 42;
 
   /**
    * The feature id for the '<em><b>Access</b></em>' containment reference.
@@ -3484,7 +3792,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getValueDefinition()
    * @generated
    */
-  int VALUE_DEFINITION = 41;
+  int VALUE_DEFINITION = 43;
 
   /**
    * The number of structural features of the '<em>Value Definition</em>' class.
@@ -3503,7 +3811,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getStringVD()
    * @generated
    */
-  int STRING_VD = 42;
+  int STRING_VD = 44;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3531,7 +3839,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getIntegerVD()
    * @generated
    */
-  int INTEGER_VD = 43;
+  int INTEGER_VD = 45;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3559,7 +3867,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getBooleanVD()
    * @generated
    */
-  int BOOLEAN_VD = 44;
+  int BOOLEAN_VD = 46;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3587,7 +3895,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getColorVD()
    * @generated
    */
-  int COLOR_VD = 45;
+  int COLOR_VD = 47;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3615,7 +3923,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getDimensionVD()
    * @generated
    */
-  int DIMENSION_VD = 46;
+  int DIMENSION_VD = 48;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3643,7 +3951,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getValueResource()
    * @generated
    */
-  int VALUE_RESOURCE = 47;
+  int VALUE_RESOURCE = 49;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3671,7 +3979,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getStringResource()
    * @generated
    */
-  int STRING_RESOURCE = 48;
+  int STRING_RESOURCE = 50;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3708,7 +4016,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getIntegerResource()
    * @generated
    */
-  int INTEGER_RESOURCE = 49;
+  int INTEGER_RESOURCE = 51;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3745,7 +4053,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getBooleanResource()
    * @generated
    */
-  int BOOLEAN_RESOURCE = 50;
+  int BOOLEAN_RESOURCE = 52;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3782,7 +4090,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getColorResource()
    * @generated
    */
-  int COLOR_RESOURCE = 51;
+  int COLOR_RESOURCE = 53;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3819,7 +4127,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getDimensionResource()
    * @generated
    */
-  int DIMENSION_RESOURCE = 52;
+  int DIMENSION_RESOURCE = 54;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3856,7 +4164,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getArrayResource()
    * @generated
    */
-  int ARRAY_RESOURCE = 53;
+  int ARRAY_RESOURCE = 55;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3884,7 +4192,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getIntegerArrayResource()
    * @generated
    */
-  int INTEGER_ARRAY_RESOURCE = 54;
+  int INTEGER_ARRAY_RESOURCE = 56;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3921,7 +4229,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getStringArrayResource()
    * @generated
    */
-  int STRING_ARRAY_RESOURCE = 55;
+  int STRING_ARRAY_RESOURCE = 57;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3958,7 +4266,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTypedArrayResource()
    * @generated
    */
-  int TYPED_ARRAY_RESOURCE = 56;
+  int TYPED_ARRAY_RESOURCE = 58;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3995,7 +4303,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getDrawableResource()
    * @generated
    */
-  int DRAWABLE_RESOURCE = 57;
+  int DRAWABLE_RESOURCE = 59;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4023,7 +4331,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getBitmapDrawableResource()
    * @generated
    */
-  int BITMAP_DRAWABLE_RESOURCE = 58;
+  int BITMAP_DRAWABLE_RESOURCE = 60;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4060,7 +4368,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTransitionDrawableResource()
    * @generated
    */
-  int TRANSITION_DRAWABLE_RESOURCE = 59;
+  int TRANSITION_DRAWABLE_RESOURCE = 61;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4106,7 +4414,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getMenuResource()
    * @generated
    */
-  int MENU_RESOURCE = 60;
+  int MENU_RESOURCE = 62;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4161,7 +4469,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getMenuItem()
    * @generated
    */
-  int MENU_ITEM = 61;
+  int MENU_ITEM = 63;
 
   /**
    * The feature id for the '<em><b>Sub Menus</b></em>' containment reference list.
@@ -4189,7 +4497,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getMenuItemGroup()
    * @generated
    */
-  int MENU_ITEM_GROUP = 62;
+  int MENU_ITEM_GROUP = 64;
 
   /**
    * The number of structural features of the '<em>Menu Item Group</em>' class.
@@ -4208,7 +4516,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getSubMenu()
    * @generated
    */
-  int SUB_MENU = 63;
+  int SUB_MENU = 65;
 
   /**
    * The feature id for the '<em><b>Menu Items</b></em>' containment reference list.
@@ -4245,7 +4553,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAnimationResource()
    * @generated
    */
-  int ANIMATION_RESOURCE = 64;
+  int ANIMATION_RESOURCE = 66;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4273,7 +4581,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getFrameAnimationElement()
    * @generated
    */
-  int FRAME_ANIMATION_ELEMENT = 65;
+  int FRAME_ANIMATION_ELEMENT = 67;
 
   /**
    * The number of structural features of the '<em>Frame Animation Element</em>' class.
@@ -4292,7 +4600,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTerminalAnimationElements()
    * @generated
    */
-  int TERMINAL_ANIMATION_ELEMENTS = 66;
+  int TERMINAL_ANIMATION_ELEMENTS = 68;
 
   /**
    * The feature id for the '<em><b>From Alpha</b></em>' attribute.
@@ -4329,7 +4637,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTerminalAnimationSet()
    * @generated
    */
-  int TERMINAL_ANIMATION_SET = 67;
+  int TERMINAL_ANIMATION_SET = 69;
 
   /**
    * The feature id for the '<em><b>Share Interpolator</b></em>' attribute.
@@ -4375,7 +4683,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAlphaAnimation()
    * @generated
    */
-  int ALPHA_ANIMATION = 68;
+  int ALPHA_ANIMATION = 70;
 
   /**
    * The feature id for the '<em><b>From Alpha</b></em>' attribute.
@@ -4412,7 +4720,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getScaleAnimation()
    * @generated
    */
-  int SCALE_ANIMATION = 69;
+  int SCALE_ANIMATION = 71;
 
   /**
    * The feature id for the '<em><b>From Alpha</b></em>' attribute.
@@ -4449,7 +4757,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTranslateAnimation()
    * @generated
    */
-  int TRANSLATE_ANIMATION = 70;
+  int TRANSLATE_ANIMATION = 72;
 
   /**
    * The feature id for the '<em><b>From Alpha</b></em>' attribute.
@@ -4486,7 +4794,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getRotateAnimation()
    * @generated
    */
-  int ROTATE_ANIMATION = 71;
+  int ROTATE_ANIMATION = 73;
 
   /**
    * The feature id for the '<em><b>From Alpha</b></em>' attribute.
@@ -4523,7 +4831,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTweenAnimationResource()
    * @generated
    */
-  int TWEEN_ANIMATION_RESOURCE = 72;
+  int TWEEN_ANIMATION_RESOURCE = 74;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4560,7 +4868,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getFrameAnimationResource()
    * @generated
    */
-  int FRAME_ANIMATION_RESOURCE = 73;
+  int FRAME_ANIMATION_RESOURCE = 75;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4606,7 +4914,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAnimationFrame()
    * @generated
    */
-  int ANIMATION_FRAME = 74;
+  int ANIMATION_FRAME = 76;
 
   /**
    * The feature id for the '<em><b>Drawable</b></em>' containment reference.
@@ -4643,7 +4951,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAbstractResourceAccess()
    * @generated
    */
-  int ABSTRACT_RESOURCE_ACCESS = 75;
+  int ABSTRACT_RESOURCE_ACCESS = 77;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4671,7 +4979,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getResourceAccess()
    * @generated
    */
-  int RESOURCE_ACCESS = 76;
+  int RESOURCE_ACCESS = 78;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4699,7 +5007,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getStringRA()
    * @generated
    */
-  int STRING_RA = 77;
+  int STRING_RA = 79;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4736,7 +5044,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getIntegerRA()
    * @generated
    */
-  int INTEGER_RA = 78;
+  int INTEGER_RA = 80;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4773,7 +5081,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getBooleanRA()
    * @generated
    */
-  int BOOLEAN_RA = 79;
+  int BOOLEAN_RA = 81;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4810,7 +5118,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getColorRA()
    * @generated
    */
-  int COLOR_RA = 80;
+  int COLOR_RA = 82;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4847,7 +5155,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getDimensionRA()
    * @generated
    */
-  int DIMENSION_RA = 81;
+  int DIMENSION_RA = 83;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4884,7 +5192,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getDrawableRA()
    * @generated
    */
-  int DRAWABLE_RA = 82;
+  int DRAWABLE_RA = 84;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4921,7 +5229,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAnimationRA()
    * @generated
    */
-  int ANIMATION_RA = 83;
+  int ANIMATION_RA = 85;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4958,7 +5266,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getInterpolatorRA()
    * @generated
    */
-  int INTERPOLATOR_RA = 84;
+  int INTERPOLATOR_RA = 86;
 
   /**
    * The feature id for the '<em><b>External Resource</b></em>' attribute.
@@ -4995,7 +5303,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getCheckBox()
    * @generated
    */
-  int CHECK_BOX = 85;
+  int CHECK_BOX = 87;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5248,7 +5556,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getRadioButton()
    * @generated
    */
-  int RADIO_BUTTON = 86;
+  int RADIO_BUTTON = 88;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5294,7 +5602,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getRadioGroup()
    * @generated
    */
-  int RADIO_GROUP = 87;
+  int RADIO_GROUP = 89;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5331,7 +5639,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getMenuGroup()
    * @generated
    */
-  int MENU_GROUP = 88;
+  int MENU_GROUP = 90;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -5359,7 +5667,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getBuiltInPermissionType()
    * @generated
    */
-  int BUILT_IN_PERMISSION_TYPE = 89;
+  int BUILT_IN_PERMISSION_TYPE = 91;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.InterpolatorsKind <em>Interpolators Kind</em>}' enum.
@@ -5369,7 +5677,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getInterpolatorsKind()
    * @generated
    */
-  int INTERPOLATORS_KIND = 90;
+  int INTERPOLATORS_KIND = 92;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutDimensionKind <em>Layout Dimension Kind</em>}' enum.
@@ -5379,7 +5687,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getLayoutDimensionKind()
    * @generated
    */
-  int LAYOUT_DIMENSION_KIND = 91;
+  int LAYOUT_DIMENSION_KIND = 93;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutGravityKind <em>Layout Gravity Kind</em>}' enum.
@@ -5389,7 +5697,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getLayoutGravityKind()
    * @generated
    */
-  int LAYOUT_GRAVITY_KIND = 92;
+  int LAYOUT_GRAVITY_KIND = 94;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutOrientationKind <em>Layout Orientation Kind</em>}' enum.
@@ -5399,7 +5707,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getLayoutOrientationKind()
    * @generated
    */
-  int LAYOUT_ORIENTATION_KIND = 93;
+  int LAYOUT_ORIENTATION_KIND = 95;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutVisibilityKind <em>Layout Visibility Kind</em>}' enum.
@@ -5409,7 +5717,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getLayoutVisibilityKind()
    * @generated
    */
-  int LAYOUT_VISIBILITY_KIND = 94;
+  int LAYOUT_VISIBILITY_KIND = 96;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.TypefaceKind <em>Typeface Kind</em>}' enum.
@@ -5419,7 +5727,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTypefaceKind()
    * @generated
    */
-  int TYPEFACE_KIND = 95;
+  int TYPEFACE_KIND = 97;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.TextStyleKind <em>Text Style Kind</em>}' enum.
@@ -5429,7 +5737,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getTextStyleKind()
    * @generated
    */
-  int TEXT_STYLE_KIND = 96;
+  int TEXT_STYLE_KIND = 98;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.AutoLinkKind <em>Auto Link Kind</em>}' enum.
@@ -5439,7 +5747,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getAutoLinkKind()
    * @generated
    */
-  int AUTO_LINK_KIND = 97;
+  int AUTO_LINK_KIND = 99;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.CapitalizeKind <em>Capitalize Kind</em>}' enum.
@@ -5449,7 +5757,7 @@ public interface DroidPackage extends EPackage
    * @see org.eclipse.amalgam.tutorials.xtext.droid.impl.DroidPackageImpl#getCapitalizeKind()
    * @generated
    */
-  int CAPITALIZE_KIND = 98;
+  int CAPITALIZE_KIND = 100;
 
 
   /**
@@ -5485,6 +5793,39 @@ public interface DroidPackage extends EPackage
   EAttribute getApplication_PackageName();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getVersionCode <em>Version Code</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Version Code</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.Application#getVersionCode()
+   * @see #getApplication()
+   * @generated
+   */
+  EAttribute getApplication_VersionCode();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getVersionName <em>Version Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Version Name</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.Application#getVersionName()
+   * @see #getApplication()
+   * @generated
+   */
+  EAttribute getApplication_VersionName();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getSdkVersion <em>Sdk Version</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Sdk Version</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.Application#getSdkVersion()
+   * @see #getApplication()
+   * @generated
+   */
+  EReference getApplication_SdkVersion();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getResources <em>Resources</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5516,6 +5857,49 @@ public interface DroidPackage extends EPackage
    * @generated
    */
   EReference getApplication_Layouts();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK <em>Application Uses SDK</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Application Uses SDK</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK
+   * @generated
+   */
+  EClass getApplicationUsesSDK();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK#getMinSdkVersion <em>Min Sdk Version</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Min Sdk Version</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK#getMinSdkVersion()
+   * @see #getApplicationUsesSDK()
+   * @generated
+   */
+  EAttribute getApplicationUsesSDK_MinSdkVersion();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK#getMaxSdkVersion <em>Max Sdk Version</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Max Sdk Version</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK#getMaxSdkVersion()
+   * @see #getApplicationUsesSDK()
+   * @generated
+   */
+  EAttribute getApplicationUsesSDK_MaxSdkVersion();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK#getTargetSdkVersion <em>Target Sdk Version</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Sdk Version</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK#getTargetSdkVersion()
+   * @see #getApplicationUsesSDK()
+   * @generated
+   */
+  EAttribute getApplicationUsesSDK_TargetSdkVersion();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.amalgam.tutorials.xtext.droid.Resource <em>Resource</em>}'.
@@ -6255,6 +6639,269 @@ public interface DroidPackage extends EPackage
   EClass getFrameLayout();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams <em>Layout Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Layout Params</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams
+   * @generated
+   */
+  EClass getLayoutParams();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_height <em>Layout height</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout height</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_height()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_height();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_width <em>Layout width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout width</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_width()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_width();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_weight <em>Layout weight</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout weight</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_weight()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_weight();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_marginBottom <em>Layout margin Bottom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout margin Bottom</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_marginBottom()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_marginBottom();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_marginLeft <em>Layout margin Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout margin Left</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_marginLeft()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_marginLeft();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_marginRight <em>Layout margin Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout margin Right</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_marginRight()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_marginRight();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_marginTop <em>Layout margin Top</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout margin Top</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_marginTop()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_marginTop();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_above <em>Layout above</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Layout above</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_above()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_above();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignBaseline <em>Layout align Baseline</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Layout align Baseline</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignBaseline()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignBaseline();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignBottom <em>Layout align Bottom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Layout align Bottom</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignBottom()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignBottom();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignLeft <em>Layout align Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Layout align Left</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignLeft()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignLeft();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignParentBottom <em>Layout align Parent Bottom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout align Parent Bottom</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignParentBottom()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignParentBottom();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignParentLeft <em>Layout align Parent Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout align Parent Left</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignParentLeft()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignParentLeft();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignParentRight <em>Layout align Parent Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout align Parent Right</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignParentRight()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignParentRight();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignParentTop <em>Layout align Parent Top</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout align Parent Top</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignParentTop()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignParentTop();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignTop <em>Layout align Top</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Layout align Top</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignTop()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignTop();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignWithParentIfMissing <em>Layout align With Parent If Missing</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout align With Parent If Missing</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_alignWithParentIfMissing()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_alignWithParentIfMissing();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_below <em>Layout below</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Layout below</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_below()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_below();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_centerHorizontal <em>Layout center Horizontal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout center Horizontal</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_centerHorizontal()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_centerHorizontal();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_centerInParent <em>Layout center In Parent</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout center In Parent</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_centerInParent()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_centerInParent();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_centerVertical <em>Layout center Vertical</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout center Vertical</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_centerVertical()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_centerVertical();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_toLeftOf <em>Layout to Left Of</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Layout to Left Of</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_toLeftOf()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_toLeftOf();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_toRightOf <em>Layout to Right Of</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Layout to Right Of</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams#getLayout_toRightOf()
+   * @see #getLayoutParams()
+   * @generated
+   */
+  EReference getLayoutParams_Layout_toRightOf();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.amalgam.tutorials.xtext.droid.Widget <em>Widget</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6349,6 +6996,17 @@ public interface DroidPackage extends EPackage
    * @generated
    */
   EReference getTextView_Text();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.TextView#getLayoutParams <em>Layout Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout Params</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.TextView#getLayoutParams()
+   * @see #getTextView()
+   * @generated
+   */
+  EReference getTextView_LayoutParams();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.TextView#getFadeScrollBars <em>Fade Scroll Bars</em>}'.

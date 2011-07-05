@@ -102,6 +102,13 @@ public class DroidSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DroidPackage.APPLICATION_USES_SDK:
+      {
+        ApplicationUsesSDK applicationUsesSDK = (ApplicationUsesSDK)theEObject;
+        T result = caseApplicationUsesSDK(applicationUsesSDK);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DroidPackage.RESOURCE:
       {
         Resource resource = (Resource)theEObject;
@@ -286,6 +293,13 @@ public class DroidSwitch<T>
         if (result == null) result = caseLayout(frameLayout);
         if (result == null) result = caseView(frameLayout);
         if (result == null) result = caseAbstractView(frameLayout);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DroidPackage.LAYOUT_PARAMS:
+      {
+        LayoutParams layoutParams = (LayoutParams)theEObject;
+        T result = caseLayoutParams(layoutParams);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -875,6 +889,22 @@ public class DroidSwitch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Application Uses SDK</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Application Uses SDK</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseApplicationUsesSDK(ApplicationUsesSDK object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Resource</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1222,6 +1252,22 @@ public class DroidSwitch<T>
    * @generated
    */
   public T caseFrameLayout(FrameLayout object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Layout Params</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Layout Params</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLayoutParams(LayoutParams object)
   {
     return null;
   }

@@ -9,6 +9,7 @@ import java.util.Collection;
 
 import org.eclipse.amalgam.tutorials.xtext.droid.Activity;
 import org.eclipse.amalgam.tutorials.xtext.droid.Application;
+import org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK;
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
 import org.eclipse.amalgam.tutorials.xtext.droid.Layout;
 import org.eclipse.amalgam.tutorials.xtext.droid.Resource;
@@ -36,6 +37,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getPackageName <em>Package Name</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getVersionCode <em>Version Code</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getVersionName <em>Version Name</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getSdkVersion <em>Sdk Version</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getActivities <em>Activities</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ApplicationImpl#getLayouts <em>Layouts</em>}</li>
@@ -85,6 +89,56 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
    * @ordered
    */
   protected String packageName = PACKAGE_NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getVersionCode() <em>Version Code</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVersionCode()
+   * @generated
+   * @ordered
+   */
+  protected static final int VERSION_CODE_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getVersionCode() <em>Version Code</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVersionCode()
+   * @generated
+   * @ordered
+   */
+  protected int versionCode = VERSION_CODE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getVersionName() <em>Version Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVersionName()
+   * @generated
+   * @ordered
+   */
+  protected static final String VERSION_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getVersionName() <em>Version Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVersionName()
+   * @generated
+   * @ordered
+   */
+  protected String versionName = VERSION_NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSdkVersion() <em>Sdk Version</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSdkVersion()
+   * @generated
+   * @ordered
+   */
+  protected ApplicationUsesSDK sdkVersion;
 
   /**
    * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference list.
@@ -188,6 +242,100 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getVersionCode()
+  {
+    return versionCode;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVersionCode(int newVersionCode)
+  {
+    int oldVersionCode = versionCode;
+    versionCode = newVersionCode;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.APPLICATION__VERSION_CODE, oldVersionCode, versionCode));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getVersionName()
+  {
+    return versionName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVersionName(String newVersionName)
+  {
+    String oldVersionName = versionName;
+    versionName = newVersionName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.APPLICATION__VERSION_NAME, oldVersionName, versionName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ApplicationUsesSDK getSdkVersion()
+  {
+    return sdkVersion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSdkVersion(ApplicationUsesSDK newSdkVersion, NotificationChain msgs)
+  {
+    ApplicationUsesSDK oldSdkVersion = sdkVersion;
+    sdkVersion = newSdkVersion;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DroidPackage.APPLICATION__SDK_VERSION, oldSdkVersion, newSdkVersion);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSdkVersion(ApplicationUsesSDK newSdkVersion)
+  {
+    if (newSdkVersion != sdkVersion)
+    {
+      NotificationChain msgs = null;
+      if (sdkVersion != null)
+        msgs = ((InternalEObject)sdkVersion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DroidPackage.APPLICATION__SDK_VERSION, null, msgs);
+      if (newSdkVersion != null)
+        msgs = ((InternalEObject)newSdkVersion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DroidPackage.APPLICATION__SDK_VERSION, null, msgs);
+      msgs = basicSetSdkVersion(newSdkVersion, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.APPLICATION__SDK_VERSION, newSdkVersion, newSdkVersion));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Resource> getResources()
   {
     if (resources == null)
@@ -235,6 +383,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
   {
     switch (featureID)
     {
+      case DroidPackage.APPLICATION__SDK_VERSION:
+        return basicSetSdkVersion(null, msgs);
       case DroidPackage.APPLICATION__RESOURCES:
         return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
       case DroidPackage.APPLICATION__ACTIVITIES:
@@ -259,6 +409,12 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
         return getName();
       case DroidPackage.APPLICATION__PACKAGE_NAME:
         return getPackageName();
+      case DroidPackage.APPLICATION__VERSION_CODE:
+        return getVersionCode();
+      case DroidPackage.APPLICATION__VERSION_NAME:
+        return getVersionName();
+      case DroidPackage.APPLICATION__SDK_VERSION:
+        return getSdkVersion();
       case DroidPackage.APPLICATION__RESOURCES:
         return getResources();
       case DroidPackage.APPLICATION__ACTIVITIES:
@@ -285,6 +441,15 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
         return;
       case DroidPackage.APPLICATION__PACKAGE_NAME:
         setPackageName((String)newValue);
+        return;
+      case DroidPackage.APPLICATION__VERSION_CODE:
+        setVersionCode((Integer)newValue);
+        return;
+      case DroidPackage.APPLICATION__VERSION_NAME:
+        setVersionName((String)newValue);
+        return;
+      case DroidPackage.APPLICATION__SDK_VERSION:
+        setSdkVersion((ApplicationUsesSDK)newValue);
         return;
       case DroidPackage.APPLICATION__RESOURCES:
         getResources().clear();
@@ -318,6 +483,15 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
       case DroidPackage.APPLICATION__PACKAGE_NAME:
         setPackageName(PACKAGE_NAME_EDEFAULT);
         return;
+      case DroidPackage.APPLICATION__VERSION_CODE:
+        setVersionCode(VERSION_CODE_EDEFAULT);
+        return;
+      case DroidPackage.APPLICATION__VERSION_NAME:
+        setVersionName(VERSION_NAME_EDEFAULT);
+        return;
+      case DroidPackage.APPLICATION__SDK_VERSION:
+        setSdkVersion((ApplicationUsesSDK)null);
+        return;
       case DroidPackage.APPLICATION__RESOURCES:
         getResources().clear();
         return;
@@ -345,6 +519,12 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DroidPackage.APPLICATION__PACKAGE_NAME:
         return PACKAGE_NAME_EDEFAULT == null ? packageName != null : !PACKAGE_NAME_EDEFAULT.equals(packageName);
+      case DroidPackage.APPLICATION__VERSION_CODE:
+        return versionCode != VERSION_CODE_EDEFAULT;
+      case DroidPackage.APPLICATION__VERSION_NAME:
+        return VERSION_NAME_EDEFAULT == null ? versionName != null : !VERSION_NAME_EDEFAULT.equals(versionName);
+      case DroidPackage.APPLICATION__SDK_VERSION:
+        return sdkVersion != null;
       case DroidPackage.APPLICATION__RESOURCES:
         return resources != null && !resources.isEmpty();
       case DroidPackage.APPLICATION__ACTIVITIES:
@@ -370,6 +550,10 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
     result.append(name);
     result.append(", packageName: ");
     result.append(packageName);
+    result.append(", versionCode: ");
+    result.append(versionCode);
+    result.append(", versionName: ");
+    result.append(versionName);
     result.append(')');
     return result.toString();
   }

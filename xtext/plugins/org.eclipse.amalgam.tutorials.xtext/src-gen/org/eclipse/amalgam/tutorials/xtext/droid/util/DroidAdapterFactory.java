@@ -83,6 +83,11 @@ public class DroidAdapterFactory extends AdapterFactoryImpl
         return createApplicationAdapter();
       }
       @Override
+      public Adapter caseApplicationUsesSDK(ApplicationUsesSDK object)
+      {
+        return createApplicationUsesSDKAdapter();
+      }
+      @Override
       public Adapter caseResource(Resource object)
       {
         return createResourceAdapter();
@@ -191,6 +196,11 @@ public class DroidAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFrameLayout(FrameLayout object)
       {
         return createFrameLayoutAdapter();
+      }
+      @Override
+      public Adapter caseLayoutParams(LayoutParams object)
+      {
+        return createLayoutParamsAdapter();
       }
       @Override
       public Adapter caseWidget(Widget object)
@@ -560,6 +570,21 @@ public class DroidAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK <em>Application Uses SDK</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.ApplicationUsesSDK
+   * @generated
+   */
+  public Adapter createApplicationUsesSDKAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.amalgam.tutorials.xtext.droid.Resource <em>Resource</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -885,6 +910,21 @@ public class DroidAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFrameLayoutAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams <em>Layout Params</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams
+   * @generated
+   */
+  public Adapter createLayoutParamsAdapter()
   {
     return null;
   }

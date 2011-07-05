@@ -89,26 +89,6 @@ public abstract class AbstractDroidRuntimeModule extends DefaultRuntimeModule {
 		return org.eclipse.amalgam.tutorials.xtext.validation.DroidJavaValidator.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
-	public Class<? extends org.eclipse.xtext.scoping.IScopeProvider> bindIScopeProvider() {
-		return org.eclipse.amalgam.tutorials.xtext.scoping.DroidScopeProvider.class;
-	}
-
-	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
-	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
-		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(com.google.inject.name.Names.named("org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.delegate")).to(org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider.class);
-	}
-
-	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
-	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider.class;
-	}
-
-	// contributed by org.eclipse.xtext.generator.exporting.QualifiedNamesFragment
-	public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
-		return org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider.class;
-	}
-
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
 	public Class<? extends org.eclipse.xtext.resource.IContainer.Manager> bindIContainer$Manager() {
 		return org.eclipse.xtext.resource.containers.StateBasedContainerManager.class;

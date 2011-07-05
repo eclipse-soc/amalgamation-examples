@@ -34,7 +34,19 @@ generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 Application:
 	'application' name=STRING '=>' packageName=QualifiedName
 	'{'
+		(  ('version:' versionCode=INT '=>' versionName=STRING)?
+		 & sdkVersion=ApplicationUsesSDK?
+		)
 		(resources+=Resource | activities+=Activity | layouts+=Layout)+
+	'}'
+;
+
+ApplicationUsesSDK:
+	'sdk:' '{' {ApplicationUsesSDK}
+		(   ('min:' minSdkVersion=INT ';')?
+		  & ('max:' maxSdkVersion=INT ';')?
+		  & ('target:' targetSdkVersion=INT ';')?
+		)
 	'}'
 ;
 
@@ -50,6 +62,7 @@ Layout:
  * Activities
  ******************************************************************************/
 
+//TODO: change widgets to viewCollection
 AbstractActivity:
 	Activity | (referencedLayout=[Layout] widgets=ViewCollection)
 ;
@@ -72,7 +85,7 @@ ViewCollection:
 	('#' views+=View)+
 ;
 
-
+//NOT tested
 ListActivity:
 	'listActivity' name=QualifiedName '{'
 		'data:' dataSource=ID
@@ -84,6 +97,7 @@ ListActivity:
 
 ;
 
+//NOT tested
 TabActivity:
 	'tabActivity' name=QualifiedName '{'
 	(('layout:' referencedLayout=[Layout])
@@ -93,6 +107,8 @@ TabActivity:
 	'}'
 ;
 
+
+//NOT tested
 Tab:
 	'tab:' caption=StringVA name=QualifiedName? '{'
 		(
@@ -123,12 +139,15 @@ Action:
 	)
 ;
 
+//NOT tested
 GoToURLAction:
 	'goTo' url=STRING;
 
+//NOT tested
 ShowLayoutAction:
 	'show' layout=[Layout];
 
+//NOT tested
 InvokeActivityAction:
 	'invoke' activity=[Activity|QualifiedName];
 
@@ -182,7 +201,7 @@ LinearLayout:
 
 		  //LinearLayout.LayoutParams
 		  //NOTE: All its children can have this layout parameters too
-//		  & ('layout:' layoutParams=LinearLayoutParams ';' )?
+		  //& (layoutParams=LinearLayoutParams)?
 
 		  //ViewGroup
 		  & ('animation:' layoutAnimation=AnimationVA ';' )?
@@ -230,7 +249,7 @@ RelativeLayout:
 
 		  //RelativeLayout.LayoutParams
 		  //NOTE: All its children can have this layout parameters too
-//		  & ('layout:' layoutParams=RelativeLayoutParams ';' )?
+		  //& (layoutParams=RelativeLayoutParams)?
 
 		  //ViewGroup
 		  & ('animation:' layoutAnimation=AnimationVA ';' )?
@@ -382,75 +401,39 @@ FrameLayout:
 	'}'
 ;
 
-
-
-
-
-/*
 LayoutParams:
-	LinearLayoutParams | RelativeLayoutParams | FrameLayoutParams
-;
-
-LinearLayoutParams:
-	'layout:' '{' {LinearLayoutParams}
+	'layout:' '{' {LayoutParams}
 	(
-	  ('height:' layout_height=LayoutDimensionVA )?
-	  & ('width:' layout_width=LayoutDimensionVA )?
-//	  & ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-	  & ('weight:' layout_weight=IntegerVA )?
-	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
-	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
-	  & ('marginRight:' layout_marginRight=DimensionVA )?
-	  & ('marginTop:' layout_marginTop=DimensionVA )?
+      //LinearLayoutParams
+	  ('height:' layout_height=LayoutDimensionVA ';' )?
+	  & ('width:' layout_width=LayoutDimensionVA ';' )?
+	  //& ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
+	  & ('weight:' layout_weight=IntegerVA ';' )?
+	  & ('marginBottom:' layout_marginBottom=DimensionVA ';' )?
+	  & ('marginLeft:' layout_marginLeft=DimensionVA ';' )?
+	  & ('marginRight:' layout_marginRight=DimensionVA ';' )?
+	  & ('marginTop:' layout_marginTop=DimensionVA ';' )?
+
+	  //RelativeLayoutParams
+	  & ('above:' layout_above=[View] ';' )?
+	  & ('alignBaseline:' layout_alignBaseline=[View] ';')?
+	  & ('alignBottom:' layout_alignBottom=[View] ';')?
+	  & ('alignLeft:' layout_alignLeft=[View] ';')?
+	  & ('alignParentBottom:' layout_alignParentBottom=BooleanVA ';')?
+	  & ('alignParentLeft:' layout_alignParentLeft=BooleanVA ';')?
+	  & ('alignParentRight:' layout_alignParentRight=BooleanVA ';')?
+	  & ('alignParentTop:' layout_alignParentTop=BooleanVA ';')?
+	  & ('alignTop:' layout_alignTop=[View] ';')?
+	  & ('alignWithParentIfMissing:' layout_alignWithParentIfMissing=BooleanVA ';')?
+	  & ('below:' layout_below=[View] ';')?
+	  & ('centerHorizontal:' layout_centerHorizontal=BooleanVA ';')?
+	  & ('centerInParent:' layout_centerInParent=BooleanVA ';')?
+	  & ('centerVertical:' layout_centerVertical=BooleanVA ';')?
+	  & ('toLeftOf:' layout_toLeftOf=[View] ';')?
+	  & ('toRightOf:' layout_toRightOf=[View] ';')?
 	)
 	'}'
 ;
-
-RelativeLayoutParams:
- 	'layout:' '{' {RelativeLayoutParams}
-	(
-	  ('height:' layout_height=LayoutDimensionVA )?
-	  & ('width:' layout_width=LayoutDimensionVA )?
-	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
-	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
-	  & ('marginRight:' layout_marginRight=DimensionVA )?
-	  & ('marginTop:' layout_marginTop=DimensionVA )?
-
-	  & ('above:' layout_above=[View] )?
-	  & ('alignBaseline:' layout_alignBaseline=[View] )?
-	  & ('alignBottom:' layout_alignBottom=[View] )?
-	  & ('alignLeft:' layout_alignLeft=[View] )?
-	  & ('alignParentBottom:' layout_alignParentBottom=BooleanVA )?
-	  & ('alignParentLeft:' layout_alignParentLeft=BooleanVA )?
-	  & ('alignParentRight:' layout_alignParentRight=BooleanVA )?
-	  & ('alignParentTop:' layout_alignParentTop=BooleanVA )?
-	  & ('alignTop:' layout_alignTop=[View] )?
-	  & ('alignWithParentIfMissing:' layout_alignWithParentIfMissing=BooleanVA )?
-	  & ('below:' layout_below=[View] )?
-	  & ('centerHorizontal:' layout_centerHorizontal=BooleanVA )?
-	  & ('centerInParent:' layout_centerInParent=BooleanVA )?
-	  & ('centerVertical:' layout_centerVertical=BooleanVA )?
-	  & ('toLeftOf:' layout_toLeftOf=[View] )?
-	  & ('toRightOf:' layout_toRightOf=[View] )?
-	)
- 	'}'
-;
-
-FrameLayoutParams:
- 	'layout:' '{' {FrameLayoutParams}
-	(
-	  ('height:' layout_height=LayoutDimensionVA )?
-	  & ('width:' layout_width=LayoutDimensionVA )?
-//	  & ('gravity:' layout_gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* )?
-	  & ('marginBottom:' layout_marginBottom=DimensionVA )?
-	  & ('marginLeft:' layout_marginLeft=DimensionVA )?
-	  & ('marginRight:' layout_marginRight=DimensionVA )?
-	  & ('marginTop:' layout_marginTop=DimensionVA )?
-	)
-	'}'
-;
-*/
-
 
 
 /******************************************************************************
@@ -468,8 +451,8 @@ TextView:
 	'textView:' ('<'name=ID'>')?
 	text=StringVA
 	('{'
+	(layoutParams=LayoutParams)?
 	(
-	 //(layoutParams=LayoutParams)?
 	 ('top:' top=DimensionVA ';')?
 	 & ('left:' left=DimensionVA ';')?
 	 & ('width:' width=DimensionVA ';')?
@@ -495,16 +478,20 @@ TextView:
 	 & ('typeface:' typeface=TypefaceKind ';' )?
 	 & ('textSize:' textSize=DimensionVA ';' )?
 	 & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* ';' )?
+	 
+	 //Test HERE
+	 //& (layoutParams=LayoutParams)?
 	)
 	'}')?
 ;
 
+//NOT tested
 ImageView:
 	'imageView:' ('<'name=ID'>')?
 	src=AnyDrawableVA
 	('{'
+//	(layoutParams=LayoutParams)?
 	(
-	 //('layout:' layoutParams=LayoutParams ';' )?
 	  ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?
 	 & ('width:' width=DimensionVA ';' )?
@@ -521,12 +508,11 @@ ImageView:
 //Button and ImageButton (depending on parameters)
 Button:
 	'button:' {Button} ('<'name=ID'>')?
-	( text=StringVA |  src=AnyDrawableVA )
+	( text=StringVA | src=AnyDrawableVA )
 	('to' target=[Activity|QualifiedName])?
-	'{'
+	('{'
+	//(layoutParams=LayoutParams)?
 	(
-//	 ('layout:' layoutParams=LayoutParams ';' )?
-//	  ('image:' image=AnyDrawableVA ';' )?
 	 ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?
 	 & ('width:' width=DimensionVA ';' )?
@@ -537,17 +523,18 @@ Button:
 	 // Specific properties
 	 & ('hint:' hint=StringVA ';' )?
 	)
-	'}'
+	'}')?
 ;
 
 
 //Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
+//NOT tested
 Spinner:
 	'spinner:' {Spinner} ('<'name=ID'>')?
 	prompt=StringVA?
 	('{'
+	//(layoutParams=LayoutParams)?
 	(
-	 //('layout:' layoutParams=LayoutParams ';' )?
 	  ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?
 	 & ('width:' width=DimensionVA ';' )?
@@ -564,12 +551,13 @@ Spinner:
 ;
 
 //EditText < TextView
+//NOT tested
 EditText:
 	'editText:' {EditText} ('<'name=ID'>')?
 	text=StringVA?
 	('{'
+	//(layoutParams=LayoutParams)?
 	(
-	 //('layout:' layoutParams=LayoutParams ';' )?
 	  ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?
 	 & ('width:' width=DimensionVA ';' )?

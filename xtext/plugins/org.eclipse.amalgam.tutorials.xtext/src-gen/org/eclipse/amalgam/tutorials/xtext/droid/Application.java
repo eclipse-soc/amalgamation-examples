@@ -19,6 +19,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getPackageName <em>Package Name</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getVersionCode <em>Version Code</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getVersionName <em>Version Name</em>}</li>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getSdkVersion <em>Sdk Version</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getResources <em>Resources</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getActivities <em>Activities</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getLayouts <em>Layouts</em>}</li>
@@ -82,6 +85,84 @@ public interface Application extends EObject
    * @generated
    */
   void setPackageName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Version Code</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Version Code</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Version Code</em>' attribute.
+   * @see #setVersionCode(int)
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getApplication_VersionCode()
+   * @model
+   * @generated
+   */
+  int getVersionCode();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getVersionCode <em>Version Code</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Version Code</em>' attribute.
+   * @see #getVersionCode()
+   * @generated
+   */
+  void setVersionCode(int value);
+
+  /**
+   * Returns the value of the '<em><b>Version Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Version Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Version Name</em>' attribute.
+   * @see #setVersionName(String)
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getApplication_VersionName()
+   * @model
+   * @generated
+   */
+  String getVersionName();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getVersionName <em>Version Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Version Name</em>' attribute.
+   * @see #getVersionName()
+   * @generated
+   */
+  void setVersionName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Sdk Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sdk Version</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sdk Version</em>' containment reference.
+   * @see #setSdkVersion(ApplicationUsesSDK)
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage#getApplication_SdkVersion()
+   * @model containment="true"
+   * @generated
+   */
+  ApplicationUsesSDK getSdkVersion();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.amalgam.tutorials.xtext.droid.Application#getSdkVersion <em>Sdk Version</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sdk Version</em>' containment reference.
+   * @see #getSdkVersion()
+   * @generated
+   */
+  void setSdkVersion(ApplicationUsesSDK value);
 
   /**
    * Returns the value of the '<em><b>Resources</b></em>' containment reference list.

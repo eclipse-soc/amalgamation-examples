@@ -6,12 +6,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="Application">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sdkVersion" eType="#//ApplicationUsesSDK"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//Resource" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
         eType="#//Activity" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="layouts" upperBound="-1"
         eType="#//Layout" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationUsesSDK">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minSdkVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxSdkVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetSdkVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Resource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -126,6 +135,46 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FrameLayout" eSuperTypes="#//Layout"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LayoutParams">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_height" eType="#//LayoutDimensionVA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_width" eType="#//LayoutDimensionVA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_weight" eType="#//IntegerVA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_marginBottom" eType="#//DimensionVA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_marginLeft" eType="#//DimensionVA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_marginRight" eType="#//DimensionVA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_marginTop" eType="#//DimensionVA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_above" eType="#//View"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignBaseline" eType="#//View"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignBottom" eType="#//View"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignLeft" eType="#//View"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignParentBottom"
+        eType="#//BooleanVA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignParentLeft"
+        eType="#//BooleanVA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignParentRight"
+        eType="#//BooleanVA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignParentTop"
+        eType="#//BooleanVA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignTop" eType="#//View"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_alignWithParentIfMissing"
+        eType="#//BooleanVA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_below" eType="#//View"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_centerHorizontal"
+        eType="#//BooleanVA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_centerInParent"
+        eType="#//BooleanVA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_centerVertical"
+        eType="#//BooleanVA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_toLeftOf" eType="#//View"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout_toRightOf" eType="#//View"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Widget" eSuperTypes="#//View">
     <eStructuralFeatures xsi:type="ecore:EReference" name="top" eType="#//DimensionVA"
         containment="true"/>
@@ -141,6 +190,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTextView"/>
   <eClassifiers xsi:type="ecore:EClass" name="TextView" eSuperTypes="#//Widget #//AbstractTextView">
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//StringVA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layoutParams" eType="#//LayoutParams"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fadeScrollBars" eType="#//BooleanVA"
         containment="true"/>

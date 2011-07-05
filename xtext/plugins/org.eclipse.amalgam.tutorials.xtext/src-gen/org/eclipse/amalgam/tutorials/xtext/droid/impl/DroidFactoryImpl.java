@@ -69,6 +69,7 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
     switch (eClass.getClassifierID())
     {
       case DroidPackage.APPLICATION: return createApplication();
+      case DroidPackage.APPLICATION_USES_SDK: return createApplicationUsesSDK();
       case DroidPackage.RESOURCE: return createResource();
       case DroidPackage.LAYOUT: return createLayout();
       case DroidPackage.ABSTRACT_ACTIVITY: return createAbstractActivity();
@@ -91,6 +92,7 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
       case DroidPackage.TAB_HOST: return createTabHost();
       case DroidPackage.TAB_WIDGET: return createTabWidget();
       case DroidPackage.FRAME_LAYOUT: return createFrameLayout();
+      case DroidPackage.LAYOUT_PARAMS: return createLayoutParams();
       case DroidPackage.WIDGET: return createWidget();
       case DroidPackage.ABSTRACT_TEXT_VIEW: return createAbstractTextView();
       case DroidPackage.TEXT_VIEW: return createTextView();
@@ -241,6 +243,17 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
   {
     ApplicationImpl application = new ApplicationImpl();
     return application;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ApplicationUsesSDK createApplicationUsesSDK()
+  {
+    ApplicationUsesSDKImpl applicationUsesSDK = new ApplicationUsesSDKImpl();
+    return applicationUsesSDK;
   }
 
   /**
@@ -483,6 +496,17 @@ public class DroidFactoryImpl extends EFactoryImpl implements DroidFactory
   {
     FrameLayoutImpl frameLayout = new FrameLayoutImpl();
     return frameLayout;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LayoutParams createLayoutParams()
+  {
+    LayoutParamsImpl layoutParams = new LayoutParamsImpl();
+    return layoutParams;
   }
 
   /**
