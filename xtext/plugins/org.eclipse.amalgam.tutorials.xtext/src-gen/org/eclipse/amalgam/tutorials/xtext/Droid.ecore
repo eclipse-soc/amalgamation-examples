@@ -117,11 +117,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="background" eType="#//AnyDrawableVA"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LinearLayout" eSuperTypes="#//AbstractLinearLayout"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LinearLayout" eSuperTypes="#//AbstractLinearLayout">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layoutParams" eType="#//LayoutParams"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RelativeLayout" eSuperTypes="#//Layout">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layoutParams" eType="#//LayoutParams"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="orientation" eType="#//LayoutOrientationKind"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TabHost" eSuperTypes="#//Layout"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TabHost" eSuperTypes="#//Layout">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layoutParams" eType="#//LayoutParams"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TabWidget" eSuperTypes="#//AbstractLinearLayout">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="gravity" unique="false"
         upperBound="-1" eType="#//LayoutGravityKind"/>
@@ -176,6 +184,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="layout_toRightOf" eType="#//View"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Widget" eSuperTypes="#//View">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layoutParams" eType="#//LayoutParams"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="top" eType="#//DimensionVA"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//DimensionVA"
@@ -190,8 +200,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTextView"/>
   <eClassifiers xsi:type="ecore:EClass" name="TextView" eSuperTypes="#//Widget #//AbstractTextView">
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//StringVA"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="layoutParams" eType="#//LayoutParams"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fadeScrollBars" eType="#//BooleanVA"
         containment="true"/>

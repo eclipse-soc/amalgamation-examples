@@ -89,8 +89,10 @@ ViewCollection:
 ListActivity:
 	'listActivity' name=QualifiedName '{'
 		'data:' dataSource=ID
-		 (('layout:' referencedLayout=[Layout])
-		 | widgets=ViewCollection)?
+		 (
+		   ('layout:' referencedLayout=[Layout])
+		   | widgets=ViewCollection
+		 )?
 		'item:' itemLayout=[Layout]
 		(actions+=Action)*
 	'}'
@@ -100,8 +102,10 @@ ListActivity:
 //NOT tested
 TabActivity:
 	'tabActivity' name=QualifiedName '{'
-	(('layout:' referencedLayout=[Layout])
-		 | widgets=ViewCollection)?
+		(
+		  ('layout:' referencedLayout=[Layout])
+		  | widgets=ViewCollection
+		)?
 		(tabs+=Tab)+
 		(actions+=Action)*
 	'}'
@@ -202,6 +206,7 @@ LinearLayout:
 		  //LinearLayout.LayoutParams
 		  //NOTE: All its children can have this layout parameters too
 		  //& (layoutParams=LinearLayoutParams)?
+		  & (layoutParams=LayoutParams)?
 
 		  //ViewGroup
 		  & ('animation:' layoutAnimation=AnimationVA ';' )?
@@ -250,6 +255,7 @@ RelativeLayout:
 		  //RelativeLayout.LayoutParams
 		  //NOTE: All its children can have this layout parameters too
 		  //& (layoutParams=RelativeLayoutParams)?
+		  & (layoutParams=LayoutParams)?
 
 		  //ViewGroup
 		  & ('animation:' layoutAnimation=AnimationVA ';' )?
@@ -295,6 +301,8 @@ TabHost:
 //		  & ('translationY:' translationY=DimensionVA';' )?
 		  & ('visibility:' visibility=LayoutVisibilityKind';' )?
 //		  & ('layout:' layoutParams=LinearLayoutParams ';' )?
+
+		  & (layoutParams=LayoutParams)?
 
 		  //ViewGroup
 		  & ('animation:' layoutAnimation=AnimationVA ';' )?
@@ -401,6 +409,9 @@ FrameLayout:
 	'}'
 ;
 
+
+
+
 LayoutParams:
 	'layout:' '{' {LayoutParams}
 	(
@@ -490,7 +501,7 @@ ImageView:
 	'imageView:' ('<'name=ID'>')?
 	src=AnyDrawableVA
 	('{'
-//	(layoutParams=LayoutParams)?
+	(layoutParams=LayoutParams)?
 	(
 	  ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?
@@ -511,7 +522,7 @@ Button:
 	( text=StringVA | src=AnyDrawableVA )
 	('to' target=[Activity|QualifiedName])?
 	('{'
-	//(layoutParams=LayoutParams)?
+	(layoutParams=LayoutParams)?
 	(
 	 ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?
@@ -533,7 +544,7 @@ Spinner:
 	'spinner:' {Spinner} ('<'name=ID'>')?
 	prompt=StringVA?
 	('{'
-	//(layoutParams=LayoutParams)?
+	(layoutParams=LayoutParams)?
 	(
 	  ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?
@@ -556,7 +567,7 @@ EditText:
 	'editText:' {EditText} ('<'name=ID'>')?
 	text=StringVA?
 	('{'
-	//(layoutParams=LayoutParams)?
+	(layoutParams=LayoutParams)?
 	(
 	  ('top:' top=DimensionVA ';' )?
 	 & ('left:' left=DimensionVA ';' )?

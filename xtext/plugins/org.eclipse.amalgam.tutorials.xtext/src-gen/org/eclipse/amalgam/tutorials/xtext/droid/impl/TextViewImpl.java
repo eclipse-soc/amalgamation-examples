@@ -14,7 +14,6 @@ import org.eclipse.amalgam.tutorials.xtext.droid.ColorVA;
 import org.eclipse.amalgam.tutorials.xtext.droid.DimensionVA;
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
 import org.eclipse.amalgam.tutorials.xtext.droid.LayoutGravityKind;
-import org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams;
 import org.eclipse.amalgam.tutorials.xtext.droid.StringVA;
 import org.eclipse.amalgam.tutorials.xtext.droid.TextStyleKind;
 import org.eclipse.amalgam.tutorials.xtext.droid.TextView;
@@ -40,7 +39,6 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TextViewImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TextViewImpl#getLayoutParams <em>Layout Params</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TextViewImpl#getFadeScrollBars <em>Fade Scroll Bars</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TextViewImpl#getIsScrollContainer <em>Is Scroll Container</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TextViewImpl#getAutoLink <em>Auto Link</em>}</li>
@@ -74,16 +72,6 @@ public class TextViewImpl extends WidgetImpl implements TextView
    * @ordered
    */
   protected StringVA text;
-
-  /**
-   * The cached value of the '{@link #getLayoutParams() <em>Layout Params</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLayoutParams()
-   * @generated
-   * @ordered
-   */
-  protected LayoutParams layoutParams;
 
   /**
    * The cached value of the '{@link #getFadeScrollBars() <em>Fade Scroll Bars</em>}' containment reference.
@@ -362,54 +350,6 @@ public class TextViewImpl extends WidgetImpl implements TextView
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.TEXT_VIEW__TEXT, newText, newText));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LayoutParams getLayoutParams()
-  {
-    return layoutParams;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetLayoutParams(LayoutParams newLayoutParams, NotificationChain msgs)
-  {
-    LayoutParams oldLayoutParams = layoutParams;
-    layoutParams = newLayoutParams;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DroidPackage.TEXT_VIEW__LAYOUT_PARAMS, oldLayoutParams, newLayoutParams);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLayoutParams(LayoutParams newLayoutParams)
-  {
-    if (newLayoutParams != layoutParams)
-    {
-      NotificationChain msgs = null;
-      if (layoutParams != null)
-        msgs = ((InternalEObject)layoutParams).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DroidPackage.TEXT_VIEW__LAYOUT_PARAMS, null, msgs);
-      if (newLayoutParams != null)
-        msgs = ((InternalEObject)newLayoutParams).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DroidPackage.TEXT_VIEW__LAYOUT_PARAMS, null, msgs);
-      msgs = basicSetLayoutParams(newLayoutParams, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.TEXT_VIEW__LAYOUT_PARAMS, newLayoutParams, newLayoutParams));
   }
 
   /**
@@ -1106,8 +1046,6 @@ public class TextViewImpl extends WidgetImpl implements TextView
     {
       case DroidPackage.TEXT_VIEW__TEXT:
         return basicSetText(null, msgs);
-      case DroidPackage.TEXT_VIEW__LAYOUT_PARAMS:
-        return basicSetLayoutParams(null, msgs);
       case DroidPackage.TEXT_VIEW__FADE_SCROLL_BARS:
         return basicSetFadeScrollBars(null, msgs);
       case DroidPackage.TEXT_VIEW__IS_SCROLL_CONTAINER:
@@ -1148,8 +1086,6 @@ public class TextViewImpl extends WidgetImpl implements TextView
     {
       case DroidPackage.TEXT_VIEW__TEXT:
         return getText();
-      case DroidPackage.TEXT_VIEW__LAYOUT_PARAMS:
-        return getLayoutParams();
       case DroidPackage.TEXT_VIEW__FADE_SCROLL_BARS:
         return getFadeScrollBars();
       case DroidPackage.TEXT_VIEW__IS_SCROLL_CONTAINER:
@@ -1201,9 +1137,6 @@ public class TextViewImpl extends WidgetImpl implements TextView
     {
       case DroidPackage.TEXT_VIEW__TEXT:
         setText((StringVA)newValue);
-        return;
-      case DroidPackage.TEXT_VIEW__LAYOUT_PARAMS:
-        setLayoutParams((LayoutParams)newValue);
         return;
       case DroidPackage.TEXT_VIEW__FADE_SCROLL_BARS:
         setFadeScrollBars((BooleanVA)newValue);
@@ -1274,9 +1207,6 @@ public class TextViewImpl extends WidgetImpl implements TextView
       case DroidPackage.TEXT_VIEW__TEXT:
         setText((StringVA)null);
         return;
-      case DroidPackage.TEXT_VIEW__LAYOUT_PARAMS:
-        setLayoutParams((LayoutParams)null);
-        return;
       case DroidPackage.TEXT_VIEW__FADE_SCROLL_BARS:
         setFadeScrollBars((BooleanVA)null);
         return;
@@ -1344,8 +1274,6 @@ public class TextViewImpl extends WidgetImpl implements TextView
     {
       case DroidPackage.TEXT_VIEW__TEXT:
         return text != null;
-      case DroidPackage.TEXT_VIEW__LAYOUT_PARAMS:
-        return layoutParams != null;
       case DroidPackage.TEXT_VIEW__FADE_SCROLL_BARS:
         return fadeScrollBars != null;
       case DroidPackage.TEXT_VIEW__IS_SCROLL_CONTAINER:

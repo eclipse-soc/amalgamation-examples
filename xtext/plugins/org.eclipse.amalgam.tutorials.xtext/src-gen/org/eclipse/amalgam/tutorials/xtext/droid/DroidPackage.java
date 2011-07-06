@@ -1395,13 +1395,22 @@ public interface DroidPackage extends EPackage
   int LINEAR_LAYOUT__ORIENTATION = ABSTRACT_LINEAR_LAYOUT__ORIENTATION;
 
   /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LINEAR_LAYOUT__LAYOUT_PARAMS = ABSTRACT_LINEAR_LAYOUT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Linear Layout</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LINEAR_LAYOUT_FEATURE_COUNT = ABSTRACT_LINEAR_LAYOUT_FEATURE_COUNT + 0;
+  int LINEAR_LAYOUT_FEATURE_COUNT = ABSTRACT_LINEAR_LAYOUT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.RelativeLayoutImpl <em>Relative Layout</em>}' class.
@@ -1585,13 +1594,22 @@ public interface DroidPackage extends EPackage
   int RELATIVE_LAYOUT__LAYOUT_ANIMATION = LAYOUT__LAYOUT_ANIMATION;
 
   /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELATIVE_LAYOUT__LAYOUT_PARAMS = LAYOUT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Orientation</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RELATIVE_LAYOUT__ORIENTATION = LAYOUT_FEATURE_COUNT + 0;
+  int RELATIVE_LAYOUT__ORIENTATION = LAYOUT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Relative Layout</em>' class.
@@ -1600,7 +1618,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RELATIVE_LAYOUT_FEATURE_COUNT = LAYOUT_FEATURE_COUNT + 1;
+  int RELATIVE_LAYOUT_FEATURE_COUNT = LAYOUT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TabHostImpl <em>Tab Host</em>}' class.
@@ -1784,13 +1802,22 @@ public interface DroidPackage extends EPackage
   int TAB_HOST__LAYOUT_ANIMATION = LAYOUT__LAYOUT_ANIMATION;
 
   /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_HOST__LAYOUT_PARAMS = LAYOUT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Tab Host</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TAB_HOST_FEATURE_COUNT = LAYOUT_FEATURE_COUNT + 0;
+  int TAB_HOST_FEATURE_COUNT = LAYOUT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.TabWidgetImpl <em>Tab Widget</em>}' class.
@@ -2490,13 +2517,22 @@ public interface DroidPackage extends EPackage
   int WIDGET__BACKGROUND = VIEW__BACKGROUND;
 
   /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WIDGET__LAYOUT_PARAMS = VIEW_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Top</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WIDGET__TOP = VIEW_FEATURE_COUNT + 0;
+  int WIDGET__TOP = VIEW_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -2505,7 +2541,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET__LEFT = VIEW_FEATURE_COUNT + 1;
+  int WIDGET__LEFT = VIEW_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Width</b></em>' containment reference.
@@ -2514,7 +2550,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET__WIDTH = VIEW_FEATURE_COUNT + 2;
+  int WIDGET__WIDTH = VIEW_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Height</b></em>' containment reference.
@@ -2523,7 +2559,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET__HEIGHT = VIEW_FEATURE_COUNT + 3;
+  int WIDGET__HEIGHT = VIEW_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Clickable</b></em>' containment reference.
@@ -2532,7 +2568,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET__CLICKABLE = VIEW_FEATURE_COUNT + 4;
+  int WIDGET__CLICKABLE = VIEW_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Widget</em>' class.
@@ -2541,7 +2577,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET_FEATURE_COUNT = VIEW_FEATURE_COUNT + 5;
+  int WIDGET_FEATURE_COUNT = VIEW_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.AbstractTextViewImpl <em>Abstract Text View</em>}' class.
@@ -2600,6 +2636,15 @@ public interface DroidPackage extends EPackage
   int TEXT_VIEW__BACKGROUND = WIDGET__BACKGROUND;
 
   /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEXT_VIEW__LAYOUT_PARAMS = WIDGET__LAYOUT_PARAMS;
+
+  /**
    * The feature id for the '<em><b>Top</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2654,22 +2699,13 @@ public interface DroidPackage extends EPackage
   int TEXT_VIEW__TEXT = WIDGET_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TEXT_VIEW__LAYOUT_PARAMS = WIDGET_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Fade Scroll Bars</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__FADE_SCROLL_BARS = WIDGET_FEATURE_COUNT + 2;
+  int TEXT_VIEW__FADE_SCROLL_BARS = WIDGET_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Is Scroll Container</b></em>' containment reference.
@@ -2678,7 +2714,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__IS_SCROLL_CONTAINER = WIDGET_FEATURE_COUNT + 3;
+  int TEXT_VIEW__IS_SCROLL_CONTAINER = WIDGET_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Auto Link</b></em>' attribute.
@@ -2687,7 +2723,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__AUTO_LINK = WIDGET_FEATURE_COUNT + 4;
+  int TEXT_VIEW__AUTO_LINK = WIDGET_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Auto Text</b></em>' containment reference.
@@ -2696,7 +2732,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__AUTO_TEXT = WIDGET_FEATURE_COUNT + 5;
+  int TEXT_VIEW__AUTO_TEXT = WIDGET_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Capitalize</b></em>' attribute.
@@ -2705,7 +2741,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__CAPITALIZE = WIDGET_FEATURE_COUNT + 6;
+  int TEXT_VIEW__CAPITALIZE = WIDGET_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Digits</b></em>' containment reference.
@@ -2714,7 +2750,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__DIGITS = WIDGET_FEATURE_COUNT + 7;
+  int TEXT_VIEW__DIGITS = WIDGET_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Editable</b></em>' containment reference.
@@ -2723,7 +2759,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__EDITABLE = WIDGET_FEATURE_COUNT + 8;
+  int TEXT_VIEW__EDITABLE = WIDGET_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Gravity</b></em>' attribute.
@@ -2732,7 +2768,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__GRAVITY = WIDGET_FEATURE_COUNT + 9;
+  int TEXT_VIEW__GRAVITY = WIDGET_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Hint</b></em>' containment reference.
@@ -2741,7 +2777,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__HINT = WIDGET_FEATURE_COUNT + 10;
+  int TEXT_VIEW__HINT = WIDGET_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Numeric</b></em>' containment reference.
@@ -2750,7 +2786,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__NUMERIC = WIDGET_FEATURE_COUNT + 11;
+  int TEXT_VIEW__NUMERIC = WIDGET_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Password</b></em>' containment reference.
@@ -2759,7 +2795,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__PASSWORD = WIDGET_FEATURE_COUNT + 12;
+  int TEXT_VIEW__PASSWORD = WIDGET_FEATURE_COUNT + 11;
 
   /**
    * The feature id for the '<em><b>Phone Number</b></em>' containment reference.
@@ -2768,7 +2804,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__PHONE_NUMBER = WIDGET_FEATURE_COUNT + 13;
+  int TEXT_VIEW__PHONE_NUMBER = WIDGET_FEATURE_COUNT + 12;
 
   /**
    * The feature id for the '<em><b>Single Line</b></em>' containment reference.
@@ -2777,7 +2813,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__SINGLE_LINE = WIDGET_FEATURE_COUNT + 14;
+  int TEXT_VIEW__SINGLE_LINE = WIDGET_FEATURE_COUNT + 13;
 
   /**
    * The feature id for the '<em><b>Text Color</b></em>' containment reference.
@@ -2786,7 +2822,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__TEXT_COLOR = WIDGET_FEATURE_COUNT + 15;
+  int TEXT_VIEW__TEXT_COLOR = WIDGET_FEATURE_COUNT + 14;
 
   /**
    * The feature id for the '<em><b>Typeface</b></em>' attribute.
@@ -2795,7 +2831,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__TYPEFACE = WIDGET_FEATURE_COUNT + 16;
+  int TEXT_VIEW__TYPEFACE = WIDGET_FEATURE_COUNT + 15;
 
   /**
    * The feature id for the '<em><b>Text Size</b></em>' containment reference.
@@ -2804,7 +2840,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__TEXT_SIZE = WIDGET_FEATURE_COUNT + 17;
+  int TEXT_VIEW__TEXT_SIZE = WIDGET_FEATURE_COUNT + 16;
 
   /**
    * The feature id for the '<em><b>Text Style</b></em>' attribute list.
@@ -2813,7 +2849,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__TEXT_STYLE = WIDGET_FEATURE_COUNT + 18;
+  int TEXT_VIEW__TEXT_STYLE = WIDGET_FEATURE_COUNT + 17;
 
   /**
    * The number of structural features of the '<em>Text View</em>' class.
@@ -2822,7 +2858,7 @@ public interface DroidPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 19;
+  int TEXT_VIEW_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 18;
 
   /**
    * The meta object id for the '{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.ImageViewImpl <em>Image View</em>}' class.
@@ -2860,6 +2896,15 @@ public interface DroidPackage extends EPackage
    * @ordered
    */
   int IMAGE_VIEW__BACKGROUND = WIDGET__BACKGROUND;
+
+  /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMAGE_VIEW__LAYOUT_PARAMS = WIDGET__LAYOUT_PARAMS;
 
   /**
    * The feature id for the '<em><b>Top</b></em>' containment reference.
@@ -2978,6 +3023,15 @@ public interface DroidPackage extends EPackage
    * @ordered
    */
   int BUTTON__BACKGROUND = WIDGET__BACKGROUND;
+
+  /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON__LAYOUT_PARAMS = WIDGET__LAYOUT_PARAMS;
 
   /**
    * The feature id for the '<em><b>Top</b></em>' containment reference.
@@ -3107,6 +3161,15 @@ public interface DroidPackage extends EPackage
   int SPINNER__BACKGROUND = WIDGET__BACKGROUND;
 
   /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SPINNER__LAYOUT_PARAMS = WIDGET__LAYOUT_PARAMS;
+
+  /**
    * The feature id for the '<em><b>Top</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3223,6 +3286,15 @@ public interface DroidPackage extends EPackage
    * @ordered
    */
   int EDIT_TEXT__BACKGROUND = WIDGET__BACKGROUND;
+
+  /**
+   * The feature id for the '<em><b>Layout Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EDIT_TEXT__LAYOUT_PARAMS = WIDGET__LAYOUT_PARAMS;
 
   /**
    * The feature id for the '<em><b>Top</b></em>' containment reference.
@@ -6533,6 +6605,17 @@ public interface DroidPackage extends EPackage
   EClass getLinearLayout();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.LinearLayout#getLayoutParams <em>Layout Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout Params</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.LinearLayout#getLayoutParams()
+   * @see #getLinearLayout()
+   * @generated
+   */
+  EReference getLinearLayout_LayoutParams();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.amalgam.tutorials.xtext.droid.RelativeLayout <em>Relative Layout</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6541,6 +6624,17 @@ public interface DroidPackage extends EPackage
    * @generated
    */
   EClass getRelativeLayout();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.RelativeLayout#getLayoutParams <em>Layout Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout Params</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.RelativeLayout#getLayoutParams()
+   * @see #getRelativeLayout()
+   * @generated
+   */
+  EReference getRelativeLayout_LayoutParams();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.amalgam.tutorials.xtext.droid.RelativeLayout#getOrientation <em>Orientation</em>}'.
@@ -6562,6 +6656,17 @@ public interface DroidPackage extends EPackage
    * @generated
    */
   EClass getTabHost();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.TabHost#getLayoutParams <em>Layout Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout Params</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.TabHost#getLayoutParams()
+   * @see #getTabHost()
+   * @generated
+   */
+  EReference getTabHost_LayoutParams();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.amalgam.tutorials.xtext.droid.TabWidget <em>Tab Widget</em>}'.
@@ -6912,6 +7017,17 @@ public interface DroidPackage extends EPackage
   EClass getWidget();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.Widget#getLayoutParams <em>Layout Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Layout Params</em>'.
+   * @see org.eclipse.amalgam.tutorials.xtext.droid.Widget#getLayoutParams()
+   * @see #getWidget()
+   * @generated
+   */
+  EReference getWidget_LayoutParams();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.Widget#getTop <em>Top</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6996,17 +7112,6 @@ public interface DroidPackage extends EPackage
    * @generated
    */
   EReference getTextView_Text();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.TextView#getLayoutParams <em>Layout Params</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Layout Params</em>'.
-   * @see org.eclipse.amalgam.tutorials.xtext.droid.TextView#getLayoutParams()
-   * @see #getTextView()
-   * @generated
-   */
-  EReference getTextView_LayoutParams();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.amalgam.tutorials.xtext.droid.TextView#getFadeScrollBars <em>Fade Scroll Bars</em>}'.

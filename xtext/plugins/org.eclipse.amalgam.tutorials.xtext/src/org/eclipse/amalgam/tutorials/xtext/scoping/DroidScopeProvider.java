@@ -3,9 +3,8 @@
  */
 package org.eclipse.amalgam.tutorials.xtext.scoping;
 
-import org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams;
-import org.eclipse.amalgam.tutorials.xtext.droid.View;
-import org.eclipse.amalgam.tutorials.xtext.droid.ViewCollection;
+import org.eclipse.amalgam.tutorials.xtext.droid.*;
+
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
@@ -22,9 +21,16 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 public class DroidScopeProvider extends AbstractDeclarativeScopeProvider {
 
 	public IScope scope_LayoutParams_layout_below(LayoutParams lp, EReference ref){
-		//Only the siblings of the container View
-		View containingView = ((View) lp.eContainingFeature().eContainer() );
-		ViewCollection containingCollection = ((ViewCollection) containingView.eContainingFeature().eContainer() );
+		View containingView = ((View) lp.eContainer() );
+		ViewCollection containingCollection = ((ViewCollection) containingView.eContainer() );
 		return Scopes.scopeFor(containingCollection.getViews());
 	}
+
+
+	//????
+	public IScope scope_LayoutParams_layout_below(View view, EReference ref){
+		ViewCollection containingCollection = ((ViewCollection) view.eContainer() );
+		return Scopes.scopeFor(containingCollection.getViews());
+	}
+
 }

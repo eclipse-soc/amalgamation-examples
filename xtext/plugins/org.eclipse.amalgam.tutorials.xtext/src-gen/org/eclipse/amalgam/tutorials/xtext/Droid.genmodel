@@ -279,11 +279,16 @@
     <genClasses ecoreClass="Droid.ecore#//View">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//View/background"/>
     </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//LinearLayout"/>
+    <genClasses ecoreClass="Droid.ecore#//LinearLayout">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//LinearLayout/layoutParams"/>
+    </genClasses>
     <genClasses ecoreClass="Droid.ecore#//RelativeLayout">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//RelativeLayout/layoutParams"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//RelativeLayout/orientation"/>
     </genClasses>
-    <genClasses ecoreClass="Droid.ecore#//TabHost"/>
+    <genClasses ecoreClass="Droid.ecore#//TabHost">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TabHost/layoutParams"/>
+    </genClasses>
     <genClasses ecoreClass="Droid.ecore#//TabWidget">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//TabWidget/gravity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TabWidget/divider"/>
@@ -318,6 +323,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Droid.ecore#//LayoutParams/layout_toRightOf"/>
     </genClasses>
     <genClasses ecoreClass="Droid.ecore#//Widget">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/layoutParams"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/top"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//Widget/width"/>
@@ -327,7 +333,6 @@
     <genClasses ecoreClass="Droid.ecore#//AbstractTextView"/>
     <genClasses ecoreClass="Droid.ecore#//TextView">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TextView/text"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TextView/layoutParams"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TextView/fadeScrollBars"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Droid.ecore#//TextView/isScrollContainer"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Droid.ecore#//TextView/autoLink"/>

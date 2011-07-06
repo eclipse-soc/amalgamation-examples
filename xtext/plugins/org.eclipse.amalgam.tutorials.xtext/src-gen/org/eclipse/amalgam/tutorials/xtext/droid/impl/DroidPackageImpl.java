@@ -1616,6 +1616,16 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getLinearLayout_LayoutParams()
+  {
+        return (EReference)getLinearLayout().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getRelativeLayout()
   {
     if (relativeLayoutEClass == null)
@@ -1630,9 +1640,19 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getRelativeLayout_LayoutParams()
+  {
+        return (EReference)getRelativeLayout().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getRelativeLayout_Orientation()
   {
-        return (EAttribute)getRelativeLayout().getEStructuralFeatures().get(0);
+        return (EAttribute)getRelativeLayout().getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1647,6 +1667,16 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
       tabHostEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DroidPackage.eNS_URI).getEClassifiers().get(21);
     }
     return tabHostEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTabHost_LayoutParams()
+  {
+        return (EReference)getTabHost().getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1990,7 +2020,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWidget_Top()
+  public EReference getWidget_LayoutParams()
   {
         return (EReference)getWidget().getEStructuralFeatures().get(0);
   }
@@ -2000,7 +2030,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWidget_Left()
+  public EReference getWidget_Top()
   {
         return (EReference)getWidget().getEStructuralFeatures().get(1);
   }
@@ -2010,7 +2040,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWidget_Width()
+  public EReference getWidget_Left()
   {
         return (EReference)getWidget().getEStructuralFeatures().get(2);
   }
@@ -2020,7 +2050,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWidget_Height()
+  public EReference getWidget_Width()
   {
         return (EReference)getWidget().getEStructuralFeatures().get(3);
   }
@@ -2030,9 +2060,19 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWidget_Clickable()
+  public EReference getWidget_Height()
   {
         return (EReference)getWidget().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWidget_Clickable()
+  {
+        return (EReference)getWidget().getEStructuralFeatures().get(5);
   }
 
   /**
@@ -2078,7 +2118,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTextView_LayoutParams()
+  public EReference getTextView_FadeScrollBars()
   {
         return (EReference)getTextView().getEStructuralFeatures().get(1);
   }
@@ -2088,7 +2128,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTextView_FadeScrollBars()
+  public EReference getTextView_IsScrollContainer()
   {
         return (EReference)getTextView().getEStructuralFeatures().get(2);
   }
@@ -2098,19 +2138,9 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTextView_IsScrollContainer()
-  {
-        return (EReference)getTextView().getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getTextView_AutoLink()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(4);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2120,7 +2150,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_AutoText()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(5);
+        return (EReference)getTextView().getEStructuralFeatures().get(4);
   }
 
   /**
@@ -2130,7 +2160,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EAttribute getTextView_Capitalize()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(6);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(5);
   }
 
   /**
@@ -2140,7 +2170,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Digits()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(7);
+        return (EReference)getTextView().getEStructuralFeatures().get(6);
   }
 
   /**
@@ -2150,7 +2180,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Editable()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(8);
+        return (EReference)getTextView().getEStructuralFeatures().get(7);
   }
 
   /**
@@ -2160,7 +2190,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EAttribute getTextView_Gravity()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(9);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(8);
   }
 
   /**
@@ -2170,7 +2200,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Hint()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(10);
+        return (EReference)getTextView().getEStructuralFeatures().get(9);
   }
 
   /**
@@ -2180,7 +2210,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Numeric()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(11);
+        return (EReference)getTextView().getEStructuralFeatures().get(10);
   }
 
   /**
@@ -2190,7 +2220,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_Password()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(12);
+        return (EReference)getTextView().getEStructuralFeatures().get(11);
   }
 
   /**
@@ -2200,7 +2230,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_PhoneNumber()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(13);
+        return (EReference)getTextView().getEStructuralFeatures().get(12);
   }
 
   /**
@@ -2210,7 +2240,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_SingleLine()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(14);
+        return (EReference)getTextView().getEStructuralFeatures().get(13);
   }
 
   /**
@@ -2220,7 +2250,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_TextColor()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(15);
+        return (EReference)getTextView().getEStructuralFeatures().get(14);
   }
 
   /**
@@ -2230,7 +2260,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EAttribute getTextView_Typeface()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(16);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(15);
   }
 
   /**
@@ -2240,7 +2270,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EReference getTextView_TextSize()
   {
-        return (EReference)getTextView().getEStructuralFeatures().get(17);
+        return (EReference)getTextView().getEStructuralFeatures().get(16);
   }
 
   /**
@@ -2250,7 +2280,7 @@ public class DroidPackageImpl extends EPackageImpl implements DroidPackage
    */
   public EAttribute getTextView_TextStyle()
   {
-        return (EAttribute)getTextView().getEStructuralFeatures().get(18);
+        return (EAttribute)getTextView().getEStructuralFeatures().get(17);
   }
 
   /**

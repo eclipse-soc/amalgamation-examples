@@ -8,6 +8,7 @@ package org.eclipse.amalgam.tutorials.xtext.droid.impl;
 import org.eclipse.amalgam.tutorials.xtext.droid.BooleanVA;
 import org.eclipse.amalgam.tutorials.xtext.droid.DimensionVA;
 import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
+import org.eclipse.amalgam.tutorials.xtext.droid.LayoutParams;
 import org.eclipse.amalgam.tutorials.xtext.droid.Widget;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.WidgetImpl#getLayoutParams <em>Layout Params</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.WidgetImpl#getTop <em>Top</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.WidgetImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link org.eclipse.amalgam.tutorials.xtext.droid.impl.WidgetImpl#getWidth <em>Width</em>}</li>
@@ -37,6 +39,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class WidgetImpl extends ViewImpl implements Widget
 {
+  /**
+   * The cached value of the '{@link #getLayoutParams() <em>Layout Params</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLayoutParams()
+   * @generated
+   * @ordered
+   */
+  protected LayoutParams layoutParams;
+
   /**
    * The cached value of the '{@link #getTop() <em>Top</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -106,6 +118,54 @@ public class WidgetImpl extends ViewImpl implements Widget
   protected EClass eStaticClass()
   {
     return DroidPackage.eINSTANCE.getWidget();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LayoutParams getLayoutParams()
+  {
+    return layoutParams;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLayoutParams(LayoutParams newLayoutParams, NotificationChain msgs)
+  {
+    LayoutParams oldLayoutParams = layoutParams;
+    layoutParams = newLayoutParams;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DroidPackage.WIDGET__LAYOUT_PARAMS, oldLayoutParams, newLayoutParams);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLayoutParams(LayoutParams newLayoutParams)
+  {
+    if (newLayoutParams != layoutParams)
+    {
+      NotificationChain msgs = null;
+      if (layoutParams != null)
+        msgs = ((InternalEObject)layoutParams).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DroidPackage.WIDGET__LAYOUT_PARAMS, null, msgs);
+      if (newLayoutParams != null)
+        msgs = ((InternalEObject)newLayoutParams).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DroidPackage.WIDGET__LAYOUT_PARAMS, null, msgs);
+      msgs = basicSetLayoutParams(newLayoutParams, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DroidPackage.WIDGET__LAYOUT_PARAMS, newLayoutParams, newLayoutParams));
   }
 
   /**
@@ -358,6 +418,8 @@ public class WidgetImpl extends ViewImpl implements Widget
   {
     switch (featureID)
     {
+      case DroidPackage.WIDGET__LAYOUT_PARAMS:
+        return basicSetLayoutParams(null, msgs);
       case DroidPackage.WIDGET__TOP:
         return basicSetTop(null, msgs);
       case DroidPackage.WIDGET__LEFT:
@@ -382,6 +444,8 @@ public class WidgetImpl extends ViewImpl implements Widget
   {
     switch (featureID)
     {
+      case DroidPackage.WIDGET__LAYOUT_PARAMS:
+        return getLayoutParams();
       case DroidPackage.WIDGET__TOP:
         return getTop();
       case DroidPackage.WIDGET__LEFT:
@@ -406,6 +470,9 @@ public class WidgetImpl extends ViewImpl implements Widget
   {
     switch (featureID)
     {
+      case DroidPackage.WIDGET__LAYOUT_PARAMS:
+        setLayoutParams((LayoutParams)newValue);
+        return;
       case DroidPackage.WIDGET__TOP:
         setTop((DimensionVA)newValue);
         return;
@@ -435,6 +502,9 @@ public class WidgetImpl extends ViewImpl implements Widget
   {
     switch (featureID)
     {
+      case DroidPackage.WIDGET__LAYOUT_PARAMS:
+        setLayoutParams((LayoutParams)null);
+        return;
       case DroidPackage.WIDGET__TOP:
         setTop((DimensionVA)null);
         return;
@@ -464,6 +534,8 @@ public class WidgetImpl extends ViewImpl implements Widget
   {
     switch (featureID)
     {
+      case DroidPackage.WIDGET__LAYOUT_PARAMS:
+        return layoutParams != null;
       case DroidPackage.WIDGET__TOP:
         return top != null;
       case DroidPackage.WIDGET__LEFT:

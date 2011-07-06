@@ -1,0 +1,28 @@
+application "First" => com.google.example {
+
+	screen First {
+
+		# layout {
+
+			# textView: <A> ""
+
+			# layout {
+				# textView: <B> ""
+			}
+
+			# layout {
+
+				# textView: <C> ""
+
+				# textView: <D> "" {
+					layout: {
+						//"below:" suggests A, B, C, D, E
+					}
+				}
+
+				# textView: <E> ""
+			}
+		}
+	}	
+
+}
