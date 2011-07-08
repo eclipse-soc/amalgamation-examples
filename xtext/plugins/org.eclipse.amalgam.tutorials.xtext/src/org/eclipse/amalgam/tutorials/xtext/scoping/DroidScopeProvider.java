@@ -3,6 +3,8 @@
  */
 package org.eclipse.amalgam.tutorials.xtext.scoping;
 
+import java.util.ArrayList;
+
 import org.eclipse.amalgam.tutorials.xtext.droid.*;
 
 import org.eclipse.emf.ecore.EReference;
@@ -20,17 +22,38 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  */
 public class DroidScopeProvider extends AbstractDeclarativeScopeProvider {
 
-	public IScope scope_LayoutParams_layout_below(LayoutParams lp, EReference ref){
-		View containingView = ((View) lp.eContainer() );
-		ViewCollection containingCollection = ((ViewCollection) containingView.eContainer() );
-		return Scopes.scopeFor(containingCollection.getViews());
+	public IScope scope_LayoutParams_layout_above(LayoutParams lp, EReference ref){
+		return getSiblingsOfParentView(lp);
 	}
 
+	public IScope scope_LayoutParams_layout_below(LayoutParams lp, EReference ref){
+		return getSiblingsOfParentView(lp);
+	}
 
-	//????
-	public IScope scope_LayoutParams_layout_below(View view, EReference ref){
-		ViewCollection containingCollection = ((ViewCollection) view.eContainer() );
-		return Scopes.scopeFor(containingCollection.getViews());
+	public IScope scope_LayoutParams_layout_roRightOf(LayoutParams lp, EReference ref){
+		return getSiblingsOfParentView(lp);
+	}
+
+	public IScope scope_LayoutParams_layout_roLeftOf(LayoutParams lp, EReference ref){
+		return getSiblingsOfParentView(lp);
+	}
+
+	private IScope getSiblingsOfParentView(LayoutParams lp) {
+		IScope scope = IScope.NULLSCOPE;
+
+		try {
+			View containingView = ((View) lp.eContainer() );
+			ViewCollection containingCollection = ((ViewCollection) containingView.eContainer() );
+
+			//Removes the parent
+			ArrayList<View> scopeViews = new ArrayList<View>(containingCollection.getViews());
+			scopeViews.remove(containingView);
+			scope = Scopes.scopeFor(scopeViews);
+		} catch (Exception e) {
+			logger.debug("Error getting Scope", e);
+		}
+		
+		return scope;
 	}
 
 }
