@@ -6,14 +6,14 @@ application "Hello, Android!" => com.example.android.hellodroid {
 
 	screen HelloDroid {
 		# relative layout {
-			# textView: <label> "Type here:" {}
-			# editText: <entry> "" {
+			# textView label "Type here:" {}
+			# editText entry "" {
 				//android:background="@android:drawable/editbox_background"
 				//background: @drawable "editbox_background";
 			}
 	
-			# button: <ok> "OK" {} 
-			# button: "Cancel" {}
+			# button ok "OK" {} 
+			# button "Cancel" {}
 		}
 	}
 

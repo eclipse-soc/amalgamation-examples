@@ -4,23 +4,23 @@ application "First" => com.google.example {
 
 		# layout {
 
-			# textView: <A> ""
+			# textView A ""
 
 			# layout {
-				# textView: <B> ""
+				# textView B ""
 			}
 
 			# layout {
 
-				# textView: <C> ""
+				# textView C ""
 
-				# textView: <D> "" {
+				# textView D "" {
 					layout: {
-						//"below:" suggests A, B, C, D, E
+						below: E;
 					}
 				}
 
-				# textView: <E> ""
+				# textView E ""
 			}
 		}
 	}	

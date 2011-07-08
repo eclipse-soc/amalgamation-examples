@@ -7,6 +7,6 @@ application "Hello, Android!" => com.example.android.hellodroid {
 	string hello = "Hello, Android! I am a string resource!"
 
 	screen HelloDroid {
-		# textView: @string hello
+		# textView @string hello
 	}
 }

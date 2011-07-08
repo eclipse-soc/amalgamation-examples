@@ -11,22 +11,22 @@ application "Hello, Android!" => com.example.android.hellodroid {
 			# layout {
 				orientation: horizontal;
 	
-				# textView: "red" {
+				# textView "red" {
 					gravity: center_horizontal;
 					background:  #aa0000;
 				}
 		
-				# textView: "green" {
+				# textView "green" {
 					gravity: center_horizontal;
 					background: #00aa00;
 				}
 		
-				# textView: "blue" {
+				# textView "blue" {
 					gravity: center_horizontal;
 					background: #0000aa;
 				}
 		
-				# textView: "yellow" {
+				# textView "yellow" {
 					gravity: center_horizontal;
 					background: #aaaa00;
 				}
@@ -35,25 +35,25 @@ application "Hello, Android!" => com.example.android.hellodroid {
 			# layout {
 				orientation: vertical;
 				
-				# textView: "row one" {
+				# textView "row one" {
 					textSize: 15pt;
 					gravity: center_horizontal;
 					background: #aaaa00;
 				}
 				
-				# textView: "row two" {
+				# textView "row two" {
 					textSize: 15pt;
 					gravity: center_horizontal;
 					background: #aaaa00;
 				}
 				
-				# textView: "row three" {
+				# textView "row three" {
 					textSize: 15pt;
 					gravity: center_horizontal;
 					background: #aaaa00;
 				}
 				
-				# textView: "row four" {
+				# textView "row four" {
 					textSize: 15pt;
 					gravity: center_horizontal;
 					background: #aaaa00;
