@@ -1547,13 +1547,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TextView"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="textView:"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=">"/>
+        <elements xsi:type="xtext:Keyword" value="textView"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="text" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
@@ -1741,13 +1737,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ImageView"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="imageView:"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=">"/>
+        <elements xsi:type="xtext:Keyword" value="imageView"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="src" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.39"/>
@@ -1824,18 +1816,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Button"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="button:"/>
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Button"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=">"/>
+        <elements xsi:type="xtext:Keyword" value="button"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:Assignment" feature="text" operator="=">
@@ -1921,18 +1904,14 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Spinner"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="spinner:"/>
+        <elements xsi:type="xtext:Keyword" value="spinner"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
             <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Spinner"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=">"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="prompt" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
@@ -2009,18 +1988,14 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//EditText"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="editText:"/>
+        <elements xsi:type="xtext:Keyword" value="editText"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
             <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//EditText"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=">"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="text" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>

@@ -133,102 +133,100 @@ T136 : 'centerInParent:' ;
 T137 : 'centerVertical:' ;
 T138 : 'toLeftOf:' ;
 T139 : 'toRightOf:' ;
-T140 : 'textView:' ;
-T141 : '<' ;
-T142 : '>' ;
-T143 : 'top:' ;
-T144 : 'left:' ;
-T145 : 'clickable:' ;
-T146 : 'fadeScrollBars:' ;
-T147 : 'isScrollContainer:' ;
-T148 : 'autoLink:' ;
-T149 : 'autoText:' ;
-T150 : 'capitalize:' ;
-T151 : 'digits:' ;
-T152 : 'editable:' ;
-T153 : 'hint:' ;
-T154 : 'numeric:' ;
-T155 : 'password:' ;
-T156 : 'phoneNumber:' ;
-T157 : 'singleLine:' ;
-T158 : 'textColor:' ;
-T159 : 'typeface:' ;
-T160 : 'textSize:' ;
-T161 : 'textStyle:' ;
-T162 : 'imageView:' ;
-T163 : 'button:' ;
-T164 : 'to' ;
-T165 : 'spinner:' ;
-T166 : 'editText:' ;
-T167 : 'string' ;
-T168 : '=' ;
-T169 : 'integer' ;
-T170 : 'bool' ;
-T171 : 'color' ;
-T172 : 'dimension' ;
-T173 : 'array' ;
-T174 : '(integer)' ;
-T175 : '[' ;
-T176 : ']' ;
-T177 : ',' ;
-T178 : '(string)' ;
-T179 : 'bitmap' ;
-T180 : 'transition' ;
-T181 : '<->' ;
-T182 : 'menu' ;
-T183 : 'item' ;
-T184 : 'group' ;
-T185 : 'submenu' ;
-T186 : 'set' ;
-T187 : 'fade:' ;
-T188 : 'from' ;
-T189 : 'scale:' ;
-T190 : 'translate:' ;
-T191 : 'rotate:' ;
-T192 : 'tweenAnimation' ;
-T193 : 'frameAnimation' ;
-T194 : 'frame:' ;
-T195 : '->' ;
-T196 : '@string' ;
-T197 : '@integer' ;
-T198 : '@bool' ;
-T199 : '@color' ;
-T200 : '@dimen' ;
-T201 : '@drawable' ;
-T202 : '@anim' ;
-T203 : '@interpolator' ;
-T204 : '.' ;
-T205 : 'shared' ;
-T206 : 'oneShot' ;
+T140 : 'textView' ;
+T141 : 'top:' ;
+T142 : 'left:' ;
+T143 : 'clickable:' ;
+T144 : 'fadeScrollBars:' ;
+T145 : 'isScrollContainer:' ;
+T146 : 'autoLink:' ;
+T147 : 'autoText:' ;
+T148 : 'capitalize:' ;
+T149 : 'digits:' ;
+T150 : 'editable:' ;
+T151 : 'hint:' ;
+T152 : 'numeric:' ;
+T153 : 'password:' ;
+T154 : 'phoneNumber:' ;
+T155 : 'singleLine:' ;
+T156 : 'textColor:' ;
+T157 : 'typeface:' ;
+T158 : 'textSize:' ;
+T159 : 'textStyle:' ;
+T160 : 'imageView' ;
+T161 : 'button' ;
+T162 : 'to' ;
+T163 : 'spinner' ;
+T164 : 'editText' ;
+T165 : 'string' ;
+T166 : '=' ;
+T167 : 'integer' ;
+T168 : 'bool' ;
+T169 : 'color' ;
+T170 : 'dimension' ;
+T171 : 'array' ;
+T172 : '(integer)' ;
+T173 : '[' ;
+T174 : ']' ;
+T175 : ',' ;
+T176 : '(string)' ;
+T177 : 'bitmap' ;
+T178 : 'transition' ;
+T179 : '<->' ;
+T180 : 'menu' ;
+T181 : 'item' ;
+T182 : 'group' ;
+T183 : 'submenu' ;
+T184 : 'set' ;
+T185 : 'fade:' ;
+T186 : 'from' ;
+T187 : 'scale:' ;
+T188 : 'translate:' ;
+T189 : 'rotate:' ;
+T190 : 'tweenAnimation' ;
+T191 : 'frameAnimation' ;
+T192 : 'frame:' ;
+T193 : '->' ;
+T194 : '@string' ;
+T195 : '@integer' ;
+T196 : '@bool' ;
+T197 : '@color' ;
+T198 : '@dimen' ;
+T199 : '@drawable' ;
+T200 : '@anim' ;
+T201 : '@interpolator' ;
+T202 : '.' ;
+T203 : 'shared' ;
+T204 : 'oneShot' ;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45352
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44840
 RULE_BOOL : ('TRUE'|'FALSE');
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45354
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44842
 RULE_FLOAT : RULE_INT '.' RULE_INT;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45356
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44844
 RULE_HEX_COLOR : '#' ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') (('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f'))?;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45358
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44846
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45360
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44848
 RULE_INT : ('0'..'9')+;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45362
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44850
 RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45364
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44852
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45366
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44854
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45368
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44856
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 45370
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext.ui/src-gen/org/eclipse/amalgam/tutorials/xtext/ui/contentassist/antlr/internal/InternalDroid.g" 44858
 RULE_ANY_OTHER : .;
 
 

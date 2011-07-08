@@ -5,6 +5,7 @@ grammar InternalDroid;
 
 options {
 	superClass=AbstractInternalAntlrParser;
+	backtrack=true;
 	
 }
 
@@ -30,6 +31,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
+import org.eclipse.xtext.parser.antlr.IUnorderedGroupHelper.UnorderedGroupState;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.amalgam.tutorials.xtext.services.DroidGrammarAccess;
@@ -38,6 +40,11 @@ import org.eclipse.amalgam.tutorials.xtext.services.DroidGrammarAccess;
 
 @parser::members {
 
+/*
+  This grammar contains a lot of empty actions to work around a bug in ANTLR.
+  Otherwise the ANTLR tool will create synpreds that cannot be compiled in some rare cases.
+*/
+ 
  	private DroidGrammarAccess grammarAccess;
  	
     public InternalDroidParser(TokenStream input, IAstFactory factory, DroidGrammarAccess grammarAccess) {
@@ -76,16 +83,27 @@ import org.eclipse.amalgam.tutorials.xtext.services.DroidGrammarAccess;
 
 // Entry rule entryRuleApplication
 entryRuleApplication returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getApplicationAccess().getUnorderedGroup_5()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getApplicationRule(), currentNode); }
 	 iv_ruleApplication=ruleApplication 
 	 { $current=$iv_ruleApplication.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Application
 ruleApplication returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getApplicationAccess().getUnorderedGroup_5()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -350,6 +368,9 @@ ruleApplication returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -357,16 +378,27 @@ ruleApplication returns [EObject current=null]
 
 // Entry rule entryRuleApplicationUsesSDK
 entryRuleApplicationUsesSDK returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getApplicationUsesSDKAccess().getUnorderedGroup_3()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getApplicationUsesSDKRule(), currentNode); }
 	 iv_ruleApplicationUsesSDK=ruleApplicationUsesSDK 
 	 { $current=$iv_ruleApplicationUsesSDK.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule ApplicationUsesSDK
 ruleApplicationUsesSDK returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getApplicationUsesSDKAccess().getUnorderedGroup_3()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -380,6 +412,9 @@ ruleApplicationUsesSDK returns [EObject current=null]
         createLeafNode(grammarAccess.getApplicationUsesSDKAccess().getLeftCurlyBracketKeyword_1(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getApplicationUsesSDKAccess().getApplicationUsesSDKAction_2().getType().getClassifier());
         $current = temp; 
@@ -544,6 +579,9 @@ ruleApplicationUsesSDK returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -566,6 +604,9 @@ ruleResource returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccess().getValueResourceParserRuleCall_0(), currentNode); 
     }
@@ -576,6 +617,9 @@ ruleResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccess().getMenuResourceParserRuleCall_1(), currentNode); 
     }
@@ -608,6 +652,9 @@ ruleLayout returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getLayoutAccess().getAbstractLinearLayoutParserRuleCall_0(), currentNode); 
     }
@@ -618,6 +665,9 @@ ruleLayout returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getLayoutAccess().getRelativeLayoutParserRuleCall_1(), currentNode); 
     }
@@ -628,6 +678,9 @@ ruleLayout returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getLayoutAccess().getTabHostParserRuleCall_2(), currentNode); 
     }
@@ -638,6 +691,9 @@ ruleLayout returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getLayoutAccess().getFrameLayoutParserRuleCall_3(), currentNode); 
     }
@@ -672,6 +728,9 @@ ruleActivity returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getActivityAccess().getGenericActivityParserRuleCall_0(), currentNode); 
     }
@@ -682,6 +741,9 @@ ruleActivity returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getActivityAccess().getListActivityParserRuleCall_1(), currentNode); 
     }
@@ -692,6 +754,9 @@ ruleActivity returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getActivityAccess().getTabActivityParserRuleCall_2(), currentNode); 
     }
@@ -761,6 +826,9 @@ ruleGenericActivity returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getGenericActivityRule().getType().getClassifier());
@@ -942,6 +1010,9 @@ ruleListActivity returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getListActivityRule().getType().getClassifier());
@@ -985,6 +1056,9 @@ ruleListActivity returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getListActivityRule().getType().getClassifier());
@@ -1086,6 +1160,9 @@ ruleTabActivity returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabActivityRule().getType().getClassifier());
@@ -1184,16 +1261,27 @@ ruleTabActivity returns [EObject current=null]
 
 // Entry rule entryRuleTab
 entryRuleTab returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTabAccess().getUnorderedGroup_4()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getTabRule(), currentNode); }
 	 iv_ruleTab=ruleTab 
 	 { $current=$iv_ruleTab.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Tab
 ruleTab returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTabAccess().getUnorderedGroup_4()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -1354,6 +1442,9 @@ ruleTab returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabRule().getType().getClassifier());
@@ -1386,6 +1477,9 @@ ruleTab returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabRule().getType().getClassifier());
@@ -1442,6 +1536,9 @@ ruleTab returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -1470,6 +1567,9 @@ ruleAction returns [EObject current=null]
         createLeafNode(grammarAccess.getActionAccess().getEqualsSignGreaterThanSignKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getActionAccess().getGoToURLActionParserRuleCall_1_0(), currentNode); 
     }
@@ -1480,6 +1580,9 @@ ruleAction returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getActionAccess().getShowLayoutActionParserRuleCall_1_1(), currentNode); 
     }
@@ -1490,6 +1593,9 @@ ruleAction returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getActionAccess().getInvokeActivityActionParserRuleCall_1_2(), currentNode); 
     }
@@ -1578,6 +1684,9 @@ ruleShowLayoutAction returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getShowLayoutActionRule().getType().getClassifier());
@@ -1619,6 +1728,9 @@ ruleInvokeActivityAction returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getInvokeActivityActionRule().getType().getClassifier());
@@ -1657,6 +1769,9 @@ ruleAbstractLinearLayout returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getAbstractLinearLayoutAccess().getLinearLayoutParserRuleCall_0(), currentNode); 
     }
@@ -1667,6 +1782,9 @@ ruleAbstractLinearLayout returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getAbstractLinearLayoutAccess().getTabWidgetParserRuleCall_1(), currentNode); 
     }
@@ -1701,6 +1819,9 @@ ruleView returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getViewAccess().getWidgetParserRuleCall_0(), currentNode); 
     }
@@ -1711,6 +1832,9 @@ ruleView returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getViewAccess().getLayoutParserRuleCall_1(), currentNode); 
     }
@@ -1728,16 +1852,27 @@ ruleView returns [EObject current=null]
 
 // Entry rule entryRuleLinearLayout
 entryRuleLinearLayout returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getLinearLayoutAccess().getUnorderedGroup_5()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getLinearLayoutRule(), currentNode); }
 	 iv_ruleLinearLayout=ruleLinearLayout 
 	 { $current=$iv_ruleLinearLayout.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule LinearLayout
 ruleLinearLayout returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getLinearLayoutAccess().getUnorderedGroup_5()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -1751,6 +1886,9 @@ ruleLinearLayout returns [EObject current=null]
         createLeafNode(grammarAccess.getLinearLayoutAccess().getLayoutKeyword_1(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getLinearLayoutAccess().getLinearLayoutAction_2().getType().getClassifier());
         $current = temp; 
@@ -1985,6 +2123,9 @@ ruleLinearLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLinearLayoutRule().getType().getClassifier());
@@ -2019,6 +2160,9 @@ ruleLinearLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLinearLayoutRule().getType().getClassifier());
@@ -2053,6 +2197,9 @@ ruleLinearLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLinearLayoutRule().getType().getClassifier());
@@ -2087,6 +2234,9 @@ ruleLinearLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLinearLayoutRule().getType().getClassifier());
@@ -2623,6 +2773,9 @@ ruleLinearLayout returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -2630,16 +2783,27 @@ ruleLinearLayout returns [EObject current=null]
 
 // Entry rule entryRuleRelativeLayout
 entryRuleRelativeLayout returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getRelativeLayoutAccess().getUnorderedGroup_5()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getRelativeLayoutRule(), currentNode); }
 	 iv_ruleRelativeLayout=ruleRelativeLayout 
 	 { $current=$iv_ruleRelativeLayout.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule RelativeLayout
 ruleRelativeLayout returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getRelativeLayoutAccess().getUnorderedGroup_5()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -2653,6 +2817,9 @@ ruleRelativeLayout returns [EObject current=null]
         createLeafNode(grammarAccess.getRelativeLayoutAccess().getLayoutKeyword_1(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getRelativeLayoutAccess().getRelativeLayoutAction_2().getType().getClassifier());
         $current = temp; 
@@ -2887,6 +3054,9 @@ ruleRelativeLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getRelativeLayoutRule().getType().getClassifier());
@@ -2921,6 +3091,9 @@ ruleRelativeLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getRelativeLayoutRule().getType().getClassifier());
@@ -2955,6 +3128,9 @@ ruleRelativeLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getRelativeLayoutRule().getType().getClassifier());
@@ -2989,6 +3165,9 @@ ruleRelativeLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getRelativeLayoutRule().getType().getClassifier());
@@ -3525,6 +3704,9 @@ ruleRelativeLayout returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -3532,16 +3714,27 @@ ruleRelativeLayout returns [EObject current=null]
 
 // Entry rule entryRuleTabHost
 entryRuleTabHost returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTabHostAccess().getUnorderedGroup_5()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getTabHostRule(), currentNode); }
 	 iv_ruleTabHost=ruleTabHost 
 	 { $current=$iv_ruleTabHost.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule TabHost
 ruleTabHost returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTabHostAccess().getUnorderedGroup_5()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -3555,6 +3748,9 @@ ruleTabHost returns [EObject current=null]
         createLeafNode(grammarAccess.getTabHostAccess().getLayoutKeyword_1(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getTabHostAccess().getTabHostAction_2().getType().getClassifier());
         $current = temp; 
@@ -3789,6 +3985,9 @@ ruleTabHost returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabHostRule().getType().getClassifier());
@@ -3823,6 +4022,9 @@ ruleTabHost returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabHostRule().getType().getClassifier());
@@ -3857,6 +4059,9 @@ ruleTabHost returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabHostRule().getType().getClassifier());
@@ -3891,6 +4096,9 @@ ruleTabHost returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabHostRule().getType().getClassifier());
@@ -4383,6 +4591,9 @@ ruleTabHost returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -4390,16 +4601,27 @@ ruleTabHost returns [EObject current=null]
 
 // Entry rule entryRuleTabWidget
 entryRuleTabWidget returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTabWidgetAccess().getUnorderedGroup_4()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getTabWidgetRule(), currentNode); }
 	 iv_ruleTabWidget=ruleTabWidget 
 	 { $current=$iv_ruleTabWidget.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule TabWidget
 ruleTabWidget returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTabWidgetAccess().getUnorderedGroup_4()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -4409,6 +4631,9 @@ ruleTabWidget returns [EObject current=null]
         createLeafNode(grammarAccess.getTabWidgetAccess().getTabWidgetKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getTabWidgetAccess().getTabWidgetAction_1().getType().getClassifier());
         $current = temp; 
@@ -4643,6 +4868,9 @@ ruleTabWidget returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
@@ -4677,6 +4905,9 @@ ruleTabWidget returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
@@ -4711,6 +4942,9 @@ ruleTabWidget returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
@@ -4745,6 +4979,9 @@ ruleTabWidget returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabWidgetRule().getType().getClassifier());
@@ -5493,6 +5730,9 @@ ruleTabWidget returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -5500,16 +5740,27 @@ ruleTabWidget returns [EObject current=null]
 
 // Entry rule entryRuleFrameLayout
 entryRuleFrameLayout returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getFrameLayoutAccess().getUnorderedGroup_5()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getFrameLayoutRule(), currentNode); }
 	 iv_ruleFrameLayout=ruleFrameLayout 
 	 { $current=$iv_ruleFrameLayout.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule FrameLayout
 ruleFrameLayout returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getFrameLayoutAccess().getUnorderedGroup_5()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -5523,6 +5774,9 @@ ruleFrameLayout returns [EObject current=null]
         createLeafNode(grammarAccess.getFrameLayoutAccess().getLayoutKeyword_1(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getFrameLayoutAccess().getFrameLayoutAction_2().getType().getClassifier());
         $current = temp; 
@@ -5757,6 +6011,9 @@ ruleFrameLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getFrameLayoutRule().getType().getClassifier());
@@ -5791,6 +6048,9 @@ ruleFrameLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getFrameLayoutRule().getType().getClassifier());
@@ -5825,6 +6085,9 @@ ruleFrameLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getFrameLayoutRule().getType().getClassifier());
@@ -5859,6 +6122,9 @@ ruleFrameLayout returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getFrameLayoutRule().getType().getClassifier());
@@ -6315,6 +6581,9 @@ ruleFrameLayout returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -6322,16 +6591,27 @@ ruleFrameLayout returns [EObject current=null]
 
 // Entry rule entryRuleLayoutParams
 entryRuleLayoutParams returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getLayoutParamsAccess().getUnorderedGroup_3()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getLayoutParamsRule(), currentNode); }
 	 iv_ruleLayoutParams=ruleLayoutParams 
 	 { $current=$iv_ruleLayoutParams.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule LayoutParams
 ruleLayoutParams returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getLayoutParamsAccess().getUnorderedGroup_3()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -6345,6 +6625,9 @@ ruleLayoutParams returns [EObject current=null]
         createLeafNode(grammarAccess.getLayoutParamsAccess().getLeftCurlyBracketKeyword_1(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getLayoutParamsAccess().getLayoutParamsAction_2().getType().getClassifier());
         $current = temp; 
@@ -6683,6 +6966,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLayoutParamsRule().getType().getClassifier());
@@ -6717,6 +7003,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLayoutParamsRule().getType().getClassifier());
@@ -6751,6 +7040,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLayoutParamsRule().getType().getClassifier());
@@ -6785,6 +7077,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLayoutParamsRule().getType().getClassifier());
@@ -6995,6 +7290,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLayoutParamsRule().getType().getClassifier());
@@ -7073,6 +7371,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLayoutParamsRule().getType().getClassifier());
@@ -7239,6 +7540,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLayoutParamsRule().getType().getClassifier());
@@ -7273,6 +7577,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getLayoutParamsRule().getType().getClassifier());
@@ -7309,6 +7616,9 @@ ruleLayoutParams returns [EObject current=null]
     }
 )
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -7331,6 +7641,9 @@ ruleWidget returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getWidgetAccess().getTextViewParserRuleCall_0(), currentNode); 
     }
@@ -7341,6 +7654,9 @@ ruleWidget returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getWidgetAccess().getButtonParserRuleCall_1(), currentNode); 
     }
@@ -7351,6 +7667,9 @@ ruleWidget returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getWidgetAccess().getImageViewParserRuleCall_2(), currentNode); 
     }
@@ -7361,6 +7680,9 @@ ruleWidget returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getWidgetAccess().getEditTextParserRuleCall_3(), currentNode); 
     }
@@ -7371,6 +7693,9 @@ ruleWidget returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getWidgetAccess().getSpinnerParserRuleCall_4(), currentNode); 
     }
@@ -7390,33 +7715,40 @@ ruleWidget returns [EObject current=null]
 
 // Entry rule entryRuleTextView
 entryRuleTextView returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTextViewAccess().getUnorderedGroup_3_2()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getTextViewRule(), currentNode); }
 	 iv_ruleTextView=ruleTextView 
 	 { $current=$iv_ruleTextView.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule TextView
 ruleTextView returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTextViewAccess().getUnorderedGroup_3_2()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-(	'textView:' 
+(	'textView' 
     {
         createLeafNode(grammarAccess.getTextViewAccess().getTextViewKeyword_0(), null); 
     }
-(	'<' 
-    {
-        createLeafNode(grammarAccess.getTextViewAccess().getLessThanSignKeyword_1_0(), null); 
-    }
 (
 (
-		lv_name_2_0=RULE_ID
+		lv_name_1_0=RULE_ID
 		{
-			createLeafNode(grammarAccess.getTextViewAccess().getNameIDTerminalRuleCall_1_1_0(), "name"); 
+			createLeafNode(grammarAccess.getTextViewAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -7427,7 +7759,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"name",
-	        		lv_name_2_0, 
+	        		lv_name_1_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -7436,16 +7768,12 @@ ruleTextView returns [EObject current=null]
 	    }
 
 )
-)	'>' 
-    {
-        createLeafNode(grammarAccess.getTextViewAccess().getGreaterThanSignKeyword_1_2(), null); 
-    }
 )?(
 (
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getTextStringVAParserRuleCall_2_0(), currentNode); 
 	    }
-		lv_text_4_0=ruleStringVA		{
+		lv_text_2_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7454,7 +7782,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"text",
-	        		lv_text_4_0, 
+	        		lv_text_2_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7473,7 +7801,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getLayoutParamsLayoutParamsParserRuleCall_3_1_0(), currentNode); 
 	    }
-		lv_layoutParams_6_0=ruleLayoutParams		{
+		lv_layoutParams_4_0=ruleLayoutParams		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7482,7 +7810,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"layoutParams",
-	        		lv_layoutParams_6_0, 
+	        		lv_layoutParams_4_0, 
 	        		"LayoutParams", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7515,7 +7843,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getTopDimensionVAParserRuleCall_3_2_0_1_0(), currentNode); 
 	    }
-		lv_top_9_0=ruleDimensionVA		{
+		lv_top_7_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7524,7 +7852,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"top",
-	        		lv_top_9_0, 
+	        		lv_top_7_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7559,7 +7887,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getLeftDimensionVAParserRuleCall_3_2_1_1_0(), currentNode); 
 	    }
-		lv_left_12_0=ruleDimensionVA		{
+		lv_left_10_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7568,7 +7896,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"left",
-	        		lv_left_12_0, 
+	        		lv_left_10_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7603,7 +7931,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getWidthDimensionVAParserRuleCall_3_2_2_1_0(), currentNode); 
 	    }
-		lv_width_15_0=ruleDimensionVA		{
+		lv_width_13_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7612,7 +7940,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"width",
-	        		lv_width_15_0, 
+	        		lv_width_13_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7647,7 +7975,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getHeightDimensionVAParserRuleCall_3_2_3_1_0(), currentNode); 
 	    }
-		lv_height_18_0=ruleDimensionVA		{
+		lv_height_16_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7656,7 +7984,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"height",
-	        		lv_height_18_0, 
+	        		lv_height_16_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7691,7 +8019,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getBackgroundAnyDrawableVAParserRuleCall_3_2_4_1_0(), currentNode); 
 	    }
-		lv_background_21_0=ruleAnyDrawableVA		{
+		lv_background_19_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7700,7 +8028,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"background",
-	        		lv_background_21_0, 
+	        		lv_background_19_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7735,7 +8063,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getClickableBooleanVAParserRuleCall_3_2_5_1_0(), currentNode); 
 	    }
-		lv_clickable_24_0=ruleBooleanVA		{
+		lv_clickable_22_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7744,7 +8072,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"clickable",
-	        		lv_clickable_24_0, 
+	        		lv_clickable_22_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7779,7 +8107,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getFadeScrollBarsBooleanVAParserRuleCall_3_2_6_1_0(), currentNode); 
 	    }
-		lv_fadeScrollBars_27_0=ruleBooleanVA		{
+		lv_fadeScrollBars_25_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7788,7 +8116,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"fadeScrollBars",
-	        		lv_fadeScrollBars_27_0, 
+	        		lv_fadeScrollBars_25_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7823,7 +8151,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getIsScrollContainerBooleanVAParserRuleCall_3_2_7_1_0(), currentNode); 
 	    }
-		lv_isScrollContainer_30_0=ruleBooleanVA		{
+		lv_isScrollContainer_28_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7832,7 +8160,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"isScrollContainer",
-	        		lv_isScrollContainer_30_0, 
+	        		lv_isScrollContainer_28_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7867,7 +8195,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getAutoLinkAutoLinkKindEnumRuleCall_3_2_8_1_0(), currentNode); 
 	    }
-		lv_autoLink_33_0=ruleAutoLinkKind		{
+		lv_autoLink_31_0=ruleAutoLinkKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7876,7 +8204,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"autoLink",
-	        		lv_autoLink_33_0, 
+	        		lv_autoLink_31_0, 
 	        		"AutoLinkKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7911,7 +8239,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getAutoTextBooleanVAParserRuleCall_3_2_9_1_0(), currentNode); 
 	    }
-		lv_autoText_36_0=ruleBooleanVA		{
+		lv_autoText_34_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7920,7 +8248,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"autoText",
-	        		lv_autoText_36_0, 
+	        		lv_autoText_34_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7955,7 +8283,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getCapitalizeCapitalizeKindEnumRuleCall_3_2_10_1_0(), currentNode); 
 	    }
-		lv_capitalize_39_0=ruleCapitalizeKind		{
+		lv_capitalize_37_0=ruleCapitalizeKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -7964,7 +8292,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"capitalize",
-	        		lv_capitalize_39_0, 
+	        		lv_capitalize_37_0, 
 	        		"CapitalizeKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -7999,7 +8327,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getDigitsStringVAParserRuleCall_3_2_11_1_0(), currentNode); 
 	    }
-		lv_digits_42_0=ruleStringVA		{
+		lv_digits_40_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8008,7 +8336,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"digits",
-	        		lv_digits_42_0, 
+	        		lv_digits_40_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8043,7 +8371,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getEditableBooleanVAParserRuleCall_3_2_12_1_0(), currentNode); 
 	    }
-		lv_editable_45_0=ruleBooleanVA		{
+		lv_editable_43_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8052,7 +8380,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"editable",
-	        		lv_editable_45_0, 
+	        		lv_editable_43_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8087,7 +8415,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getGravityLayoutGravityKindEnumRuleCall_3_2_13_1_0(), currentNode); 
 	    }
-		lv_gravity_48_0=ruleLayoutGravityKind		{
+		lv_gravity_46_0=ruleLayoutGravityKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8096,7 +8424,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"gravity",
-	        		lv_gravity_48_0, 
+	        		lv_gravity_46_0, 
 	        		"LayoutGravityKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8131,7 +8459,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getHintStringVAParserRuleCall_3_2_14_1_0(), currentNode); 
 	    }
-		lv_hint_51_0=ruleStringVA		{
+		lv_hint_49_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8140,7 +8468,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"hint",
-	        		lv_hint_51_0, 
+	        		lv_hint_49_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8175,7 +8503,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getNumericBooleanVAParserRuleCall_3_2_15_1_0(), currentNode); 
 	    }
-		lv_numeric_54_0=ruleBooleanVA		{
+		lv_numeric_52_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8184,7 +8512,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"numeric",
-	        		lv_numeric_54_0, 
+	        		lv_numeric_52_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8219,7 +8547,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getPasswordBooleanVAParserRuleCall_3_2_16_1_0(), currentNode); 
 	    }
-		lv_password_57_0=ruleBooleanVA		{
+		lv_password_55_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8228,7 +8556,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"password",
-	        		lv_password_57_0, 
+	        		lv_password_55_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8263,7 +8591,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getPhoneNumberBooleanVAParserRuleCall_3_2_17_1_0(), currentNode); 
 	    }
-		lv_phoneNumber_60_0=ruleBooleanVA		{
+		lv_phoneNumber_58_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8272,7 +8600,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"phoneNumber",
-	        		lv_phoneNumber_60_0, 
+	        		lv_phoneNumber_58_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8307,7 +8635,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getSingleLineBooleanVAParserRuleCall_3_2_18_1_0(), currentNode); 
 	    }
-		lv_singleLine_63_0=ruleBooleanVA		{
+		lv_singleLine_61_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8316,7 +8644,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"singleLine",
-	        		lv_singleLine_63_0, 
+	        		lv_singleLine_61_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8351,7 +8679,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getTextColorColorVAParserRuleCall_3_2_19_1_0(), currentNode); 
 	    }
-		lv_textColor_66_0=ruleColorVA		{
+		lv_textColor_64_0=ruleColorVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8360,7 +8688,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"textColor",
-	        		lv_textColor_66_0, 
+	        		lv_textColor_64_0, 
 	        		"ColorVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8395,7 +8723,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getTypefaceTypefaceKindEnumRuleCall_3_2_20_1_0(), currentNode); 
 	    }
-		lv_typeface_69_0=ruleTypefaceKind		{
+		lv_typeface_67_0=ruleTypefaceKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8404,7 +8732,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"typeface",
-	        		lv_typeface_69_0, 
+	        		lv_typeface_67_0, 
 	        		"TypefaceKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8439,7 +8767,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getTextSizeDimensionVAParserRuleCall_3_2_21_1_0(), currentNode); 
 	    }
-		lv_textSize_72_0=ruleDimensionVA		{
+		lv_textSize_70_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8448,7 +8776,7 @@ ruleTextView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"textSize",
-	        		lv_textSize_72_0, 
+	        		lv_textSize_70_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8483,7 +8811,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getTextStyleTextStyleKindEnumRuleCall_3_2_22_1_0(), currentNode); 
 	    }
-		lv_textStyle_75_0=ruleTextStyleKind		{
+		lv_textStyle_73_0=ruleTextStyleKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8492,7 +8820,7 @@ ruleTextView returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"textStyle",
-	        		lv_textStyle_75_0, 
+	        		lv_textStyle_73_0, 
 	        		"TextStyleKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8511,7 +8839,7 @@ ruleTextView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getTextViewAccess().getTextStyleTextStyleKindEnumRuleCall_3_2_22_2_1_0(), currentNode); 
 	    }
-		lv_textStyle_77_0=ruleTextStyleKind		{
+		lv_textStyle_75_0=ruleTextStyleKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTextViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8520,7 +8848,7 @@ ruleTextView returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"textStyle",
-	        		lv_textStyle_77_0, 
+	        		lv_textStyle_75_0, 
 	        		"TextStyleKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8554,6 +8882,9 @@ ruleTextView returns [EObject current=null]
     }
 )?)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -8561,33 +8892,40 @@ ruleTextView returns [EObject current=null]
 
 // Entry rule entryRuleImageView
 entryRuleImageView returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getImageViewAccess().getUnorderedGroup_3_2()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getImageViewRule(), currentNode); }
 	 iv_ruleImageView=ruleImageView 
 	 { $current=$iv_ruleImageView.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule ImageView
 ruleImageView returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getImageViewAccess().getUnorderedGroup_3_2()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-(	'imageView:' 
+(	'imageView' 
     {
         createLeafNode(grammarAccess.getImageViewAccess().getImageViewKeyword_0(), null); 
     }
-(	'<' 
-    {
-        createLeafNode(grammarAccess.getImageViewAccess().getLessThanSignKeyword_1_0(), null); 
-    }
 (
 (
-		lv_name_2_0=RULE_ID
+		lv_name_1_0=RULE_ID
 		{
-			createLeafNode(grammarAccess.getImageViewAccess().getNameIDTerminalRuleCall_1_1_0(), "name"); 
+			createLeafNode(grammarAccess.getImageViewAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -8598,7 +8936,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"name",
-	        		lv_name_2_0, 
+	        		lv_name_1_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -8607,16 +8945,12 @@ ruleImageView returns [EObject current=null]
 	    }
 
 )
-)	'>' 
-    {
-        createLeafNode(grammarAccess.getImageViewAccess().getGreaterThanSignKeyword_1_2(), null); 
-    }
 )?(
 (
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getSrcAnyDrawableVAParserRuleCall_2_0(), currentNode); 
 	    }
-		lv_src_4_0=ruleAnyDrawableVA		{
+		lv_src_2_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8625,7 +8959,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"src",
-	        		lv_src_4_0, 
+	        		lv_src_2_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8644,7 +8978,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getLayoutParamsLayoutParamsParserRuleCall_3_1_0(), currentNode); 
 	    }
-		lv_layoutParams_6_0=ruleLayoutParams		{
+		lv_layoutParams_4_0=ruleLayoutParams		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8653,7 +8987,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"layoutParams",
-	        		lv_layoutParams_6_0, 
+	        		lv_layoutParams_4_0, 
 	        		"LayoutParams", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8686,7 +9020,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getTopDimensionVAParserRuleCall_3_2_0_1_0(), currentNode); 
 	    }
-		lv_top_9_0=ruleDimensionVA		{
+		lv_top_7_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8695,7 +9029,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"top",
-	        		lv_top_9_0, 
+	        		lv_top_7_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8730,7 +9064,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getLeftDimensionVAParserRuleCall_3_2_1_1_0(), currentNode); 
 	    }
-		lv_left_12_0=ruleDimensionVA		{
+		lv_left_10_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8739,7 +9073,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"left",
-	        		lv_left_12_0, 
+	        		lv_left_10_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8774,7 +9108,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getWidthDimensionVAParserRuleCall_3_2_2_1_0(), currentNode); 
 	    }
-		lv_width_15_0=ruleDimensionVA		{
+		lv_width_13_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8783,7 +9117,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"width",
-	        		lv_width_15_0, 
+	        		lv_width_13_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8818,7 +9152,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getHeightDimensionVAParserRuleCall_3_2_3_1_0(), currentNode); 
 	    }
-		lv_height_18_0=ruleDimensionVA		{
+		lv_height_16_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8827,7 +9161,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"height",
-	        		lv_height_18_0, 
+	        		lv_height_16_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8862,7 +9196,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getBackgroundAnyDrawableVAParserRuleCall_3_2_4_1_0(), currentNode); 
 	    }
-		lv_background_21_0=ruleAnyDrawableVA		{
+		lv_background_19_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8871,7 +9205,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"background",
-	        		lv_background_21_0, 
+	        		lv_background_19_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8906,7 +9240,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getClickableBooleanVAParserRuleCall_3_2_5_1_0(), currentNode); 
 	    }
-		lv_clickable_24_0=ruleBooleanVA		{
+		lv_clickable_22_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8915,7 +9249,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"clickable",
-	        		lv_clickable_24_0, 
+	        		lv_clickable_22_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8950,7 +9284,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getFadeScrollBarsBooleanVAParserRuleCall_3_2_6_1_0(), currentNode); 
 	    }
-		lv_fadeScrollBars_27_0=ruleBooleanVA		{
+		lv_fadeScrollBars_25_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -8959,7 +9293,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"fadeScrollBars",
-	        		lv_fadeScrollBars_27_0, 
+	        		lv_fadeScrollBars_25_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -8994,7 +9328,7 @@ ruleImageView returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getImageViewAccess().getIsScrollContainerBooleanVAParserRuleCall_3_2_7_1_0(), currentNode); 
 	    }
-		lv_isScrollContainer_30_0=ruleBooleanVA		{
+		lv_isScrollContainer_28_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getImageViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9003,7 +9337,7 @@ ruleImageView returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"isScrollContainer",
-	        		lv_isScrollContainer_30_0, 
+	        		lv_isScrollContainer_28_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9037,6 +9371,9 @@ ruleImageView returns [EObject current=null]
     }
 )?)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -9044,44 +9381,40 @@ ruleImageView returns [EObject current=null]
 
 // Entry rule entryRuleButton
 entryRuleButton returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getButtonAccess().getUnorderedGroup_4_2()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getButtonRule(), currentNode); }
 	 iv_ruleButton=ruleButton 
 	 { $current=$iv_ruleButton.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Button
 ruleButton returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getButtonAccess().getUnorderedGroup_4_2()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-(	'button:' 
+(	'button' 
     {
         createLeafNode(grammarAccess.getButtonAccess().getButtonKeyword_0(), null); 
     }
 (
-    { 
-        temp=factory.create(grammarAccess.getButtonAccess().getButtonAction_1().getType().getClassifier());
-        $current = temp; 
-        temp = null;
-        CompositeNode newNode = createCompositeNode(grammarAccess.getButtonAccess().getButtonAction_1(), currentNode.getParent());
-    newNode.getChildren().add(currentNode);
-    moveLookaheadInfo(currentNode, newNode);
-    currentNode = newNode; 
-        associateNodeWithAstElement(currentNode, $current); 
-    }
-)(	'<' 
-    {
-        createLeafNode(grammarAccess.getButtonAccess().getLessThanSignKeyword_2_0(), null); 
-    }
 (
-(
-		lv_name_3_0=RULE_ID
+		lv_name_1_0=RULE_ID
 		{
-			createLeafNode(grammarAccess.getButtonAccess().getNameIDTerminalRuleCall_2_1_0(), "name"); 
+			createLeafNode(grammarAccess.getButtonAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -9092,7 +9425,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"name",
-	        		lv_name_3_0, 
+	        		lv_name_1_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -9101,16 +9434,12 @@ ruleButton returns [EObject current=null]
 	    }
 
 )
-)	'>' 
-    {
-        createLeafNode(grammarAccess.getButtonAccess().getGreaterThanSignKeyword_2_2(), null); 
-    }
 )?((
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getTextStringVAParserRuleCall_3_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getTextStringVAParserRuleCall_2_0_0(), currentNode); 
 	    }
-		lv_text_5_0=ruleStringVA		{
+		lv_text_2_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9119,7 +9448,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"text",
-	        		lv_text_5_0, 
+	        		lv_text_2_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9133,9 +9462,9 @@ ruleButton returns [EObject current=null]
     |(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getSrcAnyDrawableVAParserRuleCall_3_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getSrcAnyDrawableVAParserRuleCall_2_1_0(), currentNode); 
 	    }
-		lv_src_6_0=ruleAnyDrawableVA		{
+		lv_src_3_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9144,7 +9473,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"src",
-	        		lv_src_6_0, 
+	        		lv_src_3_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9156,10 +9485,13 @@ ruleButton returns [EObject current=null]
 )
 ))(	'to' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getToKeyword_4_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getToKeyword_3_0(), null); 
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
@@ -9167,7 +9499,7 @@ ruleButton returns [EObject current=null]
 	        }
         }
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getTargetActivityCrossReference_4_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getTargetActivityCrossReference_3_1_0(), currentNode); 
 	    }
 		ruleQualifiedName		{ 
 	        currentNode = currentNode.getParent();
@@ -9176,14 +9508,14 @@ ruleButton returns [EObject current=null]
 )
 ))?(	'{' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getLeftCurlyBracketKeyword_5_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getLeftCurlyBracketKeyword_4_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getLayoutParamsLayoutParamsParserRuleCall_5_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getLayoutParamsLayoutParamsParserRuleCall_4_1_0(), currentNode); 
 	    }
-		lv_layoutParams_10_0=ruleLayoutParams		{
+		lv_layoutParams_7_0=ruleLayoutParams		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9192,7 +9524,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"layoutParams",
-	        		lv_layoutParams_10_0, 
+	        		lv_layoutParams_7_0, 
 	        		"LayoutParams", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9206,26 +9538,26 @@ ruleButton returns [EObject current=null]
 
 (
 	{ 
-	  getUnorderedGroupHelper().enter(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	  getUnorderedGroupHelper().enter(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	}
 	(
 		(
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 0)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 0)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 0);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 0);
 	 				}
 					(	'top:' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getTopKeyword_5_2_0_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getTopKeyword_4_2_0_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getTopDimensionVAParserRuleCall_5_2_0_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getTopDimensionVAParserRuleCall_4_2_0_1_0(), currentNode); 
 	    }
-		lv_top_13_0=ruleDimensionVA		{
+		lv_top_10_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9234,7 +9566,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"top",
-	        		lv_top_13_0, 
+	        		lv_top_10_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9246,30 +9578,30 @@ ruleButton returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_5_2_0_2(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_4_2_0_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 1)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 1)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 1);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 1);
 	 				}
 					(	'left:' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getLeftKeyword_5_2_1_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getLeftKeyword_4_2_1_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getLeftDimensionVAParserRuleCall_5_2_1_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getLeftDimensionVAParserRuleCall_4_2_1_1_0(), currentNode); 
 	    }
-		lv_left_16_0=ruleDimensionVA		{
+		lv_left_13_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9278,7 +9610,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"left",
-	        		lv_left_16_0, 
+	        		lv_left_13_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9290,30 +9622,30 @@ ruleButton returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_5_2_1_2(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_4_2_1_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 2)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 2)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 2);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 2);
 	 				}
 					(	'width:' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getWidthKeyword_5_2_2_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getWidthKeyword_4_2_2_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getWidthDimensionVAParserRuleCall_5_2_2_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getWidthDimensionVAParserRuleCall_4_2_2_1_0(), currentNode); 
 	    }
-		lv_width_19_0=ruleDimensionVA		{
+		lv_width_16_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9322,7 +9654,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"width",
-	        		lv_width_19_0, 
+	        		lv_width_16_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9334,30 +9666,30 @@ ruleButton returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_5_2_2_2(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_4_2_2_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 3)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 3)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 3);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 3);
 	 				}
 					(	'height:' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getHeightKeyword_5_2_3_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getHeightKeyword_4_2_3_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getHeightDimensionVAParserRuleCall_5_2_3_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getHeightDimensionVAParserRuleCall_4_2_3_1_0(), currentNode); 
 	    }
-		lv_height_22_0=ruleDimensionVA		{
+		lv_height_19_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9366,7 +9698,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"height",
-	        		lv_height_22_0, 
+	        		lv_height_19_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9378,30 +9710,30 @@ ruleButton returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_5_2_3_2(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_4_2_3_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 4)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 4)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 4);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 4);
 	 				}
 					(	'background:' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getBackgroundKeyword_5_2_4_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getBackgroundKeyword_4_2_4_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getBackgroundAnyDrawableVAParserRuleCall_5_2_4_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getBackgroundAnyDrawableVAParserRuleCall_4_2_4_1_0(), currentNode); 
 	    }
-		lv_background_25_0=ruleAnyDrawableVA		{
+		lv_background_22_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9410,7 +9742,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"background",
-	        		lv_background_25_0, 
+	        		lv_background_22_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9422,30 +9754,30 @@ ruleButton returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_5_2_4_2(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_4_2_4_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 5)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 5)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 5);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 5);
 	 				}
 					(	'clickable:' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getClickableKeyword_5_2_5_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getClickableKeyword_4_2_5_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getClickableBooleanVAParserRuleCall_5_2_5_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getClickableBooleanVAParserRuleCall_4_2_5_1_0(), currentNode); 
 	    }
-		lv_clickable_28_0=ruleBooleanVA		{
+		lv_clickable_25_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9454,7 +9786,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"clickable",
-	        		lv_clickable_28_0, 
+	        		lv_clickable_25_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9466,30 +9798,30 @@ ruleButton returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_5_2_5_2(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_4_2_5_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 6)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 6)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_5_2(), 6);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonAccess().getUnorderedGroup_4_2(), 6);
 	 				}
 					(	'hint:' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getHintKeyword_5_2_6_0(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getHintKeyword_4_2_6_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getHintStringVAParserRuleCall_5_2_6_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getButtonAccess().getHintStringVAParserRuleCall_4_2_6_1_0(), currentNode); 
 	    }
-		lv_hint_31_0=ruleStringVA		{
+		lv_hint_28_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getButtonRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9498,7 +9830,7 @@ ruleButton returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"hint",
-	        		lv_hint_31_0, 
+	        		lv_hint_28_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9510,11 +9842,11 @@ ruleButton returns [EObject current=null]
 )
 )	';' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_5_2_6_2(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getSemicolonKeyword_4_2_6_2(), null); 
     }
 )
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	 				}
  				)
 			)  
@@ -9523,15 +9855,18 @@ ruleButton returns [EObject current=null]
 	)
 )
 	{ 
-	  getUnorderedGroupHelper().leave(grammarAccess.getButtonAccess().getUnorderedGroup_5_2());
+	  getUnorderedGroupHelper().leave(grammarAccess.getButtonAccess().getUnorderedGroup_4_2());
 	}
 
 )	'}' 
     {
-        createLeafNode(grammarAccess.getButtonAccess().getRightCurlyBracketKeyword_5_3(), null); 
+        createLeafNode(grammarAccess.getButtonAccess().getRightCurlyBracketKeyword_4_3(), null); 
     }
 )?)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -9539,25 +9874,39 @@ ruleButton returns [EObject current=null]
 
 // Entry rule entryRuleSpinner
 entryRuleSpinner returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getSpinnerAccess().getUnorderedGroup_4_2()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getSpinnerRule(), currentNode); }
 	 iv_ruleSpinner=ruleSpinner 
 	 { $current=$iv_ruleSpinner.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Spinner
 ruleSpinner returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getSpinnerAccess().getUnorderedGroup_4_2()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-(	'spinner:' 
+(	'spinner' 
     {
         createLeafNode(grammarAccess.getSpinnerAccess().getSpinnerKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getSpinnerAccess().getSpinnerAction_1().getType().getClassifier());
         $current = temp; 
@@ -9568,15 +9917,11 @@ ruleSpinner returns [EObject current=null]
     currentNode = newNode; 
         associateNodeWithAstElement(currentNode, $current); 
     }
-)(	'<' 
-    {
-        createLeafNode(grammarAccess.getSpinnerAccess().getLessThanSignKeyword_2_0(), null); 
-    }
+)(
 (
-(
-		lv_name_3_0=RULE_ID
+		lv_name_2_0=RULE_ID
 		{
-			createLeafNode(grammarAccess.getSpinnerAccess().getNameIDTerminalRuleCall_2_1_0(), "name"); 
+			createLeafNode(grammarAccess.getSpinnerAccess().getNameIDTerminalRuleCall_2_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -9587,7 +9932,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"name",
-	        		lv_name_3_0, 
+	        		lv_name_2_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -9596,16 +9941,12 @@ ruleSpinner returns [EObject current=null]
 	    }
 
 )
-)	'>' 
-    {
-        createLeafNode(grammarAccess.getSpinnerAccess().getGreaterThanSignKeyword_2_2(), null); 
-    }
 )?(
 (
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getPromptStringVAParserRuleCall_3_0(), currentNode); 
 	    }
-		lv_prompt_5_0=ruleStringVA		{
+		lv_prompt_3_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9614,7 +9955,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"prompt",
-	        		lv_prompt_5_0, 
+	        		lv_prompt_3_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9633,7 +9974,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getLayoutParamsLayoutParamsParserRuleCall_4_1_0(), currentNode); 
 	    }
-		lv_layoutParams_7_0=ruleLayoutParams		{
+		lv_layoutParams_5_0=ruleLayoutParams		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9642,7 +9983,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"layoutParams",
-	        		lv_layoutParams_7_0, 
+	        		lv_layoutParams_5_0, 
 	        		"LayoutParams", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9675,7 +10016,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getTopDimensionVAParserRuleCall_4_2_0_1_0(), currentNode); 
 	    }
-		lv_top_10_0=ruleDimensionVA		{
+		lv_top_8_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9684,7 +10025,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"top",
-	        		lv_top_10_0, 
+	        		lv_top_8_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9719,7 +10060,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getLeftDimensionVAParserRuleCall_4_2_1_1_0(), currentNode); 
 	    }
-		lv_left_13_0=ruleDimensionVA		{
+		lv_left_11_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9728,7 +10069,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"left",
-	        		lv_left_13_0, 
+	        		lv_left_11_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9763,7 +10104,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getWidthDimensionVAParserRuleCall_4_2_2_1_0(), currentNode); 
 	    }
-		lv_width_16_0=ruleDimensionVA		{
+		lv_width_14_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9772,7 +10113,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"width",
-	        		lv_width_16_0, 
+	        		lv_width_14_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9807,7 +10148,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getHeightDimensionVAParserRuleCall_4_2_3_1_0(), currentNode); 
 	    }
-		lv_height_19_0=ruleDimensionVA		{
+		lv_height_17_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9816,7 +10157,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"height",
-	        		lv_height_19_0, 
+	        		lv_height_17_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9851,7 +10192,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getBackgroundAnyDrawableVAParserRuleCall_4_2_4_1_0(), currentNode); 
 	    }
-		lv_background_22_0=ruleAnyDrawableVA		{
+		lv_background_20_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9860,7 +10201,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"background",
-	        		lv_background_22_0, 
+	        		lv_background_20_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9895,7 +10236,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getClickableBooleanVAParserRuleCall_4_2_5_1_0(), currentNode); 
 	    }
-		lv_clickable_25_0=ruleBooleanVA		{
+		lv_clickable_23_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9904,7 +10245,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"clickable",
-	        		lv_clickable_25_0, 
+	        		lv_clickable_23_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9939,7 +10280,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getFadeScrollBarsBooleanVAParserRuleCall_4_2_6_1_0(), currentNode); 
 	    }
-		lv_fadeScrollBars_28_0=ruleBooleanVA		{
+		lv_fadeScrollBars_26_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9948,7 +10289,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"fadeScrollBars",
-	        		lv_fadeScrollBars_28_0, 
+	        		lv_fadeScrollBars_26_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -9983,7 +10324,7 @@ ruleSpinner returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getSpinnerAccess().getIsScrollContainerBooleanVAParserRuleCall_4_2_7_1_0(), currentNode); 
 	    }
-		lv_isScrollContainer_31_0=ruleBooleanVA		{
+		lv_isScrollContainer_29_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getSpinnerRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -9992,7 +10333,7 @@ ruleSpinner returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"isScrollContainer",
-	        		lv_isScrollContainer_31_0, 
+	        		lv_isScrollContainer_29_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10026,6 +10367,9 @@ ruleSpinner returns [EObject current=null]
     }
 )?)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -10033,25 +10377,39 @@ ruleSpinner returns [EObject current=null]
 
 // Entry rule entryRuleEditText
 entryRuleEditText returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getEditTextAccess().getUnorderedGroup_4_2()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getEditTextRule(), currentNode); }
 	 iv_ruleEditText=ruleEditText 
 	 { $current=$iv_ruleEditText.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule EditText
 ruleEditText returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getEditTextAccess().getUnorderedGroup_4_2()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-(	'editText:' 
+(	'editText' 
     {
         createLeafNode(grammarAccess.getEditTextAccess().getEditTextKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getEditTextAccess().getEditTextAction_1().getType().getClassifier());
         $current = temp; 
@@ -10062,15 +10420,11 @@ ruleEditText returns [EObject current=null]
     currentNode = newNode; 
         associateNodeWithAstElement(currentNode, $current); 
     }
-)(	'<' 
-    {
-        createLeafNode(grammarAccess.getEditTextAccess().getLessThanSignKeyword_2_0(), null); 
-    }
+)(
 (
-(
-		lv_name_3_0=RULE_ID
+		lv_name_2_0=RULE_ID
 		{
-			createLeafNode(grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_2_1_0(), "name"); 
+			createLeafNode(grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_2_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -10081,7 +10435,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"name",
-	        		lv_name_3_0, 
+	        		lv_name_2_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -10090,16 +10444,12 @@ ruleEditText returns [EObject current=null]
 	    }
 
 )
-)	'>' 
-    {
-        createLeafNode(grammarAccess.getEditTextAccess().getGreaterThanSignKeyword_2_2(), null); 
-    }
 )?(
 (
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getTextStringVAParserRuleCall_3_0(), currentNode); 
 	    }
-		lv_text_5_0=ruleStringVA		{
+		lv_text_3_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10108,7 +10458,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"text",
-	        		lv_text_5_0, 
+	        		lv_text_3_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10127,7 +10477,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getLayoutParamsLayoutParamsParserRuleCall_4_1_0(), currentNode); 
 	    }
-		lv_layoutParams_7_0=ruleLayoutParams		{
+		lv_layoutParams_5_0=ruleLayoutParams		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10136,7 +10486,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"layoutParams",
-	        		lv_layoutParams_7_0, 
+	        		lv_layoutParams_5_0, 
 	        		"LayoutParams", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10169,7 +10519,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getTopDimensionVAParserRuleCall_4_2_0_1_0(), currentNode); 
 	    }
-		lv_top_10_0=ruleDimensionVA		{
+		lv_top_8_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10178,7 +10528,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"top",
-	        		lv_top_10_0, 
+	        		lv_top_8_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10213,7 +10563,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getLeftDimensionVAParserRuleCall_4_2_1_1_0(), currentNode); 
 	    }
-		lv_left_13_0=ruleDimensionVA		{
+		lv_left_11_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10222,7 +10572,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"left",
-	        		lv_left_13_0, 
+	        		lv_left_11_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10257,7 +10607,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getWidthDimensionVAParserRuleCall_4_2_2_1_0(), currentNode); 
 	    }
-		lv_width_16_0=ruleDimensionVA		{
+		lv_width_14_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10266,7 +10616,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"width",
-	        		lv_width_16_0, 
+	        		lv_width_14_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10301,7 +10651,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getHeightDimensionVAParserRuleCall_4_2_3_1_0(), currentNode); 
 	    }
-		lv_height_19_0=ruleDimensionVA		{
+		lv_height_17_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10310,7 +10660,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"height",
-	        		lv_height_19_0, 
+	        		lv_height_17_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10345,7 +10695,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getBackgroundAnyDrawableVAParserRuleCall_4_2_4_1_0(), currentNode); 
 	    }
-		lv_background_22_0=ruleAnyDrawableVA		{
+		lv_background_20_0=ruleAnyDrawableVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10354,7 +10704,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"background",
-	        		lv_background_22_0, 
+	        		lv_background_20_0, 
 	        		"AnyDrawableVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10389,7 +10739,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getClickableBooleanVAParserRuleCall_4_2_5_1_0(), currentNode); 
 	    }
-		lv_clickable_25_0=ruleBooleanVA		{
+		lv_clickable_23_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10398,7 +10748,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"clickable",
-	        		lv_clickable_25_0, 
+	        		lv_clickable_23_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10433,7 +10783,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getFadeScrollBarsBooleanVAParserRuleCall_4_2_6_1_0(), currentNode); 
 	    }
-		lv_fadeScrollBars_28_0=ruleBooleanVA		{
+		lv_fadeScrollBars_26_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10442,7 +10792,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"fadeScrollBars",
-	        		lv_fadeScrollBars_28_0, 
+	        		lv_fadeScrollBars_26_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10477,7 +10827,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getIsScrollContainerBooleanVAParserRuleCall_4_2_7_1_0(), currentNode); 
 	    }
-		lv_isScrollContainer_31_0=ruleBooleanVA		{
+		lv_isScrollContainer_29_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10486,7 +10836,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"isScrollContainer",
-	        		lv_isScrollContainer_31_0, 
+	        		lv_isScrollContainer_29_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10521,7 +10871,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getAutoLinkAutoLinkKindEnumRuleCall_4_2_8_1_0(), currentNode); 
 	    }
-		lv_autoLink_34_0=ruleAutoLinkKind		{
+		lv_autoLink_32_0=ruleAutoLinkKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10530,7 +10880,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"autoLink",
-	        		lv_autoLink_34_0, 
+	        		lv_autoLink_32_0, 
 	        		"AutoLinkKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10565,7 +10915,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getAutoTextBooleanVAParserRuleCall_4_2_9_1_0(), currentNode); 
 	    }
-		lv_autoText_37_0=ruleBooleanVA		{
+		lv_autoText_35_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10574,7 +10924,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"autoText",
-	        		lv_autoText_37_0, 
+	        		lv_autoText_35_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10609,7 +10959,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getCapitalizeCapitalizeKindEnumRuleCall_4_2_10_1_0(), currentNode); 
 	    }
-		lv_capitalize_40_0=ruleCapitalizeKind		{
+		lv_capitalize_38_0=ruleCapitalizeKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10618,7 +10968,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"capitalize",
-	        		lv_capitalize_40_0, 
+	        		lv_capitalize_38_0, 
 	        		"CapitalizeKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10653,7 +11003,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getDigitsStringVAParserRuleCall_4_2_11_1_0(), currentNode); 
 	    }
-		lv_digits_43_0=ruleStringVA		{
+		lv_digits_41_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10662,7 +11012,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"digits",
-	        		lv_digits_43_0, 
+	        		lv_digits_41_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10697,7 +11047,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getEditableBooleanVAParserRuleCall_4_2_12_1_0(), currentNode); 
 	    }
-		lv_editable_46_0=ruleBooleanVA		{
+		lv_editable_44_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10706,7 +11056,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"editable",
-	        		lv_editable_46_0, 
+	        		lv_editable_44_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10741,7 +11091,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getGravityLayoutGravityKindEnumRuleCall_4_2_13_1_0(), currentNode); 
 	    }
-		lv_gravity_49_0=ruleLayoutGravityKind		{
+		lv_gravity_47_0=ruleLayoutGravityKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10750,7 +11100,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"gravity",
-	        		lv_gravity_49_0, 
+	        		lv_gravity_47_0, 
 	        		"LayoutGravityKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10785,7 +11135,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getHintStringVAParserRuleCall_4_2_14_1_0(), currentNode); 
 	    }
-		lv_hint_52_0=ruleStringVA		{
+		lv_hint_50_0=ruleStringVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10794,7 +11144,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"hint",
-	        		lv_hint_52_0, 
+	        		lv_hint_50_0, 
 	        		"StringVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10829,7 +11179,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getNumericBooleanVAParserRuleCall_4_2_15_1_0(), currentNode); 
 	    }
-		lv_numeric_55_0=ruleBooleanVA		{
+		lv_numeric_53_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10838,7 +11188,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"numeric",
-	        		lv_numeric_55_0, 
+	        		lv_numeric_53_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10873,7 +11223,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getPasswordBooleanVAParserRuleCall_4_2_16_1_0(), currentNode); 
 	    }
-		lv_password_58_0=ruleBooleanVA		{
+		lv_password_56_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10882,7 +11232,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"password",
-	        		lv_password_58_0, 
+	        		lv_password_56_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10917,7 +11267,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getPhoneNumberBooleanVAParserRuleCall_4_2_17_1_0(), currentNode); 
 	    }
-		lv_phoneNumber_61_0=ruleBooleanVA		{
+		lv_phoneNumber_59_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10926,7 +11276,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"phoneNumber",
-	        		lv_phoneNumber_61_0, 
+	        		lv_phoneNumber_59_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -10961,7 +11311,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getSingleLineBooleanVAParserRuleCall_4_2_18_1_0(), currentNode); 
 	    }
-		lv_singleLine_64_0=ruleBooleanVA		{
+		lv_singleLine_62_0=ruleBooleanVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -10970,7 +11320,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"singleLine",
-	        		lv_singleLine_64_0, 
+	        		lv_singleLine_62_0, 
 	        		"BooleanVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -11005,7 +11355,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getTextColorColorVAParserRuleCall_4_2_19_1_0(), currentNode); 
 	    }
-		lv_textColor_67_0=ruleColorVA		{
+		lv_textColor_65_0=ruleColorVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -11014,7 +11364,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"textColor",
-	        		lv_textColor_67_0, 
+	        		lv_textColor_65_0, 
 	        		"ColorVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -11049,7 +11399,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getTypefaceTypefaceKindEnumRuleCall_4_2_20_1_0(), currentNode); 
 	    }
-		lv_typeface_70_0=ruleTypefaceKind		{
+		lv_typeface_68_0=ruleTypefaceKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -11058,7 +11408,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"typeface",
-	        		lv_typeface_70_0, 
+	        		lv_typeface_68_0, 
 	        		"TypefaceKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -11093,7 +11443,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getTextSizeDimensionVAParserRuleCall_4_2_21_1_0(), currentNode); 
 	    }
-		lv_textSize_73_0=ruleDimensionVA		{
+		lv_textSize_71_0=ruleDimensionVA		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -11102,7 +11452,7 @@ ruleEditText returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"textSize",
-	        		lv_textSize_73_0, 
+	        		lv_textSize_71_0, 
 	        		"DimensionVA", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -11137,7 +11487,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getTextStyleTextStyleKindEnumRuleCall_4_2_22_1_0(), currentNode); 
 	    }
-		lv_textStyle_76_0=ruleTextStyleKind		{
+		lv_textStyle_74_0=ruleTextStyleKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -11146,7 +11496,7 @@ ruleEditText returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"textStyle",
-	        		lv_textStyle_76_0, 
+	        		lv_textStyle_74_0, 
 	        		"TextStyleKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -11165,7 +11515,7 @@ ruleEditText returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getEditTextAccess().getTextStyleTextStyleKindEnumRuleCall_4_2_22_2_1_0(), currentNode); 
 	    }
-		lv_textStyle_78_0=ruleTextStyleKind		{
+		lv_textStyle_76_0=ruleTextStyleKind		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getEditTextRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -11174,7 +11524,7 @@ ruleEditText returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"textStyle",
-	        		lv_textStyle_78_0, 
+	        		lv_textStyle_76_0, 
 	        		"TextStyleKind", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -11208,6 +11558,9 @@ ruleEditText returns [EObject current=null]
     }
 )?)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -11230,6 +11583,9 @@ ruleValueAccess returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueAccessAccess().getStringVAParserRuleCall_0(), currentNode); 
     }
@@ -11240,6 +11596,9 @@ ruleValueAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueAccessAccess().getIntegerVAParserRuleCall_1(), currentNode); 
     }
@@ -11250,6 +11609,9 @@ ruleValueAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueAccessAccess().getBooleanVAParserRuleCall_2(), currentNode); 
     }
@@ -11260,6 +11622,9 @@ ruleValueAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueAccessAccess().getColorVAParserRuleCall_3(), currentNode); 
     }
@@ -11270,6 +11635,9 @@ ruleValueAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueAccessAccess().getDimensionVAParserRuleCall_4(), currentNode); 
     }
@@ -11280,6 +11648,9 @@ ruleValueAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueAccessAccess().getDrawableVAParserRuleCall_5(), currentNode); 
     }
@@ -11290,6 +11661,9 @@ ruleValueAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueAccessAccess().getAnimationVAParserRuleCall_6(), currentNode); 
     }
@@ -11300,6 +11674,9 @@ ruleValueAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueAccessAccess().getInterpolatorVAParserRuleCall_7(), currentNode); 
     }
@@ -11692,6 +12069,9 @@ ruleLayoutDimensionVA returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getLayoutDimensionVAAccess().getDimensionVAParserRuleCall_0(), currentNode); 
     }
@@ -11749,6 +12129,9 @@ ruleAnyDrawableVA returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getAnyDrawableVAAccess().getDrawableVAParserRuleCall_0(), currentNode); 
     }
@@ -11759,6 +12142,9 @@ ruleAnyDrawableVA returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getAnyDrawableVAAccess().getColorVAParserRuleCall_1(), currentNode); 
     }
@@ -12169,6 +12555,9 @@ ruleValueResource returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueResourceAccess().getStringResourceParserRuleCall_0(), currentNode); 
     }
@@ -12179,6 +12568,9 @@ ruleValueResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueResourceAccess().getIntegerResourceParserRuleCall_1(), currentNode); 
     }
@@ -12189,6 +12581,9 @@ ruleValueResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueResourceAccess().getBooleanResourceParserRuleCall_2(), currentNode); 
     }
@@ -12199,6 +12594,9 @@ ruleValueResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueResourceAccess().getColorResourceParserRuleCall_3(), currentNode); 
     }
@@ -12209,6 +12607,9 @@ ruleValueResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueResourceAccess().getDimensionResourceParserRuleCall_4(), currentNode); 
     }
@@ -12219,6 +12620,9 @@ ruleValueResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueResourceAccess().getArrayResourceParserRuleCall_5(), currentNode); 
     }
@@ -12229,6 +12633,9 @@ ruleValueResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueResourceAccess().getDrawableResourceParserRuleCall_6(), currentNode); 
     }
@@ -12239,6 +12646,9 @@ ruleValueResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getValueResourceAccess().getAnimationResourceParserRuleCall_7(), currentNode); 
     }
@@ -12670,6 +13080,9 @@ ruleArrayResource returns [EObject current=null]
         createLeafNode(grammarAccess.getArrayResourceAccess().getArrayKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getArrayResourceAccess().getIntegerArrayResourceParserRuleCall_1_0(), currentNode); 
     }
@@ -12680,6 +13093,9 @@ ruleArrayResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getArrayResourceAccess().getStringArrayResourceParserRuleCall_1_1(), currentNode); 
     }
@@ -12690,6 +13106,9 @@ ruleArrayResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getArrayResourceAccess().getTypedArrayResourceParserRuleCall_1_2(), currentNode); 
     }
@@ -13063,6 +13482,9 @@ ruleDrawableResource returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getDrawableResourceAccess().getBitmapDrawableResourceParserRuleCall_0(), currentNode); 
     }
@@ -13073,6 +13495,9 @@ ruleDrawableResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getDrawableResourceAccess().getTransitionDrawableResourceParserRuleCall_1(), currentNode); 
     }
@@ -13109,6 +13534,9 @@ ruleBitmapDrawableResource returns [EObject current=null]
         createLeafNode(grammarAccess.getBitmapDrawableResourceAccess().getBitmapKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getBitmapDrawableResourceAccess().getBitmapDrawableResourceAction_1().getType().getClassifier());
         $current = temp; 
@@ -13199,6 +13627,9 @@ ruleTransitionDrawableResource returns [EObject current=null]
         createLeafNode(grammarAccess.getTransitionDrawableResourceAccess().getTransitionKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getTransitionDrawableResourceAccess().getTransitionDrawableResourceAction_1().getType().getClassifier());
         $current = temp; 
@@ -13235,6 +13666,9 @@ ruleTransitionDrawableResource returns [EObject current=null]
 )
 )(
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTransitionDrawableResourceRule().getType().getClassifier());
@@ -13253,6 +13687,9 @@ ruleTransitionDrawableResource returns [EObject current=null]
     }
 (
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getTransitionDrawableResourceRule().getType().getClassifier());
@@ -13293,6 +13730,9 @@ ruleMenuResource returns [EObject current=null]
         createLeafNode(grammarAccess.getMenuResourceAccess().getMenuKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getMenuResourceAccess().getMenuResourceAction_1().getType().getClassifier());
         $current = temp; 
@@ -13437,6 +13877,9 @@ ruleMenuItem returns [EObject current=null]
         createLeafNode(grammarAccess.getMenuItemAccess().getItemKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getMenuItemAccess().getMenuItemAction_1().getType().getClassifier());
         $current = temp; 
@@ -13507,6 +13950,9 @@ ruleMenuItemGroup returns [EObject current=null]
         createLeafNode(grammarAccess.getMenuItemGroupAccess().getGroupKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getMenuItemGroupAccess().getMenuGroupAction_1().getType().getClassifier());
         $current = temp; 
@@ -13577,6 +14023,9 @@ ruleSubMenu returns [EObject current=null]
         createLeafNode(grammarAccess.getSubMenuAccess().getSubmenuKeyword_0(), null); 
     }
 (
+	{ 
+	  /* */ 
+	}
     { 
         temp=factory.create(grammarAccess.getSubMenuAccess().getSubMenuAction_1().getType().getClassifier());
         $current = temp; 
@@ -13668,6 +14117,9 @@ ruleAnimationResource returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getAnimationResourceAccess().getTweenAnimationResourceParserRuleCall_0(), currentNode); 
     }
@@ -13678,6 +14130,9 @@ ruleAnimationResource returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getAnimationResourceAccess().getFrameAnimationResourceParserRuleCall_1(), currentNode); 
     }
@@ -13710,6 +14165,9 @@ ruleFrameAnimationElement returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getFrameAnimationElementAccess().getTerminalAnimationElementsParserRuleCall_0(), currentNode); 
     }
@@ -13720,6 +14178,9 @@ ruleFrameAnimationElement returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getFrameAnimationElementAccess().getTerminalAnimationSetParserRuleCall_1(), currentNode); 
     }
@@ -13752,6 +14213,9 @@ ruleTerminalAnimationElements returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getTerminalAnimationElementsAccess().getAlphaAnimationParserRuleCall_0(), currentNode); 
     }
@@ -13762,6 +14226,9 @@ ruleTerminalAnimationElements returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getTerminalAnimationElementsAccess().getScaleAnimationParserRuleCall_1(), currentNode); 
     }
@@ -13772,6 +14239,9 @@ ruleTerminalAnimationElements returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getTerminalAnimationElementsAccess().getTranslateAnimationParserRuleCall_2(), currentNode); 
     }
@@ -13782,6 +14252,9 @@ ruleTerminalAnimationElements returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getTerminalAnimationElementsAccess().getRotateAnimationParserRuleCall_3(), currentNode); 
     }
@@ -13903,16 +14376,27 @@ ruleTerminalAnimationSet returns [EObject current=null]
 
 // Entry rule entryRuleAlphaAnimation
 entryRuleAlphaAnimation returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getAlphaAnimationAccess().getUnorderedGroup_1()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getAlphaAnimationRule(), currentNode); }
 	 iv_ruleAlphaAnimation=ruleAlphaAnimation 
 	 { $current=$iv_ruleAlphaAnimation.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule AlphaAnimation
 ruleAlphaAnimation returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getAlphaAnimationAccess().getUnorderedGroup_1()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -14020,6 +14504,9 @@ ruleAlphaAnimation returns [EObject current=null]
 
 ))
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -14027,16 +14514,27 @@ ruleAlphaAnimation returns [EObject current=null]
 
 // Entry rule entryRuleScaleAnimation
 entryRuleScaleAnimation returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getScaleAnimationAccess().getUnorderedGroup_1()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getScaleAnimationRule(), currentNode); }
 	 iv_ruleScaleAnimation=ruleScaleAnimation 
 	 { $current=$iv_ruleScaleAnimation.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule ScaleAnimation
 ruleScaleAnimation returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getScaleAnimationAccess().getUnorderedGroup_1()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -14144,6 +14642,9 @@ ruleScaleAnimation returns [EObject current=null]
 
 ))
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -14151,16 +14652,27 @@ ruleScaleAnimation returns [EObject current=null]
 
 // Entry rule entryRuleTranslateAnimation
 entryRuleTranslateAnimation returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTranslateAnimationAccess().getUnorderedGroup_1()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getTranslateAnimationRule(), currentNode); }
 	 iv_ruleTranslateAnimation=ruleTranslateAnimation 
 	 { $current=$iv_ruleTranslateAnimation.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule TranslateAnimation
 ruleTranslateAnimation returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getTranslateAnimationAccess().getUnorderedGroup_1()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -14268,6 +14780,9 @@ ruleTranslateAnimation returns [EObject current=null]
 
 ))
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -14275,16 +14790,27 @@ ruleTranslateAnimation returns [EObject current=null]
 
 // Entry rule entryRuleRotateAnimation
 entryRuleRotateAnimation returns [EObject current=null] 
+	@init { 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getRotateAnimationAccess().getUnorderedGroup_1()
+		);
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getRotateAnimationRule(), currentNode); }
 	 iv_ruleRotateAnimation=ruleRotateAnimation 
 	 { $current=$iv_ruleRotateAnimation.current; } 
 	 EOF 
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule RotateAnimation
 ruleRotateAnimation returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+			grammarAccess.getRotateAnimationAccess().getUnorderedGroup_1()
+		);
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -14392,6 +14918,9 @@ ruleRotateAnimation returns [EObject current=null]
 
 ))
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 
 
@@ -14682,6 +15211,9 @@ ruleResourceAccess returns [EObject current=null]
     	lastConsumedNode = currentNode;
     }:
 (
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccessAccess().getStringRAParserRuleCall_0(), currentNode); 
     }
@@ -14692,6 +15224,9 @@ ruleResourceAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccessAccess().getIntegerRAParserRuleCall_1(), currentNode); 
     }
@@ -14702,6 +15237,9 @@ ruleResourceAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccessAccess().getBooleanRAParserRuleCall_2(), currentNode); 
     }
@@ -14712,6 +15250,9 @@ ruleResourceAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccessAccess().getColorRAParserRuleCall_3(), currentNode); 
     }
@@ -14722,6 +15263,9 @@ ruleResourceAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccessAccess().getDimensionRAParserRuleCall_4(), currentNode); 
     }
@@ -14732,6 +15276,9 @@ ruleResourceAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccessAccess().getDrawableRAParserRuleCall_5(), currentNode); 
     }
@@ -14742,6 +15289,9 @@ ruleResourceAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccessAccess().getAnimationRAParserRuleCall_6(), currentNode); 
     }
@@ -14752,6 +15302,9 @@ ruleResourceAccess returns [EObject current=null]
     }
 
     |
+	{ 
+	  /* */ 
+	}
     { 
         currentNode=createCompositeNode(grammarAccess.getResourceAccessAccess().getInterpolatorRAParserRuleCall_7(), currentNode); 
     }
@@ -14789,6 +15342,9 @@ ruleStringRA returns [EObject current=null]
     }
 ((
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getStringRARule().getType().getClassifier());
@@ -14855,6 +15411,9 @@ ruleIntegerRA returns [EObject current=null]
     }
 ((
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getIntegerRARule().getType().getClassifier());
@@ -14921,6 +15480,9 @@ ruleBooleanRA returns [EObject current=null]
     }
 ((
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getBooleanRARule().getType().getClassifier());
@@ -14987,6 +15549,9 @@ ruleColorRA returns [EObject current=null]
     }
 ((
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getColorRARule().getType().getClassifier());
@@ -15053,6 +15618,9 @@ ruleDimensionRA returns [EObject current=null]
     }
 ((
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getDimensionRARule().getType().getClassifier());
@@ -15119,6 +15687,9 @@ ruleDrawableRA returns [EObject current=null]
     }
 ((
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getDrawableRARule().getType().getClassifier());
@@ -15185,6 +15756,9 @@ ruleAnimationRA returns [EObject current=null]
     }
 ((
 (
+		{ 
+		  /* */ 
+		}
 		{
 			if ($current==null) {
 	            $current = factory.create(grammarAccess.getAnimationRARule().getType().getClassifier());

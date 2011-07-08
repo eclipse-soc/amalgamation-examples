@@ -1115,9 +1115,6 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		//	//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
 		//	//		  & ('translationX:' translationX=DimensionVA';' )?
 		//	//		  & ('translationY:' translationY=DimensionVA';' )?
-		//	//LinearLayout.LayoutParams
-		//	//NOTE: All its children can have this layout parameters too
-		//	//& (layoutParams=LinearLayoutParams)?
 		//	//ViewGroup
 		//	//LinearLayout
 		//	//		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
@@ -1144,9 +1141,6 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		////		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
 		////		  & ('translationX:' translationX=DimensionVA';' )?
 		////		  & ('translationY:' translationY=DimensionVA';' )?
-		////LinearLayout.LayoutParams
-		////NOTE: All its children can have this layout parameters too
-		////& (layoutParams=LinearLayoutParams)?
 		////ViewGroup
 		////LinearLayout
 		////		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
@@ -1191,9 +1185,6 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		////		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
 		////		  & ('translationX:' translationX=DimensionVA';' )?
 		////		  & ('translationY:' translationY=DimensionVA';' )?
-		////LinearLayout.LayoutParams
-		////NOTE: All its children can have this layout parameters too
-		////& (layoutParams=LinearLayoutParams)?
 		////ViewGroup
 		////LinearLayout
 		////		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
@@ -1629,9 +1620,6 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		//	//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
 		//	//		  & ('translationX:' translationX=DimensionVA';' )?
 		//	//		  & ('translationY:' translationY=DimensionVA';' )?
-		//	//RelativeLayout.LayoutParams
-		//	//NOTE: All its children can have this layout parameters too
-		//	//& (layoutParams=RelativeLayoutParams)?
 		//	//ViewGroup
 		//	//RelativeLayout
 		//	//		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
@@ -1658,9 +1646,6 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		////		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
 		////		  & ('translationX:' translationX=DimensionVA';' )?
 		////		  & ('translationY:' translationY=DimensionVA';' )?
-		////RelativeLayout.LayoutParams
-		////NOTE: All its children can have this layout parameters too
-		////& (layoutParams=RelativeLayoutParams)?
 		////ViewGroup
 		////RelativeLayout
 		////		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
@@ -1705,9 +1690,6 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		////		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
 		////		  & ('translationX:' translationX=DimensionVA';' )?
 		////		  & ('translationY:' translationY=DimensionVA';' )?
-		////RelativeLayout.LayoutParams
-		////NOTE: All its children can have this layout parameters too
-		////& (layoutParams=RelativeLayoutParams)?
 		////ViewGroup
 		////RelativeLayout
 		////		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
@@ -2125,6 +2107,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		////OCL restriction: Must have a TabWidget and a FrameLayout
+		////NOT tested
 		//TabHost:
 		//	"tab" "layout" {TabHost} name=ID? "{" (("alpha:" alpha=FLOAT ";")? //		  & ('rotation:' rotation=DimensionVA';' )?
 		//	//		  & ('rotationX:' rotationX=DimensionVA';' )?
@@ -2635,6 +2618,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWidgetsViewCollectionParserRuleCall_5_0 = (RuleCall)cWidgetsAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
+		////NOT tested
 		//TabWidget:
 		//	"tabWidget" {TabWidget} name=ID? "{" (("alpha:" alpha=FLOAT ";")? //		  & ('rotation:' rotation=DimensionVA';' )?
 		//	//		  & ('rotationX:' rotationX=DimensionVA';' )?
@@ -3224,6 +3208,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWidgetsViewCollectionParserRuleCall_6_0 = (RuleCall)cWidgetsAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
+		////NOT tested
 		//FrameLayout:
 		//	"frame" "layout" {FrameLayout} name=ID? "{" (("alpha:" alpha=FLOAT ";")? //		  & ('rotation:' rotation=DimensionVA';' )?
 		//	//		  & ('rotationX:' rotationX=DimensionVA';' )?
@@ -4219,11 +4204,8 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TextView");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cTextViewKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cLessThanSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cTextAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cTextStringVAParserRuleCall_2_0 = (RuleCall)cTextAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
@@ -4353,7 +4335,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		
 		//TextView:
-		//	"textView:" ("<" name=ID ">")? text=StringVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
+		//	"textView" name=ID? text=StringVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
 		//	& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
 		//	fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")? & ("autoLink:"
@@ -4367,7 +4349,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		//	"}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"textView:" ("<" name=ID ">")? text=StringVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
+		//"textView" name=ID? text=StringVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
 		//& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
 		//fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")? & ("autoLink:"
@@ -4381,23 +4363,14 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		//"}")?
 		public Group getGroup() { return cGroup; }
 
-		//"textView:"
+		//"textView"
 		public Keyword getTextViewKeyword_0() { return cTextViewKeyword_0; }
 
-		//("<" name=ID ">")?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_1_0() { return cLessThanSignKeyword_1_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
+		//name=ID?
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_1_2() { return cGreaterThanSignKeyword_1_2; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
 		//text=StringVA
 		public Assignment getTextAssignment_2() { return cTextAssignment_2; }
@@ -4805,11 +4778,8 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ImageView");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cImageViewKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cLessThanSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cSrcAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cSrcAnyDrawableVAParserRuleCall_2_0 = (RuleCall)cSrcAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
@@ -4861,35 +4831,26 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		
 		////NOT tested
 		//ImageView:
-		//	"imageView:" ("<" name=ID ">")? src=AnyDrawableVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? &
-		//	("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
-		//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
-		//	fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) "}")?;
+		//	"imageView" name=ID? src=AnyDrawableVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? & ("left:"
+		//	left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? & ("background:"
+		//	background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:" fadeScrollBars=BooleanVA
+		//	";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"imageView:" ("<" name=ID ">")? src=AnyDrawableVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? &
-		//("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
-		//("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
-		//fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) "}")?
+		//"imageView" name=ID? src=AnyDrawableVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? & ("left:"
+		//left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? & ("background:"
+		//background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:" fadeScrollBars=BooleanVA
+		//";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) "}")?
 		public Group getGroup() { return cGroup; }
 
-		//"imageView:"
+		//"imageView"
 		public Keyword getImageViewKeyword_0() { return cImageViewKeyword_0; }
 
-		//("<" name=ID ">")?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_1_0() { return cLessThanSignKeyword_1_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
+		//name=ID?
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_1_2() { return cGreaterThanSignKeyword_1_2; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
 		//src=AnyDrawableVA
 		public Assignment getSrcAssignment_2() { return cSrcAssignment_2; }
@@ -5045,258 +5006,242 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Button");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cButtonKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Action cButtonAction_1 = (Action)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cLessThanSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cNameAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_2_1_0 = (RuleCall)cNameAssignment_2_1.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
-		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
-		private final Assignment cTextAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
-		private final RuleCall cTextStringVAParserRuleCall_3_0_0 = (RuleCall)cTextAssignment_3_0.eContents().get(0);
-		private final Assignment cSrcAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
-		private final RuleCall cSrcAnyDrawableVAParserRuleCall_3_1_0 = (RuleCall)cSrcAssignment_3_1.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cTextAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cTextStringVAParserRuleCall_2_0_0 = (RuleCall)cTextAssignment_2_0.eContents().get(0);
+		private final Assignment cSrcAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cSrcAnyDrawableVAParserRuleCall_2_1_0 = (RuleCall)cSrcAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cToKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cTargetAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cTargetActivityCrossReference_3_1_0 = (CrossReference)cTargetAssignment_3_1.eContents().get(0);
+		private final RuleCall cTargetActivityQualifiedNameParserRuleCall_3_1_0_1 = (RuleCall)cTargetActivityCrossReference_3_1_0.eContents().get(1);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cToKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cTargetAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cTargetActivityCrossReference_4_1_0 = (CrossReference)cTargetAssignment_4_1.eContents().get(0);
-		private final RuleCall cTargetActivityQualifiedNameParserRuleCall_4_1_0_1 = (RuleCall)cTargetActivityCrossReference_4_1_0.eContents().get(1);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cLeftCurlyBracketKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cLayoutParamsAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cLayoutParamsLayoutParamsParserRuleCall_5_1_0 = (RuleCall)cLayoutParamsAssignment_5_1.eContents().get(0);
-		private final UnorderedGroup cUnorderedGroup_5_2 = (UnorderedGroup)cGroup_5.eContents().get(2);
-		private final Group cGroup_5_2_0 = (Group)cUnorderedGroup_5_2.eContents().get(0);
-		private final Keyword cTopKeyword_5_2_0_0 = (Keyword)cGroup_5_2_0.eContents().get(0);
-		private final Assignment cTopAssignment_5_2_0_1 = (Assignment)cGroup_5_2_0.eContents().get(1);
-		private final RuleCall cTopDimensionVAParserRuleCall_5_2_0_1_0 = (RuleCall)cTopAssignment_5_2_0_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5_2_0_2 = (Keyword)cGroup_5_2_0.eContents().get(2);
-		private final Group cGroup_5_2_1 = (Group)cUnorderedGroup_5_2.eContents().get(1);
-		private final Keyword cLeftKeyword_5_2_1_0 = (Keyword)cGroup_5_2_1.eContents().get(0);
-		private final Assignment cLeftAssignment_5_2_1_1 = (Assignment)cGroup_5_2_1.eContents().get(1);
-		private final RuleCall cLeftDimensionVAParserRuleCall_5_2_1_1_0 = (RuleCall)cLeftAssignment_5_2_1_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5_2_1_2 = (Keyword)cGroup_5_2_1.eContents().get(2);
-		private final Group cGroup_5_2_2 = (Group)cUnorderedGroup_5_2.eContents().get(2);
-		private final Keyword cWidthKeyword_5_2_2_0 = (Keyword)cGroup_5_2_2.eContents().get(0);
-		private final Assignment cWidthAssignment_5_2_2_1 = (Assignment)cGroup_5_2_2.eContents().get(1);
-		private final RuleCall cWidthDimensionVAParserRuleCall_5_2_2_1_0 = (RuleCall)cWidthAssignment_5_2_2_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5_2_2_2 = (Keyword)cGroup_5_2_2.eContents().get(2);
-		private final Group cGroup_5_2_3 = (Group)cUnorderedGroup_5_2.eContents().get(3);
-		private final Keyword cHeightKeyword_5_2_3_0 = (Keyword)cGroup_5_2_3.eContents().get(0);
-		private final Assignment cHeightAssignment_5_2_3_1 = (Assignment)cGroup_5_2_3.eContents().get(1);
-		private final RuleCall cHeightDimensionVAParserRuleCall_5_2_3_1_0 = (RuleCall)cHeightAssignment_5_2_3_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5_2_3_2 = (Keyword)cGroup_5_2_3.eContents().get(2);
-		private final Group cGroup_5_2_4 = (Group)cUnorderedGroup_5_2.eContents().get(4);
-		private final Keyword cBackgroundKeyword_5_2_4_0 = (Keyword)cGroup_5_2_4.eContents().get(0);
-		private final Assignment cBackgroundAssignment_5_2_4_1 = (Assignment)cGroup_5_2_4.eContents().get(1);
-		private final RuleCall cBackgroundAnyDrawableVAParserRuleCall_5_2_4_1_0 = (RuleCall)cBackgroundAssignment_5_2_4_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5_2_4_2 = (Keyword)cGroup_5_2_4.eContents().get(2);
-		private final Group cGroup_5_2_5 = (Group)cUnorderedGroup_5_2.eContents().get(5);
-		private final Keyword cClickableKeyword_5_2_5_0 = (Keyword)cGroup_5_2_5.eContents().get(0);
-		private final Assignment cClickableAssignment_5_2_5_1 = (Assignment)cGroup_5_2_5.eContents().get(1);
-		private final RuleCall cClickableBooleanVAParserRuleCall_5_2_5_1_0 = (RuleCall)cClickableAssignment_5_2_5_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5_2_5_2 = (Keyword)cGroup_5_2_5.eContents().get(2);
-		private final Group cGroup_5_2_6 = (Group)cUnorderedGroup_5_2.eContents().get(6);
-		private final Keyword cHintKeyword_5_2_6_0 = (Keyword)cGroup_5_2_6.eContents().get(0);
-		private final Assignment cHintAssignment_5_2_6_1 = (Assignment)cGroup_5_2_6.eContents().get(1);
-		private final RuleCall cHintStringVAParserRuleCall_5_2_6_1_0 = (RuleCall)cHintAssignment_5_2_6_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5_2_6_2 = (Keyword)cGroup_5_2_6.eContents().get(2);
-		private final Keyword cRightCurlyBracketKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cLayoutParamsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cLayoutParamsLayoutParamsParserRuleCall_4_1_0 = (RuleCall)cLayoutParamsAssignment_4_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_4_2 = (UnorderedGroup)cGroup_4.eContents().get(2);
+		private final Group cGroup_4_2_0 = (Group)cUnorderedGroup_4_2.eContents().get(0);
+		private final Keyword cTopKeyword_4_2_0_0 = (Keyword)cGroup_4_2_0.eContents().get(0);
+		private final Assignment cTopAssignment_4_2_0_1 = (Assignment)cGroup_4_2_0.eContents().get(1);
+		private final RuleCall cTopDimensionVAParserRuleCall_4_2_0_1_0 = (RuleCall)cTopAssignment_4_2_0_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_2_0_2 = (Keyword)cGroup_4_2_0.eContents().get(2);
+		private final Group cGroup_4_2_1 = (Group)cUnorderedGroup_4_2.eContents().get(1);
+		private final Keyword cLeftKeyword_4_2_1_0 = (Keyword)cGroup_4_2_1.eContents().get(0);
+		private final Assignment cLeftAssignment_4_2_1_1 = (Assignment)cGroup_4_2_1.eContents().get(1);
+		private final RuleCall cLeftDimensionVAParserRuleCall_4_2_1_1_0 = (RuleCall)cLeftAssignment_4_2_1_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_2_1_2 = (Keyword)cGroup_4_2_1.eContents().get(2);
+		private final Group cGroup_4_2_2 = (Group)cUnorderedGroup_4_2.eContents().get(2);
+		private final Keyword cWidthKeyword_4_2_2_0 = (Keyword)cGroup_4_2_2.eContents().get(0);
+		private final Assignment cWidthAssignment_4_2_2_1 = (Assignment)cGroup_4_2_2.eContents().get(1);
+		private final RuleCall cWidthDimensionVAParserRuleCall_4_2_2_1_0 = (RuleCall)cWidthAssignment_4_2_2_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_2_2_2 = (Keyword)cGroup_4_2_2.eContents().get(2);
+		private final Group cGroup_4_2_3 = (Group)cUnorderedGroup_4_2.eContents().get(3);
+		private final Keyword cHeightKeyword_4_2_3_0 = (Keyword)cGroup_4_2_3.eContents().get(0);
+		private final Assignment cHeightAssignment_4_2_3_1 = (Assignment)cGroup_4_2_3.eContents().get(1);
+		private final RuleCall cHeightDimensionVAParserRuleCall_4_2_3_1_0 = (RuleCall)cHeightAssignment_4_2_3_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_2_3_2 = (Keyword)cGroup_4_2_3.eContents().get(2);
+		private final Group cGroup_4_2_4 = (Group)cUnorderedGroup_4_2.eContents().get(4);
+		private final Keyword cBackgroundKeyword_4_2_4_0 = (Keyword)cGroup_4_2_4.eContents().get(0);
+		private final Assignment cBackgroundAssignment_4_2_4_1 = (Assignment)cGroup_4_2_4.eContents().get(1);
+		private final RuleCall cBackgroundAnyDrawableVAParserRuleCall_4_2_4_1_0 = (RuleCall)cBackgroundAssignment_4_2_4_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_2_4_2 = (Keyword)cGroup_4_2_4.eContents().get(2);
+		private final Group cGroup_4_2_5 = (Group)cUnorderedGroup_4_2.eContents().get(5);
+		private final Keyword cClickableKeyword_4_2_5_0 = (Keyword)cGroup_4_2_5.eContents().get(0);
+		private final Assignment cClickableAssignment_4_2_5_1 = (Assignment)cGroup_4_2_5.eContents().get(1);
+		private final RuleCall cClickableBooleanVAParserRuleCall_4_2_5_1_0 = (RuleCall)cClickableAssignment_4_2_5_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_2_5_2 = (Keyword)cGroup_4_2_5.eContents().get(2);
+		private final Group cGroup_4_2_6 = (Group)cUnorderedGroup_4_2.eContents().get(6);
+		private final Keyword cHintKeyword_4_2_6_0 = (Keyword)cGroup_4_2_6.eContents().get(0);
+		private final Assignment cHintAssignment_4_2_6_1 = (Assignment)cGroup_4_2_6.eContents().get(1);
+		private final RuleCall cHintStringVAParserRuleCall_4_2_6_1_0 = (RuleCall)cHintAssignment_4_2_6_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_2_6_2 = (Keyword)cGroup_4_2_6.eContents().get(2);
+		private final Keyword cRightCurlyBracketKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		
 		////Button and ImageButton (depending on parameters)
 		//Button:
-		//	"button:" {Button} ("<" name=ID ">")? (text=StringVA | src=AnyDrawableVA) ("to" target=[Activity|QualifiedName])? ("{"
+		//	"button" name=ID? (text=StringVA | src=AnyDrawableVA) ("to" target=[Activity|QualifiedName])? ("{"
 		//	layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? // Specific properties
 		//	& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("hint:" hint=StringVA
 		//	";")?) "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"button:" {Button} ("<" name=ID ">")? (text=StringVA | src=AnyDrawableVA) ("to" target=[Activity|QualifiedName])? ("{"
+		//"button" name=ID? (text=StringVA | src=AnyDrawableVA) ("to" target=[Activity|QualifiedName])? ("{"
 		//layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? // Specific properties
 		//& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("hint:" hint=StringVA ";")?)
 		//"}")?
 		public Group getGroup() { return cGroup; }
 
-		//"button:"
+		//"button"
 		public Keyword getButtonKeyword_0() { return cButtonKeyword_0; }
 
-		//{Button}
-		public Action getButtonAction_1() { return cButtonAction_1; }
-
-		//("<" name=ID ">")?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_2_0() { return cLessThanSignKeyword_2_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_2_1() { return cNameAssignment_2_1; }
+		//name=ID?
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_1_0() { return cNameIDTerminalRuleCall_2_1_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_2_2() { return cGreaterThanSignKeyword_2_2; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
 		//text=StringVA | src=AnyDrawableVA
-		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//text=StringVA
-		public Assignment getTextAssignment_3_0() { return cTextAssignment_3_0; }
+		public Assignment getTextAssignment_2_0() { return cTextAssignment_2_0; }
 
 		//StringVA
-		public RuleCall getTextStringVAParserRuleCall_3_0_0() { return cTextStringVAParserRuleCall_3_0_0; }
+		public RuleCall getTextStringVAParserRuleCall_2_0_0() { return cTextStringVAParserRuleCall_2_0_0; }
 
 		//src=AnyDrawableVA
-		public Assignment getSrcAssignment_3_1() { return cSrcAssignment_3_1; }
+		public Assignment getSrcAssignment_2_1() { return cSrcAssignment_2_1; }
 
 		//AnyDrawableVA
-		public RuleCall getSrcAnyDrawableVAParserRuleCall_3_1_0() { return cSrcAnyDrawableVAParserRuleCall_3_1_0; }
+		public RuleCall getSrcAnyDrawableVAParserRuleCall_2_1_0() { return cSrcAnyDrawableVAParserRuleCall_2_1_0; }
 
 		//("to" target=[Activity|QualifiedName])?
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_3() { return cGroup_3; }
 
 		//"to"
-		public Keyword getToKeyword_4_0() { return cToKeyword_4_0; }
+		public Keyword getToKeyword_3_0() { return cToKeyword_3_0; }
 
 		//target=[Activity|QualifiedName]
-		public Assignment getTargetAssignment_4_1() { return cTargetAssignment_4_1; }
+		public Assignment getTargetAssignment_3_1() { return cTargetAssignment_3_1; }
 
 		//[Activity|QualifiedName]
-		public CrossReference getTargetActivityCrossReference_4_1_0() { return cTargetActivityCrossReference_4_1_0; }
+		public CrossReference getTargetActivityCrossReference_3_1_0() { return cTargetActivityCrossReference_3_1_0; }
 
 		//QualifiedName
-		public RuleCall getTargetActivityQualifiedNameParserRuleCall_4_1_0_1() { return cTargetActivityQualifiedNameParserRuleCall_4_1_0_1; }
+		public RuleCall getTargetActivityQualifiedNameParserRuleCall_3_1_0_1() { return cTargetActivityQualifiedNameParserRuleCall_3_1_0_1; }
 
 		//("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? // Specific properties
 		//& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("hint:" hint=StringVA ";")?)
 		//"}")?
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_5_0() { return cLeftCurlyBracketKeyword_5_0; }
+		public Keyword getLeftCurlyBracketKeyword_4_0() { return cLeftCurlyBracketKeyword_4_0; }
 
 		//layoutParams=LayoutParams?
-		public Assignment getLayoutParamsAssignment_5_1() { return cLayoutParamsAssignment_5_1; }
+		public Assignment getLayoutParamsAssignment_4_1() { return cLayoutParamsAssignment_4_1; }
 
 		//LayoutParams
-		public RuleCall getLayoutParamsLayoutParamsParserRuleCall_5_1_0() { return cLayoutParamsLayoutParamsParserRuleCall_5_1_0; }
+		public RuleCall getLayoutParamsLayoutParamsParserRuleCall_4_1_0() { return cLayoutParamsLayoutParamsParserRuleCall_4_1_0; }
 
 		//("top:" top=DimensionVA ";")? // Specific properties
 		//& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("hint:" hint=StringVA ";")?
-		public UnorderedGroup getUnorderedGroup_5_2() { return cUnorderedGroup_5_2; }
+		public UnorderedGroup getUnorderedGroup_4_2() { return cUnorderedGroup_4_2; }
 
 		//("top:" top=DimensionVA ";")?
-		public Group getGroup_5_2_0() { return cGroup_5_2_0; }
+		public Group getGroup_4_2_0() { return cGroup_4_2_0; }
 
 		//"top:"
-		public Keyword getTopKeyword_5_2_0_0() { return cTopKeyword_5_2_0_0; }
+		public Keyword getTopKeyword_4_2_0_0() { return cTopKeyword_4_2_0_0; }
 
 		//top=DimensionVA
-		public Assignment getTopAssignment_5_2_0_1() { return cTopAssignment_5_2_0_1; }
+		public Assignment getTopAssignment_4_2_0_1() { return cTopAssignment_4_2_0_1; }
 
 		//DimensionVA
-		public RuleCall getTopDimensionVAParserRuleCall_5_2_0_1_0() { return cTopDimensionVAParserRuleCall_5_2_0_1_0; }
+		public RuleCall getTopDimensionVAParserRuleCall_4_2_0_1_0() { return cTopDimensionVAParserRuleCall_4_2_0_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_5_2_0_2() { return cSemicolonKeyword_5_2_0_2; }
+		public Keyword getSemicolonKeyword_4_2_0_2() { return cSemicolonKeyword_4_2_0_2; }
 
 		//("left:" left=DimensionVA ";")?
-		public Group getGroup_5_2_1() { return cGroup_5_2_1; }
+		public Group getGroup_4_2_1() { return cGroup_4_2_1; }
 
 		//"left:"
-		public Keyword getLeftKeyword_5_2_1_0() { return cLeftKeyword_5_2_1_0; }
+		public Keyword getLeftKeyword_4_2_1_0() { return cLeftKeyword_4_2_1_0; }
 
 		//left=DimensionVA
-		public Assignment getLeftAssignment_5_2_1_1() { return cLeftAssignment_5_2_1_1; }
+		public Assignment getLeftAssignment_4_2_1_1() { return cLeftAssignment_4_2_1_1; }
 
 		//DimensionVA
-		public RuleCall getLeftDimensionVAParserRuleCall_5_2_1_1_0() { return cLeftDimensionVAParserRuleCall_5_2_1_1_0; }
+		public RuleCall getLeftDimensionVAParserRuleCall_4_2_1_1_0() { return cLeftDimensionVAParserRuleCall_4_2_1_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_5_2_1_2() { return cSemicolonKeyword_5_2_1_2; }
+		public Keyword getSemicolonKeyword_4_2_1_2() { return cSemicolonKeyword_4_2_1_2; }
 
 		//("width:" width=DimensionVA ";")?
-		public Group getGroup_5_2_2() { return cGroup_5_2_2; }
+		public Group getGroup_4_2_2() { return cGroup_4_2_2; }
 
 		//"width:"
-		public Keyword getWidthKeyword_5_2_2_0() { return cWidthKeyword_5_2_2_0; }
+		public Keyword getWidthKeyword_4_2_2_0() { return cWidthKeyword_4_2_2_0; }
 
 		//width=DimensionVA
-		public Assignment getWidthAssignment_5_2_2_1() { return cWidthAssignment_5_2_2_1; }
+		public Assignment getWidthAssignment_4_2_2_1() { return cWidthAssignment_4_2_2_1; }
 
 		//DimensionVA
-		public RuleCall getWidthDimensionVAParserRuleCall_5_2_2_1_0() { return cWidthDimensionVAParserRuleCall_5_2_2_1_0; }
+		public RuleCall getWidthDimensionVAParserRuleCall_4_2_2_1_0() { return cWidthDimensionVAParserRuleCall_4_2_2_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_5_2_2_2() { return cSemicolonKeyword_5_2_2_2; }
+		public Keyword getSemicolonKeyword_4_2_2_2() { return cSemicolonKeyword_4_2_2_2; }
 
 		//("height:" height=DimensionVA ";")?
-		public Group getGroup_5_2_3() { return cGroup_5_2_3; }
+		public Group getGroup_4_2_3() { return cGroup_4_2_3; }
 
 		//"height:"
-		public Keyword getHeightKeyword_5_2_3_0() { return cHeightKeyword_5_2_3_0; }
+		public Keyword getHeightKeyword_4_2_3_0() { return cHeightKeyword_4_2_3_0; }
 
 		//height=DimensionVA
-		public Assignment getHeightAssignment_5_2_3_1() { return cHeightAssignment_5_2_3_1; }
+		public Assignment getHeightAssignment_4_2_3_1() { return cHeightAssignment_4_2_3_1; }
 
 		//DimensionVA
-		public RuleCall getHeightDimensionVAParserRuleCall_5_2_3_1_0() { return cHeightDimensionVAParserRuleCall_5_2_3_1_0; }
+		public RuleCall getHeightDimensionVAParserRuleCall_4_2_3_1_0() { return cHeightDimensionVAParserRuleCall_4_2_3_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_5_2_3_2() { return cSemicolonKeyword_5_2_3_2; }
+		public Keyword getSemicolonKeyword_4_2_3_2() { return cSemicolonKeyword_4_2_3_2; }
 
 		//("background:" background=AnyDrawableVA ";")?
-		public Group getGroup_5_2_4() { return cGroup_5_2_4; }
+		public Group getGroup_4_2_4() { return cGroup_4_2_4; }
 
 		//"background:"
-		public Keyword getBackgroundKeyword_5_2_4_0() { return cBackgroundKeyword_5_2_4_0; }
+		public Keyword getBackgroundKeyword_4_2_4_0() { return cBackgroundKeyword_4_2_4_0; }
 
 		//background=AnyDrawableVA
-		public Assignment getBackgroundAssignment_5_2_4_1() { return cBackgroundAssignment_5_2_4_1; }
+		public Assignment getBackgroundAssignment_4_2_4_1() { return cBackgroundAssignment_4_2_4_1; }
 
 		//AnyDrawableVA
-		public RuleCall getBackgroundAnyDrawableVAParserRuleCall_5_2_4_1_0() { return cBackgroundAnyDrawableVAParserRuleCall_5_2_4_1_0; }
+		public RuleCall getBackgroundAnyDrawableVAParserRuleCall_4_2_4_1_0() { return cBackgroundAnyDrawableVAParserRuleCall_4_2_4_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_5_2_4_2() { return cSemicolonKeyword_5_2_4_2; }
+		public Keyword getSemicolonKeyword_4_2_4_2() { return cSemicolonKeyword_4_2_4_2; }
 
 		//("clickable:" clickable=BooleanVA ";")?
-		public Group getGroup_5_2_5() { return cGroup_5_2_5; }
+		public Group getGroup_4_2_5() { return cGroup_4_2_5; }
 
 		//"clickable:"
-		public Keyword getClickableKeyword_5_2_5_0() { return cClickableKeyword_5_2_5_0; }
+		public Keyword getClickableKeyword_4_2_5_0() { return cClickableKeyword_4_2_5_0; }
 
 		//clickable=BooleanVA
-		public Assignment getClickableAssignment_5_2_5_1() { return cClickableAssignment_5_2_5_1; }
+		public Assignment getClickableAssignment_4_2_5_1() { return cClickableAssignment_4_2_5_1; }
 
 		//BooleanVA
-		public RuleCall getClickableBooleanVAParserRuleCall_5_2_5_1_0() { return cClickableBooleanVAParserRuleCall_5_2_5_1_0; }
+		public RuleCall getClickableBooleanVAParserRuleCall_4_2_5_1_0() { return cClickableBooleanVAParserRuleCall_4_2_5_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_5_2_5_2() { return cSemicolonKeyword_5_2_5_2; }
+		public Keyword getSemicolonKeyword_4_2_5_2() { return cSemicolonKeyword_4_2_5_2; }
 
 		//("hint:" hint=StringVA ";")?
-		public Group getGroup_5_2_6() { return cGroup_5_2_6; }
+		public Group getGroup_4_2_6() { return cGroup_4_2_6; }
 
 		//"hint:"
-		public Keyword getHintKeyword_5_2_6_0() { return cHintKeyword_5_2_6_0; }
+		public Keyword getHintKeyword_4_2_6_0() { return cHintKeyword_4_2_6_0; }
 
 		//hint=StringVA
-		public Assignment getHintAssignment_5_2_6_1() { return cHintAssignment_5_2_6_1; }
+		public Assignment getHintAssignment_4_2_6_1() { return cHintAssignment_4_2_6_1; }
 
 		//StringVA
-		public RuleCall getHintStringVAParserRuleCall_5_2_6_1_0() { return cHintStringVAParserRuleCall_5_2_6_1_0; }
+		public RuleCall getHintStringVAParserRuleCall_4_2_6_1_0() { return cHintStringVAParserRuleCall_4_2_6_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_5_2_6_2() { return cSemicolonKeyword_5_2_6_2; }
+		public Keyword getSemicolonKeyword_4_2_6_2() { return cSemicolonKeyword_4_2_6_2; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5_3() { return cRightCurlyBracketKeyword_5_3; }
+		public Keyword getRightCurlyBracketKeyword_4_3() { return cRightCurlyBracketKeyword_4_3; }
 	}
 
 	public class SpinnerElements extends AbstractParserRuleElementFinder {
@@ -5304,11 +5249,8 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSpinnerKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Action cSpinnerAction_1 = (Action)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cLessThanSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cNameAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_2_1_0 = (RuleCall)cNameAssignment_2_1.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cPromptAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cPromptStringVAParserRuleCall_3_0 = (RuleCall)cPromptAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
@@ -5361,42 +5303,33 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		////Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
 		////NOT tested
 		//Spinner:
-		//	"spinner:" {Spinner} ("<" name=ID ">")? prompt=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA
-		//	";")? & ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
+		//	"spinner" {Spinner} name=ID? prompt=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? &
+		//	("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
 		//	fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) // Specific properties
 		//	//	 & ('gravity:' gravity+=SpinnerGravityKind ('|' gravity+=SpinnerGravityKind )* ';' )?
 		//	"}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"spinner:" {Spinner} ("<" name=ID ">")? prompt=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")?
-		//& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
-		//("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
-		//fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) // Specific properties
+		//"spinner" {Spinner} name=ID? prompt=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? & ("left:"
+		//left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? & ("background:"
+		//background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:" fadeScrollBars=BooleanVA
+		//";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) // Specific properties
 		////	 & ('gravity:' gravity+=SpinnerGravityKind ('|' gravity+=SpinnerGravityKind )* ';' )?
 		//"}")?
 		public Group getGroup() { return cGroup; }
 
-		//"spinner:"
+		//"spinner"
 		public Keyword getSpinnerKeyword_0() { return cSpinnerKeyword_0; }
 
 		//{Spinner}
 		public Action getSpinnerAction_1() { return cSpinnerAction_1; }
 
-		//("<" name=ID ">")?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_2_0() { return cLessThanSignKeyword_2_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_2_1() { return cNameAssignment_2_1; }
+		//name=ID?
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_1_0() { return cNameIDTerminalRuleCall_2_1_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_2_2() { return cGreaterThanSignKeyword_2_2; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
 		//prompt=StringVA?
 		public Assignment getPromptAssignment_3() { return cPromptAssignment_3; }
@@ -5555,11 +5488,8 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cEditTextKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Action cEditTextAction_1 = (Action)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cLessThanSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cNameAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_2_1_0 = (RuleCall)cNameAssignment_2_1.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cTextAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cTextStringVAParserRuleCall_3_0 = (RuleCall)cTextAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
@@ -5688,11 +5618,9 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4_2_22_3 = (Keyword)cGroup_4_2_22.eContents().get(3);
 		private final Keyword cRightCurlyBracketKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		
-		////EditText < TextView
 		////NOT tested
 		//EditText:
-		//	"editText:" {EditText} ("<" name=ID ">")? text=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA
-		//	";")? //TextView attributes
+		//	"editText" {EditText} name=ID? text=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
 		//	& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
 		//	fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")? & ("autoLink:"
@@ -5704,7 +5632,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		//	("textStyle:" textStyle+=TextStyleKind ("|" textStyle+=TextStyleKind)* ";")?) "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"editText:" {EditText} ("<" name=ID ">")? text=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
+		//"editText" {EditText} name=ID? text=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
 		//& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 		//("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
 		//fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")? & ("autoLink:"
@@ -5716,26 +5644,17 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		//("textStyle:" textStyle+=TextStyleKind ("|" textStyle+=TextStyleKind)* ";")?) "}")?
 		public Group getGroup() { return cGroup; }
 
-		//"editText:"
+		//"editText"
 		public Keyword getEditTextKeyword_0() { return cEditTextKeyword_0; }
 
 		//{EditText}
 		public Action getEditTextAction_1() { return cEditTextAction_1; }
 
-		//("<" name=ID ">")?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_2_0() { return cLessThanSignKeyword_2_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_2_1() { return cNameAssignment_2_1; }
+		//name=ID?
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_1_0() { return cNameIDTerminalRuleCall_2_1_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_2_2() { return cGreaterThanSignKeyword_2_2; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
 		//text=StringVA?
 		public Assignment getTextAssignment_3() { return cTextAssignment_3; }
@@ -10917,9 +10836,6 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 	//	//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
 	//	//		  & ('translationX:' translationX=DimensionVA';' )?
 	//	//		  & ('translationY:' translationY=DimensionVA';' )?
-	//	//LinearLayout.LayoutParams
-	//	//NOTE: All its children can have this layout parameters too
-	//	//& (layoutParams=LinearLayoutParams)?
 	//	//ViewGroup
 	//	//LinearLayout
 	//	//		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
@@ -10953,9 +10869,6 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 	//	//		  & ('transformPivotY:' transformPivotY=DimensionVA';' )?
 	//	//		  & ('translationX:' translationX=DimensionVA';' )?
 	//	//		  & ('translationY:' translationY=DimensionVA';' )?
-	//	//RelativeLayout.LayoutParams
-	//	//NOTE: All its children can have this layout parameters too
-	//	//& (layoutParams=RelativeLayoutParams)?
 	//	//ViewGroup
 	//	//RelativeLayout
 	//	//		  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';' )?
@@ -10976,6 +10889,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////OCL restriction: Must have a TabWidget and a FrameLayout
+	////NOT tested
 	//TabHost:
 	//	"tab" "layout" {TabHost} name=ID? "{" (("alpha:" alpha=FLOAT ";")? //		  & ('rotation:' rotation=DimensionVA';' )?
 	//	//		  & ('rotationX:' rotationX=DimensionVA';' )?
@@ -11007,6 +10921,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		return getTabHostAccess().getRule();
 	}
 
+	////NOT tested
 	//TabWidget:
 	//	"tabWidget" {TabWidget} name=ID? "{" (("alpha:" alpha=FLOAT ";")? //		  & ('rotation:' rotation=DimensionVA';' )?
 	//	//		  & ('rotationX:' rotationX=DimensionVA';' )?
@@ -11045,6 +10960,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		return getTabWidgetAccess().getRule();
 	}
 
+	////NOT tested
 	//FrameLayout:
 	//	"frame" "layout" {FrameLayout} name=ID? "{" (("alpha:" alpha=FLOAT ";")? //		  & ('rotation:' rotation=DimensionVA';' )?
 	//	//		  & ('rotationX:' rotationX=DimensionVA';' )?
@@ -11124,7 +11040,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TextView:
-	//	"textView:" ("<" name=ID ">")? text=StringVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
+	//	"textView" name=ID? text=StringVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
 	//	& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 	//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
 	//	fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")? & ("autoLink:"
@@ -11146,10 +11062,10 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 
 	////NOT tested
 	//ImageView:
-	//	"imageView:" ("<" name=ID ">")? src=AnyDrawableVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? &
-	//	("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
-	//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
-	//	fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) "}")?;
+	//	"imageView" name=ID? src=AnyDrawableVA ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? & ("left:"
+	//	left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? & ("background:"
+	//	background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:" fadeScrollBars=BooleanVA
+	//	";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) "}")?;
 	public ImageViewElements getImageViewAccess() {
 		return (pImageView != null) ? pImageView : (pImageView = new ImageViewElements());
 	}
@@ -11160,7 +11076,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 
 	////Button and ImageButton (depending on parameters)
 	//Button:
-	//	"button:" {Button} ("<" name=ID ">")? (text=StringVA | src=AnyDrawableVA) ("to" target=[Activity|QualifiedName])? ("{"
+	//	"button" name=ID? (text=StringVA | src=AnyDrawableVA) ("to" target=[Activity|QualifiedName])? ("{"
 	//	layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? // Specific properties
 	//	& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 	//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("hint:" hint=StringVA
@@ -11176,8 +11092,8 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 	////Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
 	////NOT tested
 	//Spinner:
-	//	"spinner:" {Spinner} ("<" name=ID ">")? prompt=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA
-	//	";")? & ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
+	//	"spinner" {Spinner} name=ID? prompt=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? &
+	//	("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 	//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
 	//	fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")?) // Specific properties
 	//	//	 & ('gravity:' gravity+=SpinnerGravityKind ('|' gravity+=SpinnerGravityKind )* ';' )?
@@ -11190,11 +11106,9 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		return getSpinnerAccess().getRule();
 	}
 
-	////EditText < TextView
 	////NOT tested
 	//EditText:
-	//	"editText:" {EditText} ("<" name=ID ">")? text=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA
-	//	";")? //TextView attributes
+	//	"editText" {EditText} name=ID? text=StringVA? ("{" layoutParams=LayoutParams? (("top:" top=DimensionVA ";")? //TextView attributes
 	//	& ("left:" left=DimensionVA ";")? & ("width:" width=DimensionVA ";")? & ("height:" height=DimensionVA ";")? &
 	//	("background:" background=AnyDrawableVA ";")? & ("clickable:" clickable=BooleanVA ";")? & ("fadeScrollBars:"
 	//	fadeScrollBars=BooleanVA ";")? & ("isScrollContainer:" isScrollContainer=BooleanVA ";")? & ("autoLink:"

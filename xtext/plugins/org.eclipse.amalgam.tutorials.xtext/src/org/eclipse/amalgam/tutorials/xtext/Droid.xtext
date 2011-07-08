@@ -203,9 +203,6 @@ LinearLayout:
 //		  & ('translationY:' translationY=DimensionVA';' )?
 		  & ('visibility:' visibility=LayoutVisibilityKind';' )?
 
-		  //LinearLayout.LayoutParams
-		  //NOTE: All its children can have this layout parameters too
-		  //& (layoutParams=LinearLayoutParams)?
 		  & (layoutParams=LayoutParams)?
 
 		  //ViewGroup
@@ -252,9 +249,6 @@ RelativeLayout:
 //		  & ('translationY:' translationY=DimensionVA';' )?
 		  & ('visibility:' visibility=LayoutVisibilityKind';' )?
 
-		  //RelativeLayout.LayoutParams
-		  //NOTE: All its children can have this layout parameters too
-		  //& (layoutParams=RelativeLayoutParams)?
 		  & (layoutParams=LayoutParams)?
 
 		  //ViewGroup
@@ -269,6 +263,7 @@ RelativeLayout:
 ;
 
 //OCL restriction: Must have a TabWidget and a FrameLayout
+//NOT tested
 TabHost:
 	'tab' 'layout' {TabHost} name=ID? '{'
 		(
@@ -312,6 +307,8 @@ TabHost:
 	'}'
 ;
 
+
+//NOT tested
 TabWidget:
 	'tabWidget' {TabWidget} name=ID? '{'
 		(
@@ -366,7 +363,7 @@ TabWidget:
 	'}'
 ;
 
-
+//NOT tested
 FrameLayout:
 	'frame' 'layout' {FrameLayout} name=ID? '{'
 		(
@@ -459,7 +456,7 @@ AbstractTextView:
 ;
 
 TextView:
-	'textView:' ('<'name=ID'>')?
+	'textView' (name=ID)?
 	text=StringVA
 	('{'
 	(layoutParams=LayoutParams)?
@@ -498,7 +495,7 @@ TextView:
 
 //NOT tested
 ImageView:
-	'imageView:' ('<'name=ID'>')?
+	'imageView' (name=ID)?
 	src=AnyDrawableVA
 	('{'
 	(layoutParams=LayoutParams)?
@@ -518,7 +515,7 @@ ImageView:
 
 //Button and ImageButton (depending on parameters)
 Button:
-	'button:' {Button} ('<'name=ID'>')?
+	'button' (name=ID)?
 	( text=StringVA | src=AnyDrawableVA )
 	('to' target=[Activity|QualifiedName])?
 	('{'
@@ -541,7 +538,7 @@ Button:
 //Todo: look at http://developer.android.com/resources/tutorials/views/hello-spinner.html
 //NOT tested
 Spinner:
-	'spinner:' {Spinner} ('<'name=ID'>')?
+	'spinner' {Spinner} (name=ID)?
 	prompt=StringVA?
 	('{'
 	(layoutParams=LayoutParams)?
@@ -561,10 +558,9 @@ Spinner:
 	'}')?
 ;
 
-//EditText < TextView
 //NOT tested
 EditText:
-	'editText:' {EditText} ('<'name=ID'>')?
+	'editText' {EditText} (name=ID)?
 	text=StringVA?
 	('{'
 	(layoutParams=LayoutParams)?

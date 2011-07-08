@@ -84,151 +84,149 @@ T87 : 'centerInParent:' ;
 T88 : 'centerVertical:' ;
 T89 : 'toLeftOf:' ;
 T90 : 'toRightOf:' ;
-T91 : 'textView:' ;
-T92 : '<' ;
-T93 : '>' ;
-T94 : 'top:' ;
-T95 : 'left:' ;
-T96 : 'clickable:' ;
-T97 : 'fadeScrollBars:' ;
-T98 : 'isScrollContainer:' ;
-T99 : 'autoLink:' ;
-T100 : 'autoText:' ;
-T101 : 'capitalize:' ;
-T102 : 'digits:' ;
-T103 : 'editable:' ;
-T104 : 'hint:' ;
-T105 : 'numeric:' ;
-T106 : 'password:' ;
-T107 : 'phoneNumber:' ;
-T108 : 'singleLine:' ;
-T109 : 'textColor:' ;
-T110 : 'typeface:' ;
-T111 : 'textSize:' ;
-T112 : 'textStyle:' ;
-T113 : 'imageView:' ;
-T114 : 'button:' ;
-T115 : 'to' ;
-T116 : 'spinner:' ;
-T117 : 'editText:' ;
-T118 : 'string' ;
-T119 : '=' ;
-T120 : 'integer' ;
-T121 : 'bool' ;
-T122 : 'color' ;
-T123 : 'dimension' ;
-T124 : 'array' ;
-T125 : '(integer)' ;
-T126 : '[' ;
-T127 : ',' ;
-T128 : ']' ;
-T129 : '(string)' ;
-T130 : 'bitmap' ;
-T131 : 'transition' ;
-T132 : '<->' ;
-T133 : 'menu' ;
-T134 : 'item' ;
-T135 : 'group' ;
-T136 : 'submenu' ;
-T137 : 'set' ;
-T138 : 'shared' ;
-T139 : 'fade:' ;
-T140 : 'from' ;
-T141 : 'scale:' ;
-T142 : 'translate:' ;
-T143 : 'rotate:' ;
-T144 : 'tweenAnimation' ;
-T145 : 'oneShot' ;
-T146 : 'frameAnimation' ;
-T147 : 'frame:' ;
-T148 : '->' ;
-T149 : '@string' ;
-T150 : '@integer' ;
-T151 : '@bool' ;
-T152 : '@color' ;
-T153 : '@dimen' ;
-T154 : '@drawable' ;
-T155 : '@anim' ;
-T156 : '@interpolator' ;
-T157 : '.' ;
-T158 : 'dp' ;
-T159 : 'sp' ;
-T160 : 'pt' ;
-T161 : 'px' ;
-T162 : 'mm' ;
-T163 : 'in' ;
-T164 : 'accelerate_decelerate' ;
-T165 : 'accelerate' ;
-T166 : 'anticipate' ;
-T167 : 'anticipate_overshoot' ;
-T168 : 'bounce' ;
-T169 : 'cycle' ;
-T170 : 'decelerate' ;
-T171 : 'overshoot' ;
-T172 : 'fill_parent' ;
-T173 : 'match_parent' ;
-T174 : 'wrap_content' ;
-T175 : 'top' ;
-T176 : 'bottom' ;
-T177 : 'left' ;
-T178 : 'right' ;
-T179 : 'center' ;
-T180 : 'center_vertical' ;
-T181 : 'center_horizontal' ;
-T182 : 'fill' ;
-T183 : 'fill_vertical' ;
-T184 : 'fill_horizontal' ;
-T185 : 'clip_vertical' ;
-T186 : 'clip_horizontal' ;
-T187 : 'horizontal' ;
-T188 : 'vertical' ;
-T189 : 'visible' ;
-T190 : 'invisible' ;
-T191 : 'gone' ;
-T192 : 'normal' ;
-T193 : 'sans' ;
-T194 : 'serif' ;
-T195 : 'monospace' ;
-T196 : 'bold' ;
-T197 : 'italic' ;
-T198 : 'none' ;
-T199 : 'web' ;
-T200 : 'email' ;
-T201 : 'phone' ;
-T202 : 'map' ;
-T203 : 'all' ;
-T204 : 'sentences' ;
-T205 : 'words' ;
-T206 : 'characters' ;
+T91 : 'textView' ;
+T92 : 'top:' ;
+T93 : 'left:' ;
+T94 : 'clickable:' ;
+T95 : 'fadeScrollBars:' ;
+T96 : 'isScrollContainer:' ;
+T97 : 'autoLink:' ;
+T98 : 'autoText:' ;
+T99 : 'capitalize:' ;
+T100 : 'digits:' ;
+T101 : 'editable:' ;
+T102 : 'hint:' ;
+T103 : 'numeric:' ;
+T104 : 'password:' ;
+T105 : 'phoneNumber:' ;
+T106 : 'singleLine:' ;
+T107 : 'textColor:' ;
+T108 : 'typeface:' ;
+T109 : 'textSize:' ;
+T110 : 'textStyle:' ;
+T111 : 'imageView' ;
+T112 : 'button' ;
+T113 : 'to' ;
+T114 : 'spinner' ;
+T115 : 'editText' ;
+T116 : 'string' ;
+T117 : '=' ;
+T118 : 'integer' ;
+T119 : 'bool' ;
+T120 : 'color' ;
+T121 : 'dimension' ;
+T122 : 'array' ;
+T123 : '(integer)' ;
+T124 : '[' ;
+T125 : ',' ;
+T126 : ']' ;
+T127 : '(string)' ;
+T128 : 'bitmap' ;
+T129 : 'transition' ;
+T130 : '<->' ;
+T131 : 'menu' ;
+T132 : 'item' ;
+T133 : 'group' ;
+T134 : 'submenu' ;
+T135 : 'set' ;
+T136 : 'shared' ;
+T137 : 'fade:' ;
+T138 : 'from' ;
+T139 : 'scale:' ;
+T140 : 'translate:' ;
+T141 : 'rotate:' ;
+T142 : 'tweenAnimation' ;
+T143 : 'oneShot' ;
+T144 : 'frameAnimation' ;
+T145 : 'frame:' ;
+T146 : '->' ;
+T147 : '@string' ;
+T148 : '@integer' ;
+T149 : '@bool' ;
+T150 : '@color' ;
+T151 : '@dimen' ;
+T152 : '@drawable' ;
+T153 : '@anim' ;
+T154 : '@interpolator' ;
+T155 : '.' ;
+T156 : 'dp' ;
+T157 : 'sp' ;
+T158 : 'pt' ;
+T159 : 'px' ;
+T160 : 'mm' ;
+T161 : 'in' ;
+T162 : 'accelerate_decelerate' ;
+T163 : 'accelerate' ;
+T164 : 'anticipate' ;
+T165 : 'anticipate_overshoot' ;
+T166 : 'bounce' ;
+T167 : 'cycle' ;
+T168 : 'decelerate' ;
+T169 : 'overshoot' ;
+T170 : 'fill_parent' ;
+T171 : 'match_parent' ;
+T172 : 'wrap_content' ;
+T173 : 'top' ;
+T174 : 'bottom' ;
+T175 : 'left' ;
+T176 : 'right' ;
+T177 : 'center' ;
+T178 : 'center_vertical' ;
+T179 : 'center_horizontal' ;
+T180 : 'fill' ;
+T181 : 'fill_vertical' ;
+T182 : 'fill_horizontal' ;
+T183 : 'clip_vertical' ;
+T184 : 'clip_horizontal' ;
+T185 : 'horizontal' ;
+T186 : 'vertical' ;
+T187 : 'visible' ;
+T188 : 'invisible' ;
+T189 : 'gone' ;
+T190 : 'normal' ;
+T191 : 'sans' ;
+T192 : 'serif' ;
+T193 : 'monospace' ;
+T194 : 'bold' ;
+T195 : 'italic' ;
+T196 : 'none' ;
+T197 : 'web' ;
+T198 : 'email' ;
+T199 : 'phone' ;
+T200 : 'map' ;
+T201 : 'all' ;
+T202 : 'sentences' ;
+T203 : 'words' ;
+T204 : 'characters' ;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15799
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16373
 RULE_BOOL : ('TRUE'|'FALSE');
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15801
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16375
 RULE_FLOAT : RULE_INT '.' RULE_INT;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15803
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16377
 RULE_HEX_COLOR : '#' ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f') (('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f'))?;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15805
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16379
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15807
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16381
 RULE_INT : ('0'..'9')+;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15809
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16383
 RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15811
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16385
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15813
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16387
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15815
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16389
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 15817
+// $ANTLR src "../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g" 16391
 RULE_ANY_OTHER : .;
 
 
