@@ -47513,10 +47513,17 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g:11509:2: ( '|' ( ( ruleTextStyleKind ) ) )*
-        loop:
+        loop130:
         do {
-            int alt=;
-            switch (alt) {
+            int alt130=2;
+            int LA130_0 = input.LA(1);
+
+            if ( (LA130_0==62) ) {
+                alt130=1;
+            }
+
+
+            switch (alt130) {
         	case 1 :
         	    // ../org.eclipse.amalgam.tutorials.xtext/src-gen/org/eclipse/amalgam/tutorials/xtext/parser/antlr/internal/InternalDroid.g:11509:4: '|' ( ( ruleTextStyleKind ) )
         	    {
@@ -47547,7 +47554,7 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         	    break;
 
         	default :
-        	    break loop;
+        	    break loop130;
             }
         } while (true);
 
@@ -48642,20 +48649,6 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred80() {
-        backtracking++;
-        int start = input.mark();
-        try {
-            synpred80_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !failed;
-        input.rewind(start);
-        backtracking--;
-        failed=false;
-        return success;
-    }
     public final boolean synpred127() {
         backtracking++;
         int start = input.mark();
@@ -48670,11 +48663,11 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred81() {
+    public final boolean synpred80() {
         backtracking++;
         int start = input.mark();
         try {
-            synpred81_fragment(); // can never throw exception
+            synpred80_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -48698,11 +48691,11 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred82() {
+    public final boolean synpred81() {
         backtracking++;
         int start = input.mark();
         try {
-            synpred82_fragment(); // can never throw exception
+            synpred81_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -48717,6 +48710,20 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         int start = input.mark();
         try {
             synpred129_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !failed;
+        input.rewind(start);
+        backtracking--;
+        failed=false;
+        return success;
+    }
+    public final boolean synpred82() {
+        backtracking++;
+        int start = input.mark();
+        try {
+            synpred82_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -49468,11 +49475,11 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred99() {
+    public final boolean synpred130() {
         backtracking++;
         int start = input.mark();
         try {
-            synpred99_fragment(); // can never throw exception
+            synpred130_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -49482,11 +49489,11 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred130() {
+    public final boolean synpred99() {
         backtracking++;
         int start = input.mark();
         try {
-            synpred130_fragment(); // can never throw exception
+            synpred99_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -49566,11 +49573,11 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred252() {
+    public final boolean synpred160() {
         backtracking++;
         int start = input.mark();
         try {
-            synpred252_fragment(); // can never throw exception
+            synpred160_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -49580,11 +49587,11 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred160() {
+    public final boolean synpred252() {
         backtracking++;
         int start = input.mark();
         try {
-            synpred160_fragment(); // can never throw exception
+            synpred252_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -50238,20 +50245,6 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred248() {
-        backtracking++;
-        int start = input.mark();
-        try {
-            synpred248_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !failed;
-        input.rewind(start);
-        backtracking--;
-        failed=false;
-        return success;
-    }
     public final boolean synpred178() {
         backtracking++;
         int start = input.mark();
@@ -50266,11 +50259,11 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred247() {
+    public final boolean synpred248() {
         backtracking++;
         int start = input.mark();
         try {
-            synpred247_fragment(); // can never throw exception
+            synpred248_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -50294,11 +50287,11 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         failed=false;
         return success;
     }
-    public final boolean synpred249() {
+    public final boolean synpred247() {
         backtracking++;
         int start = input.mark();
         try {
-            synpred249_fragment(); // can never throw exception
+            synpred247_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -50313,6 +50306,20 @@ public class InternalDroidParser extends AbstractInternalAntlrParser {
         int start = input.mark();
         try {
             synpred179_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !failed;
+        input.rewind(start);
+        backtracking--;
+        failed=false;
+        return success;
+    }
+    public final boolean synpred249() {
+        backtracking++;
+        int start = input.mark();
+        try {
+            synpred249_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }

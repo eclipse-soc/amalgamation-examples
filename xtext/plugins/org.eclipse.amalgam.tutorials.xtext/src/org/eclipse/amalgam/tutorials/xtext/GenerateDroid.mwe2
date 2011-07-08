@@ -54,7 +54,6 @@ Workflow {
 			  options = {
 			  		//FROM: http://www.eclipse.org/forums/index.php?t=msg&th=172425&start=0&
 			  		//I enabled, but I heard that it can hide some ambiguities of the language
-					//The language is not working if I remove this.
 					backtrack = true
 					
 					// Fixes the problem: "xtext the code of method mTokens() is exceeding the 65535 bytes limit"
@@ -64,7 +63,6 @@ Workflow {
 				//http://www.antlr.org/pipermail/antlr-interest/2007-March/020014.html
 				//http://20000frames.blogspot.com/2010/09/dealing-with-could-not-even-do-k1-for.html
 				antlrParam = "-Xconversiontimeout" antlrParam = "10000"
-				antlrParam = "-Xmultithreaded"
 			}
 
 			// java-based API for validation 
@@ -115,7 +113,6 @@ Workflow {
 				//http://www.antlr.org/pipermail/antlr-interest/2007-March/020014.html
 				//http://20000frames.blogspot.com/2010/09/dealing-with-could-not-even-do-k1-for.html
 				antlrParam = "-Xconversiontimeout" antlrParam = "10000"
-				antlrParam = "-Xmultithreaded"
 			}
 
 			// project wizard (optional) 
