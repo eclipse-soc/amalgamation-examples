@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.eclipse.amalgam.tutorials.ecore.edit/src-gen">
+  <editionContexts basePackage="" descriptorsGenericPropertiesViews="true">
+    <PropertiesEditionContext href="Droid.components#_y7hUAKp3EeCcIuTBr7O_Dw"/>
+  </editionContexts>
+  <viewsRepositories basePackage="droid" swtViews="true" formViews="true">
+    <viewsRepository href="Droid.components#_y7jJXqp3EeCcIuTBr7O_Dw"/>
+  </viewsRepositories>
+</eef-gen:EEFGenModel>
