@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.amalgam.tutorials.ecore.edit;singleton:=true
+Bundle-SymbolicName: org.eclipse.amalgam.tutorials.emf.edit;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Bundle-Activator: droid.provider.DroidModelEditPlugin$Implementation
@@ -11,7 +11,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: droid.provider,
  droid.providers
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.amalgam.tutorials.ecore;visibility:=reexport,
+ org.eclipse.amalgam.tutorials.emf;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  org.eclipse.emf.eef.runtime;visibility:=reexport,
  org.eclipse.emf.eef.runtime.extended;bundle-version="1.0.0"

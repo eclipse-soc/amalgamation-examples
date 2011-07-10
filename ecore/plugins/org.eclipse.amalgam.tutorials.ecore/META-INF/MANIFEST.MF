@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.amalgam.tutorials.ecore;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Name: org.eclipse.amalgam.tutorials.ecore
+Bundle-SymbolicName: org.eclipse.amalgam.tutorials.emf;singleton:=true
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: %providerName
+Bundle-Vendor: Reinaldo de Souza Junior
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: droid,
