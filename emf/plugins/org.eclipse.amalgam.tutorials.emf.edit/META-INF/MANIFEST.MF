@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.eclipse.amalgam.tutorials.emf.edit;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Bundle-Activator: droid.provider.DroidModelEditPlugin$Implementation
-Bundle-Vendor: %providerName
+Bundle-Vendor: Reinaldo de Souza Junior
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: droid.provider,

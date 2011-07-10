@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.eclipse.amalgam.tutorials.ecore
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.amalgam.tutorials.emf;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
