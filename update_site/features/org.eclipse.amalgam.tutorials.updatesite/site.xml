@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Eclipse Amalgamation Tutorials" url="http://reinaldojunior.net/eclipse-amalgamation-tutorials/">
+      The Eclipse Amalgamation Tutorials is a Google Summer of Code 2001 project.
+   </description>
+   <feature url="features/org.eclipse.amalgam.tutorials.acceleo.feature_1.0.5.201107102343.jar" id="org.eclipse.amalgam.tutorials.acceleo.feature" version="1.0.5.201107102343">
+      <category name="Eclipse-Amalgam"/>
+   </feature>
+   <feature url="features/org.eclipse.amalgam.tutorials.emf.feature_1.0.0.201107102343.jar" id="org.eclipse.amalgam.tutorials.emf.feature" version="1.0.0.201107102343">
+      <category name="Eclipse-Amalgam"/>
+   </feature>
+   <feature url="features/org.eclipse.amalgam.tutorials.xtext.feature_1.0.7.201107102343.jar" id="org.eclipse.amalgam.tutorials.xtext.feature" version="1.0.7.201107102343">
+      <category name="Eclipse-Amalgam"/>
+   </feature>
+   <feature url="features/org.eclipse.amalgam.tutorials_1.0.0.201107102343.jar" id="org.eclipse.amalgam.tutorials" version="1.0.0.201107102343">
+      <category name="Modeling"/>
+   </feature>
+   <category-def name="Modeling" label="Modeling"/>
+   <category-def name="Eclipse-Amalgam" label="Eclipse Amalgamation"/>
+</site>
