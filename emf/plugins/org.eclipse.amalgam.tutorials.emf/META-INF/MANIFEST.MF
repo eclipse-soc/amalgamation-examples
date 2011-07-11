@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: Reinaldo de Souza Junior
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: droid,
- droid.impl,
- droid.util
+Export-Package: org.eclipse.amalgam.tutorials.emf.droid,
+ org.eclipse.amalgam.tutorials.emf.droid.impl,
+ org.eclipse.amalgam.tutorials.emf.droid.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport
