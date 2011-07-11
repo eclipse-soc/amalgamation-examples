@@ -129,6 +129,7 @@ protected class ThisRootNode extends RootToken {
 
 /************ begin Rule Application ****************
  *
+ * //generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
  * //The ammount of available RAM to the JVM is a restriction to the
  * //DSL generation. The usage of unordered groups tend to increase the RAM needed
  * //in order to generate the language 

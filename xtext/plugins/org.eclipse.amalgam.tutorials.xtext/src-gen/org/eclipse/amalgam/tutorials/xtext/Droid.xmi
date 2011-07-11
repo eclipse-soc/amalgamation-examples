@@ -4,12 +4,12 @@
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
       <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
     </metamodelDeclarations>
-    <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="droid">
-      <ePackage href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#/"/>
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
+      <ePackage href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#/"/>
     </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="Application">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Application"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Application"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="application"/>
@@ -52,14 +52,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ApplicationUsesSDK">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ApplicationUsesSDK"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ApplicationUsesSDK"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="sdk:"/>
         <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ApplicationUsesSDK"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ApplicationUsesSDK"/>
           </type>
         </elements>
         <elements xsi:type="xtext:UnorderedGroup">
@@ -90,7 +90,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Resource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Resource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Resource"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
@@ -99,7 +99,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Layout">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Layout"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
@@ -110,7 +110,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AbstractActivity">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AbstractActivity"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AbstractActivity"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
@@ -118,7 +118,7 @@
           <elements xsi:type="xtext:Assignment" feature="referencedLayout" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Layout"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
@@ -131,7 +131,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Activity">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Activity"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Activity"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
@@ -141,7 +141,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="GenericActivity">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//GenericActivity"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//GenericActivity"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="screen"/>
@@ -155,7 +155,7 @@
             <elements xsi:type="xtext:Assignment" feature="referencedLayout" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Layout"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -170,7 +170,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ViewCollection">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ViewCollection"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ViewCollection"/>
       </type>
       <alternatives xsi:type="xtext:Group" cardinality="+">
         <elements xsi:type="xtext:Keyword" value="#"/>
@@ -181,7 +181,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ListActivity">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ListActivity"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ListActivity"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="listActivity"/>
@@ -199,7 +199,7 @@
             <elements xsi:type="xtext:Assignment" feature="referencedLayout" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Layout"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -213,7 +213,7 @@
         <elements xsi:type="xtext:Assignment" feature="itemLayout" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Layout"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -226,7 +226,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TabActivity">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TabActivity"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TabActivity"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="tabActivity"/>
@@ -240,7 +240,7 @@
             <elements xsi:type="xtext:Assignment" feature="referencedLayout" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Layout"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -261,7 +261,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Tab">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Tab"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Tab"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="tab:"/>
@@ -290,7 +290,7 @@
             <elements xsi:type="xtext:Assignment" feature="activity" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Activity"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Activity"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.100"/>
               </terminal>
@@ -301,7 +301,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Layout"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -316,7 +316,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ActionSet">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ActionSet"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ActionSet"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="actions:"/>
@@ -329,7 +329,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Action">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Action"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Action"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="=>"/>
@@ -342,7 +342,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="GoToURLAction">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//GoToURLAction"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//GoToURLAction"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="goTo"/>
@@ -353,14 +353,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ShowLayoutAction">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ShowLayoutAction"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ShowLayoutAction"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="show"/>
         <elements xsi:type="xtext:Assignment" feature="layout" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Layout"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Layout"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -369,14 +369,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="InvokeActivityAction">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InvokeActivityAction"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InvokeActivityAction"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="invoke"/>
         <elements xsi:type="xtext:Assignment" feature="activity" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Activity"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Activity"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.100"/>
           </terminal>
@@ -385,7 +385,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AbstractLinearLayout">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AbstractLinearLayout"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AbstractLinearLayout"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
@@ -394,7 +394,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AbstractView">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AbstractView"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AbstractView"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
@@ -410,7 +410,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="View">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
@@ -419,14 +419,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="LinearLayout">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LinearLayout"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LinearLayout"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" cardinality="?" value="linear"/>
         <elements xsi:type="xtext:Keyword" value="layout"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LinearLayout"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LinearLayout"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
@@ -467,7 +467,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusDown" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -479,7 +479,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusLeft" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -491,7 +491,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusRight" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -503,7 +503,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusUp" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -592,14 +592,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="RelativeLayout">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//RelativeLayout"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//RelativeLayout"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="relative"/>
         <elements xsi:type="xtext:Keyword" value="layout"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//RelativeLayout"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//RelativeLayout"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
@@ -640,7 +640,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusDown" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -652,7 +652,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusLeft" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -664,7 +664,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusRight" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -676,7 +676,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusUp" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -765,14 +765,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TabHost">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TabHost"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TabHost"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="tab"/>
         <elements xsi:type="xtext:Keyword" value="layout"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TabHost"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TabHost"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
@@ -813,7 +813,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusDown" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -825,7 +825,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusLeft" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -837,7 +837,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusRight" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -849,7 +849,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusUp" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -931,13 +931,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TabWidget">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TabWidget"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TabWidget"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="tabWidget"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TabWidget"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TabWidget"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
@@ -978,7 +978,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusDown" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -990,7 +990,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusLeft" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1002,7 +1002,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusRight" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1014,7 +1014,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusUp" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1141,14 +1141,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FrameLayout">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//FrameLayout"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//FrameLayout"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="frame"/>
         <elements xsi:type="xtext:Keyword" value="layout"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//FrameLayout"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//FrameLayout"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
@@ -1189,7 +1189,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusDown" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1201,7 +1201,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusLeft" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1213,7 +1213,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusRight" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1225,7 +1225,7 @@
             <elements xsi:type="xtext:Assignment" feature="nextFocusUp" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1304,14 +1304,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="LayoutParams">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutParams"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutParams"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="layout:"/>
         <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutParams"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutParams"/>
           </type>
         </elements>
         <elements xsi:type="xtext:UnorderedGroup">
@@ -1369,7 +1369,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout_above" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1381,7 +1381,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout_alignBaseline" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1393,7 +1393,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout_alignBottom" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1405,7 +1405,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout_alignLeft" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1445,7 +1445,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout_alignTop" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1464,7 +1464,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout_below" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1497,7 +1497,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout_toLeftOf" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1509,7 +1509,7 @@
             <elements xsi:type="xtext:Assignment" feature="layout_toRightOf" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//View"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//View"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
@@ -1522,7 +1522,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Widget">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Widget"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Widget"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
@@ -1534,7 +1534,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AbstractTextView">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AbstractTextView"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AbstractTextView"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
@@ -1544,7 +1544,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TextView">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TextView"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TextView"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="textView"/>
@@ -1734,7 +1734,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ImageView">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ImageView"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ImageView"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="imageView"/>
@@ -1813,7 +1813,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Button">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Button"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Button"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="button"/>
@@ -1833,7 +1833,7 @@
           <elements xsi:type="xtext:Assignment" feature="target" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Activity"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Activity"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.100"/>
             </terminal>
@@ -1901,13 +1901,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Spinner">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Spinner"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Spinner"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="spinner"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//Spinner"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//Spinner"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
@@ -1985,13 +1985,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="EditText">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//EditText"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//EditText"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="editText"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//EditText"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//EditText"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
@@ -2180,7 +2180,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ValueAccess">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueAccess"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ValueAccess"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
@@ -2195,7 +2195,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//StringVA"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Assignment" feature="access" operator="=">
@@ -2208,7 +2208,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntegerVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//IntegerVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//IntegerVA"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Assignment" feature="access" operator="=">
@@ -2221,7 +2221,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="BooleanVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BooleanVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BooleanVA"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Assignment" feature="access" operator="=">
@@ -2234,7 +2234,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ColorVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ColorVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ColorVA"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Assignment" feature="access" operator="=">
@@ -2247,7 +2247,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DimensionVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DimensionVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DimensionVA"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Assignment" feature="access" operator="=">
@@ -2260,7 +2260,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="LayoutDimensionVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutDimensionVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutDimensionVA"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.37"/>
@@ -2271,7 +2271,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AnyDrawableVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AnyDrawableVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AnyDrawableVA"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.40"/>
@@ -2280,7 +2280,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DrawableVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DrawableVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DrawableVA"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="access" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.84"/>
@@ -2288,7 +2288,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AnimationVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AnimationVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AnimationVA"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="access" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.85"/>
@@ -2296,7 +2296,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="InterpolatorVA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorVA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorVA"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="access" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
@@ -2304,7 +2304,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ValueDefinition">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueDefinition"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ValueDefinition"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
@@ -2316,7 +2316,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringVD">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringVD"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//StringVD"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
@@ -2324,7 +2324,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntegerVD">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//IntegerVD"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//IntegerVD"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.1"/>
@@ -2332,7 +2332,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="BooleanVD">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BooleanVD"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BooleanVD"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.104"/>
@@ -2340,7 +2340,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ColorVD">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ColorVD"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ColorVD"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.106"/>
@@ -2348,7 +2348,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DimensionVD">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DimensionVD"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DimensionVD"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.103"/>
@@ -2356,7 +2356,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ValueResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ValueResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ValueResource"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
@@ -2371,7 +2371,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//StringResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="string"/>
@@ -2386,7 +2386,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntegerResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//IntegerResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//IntegerResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="integer"/>
@@ -2401,7 +2401,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="BooleanResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BooleanResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BooleanResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="bool"/>
@@ -2416,7 +2416,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ColorResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ColorResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ColorResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="color"/>
@@ -2431,7 +2431,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DimensionResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DimensionResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DimensionResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="dimension"/>
@@ -2446,7 +2446,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ArrayResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ArrayResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ArrayResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="array"/>
@@ -2459,7 +2459,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntegerArrayResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//IntegerArrayResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//IntegerArrayResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="(integer)"/>
@@ -2484,7 +2484,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringArrayResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringArrayResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//StringArrayResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="(string)"/>
@@ -2509,7 +2509,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TypedArrayResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TypedArrayResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TypedArrayResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -2533,7 +2533,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DrawableResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DrawableResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DrawableResource"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.60"/>
@@ -2542,13 +2542,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="BitmapDrawableResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BitmapDrawableResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BitmapDrawableResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="bitmap"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BitmapDrawableResource"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BitmapDrawableResource"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -2562,13 +2562,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TransitionDrawableResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TransitionDrawableResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TransitionDrawableResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="transition"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TransitionDrawableResource"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TransitionDrawableResource"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -2577,7 +2577,7 @@
         <elements xsi:type="xtext:Assignment" feature="from" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BitmapDrawableResource"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BitmapDrawableResource"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -2586,7 +2586,7 @@
         <elements xsi:type="xtext:Assignment" feature="to" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BitmapDrawableResource"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BitmapDrawableResource"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -2595,13 +2595,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="MenuResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//MenuResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//MenuResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="menu"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//MenuResource"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//MenuResource"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -2624,13 +2624,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="MenuItem">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//MenuItem"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//MenuItem"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="item"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//MenuItem"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//MenuItem"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
@@ -2642,13 +2642,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="MenuItemGroup">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//MenuItemGroup"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//MenuItemGroup"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="group"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//MenuGroup"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//MenuGroup"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
@@ -2660,13 +2660,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SubMenu">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//SubMenu"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//SubMenu"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="submenu"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.1">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//SubMenu"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//SubMenu"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
@@ -2683,7 +2683,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AnimationResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AnimationResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AnimationResource"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.74"/>
@@ -2692,7 +2692,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FrameAnimationElement">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//FrameAnimationElement"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//FrameAnimationElement"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.68"/>
@@ -2701,7 +2701,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TerminalAnimationElements">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TerminalAnimationElements"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TerminalAnimationElements"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.70"/>
@@ -2712,7 +2712,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TerminalAnimationSet">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TerminalAnimationSet"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TerminalAnimationSet"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="set"/>
@@ -2733,7 +2733,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AlphaAnimation">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AlphaAnimation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AlphaAnimation"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="fade:"/>
@@ -2755,7 +2755,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ScaleAnimation">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ScaleAnimation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ScaleAnimation"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="scale:"/>
@@ -2777,7 +2777,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TranslateAnimation">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TranslateAnimation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TranslateAnimation"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="translate:"/>
@@ -2799,7 +2799,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="RotateAnimation">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//RotateAnimation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//RotateAnimation"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="rotate:"/>
@@ -2821,7 +2821,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TweenAnimationResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TweenAnimationResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TweenAnimationResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="tweenAnimation"/>
@@ -2837,7 +2837,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FrameAnimationResource">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//FrameAnimationResource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//FrameAnimationResource"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="oneShot" operator="?=">
@@ -2856,7 +2856,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AnimationFrame">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AnimationFrame"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AnimationFrame"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="frame:"/>
@@ -2873,7 +2873,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AbstractResourceAccess">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AbstractResourceAccess"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AbstractResourceAccess"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
@@ -2884,7 +2884,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ResourceAccess">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ResourceAccess"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ResourceAccess"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
@@ -2899,7 +2899,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringRA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringRA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//StringRA"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="@string"/>
@@ -2907,7 +2907,7 @@
           <elements xsi:type="xtext:Assignment" feature="resource" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//StringResource"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//StringResource"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
@@ -2920,7 +2920,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntegerRA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//IntegerRA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//IntegerRA"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="@integer"/>
@@ -2928,7 +2928,7 @@
           <elements xsi:type="xtext:Assignment" feature="resource" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//IntegerResource"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//IntegerResource"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
@@ -2941,7 +2941,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="BooleanRA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BooleanRA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BooleanRA"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="@bool"/>
@@ -2949,7 +2949,7 @@
           <elements xsi:type="xtext:Assignment" feature="resource" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BooleanResource"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BooleanResource"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
@@ -2962,7 +2962,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ColorRA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ColorRA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ColorRA"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="@color"/>
@@ -2970,7 +2970,7 @@
           <elements xsi:type="xtext:Assignment" feature="resource" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//ColorResource"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//ColorResource"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
@@ -2983,7 +2983,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DimensionRA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DimensionRA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DimensionRA"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="@dimen"/>
@@ -2991,7 +2991,7 @@
           <elements xsi:type="xtext:Assignment" feature="resource" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DimensionResource"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DimensionResource"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
@@ -3004,7 +3004,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DrawableRA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DrawableRA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DrawableRA"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="@drawable"/>
@@ -3012,7 +3012,7 @@
           <elements xsi:type="xtext:Assignment" feature="resource" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//DrawableResource"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//DrawableResource"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
@@ -3025,7 +3025,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AnimationRA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AnimationRA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AnimationRA"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="@anim"/>
@@ -3033,7 +3033,7 @@
           <elements xsi:type="xtext:Assignment" feature="resource" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AnimationResource"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AnimationResource"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
@@ -3046,7 +3046,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="InterpolatorRA">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorRA"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorRA"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="@interpolator"/>
@@ -3062,7 +3062,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CheckBox">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//CheckBox"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//CheckBox"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="check:"/>
@@ -3260,7 +3260,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="RadioButton">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//RadioButton"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//RadioButton"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="radio:"/>
@@ -3289,7 +3289,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="RadioGroup">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//RadioGroup"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//RadioGroup"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="radioGroup:"/>
@@ -3304,7 +3304,7 @@
         <elements xsi:type="xtext:Assignment" cardinality="+" feature="radioButtons" operator="+=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//RadioButton"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//RadioButton"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -3314,718 +3314,718 @@
     </rules>
     <rules xsi:type="xtext:EnumRule" name="BuiltInPermissionType">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCESS_CHECKIN_PROPERTIES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCESS_CHECKIN_PROPERTIES"/>
           <literal value="ACCESS_CHECKIN_PROPERTIES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCESS_COARSE_LOCATION"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCESS_COARSE_LOCATION"/>
           <literal value="ACCESS_COARSE_LOCATION"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCESS_FINE_LOCATION"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCESS_FINE_LOCATION"/>
           <literal value="ACCESS_FINE_LOCATION"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCESS_LOCATION_EXTRA_COMMANDS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCESS_LOCATION_EXTRA_COMMANDS"/>
           <literal value="ACCESS_LOCATION_EXTRA_COMMANDS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCESS_MOCK_LOCATION"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCESS_MOCK_LOCATION"/>
           <literal value="ACCESS_MOCK_LOCATION"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCESS_NETWORK_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCESS_NETWORK_STATE"/>
           <literal value="ACCESS_NETWORK_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCESS_SURFACE_FLINGER"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCESS_SURFACE_FLINGER"/>
           <literal value="ACCESS_SURFACE_FLINGER"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCESS_WIFI_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCESS_WIFI_STATE"/>
           <literal value="ACCESS_WIFI_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/ACCOUNT_MANAGER"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/ACCOUNT_MANAGER"/>
           <literal value="ACCOUNT_MANAGER"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/AUTHENTICATE_ACCOUNTS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/AUTHENTICATE_ACCOUNTS"/>
           <literal value="AUTHENTICATE_ACCOUNTS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BATTERY_STATS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BATTERY_STATS"/>
           <literal value="BATTERY_STATS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BIND_APPWIDGET"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BIND_APPWIDGET"/>
           <literal value="BIND_APPWIDGET"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BIND_DEVICE_ADMIN"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BIND_DEVICE_ADMIN"/>
           <literal value="BIND_DEVICE_ADMIN"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BIND_INPUT_METHOD"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BIND_INPUT_METHOD"/>
           <literal value="BIND_INPUT_METHOD"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BIND_REMOTEVIEWS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BIND_REMOTEVIEWS"/>
           <literal value="BIND_REMOTEVIEWS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BIND_WALLPAPER"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BIND_WALLPAPER"/>
           <literal value="BIND_WALLPAPER"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BLUETOOTH"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BLUETOOTH"/>
           <literal value="BLUETOOTH"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BLUETOOTH_ADMIN"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BLUETOOTH_ADMIN"/>
           <literal value="BLUETOOTH_ADMIN"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BRICK"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BRICK"/>
           <literal value="BRICK"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BROADCAST_PACKAGE_REMOVED"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BROADCAST_PACKAGE_REMOVED"/>
           <literal value="BROADCAST_PACKAGE_REMOVED"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BROADCAST_SMS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BROADCAST_SMS"/>
           <literal value="BROADCAST_SMS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BROADCAST_STICKY"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BROADCAST_STICKY"/>
           <literal value="BROADCAST_STICKY"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/BROADCAST_WAP_PUSH"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/BROADCAST_WAP_PUSH"/>
           <literal value="BROADCAST_WAP_PUSH"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CALL_PHONE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CALL_PHONE"/>
           <literal value="CALL_PHONE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CALL_PRIVILEGED"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CALL_PRIVILEGED"/>
           <literal value="CALL_PRIVILEGED"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CAMERA"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CAMERA"/>
           <literal value="CAMERA"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CHANGE_COMPONENT_ENABLED_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CHANGE_COMPONENT_ENABLED_STATE"/>
           <literal value="CHANGE_COMPONENT_ENABLED_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CHANGE_CONFIGURATION"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CHANGE_CONFIGURATION"/>
           <literal value="CHANGE_CONFIGURATION"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CHANGE_NETWORK_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CHANGE_NETWORK_STATE"/>
           <literal value="CHANGE_NETWORK_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CHANGE_WIFI_MULTICAST_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CHANGE_WIFI_MULTICAST_STATE"/>
           <literal value="CHANGE_WIFI_MULTICAST_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CHANGE_WIFI_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CHANGE_WIFI_STATE"/>
           <literal value="CHANGE_WIFI_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CLEAR_APP_CACHE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CLEAR_APP_CACHE"/>
           <literal value="CLEAR_APP_CACHE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CLEAR_APP_USER_DATA"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CLEAR_APP_USER_DATA"/>
           <literal value="CLEAR_APP_USER_DATA"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/CONTROL_LOCATION_UPDATES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/CONTROL_LOCATION_UPDATES"/>
           <literal value="CONTROL_LOCATION_UPDATES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/DELETE_CACHE_FILES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/DELETE_CACHE_FILES"/>
           <literal value="DELETE_CACHE_FILES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/DELETE_PACKAGES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/DELETE_PACKAGES"/>
           <literal value="DELETE_PACKAGES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/DEVICE_POWER"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/DEVICE_POWER"/>
           <literal value="DEVICE_POWER"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/DIAGNOSTIC"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/DIAGNOSTIC"/>
           <literal value="DIAGNOSTIC"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/DISABLE_KEYGUARD"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/DISABLE_KEYGUARD"/>
           <literal value="DISABLE_KEYGUARD"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/DUMP"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/DUMP"/>
           <literal value="DUMP"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/EXPAND_STATUS_BAR"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/EXPAND_STATUS_BAR"/>
           <literal value="EXPAND_STATUS_BAR"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/FACTORY_TEST"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/FACTORY_TEST"/>
           <literal value="FACTORY_TEST"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/FLASHLIGHT"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/FLASHLIGHT"/>
           <literal value="FLASHLIGHT"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/FORCE_BACK"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/FORCE_BACK"/>
           <literal value="FORCE_BACK"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/GET_ACCOUNTS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/GET_ACCOUNTS"/>
           <literal value="GET_ACCOUNTS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/GET_PACKAGE_SIZE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/GET_PACKAGE_SIZE"/>
           <literal value="GET_PACKAGE_SIZE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/GET_TASKS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/GET_TASKS"/>
           <literal value="GET_TASKS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/GLOBAL_SEARCH"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/GLOBAL_SEARCH"/>
           <literal value="GLOBAL_SEARCH"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/HARDWARE_TEST"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/HARDWARE_TEST"/>
           <literal value="HARDWARE_TEST"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/INJECT_EVENTS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/INJECT_EVENTS"/>
           <literal value="INJECT_EVENTS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/INSTALL_LOCATION_PROVIDER"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/INSTALL_LOCATION_PROVIDER"/>
           <literal value="INSTALL_LOCATION_PROVIDER"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/INSTALL_PACKAGES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/INSTALL_PACKAGES"/>
           <literal value="INSTALL_PACKAGES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/INTERNAL_SYSTEM_WINDOW"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/INTERNAL_SYSTEM_WINDOW"/>
           <literal value="INTERNAL_SYSTEM_WINDOW"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/INTERNET"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/INTERNET"/>
           <literal value="INTERNET"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/KILL_BACKGROUND_PROCESSES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/KILL_BACKGROUND_PROCESSES"/>
           <literal value="KILL_BACKGROUND_PROCESSES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/MANAGE_ACCOUNTS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/MANAGE_ACCOUNTS"/>
           <literal value="MANAGE_ACCOUNTS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/MANAGE_APP_TOKENS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/MANAGE_APP_TOKENS"/>
           <literal value="MANAGE_APP_TOKENS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/MASTER_CLEAR"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/MASTER_CLEAR"/>
           <literal value="MASTER_CLEAR"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/MODIFY_AUDIO_SETTINGS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/MODIFY_AUDIO_SETTINGS"/>
           <literal value="MODIFY_AUDIO_SETTINGS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/MODIFY_PHONE_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/MODIFY_PHONE_STATE"/>
           <literal value="MODIFY_PHONE_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/MOUNT_FORMAT_FILESYSTEMS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/MOUNT_FORMAT_FILESYSTEMS"/>
           <literal value="MOUNT_FORMAT_FILESYSTEMS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/MOUNT_UNMOUNT_FILESYSTEMS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/MOUNT_UNMOUNT_FILESYSTEMS"/>
           <literal value="MOUNT_UNMOUNT_FILESYSTEMS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/NFC"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/NFC"/>
           <literal value="NFC"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/PERSISTENT_ACTIVITY"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/PERSISTENT_ACTIVITY"/>
           <literal value="PERSISTENT_ACTIVITY"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/PROCESS_OUTGOING_CALLS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/PROCESS_OUTGOING_CALLS"/>
           <literal value="PROCESS_OUTGOING_CALLS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_CALENDAR"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_CALENDAR"/>
           <literal value="READ_CALENDAR"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_CONTACTS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_CONTACTS"/>
           <literal value="READ_CONTACTS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_FRAME_BUFFER"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_FRAME_BUFFER"/>
           <literal value="READ_FRAME_BUFFER"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_HISTORY_BOOKMARKS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_HISTORY_BOOKMARKS"/>
           <literal value="READ_HISTORY_BOOKMARKS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_INPUT_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_INPUT_STATE"/>
           <literal value="READ_INPUT_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_LOGS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_LOGS"/>
           <literal value="READ_LOGS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_PHONE_STATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_PHONE_STATE"/>
           <literal value="READ_PHONE_STATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_SMS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_SMS"/>
           <literal value="READ_SMS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_SYNC_SETTINGS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_SYNC_SETTINGS"/>
           <literal value="READ_SYNC_SETTINGS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/READ_SYNC_STATS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/READ_SYNC_STATS"/>
           <literal value="READ_SYNC_STATS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/REBOOT"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/REBOOT"/>
           <literal value="REBOOT"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/RECEIVE_BOOT_COMPLETED"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/RECEIVE_BOOT_COMPLETED"/>
           <literal value="RECEIVE_BOOT_COMPLETED"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/RECEIVE_MMS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/RECEIVE_MMS"/>
           <literal value="RECEIVE_MMS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/RECEIVE_SMS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/RECEIVE_SMS"/>
           <literal value="RECEIVE_SMS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/RECEIVE_WAP_PUSH"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/RECEIVE_WAP_PUSH"/>
           <literal value="RECEIVE_WAP_PUSH"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/RECORD_AUDIO"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/RECORD_AUDIO"/>
           <literal value="RECORD_AUDIO"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/REORDER_TASKS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/REORDER_TASKS"/>
           <literal value="REORDER_TASKS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/RESTART_PACKAGES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/RESTART_PACKAGES"/>
           <literal value="RESTART_PACKAGES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SEND_SMS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SEND_SMS"/>
           <literal value="SEND_SMS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_ACTIVITY_WATCHER"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_ACTIVITY_WATCHER"/>
           <literal value="SET_ACTIVITY_WATCHER"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_ALARM"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_ALARM"/>
           <literal value="SET_ALARM"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_ALWAYS_FINISH"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_ALWAYS_FINISH"/>
           <literal value="SET_ALWAYS_FINISH"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_ANIMATION_SCALE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_ANIMATION_SCALE"/>
           <literal value="SET_ANIMATION_SCALE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_DEBUG_APP"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_DEBUG_APP"/>
           <literal value="SET_DEBUG_APP"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_ORIENTATION"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_ORIENTATION"/>
           <literal value="SET_ORIENTATION"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_PREFERRED_APPLICATIONS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_PREFERRED_APPLICATIONS"/>
           <literal value="SET_PREFERRED_APPLICATIONS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_PROCESS_LIMIT"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_PROCESS_LIMIT"/>
           <literal value="SET_PROCESS_LIMIT"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_TIME"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_TIME"/>
           <literal value="SET_TIME"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_TIME_ZONE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_TIME_ZONE"/>
           <literal value="SET_TIME_ZONE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_WALLPAPER"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_WALLPAPER"/>
           <literal value="SET_WALLPAPER"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SET_WALLPAPER_HINTS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SET_WALLPAPER_HINTS"/>
           <literal value="SET_WALLPAPER_HINTS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SIGNAL_PERSISTENT_PROCESSES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SIGNAL_PERSISTENT_PROCESSES"/>
           <literal value="SIGNAL_PERSISTENT_PROCESSES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/STATUS_BAR"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/STATUS_BAR"/>
           <literal value="STATUS_BAR"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SUBSCRIBED_FEEDS_READ"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SUBSCRIBED_FEEDS_READ"/>
           <literal value="SUBSCRIBED_FEEDS_READ"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SUBSCRIBED_FEEDS_WRITE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SUBSCRIBED_FEEDS_WRITE"/>
           <literal value="SUBSCRIBED_FEEDS_WRITE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/SYSTEM_ALERT_WINDOW"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/SYSTEM_ALERT_WINDOW"/>
           <literal value="SYSTEM_ALERT_WINDOW"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/UPDATE_DEVICE_STATS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/UPDATE_DEVICE_STATS"/>
           <literal value="UPDATE_DEVICE_STATS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/USE_CREDENTIALS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/USE_CREDENTIALS"/>
           <literal value="USE_CREDENTIALS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/USE_SIP"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/USE_SIP"/>
           <literal value="USE_SIP"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/VIBRATE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/VIBRATE"/>
           <literal value="VIBRATE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WAKE_LOCK"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WAKE_LOCK"/>
           <literal value="WAKE_LOCK"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_APN_SETTINGS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_APN_SETTINGS"/>
           <literal value="WRITE_APN_SETTINGS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_CALENDAR"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_CALENDAR"/>
           <literal value="WRITE_CALENDAR"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_CONTACTS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_CONTACTS"/>
           <literal value="WRITE_CONTACTS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_EXTERNAL_STORAGE"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_EXTERNAL_STORAGE"/>
           <literal value="WRITE_EXTERNAL_STORAGE"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_GSERVICES"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_GSERVICES"/>
           <literal value="WRITE_GSERVICES"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_HISTORY_BOOKMARKS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_HISTORY_BOOKMARKS"/>
           <literal value="WRITE_HISTORY_BOOKMARKS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_SECURE_SETTINGS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_SECURE_SETTINGS"/>
           <literal value="WRITE_SECURE_SETTINGS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_SETTINGS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_SETTINGS"/>
           <literal value="WRITE_SETTINGS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_SMS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_SMS"/>
           <literal value="WRITE_SMS"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//BuiltInPermissionType/WRITE_SYNC_SETTINGS"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//BuiltInPermissionType/WRITE_SYNC_SETTINGS"/>
           <literal value="WRITE_SYNC_SETTINGS"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="InterpolatorsKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/accelerate_decelerate"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/accelerate_decelerate"/>
           <literal value="accelerate_decelerate"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/accelerate"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/accelerate"/>
           <literal value="accelerate"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/anticipate"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/anticipate"/>
           <literal value="anticipate"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/anticipate_overshoot"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/anticipate_overshoot"/>
           <literal value="anticipate_overshoot"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/bounce"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/bounce"/>
           <literal value="bounce"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/cycle"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/cycle"/>
           <literal value="cycle"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/decelerate"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/decelerate"/>
           <literal value="decelerate"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/linear"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/linear"/>
           <literal value="linear"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//InterpolatorsKind/overshoot"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//InterpolatorsKind/overshoot"/>
           <literal value="overshoot"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="LayoutDimensionKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutDimensionKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutDimensionKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutDimensionKind/fill_parent"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutDimensionKind/fill_parent"/>
           <literal value="fill_parent"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutDimensionKind/match_parent"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutDimensionKind/match_parent"/>
           <literal value="match_parent"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutDimensionKind/wrap_content"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutDimensionKind/wrap_content"/>
           <literal value="wrap_content"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="LayoutGravityKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/top"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/top"/>
           <literal value="top"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/bottom"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/bottom"/>
           <literal value="bottom"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/left"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/left"/>
           <literal value="left"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/right"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/right"/>
           <literal value="right"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/center"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/center"/>
           <literal value="center"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/center_vertical"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/center_vertical"/>
           <literal value="center_vertical"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/center_horizontal"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/center_horizontal"/>
           <literal value="center_horizontal"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/fill"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/fill"/>
           <literal value="fill"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/fill_vertical"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/fill_vertical"/>
           <literal value="fill_vertical"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/fill_horizontal"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/fill_horizontal"/>
           <literal value="fill_horizontal"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/clip_vertical"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/clip_vertical"/>
           <literal value="clip_vertical"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutGravityKind/clip_horizontal"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutGravityKind/clip_horizontal"/>
           <literal value="clip_horizontal"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="LayoutOrientationKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutOrientationKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutOrientationKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutOrientationKind/horizontal"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutOrientationKind/horizontal"/>
           <literal value="horizontal"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutOrientationKind/vertical"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutOrientationKind/vertical"/>
           <literal value="vertical"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="LayoutVisibilityKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutVisibilityKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutVisibilityKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutVisibilityKind/visible"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutVisibilityKind/visible"/>
           <literal value="visible"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutVisibilityKind/invisible"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutVisibilityKind/invisible"/>
           <literal value="invisible"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//LayoutVisibilityKind/gone"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//LayoutVisibilityKind/gone"/>
           <literal value="gone"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="TypefaceKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TypefaceKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TypefaceKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TypefaceKind/normal"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TypefaceKind/normal"/>
           <literal value="normal"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TypefaceKind/sans"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TypefaceKind/sans"/>
           <literal value="sans"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TypefaceKind/serif"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TypefaceKind/serif"/>
           <literal value="serif"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TypefaceKind/monospace"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TypefaceKind/monospace"/>
           <literal value="monospace"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="TextStyleKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TextStyleKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TextStyleKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TextStyleKind/normal"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TextStyleKind/normal"/>
           <literal value="normal"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TextStyleKind/bold"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TextStyleKind/bold"/>
           <literal value="bold"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//TextStyleKind/italic"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//TextStyleKind/italic"/>
           <literal value="italic"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="AutoLinkKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AutoLinkKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AutoLinkKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AutoLinkKind/none"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AutoLinkKind/none"/>
           <literal value="none"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AutoLinkKind/web"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AutoLinkKind/web"/>
           <literal value="web"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AutoLinkKind/email"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AutoLinkKind/email"/>
           <literal value="email"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AutoLinkKind/phone"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AutoLinkKind/phone"/>
           <literal value="phone"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AutoLinkKind/map"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AutoLinkKind/map"/>
           <literal value="map"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//AutoLinkKind/all"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//AutoLinkKind/all"/>
           <literal value="all"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="CapitalizeKind">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//CapitalizeKind"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//CapitalizeKind"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//CapitalizeKind/none"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//CapitalizeKind/none"/>
           <literal value="none"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//CapitalizeKind/sentences"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//CapitalizeKind/sentences"/>
           <literal value="sentences"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//CapitalizeKind/words"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//CapitalizeKind/words"/>
           <literal value="words"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/xtext/Droid#//CapitalizeKind/characters"/>
+          <enumLiteral href="http://www.eclipse.org/amalgam/tutorials/emf/Droid#//CapitalizeKind/characters"/>
           <literal value="characters"/>
         </elements>
       </alternatives>

@@ -13,7 +13,6 @@ public class AbstractDroidJavaValidator extends AbstractDeclarativeValidator {
 @Override
 	protected List<EPackage> getEPackages() {
 	    List<EPackage> result = new ArrayList<EPackage>();
-	    result.add(org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage.eINSTANCE);
 		return result;
 	}
 

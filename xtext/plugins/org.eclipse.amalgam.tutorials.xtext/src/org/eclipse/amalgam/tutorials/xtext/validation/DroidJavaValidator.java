@@ -1,7 +1,7 @@
 package org.eclipse.amalgam.tutorials.xtext.validation;
 
-import org.eclipse.amalgam.tutorials.xtext.droid.Application;
-import org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage;
+import org.eclipse.amalgam.tutorials.emf.droid.Application;
+import org.eclipse.amalgam.tutorials.emf.droid.DroidPackage;
 import org.eclipse.xtext.validation.Check;
  
 

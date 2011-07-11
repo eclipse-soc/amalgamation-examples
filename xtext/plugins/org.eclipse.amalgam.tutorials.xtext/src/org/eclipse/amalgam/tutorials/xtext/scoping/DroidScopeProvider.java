@@ -5,8 +5,7 @@ package org.eclipse.amalgam.tutorials.xtext.scoping;
 
 import java.util.ArrayList;
 
-import org.eclipse.amalgam.tutorials.xtext.droid.*;
-
+import org.eclipse.amalgam.tutorials.emf.droid.*;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;

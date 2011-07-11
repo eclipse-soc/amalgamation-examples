@@ -46,6 +46,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLayoutsLayoutParserRuleCall_6_2_0 = (RuleCall)cLayoutsAssignment_6_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
+		////generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 		////The ammount of available RAM to the JVM is a restriction to the
 		////DSL generation. The usage of unordered groups tend to increase the RAM needed
 		////in order to generate the language 
@@ -10599,6 +10600,7 @@ public class DroidGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	////generate droid "http://www.eclipse.org/amalgam/tutorials/xtext/Droid"
 	////The ammount of available RAM to the JVM is a restriction to the
 	////DSL generation. The usage of unordered groups tend to increase the RAM needed
 	////in order to generate the language 
