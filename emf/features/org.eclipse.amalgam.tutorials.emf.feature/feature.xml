@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <url>
+      <update label="Eclipse Amalgamation Tutorials" url="http://reinaldojunior.net/eclipse-amalgamation-tutorials/"/>
+   </url>
+
    <plugin
          id="org.eclipse.amalgam.tutorials.emf"
          download-size="0"
