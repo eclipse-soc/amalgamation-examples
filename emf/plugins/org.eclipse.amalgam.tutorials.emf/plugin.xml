@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://www.eclipse.org/amalgam/tutorials/emf/Droid"
-            class="droid.DroidPackage"
+            class="org.eclipse.amalgam.tutorials.emf.droid.DroidPackage"
             genModel="model/Droid.genmodel"/>
    </extension>
 
