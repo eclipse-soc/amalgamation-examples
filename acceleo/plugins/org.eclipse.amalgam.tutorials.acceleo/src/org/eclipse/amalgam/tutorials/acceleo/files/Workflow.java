@@ -249,7 +249,7 @@ public class Workflow extends AbstractAcceleoGenerator {
 	@Override
 	public void registerPackages(ResourceSet resourceSet) {
     super.registerPackages(resourceSet);
-    resourceSet.getPackageRegistry().put(org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage.eINSTANCE.getNsURI(), org.eclipse.amalgam.tutorials.xtext.droid.DroidPackage.eINSTANCE);
+    resourceSet.getPackageRegistry().put(org.eclipse.amalgam.tutorials.emf.droid.DroidPackage.eINSTANCE.getNsURI(), org.eclipse.amalgam.tutorials.emf.droid.DroidPackage.eINSTANCE);
     // TODO If you need additional package registrations, do them here. The following line is an example for UML.
     // resourceSet.getPackageRegistry().put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
   }

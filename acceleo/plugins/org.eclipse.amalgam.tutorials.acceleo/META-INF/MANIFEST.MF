@@ -5,14 +5,14 @@ Bundle-SymbolicName: org.eclipse.amalgam.tutorials.acceleo
 Bundle-Version: 1.0.5.qualifier
 Bundle-Activator: org.eclipse.amalgam.tutorials.acceleo.Activator
 Bundle-Vendor: Eclipse Modeling Project
-Require-Bundle: org.eclipse.core.runtime, 
- org.eclipse.amalgam.tutorials.xtext,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.ocl,
  org.eclipse.ocl.ecore,
  org.eclipse.acceleo.model,
- org.eclipse.acceleo.engine
+ org.eclipse.acceleo.engine,
+ org.eclipse.amalgam.tutorials.emf;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true

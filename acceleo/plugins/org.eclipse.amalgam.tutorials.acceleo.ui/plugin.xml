@@ -19,4 +19,24 @@
                menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
       </objectContribution>
    </extension>
+   
+   <!-- Repeats the same extension point to .droidmodel -->
+   <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.droidmodel"
+            id="org.eclipse.amalgam.tutorials.acceleo.ui.popupMenus.contribution.IFile">
+         <menu id="org.eclipse.acceleo.module.menu" label="Acceleo Model to Text" path="additionsAcceleo">
+               <groupMarker name="acceleo"/> 
+         </menu>
+         <action
+               class="org.eclipse.amalgam.tutorials.acceleo.ui.popupMenus.AcceleoGenerateAndroidCodeAction"
+               enablesFor="+"
+               id="org.eclipse.amalgam.tutorials.acceleo.ui.popupMenus.acceleoGenerateAndroidCodeAction"
+               icon="icons/default.gif"
+               label="Generate Android Code"
+               menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
+      </objectContribution>
+   </extension>
 </plugin>
