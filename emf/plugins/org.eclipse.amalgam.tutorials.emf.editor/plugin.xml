@@ -15,9 +15,9 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="droid.presentation.DroidModelWizardID"
+            id="org.eclipse.amalgam.tutorials.emf.droid.presentation.DroidModelWizardID"
             name="%_UI_DroidModelWizard_label"
-            class="droid.presentation.DroidModelWizard"
+            class="org.eclipse.amalgam.tutorials.emf.droid.presentation.DroidModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/DroidModelFile.gif">
          <description>%_UI_DroidModelWizard_description</description>
@@ -27,12 +27,12 @@
 
    <extension point="org.eclipse.ui.editors">
       <editor
-            id="droid.presentation.DroidEditorID"
+            id="org.eclipse.amalgam.tutorials.emf.droid.presentation.DroidEditorID"
             name="%_UI_DroidEditor_label"
             icon="icons/full/obj16/DroidModelFile.gif"
             extensions="droidmodel"
-            class="droid.presentation.DroidEditor"
-            contributorClass="droid.presentation.DroidActionBarContributor">
+            class="org.eclipse.amalgam.tutorials.emf.droid.presentation.DroidEditor"
+            contributorClass="org.eclipse.amalgam.tutorials.emf.droid.presentation.DroidActionBarContributor">
       </editor>
    </extension>
 
